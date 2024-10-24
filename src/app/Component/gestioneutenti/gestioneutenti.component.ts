@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { User } from 'src/app/Model/User/User';
 import { UtentiService } from 'src/Services/Utenti/utenti.service';
 
@@ -43,11 +44,16 @@ export class GestioneutentiComponent {
   }
 
   get filteredData() {
+    let searchValue = this.searchText.toLowerCase();
     return this.utenti.filter(item => 
-      item.nome.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      item.cognome.toString().includes(this.searchText) ||
-      item.email.toString().includes(this.searchText) ||
-      item.codFiscale.toLowerCase().includes(this.searchText.toLowerCase())
+      item.nome.toLowerCase().includes(searchValue) ||
+      item.cognome.toString().includes(searchValue) ||
+      item.email.toString().includes(searchValue) ||
+      item.codFiscale.toLowerCase().includes(searchValue)
     );
   }
+
+  //handlePageChange(event: number): void {
+  //  this.currentPage = event;
+  //}
 }

@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "SitoDeiSitiInsitoFE:build:production"
+              "buildTarget": "SitoDeiSitiInsitoFE:build:production"
             },
             "development": {
-              "browserTarget": "SitoDeiSitiInsitoFE:build:development"
+              "buildTarget": "SitoDeiSitiInsitoFE:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SitoDeiSitiInsitoFE:build"
+            "buildTarget": "SitoDeiSitiInsitoFE:build"
           }
         },
         "test": {
