@@ -1,0 +1,55 @@
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <div *ngIf="!isLogged">
+        <button class="btn btn-light" [routerLink]="'/login'">Login</button>
+      </div>
+      <div *ngIf="isLogged">
+        <button class="btn btn-light" (click)="Logout()">Logout</button>
+      </div>
+
+      <a class="navbar-brand" [routerLink]="['/']">SitoDeiSitiInsito</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+          </li>
+          <li *ngIf="!isLogged">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
+          </li>
+          <li *ngIf="!isLogged || (isLogged && !isAdmin)">
+            <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a> 
+          </li>
+          <li *ngIf="isLogged && !isAdmin">
+            <a class="nav-link text-dark" [routerLink]="['/documenti']">Documenti</a>
+          </li>
+          <li *ngIf="isLogged && !isAdmin">
+            <a class="nav-link text-dark">Eventi</a> <!--[routerLink]="['/prenota']"-->
+          </li>
+          <li *ngIf="isLogged && isAdmin">
+            <a class="nav-link text-dark"> Gestione Immagini </a> <!--[routerLink]="['/gestione']"-->
+          </li>
+          <li *ngIf="isLogged && isAdmin">
+            <a class="nav-link text-dark"> Gestione Documenti </a> <!--[routerLink]="['/gestione']"-->
+          </li>
+          <li *ngIf="isLogged && isAdmin">
+            <a class="nav-link text-dark"> Gestione Eventi </a> <!--[routerLink]="['/gestione']"-->
+          </li>
+          <li *ngIf="isLogged && isAdmin">
+            <a class="nav-link text-dark" [routerLink]="['/gestioneutenti']"> Gestione Utenti </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>

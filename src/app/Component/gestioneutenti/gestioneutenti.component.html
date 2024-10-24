@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="Cerca" [(ngModel)]="searchText" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Cognome</th>
+              <th>Email</th>
+              <th>Codice Fiscale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filteredData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+              <td>{{ item.nome }}</td>
+              <td>{{ item.cognome }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.codFiscale }}</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Azioni
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" (click)="onMenuAction('info', item)">Info Utente</a></li>
+                    <li><a class="dropdown-item" (click)="onMenuAction('admin', item)">Rendi Admin</a></li>
+                    <!--<li><a class="dropdown-item" href="#" (click)="onMenuAction('delete', item)">Delete</a></li>-->
+                  </ul>
+                </div>
+              </td>    
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+      </div>
+      <div class="col-md-6 text-right">
+        <select id="itemsPerPageSelect" [(ngModel)]="itemsPerPage" class="form-control select" title="Items per page">
+            <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
