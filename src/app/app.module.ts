@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,28 +22,21 @@ import { LoginService } from '../Services/Login/login.service';
 import { UtentiService } from 'src/Services/Utenti/utenti.service';
 import { ModaleComponent } from './Component/modale/modale.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent,
-    HomeComponent,
-    LoginComponent,
-    NuovoUtenteComponent,
-    CookieConsentComponent,
-    ContattiComponent,
-    DocumentiComponent,
-    GestioneutentiComponent,
-    ModaleComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgxPaginationModule
-  ],
-  providers: [CommonService, LoginService, UtentiService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavBarComponent,
+        HomeComponent,
+        LoginComponent,
+        NuovoUtenteComponent,
+        CookieConsentComponent,
+        ContattiComponent,
+        DocumentiComponent,
+        GestioneutentiComponent,
+        ModaleComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        NgxPaginationModule], providers: [CommonService, LoginService, UtentiService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

@@ -21,13 +21,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     canceledNavigationResolution: 'replace',
     paramsInheritanceStrategy: 'always',
-    //titleStrategy: MyCustomTitleStrategy,
-    urlUpdateStrategy: 'eager',
-    //urlHandlingStrategy: MyCustomUrlHandlingStrategy,
-    //malformedUriErrorHandler: (error, url) => {
-    //  console.error('Malformed URL:', url);
-    //  return '/';
-    //}
+    urlUpdateStrategy: 'eager'
   })],
   exports: [RouterModule]
 })
