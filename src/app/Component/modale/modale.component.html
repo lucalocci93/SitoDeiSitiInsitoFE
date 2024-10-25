@@ -1,20 +1,196 @@
-<div class="modal-header">
-    <h4 class="modal-title">Read-Only Form</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" value="John Doe" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" value="john.doe@example.com" readonly>
-      </div>
+<div *ngIf="data.type == 'Info'">
+<h2 mat-dialog-title>Informazioni Utente</h2>
+<mat-dialog-content>
+  <!--FORM INFO UTENTE-->
+  <form >
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input type="text" title="Nome" value="{{ user?.nome }}" matInput readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cognome</mat-label>
+      <input type="text" title="Cognome" matInput value="{{ user?.cognome }}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="text" title="Email" matInput value="{{ user?.email }}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Codice Fiscale</mat-label>
+      <input type="text" title="CodFiscale" matInput value="{{ user?.codFiscale }}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Data di Nascita</mat-label>
+      <input type="text" title="DataNascita" value="{{ user?.dataNascita }}" matInput readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Via</mat-label>
+      <input type="text" title="Via" matInput value="{{ user?.via }}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Numero</mat-label>
+      <input type="text" title="Numero" matInput value="{{ user?.numero }}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Citta</mat-label>
+      <input type="text" title="Citta" matInput value="{{ user?.citta }}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Regione</mat-label>
+      <input type="text" title="Regione" matInput value="{{ user?.regione }}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nazione</mat-label>
+      <input type="text" title="Nazione" matInput value="{{ user?.nazione }}" readonly>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+</div>
+
+<div *ngIf="data.type == 'updateInfo'">
+  <h2 mat-dialog-title>Informazioni Utente</h2>
+  <mat-dialog-content>
+    <!--FORM INFO UTENTE-->
+    <form [formGroup]="UserForm">
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input type="text" title="Nome" formControlName="Nome" matInput>
+        <mat-error *ngIf="UserForm.get('Nome')?.hasError('required')">
+          Campo Nome Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Cognome</mat-label>
+        <input type="text" title="Cognome" formControlName="Cognome" matInput>
+        <mat-error *ngIf="UserForm.get('Cognome')?.hasError('required')">
+          Campo Cognome Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" title="Email" formControlName="Email" matInput readonly>
+        <mat-error *ngIf="UserForm.get('Email')?.hasError('required')">
+          Campo Email Obbligatorio
+        </mat-error>
+        <mat-error *ngIf="UserForm.get('Email')?.hasError('email')">
+          Campo Email non Valido
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Codice Fiscale</mat-label>
+        <input type="text" title="CodFiscale" formControlName="CodFiscale" matInput>
+        <mat-error *ngIf="UserForm.get('CodFiscale')?.hasError('required')">
+          Campo Cognome Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data di Nascita</mat-label>
+        <input type="text" title="DataNascita" formControlName="DataNascita" matInput>
+        <mat-error *ngIf="UserForm.get('DataNascita')?.hasError('required')">
+          Campo Data Nascita Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Via</mat-label>
+        <input type="text" title="Via" formControlName="Via" matInput>
+        <mat-error *ngIf="UserForm.get('Via')?.hasError('required')">
+          Campo Via Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Numero</mat-label>
+        <input type="text" title="Numero" formControlName="Numero" matInput>
+        <mat-error *ngIf="UserForm.get('Numero')?.hasError('required')">
+          Campo Numero Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Citta</mat-label>
+        <input type="text" title="Citta" formControlName="Citta" matInput>
+        <mat-error *ngIf="UserForm.get('Citta')?.hasError('required')">
+          Campo Citta Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Regione</mat-label>
+        <input type="text" title="Regione" formControlName="Regione" matInput>
+        <mat-error *ngIf="UserForm.get('Regione')?.hasError('required')">
+          Campo Regione Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nazione</mat-label>
+        <input type="text" title="Nazione" formControlName="Nazione" matInput>
+        <mat-error *ngIf="UserForm.get('Nazione')?.hasError('required')">
+          Campo Nazione Obbligatorio
+        </mat-error>
+      </mat-form-field>
     </form>
+  </mat-dialog-content>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+
+<div *ngIf="data.type == 'InfoSub'">
+  <h2 mat-dialog-title>Informazioni Abbonamento</h2>
+  <mat-dialog-content>
+    <!--FORM INFO SUB-->
+    <form>
+      <mat-form-field>
+        <mat-label>Data Inizio</mat-label>
+        <input type="text" title="Inizio" matInput value="John" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data Fine</mat-label>
+        <input type="text" title="Fine" matInput value="Doe" readonly>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
   </div>
   
+  <div *ngIf="data.type == 'AddSub'">
+    <h2 mat-dialog-title>Aggiungi Abbonamento</h2>
+    <mat-dialog-content>
+       <!--FORM ADD SUB-->
+     <form>
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input type="text" title="Nome" matInput value="John Doe" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Cognome</mat-label>
+        <input type="text" title="Cognome" matInput value="John Doe" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data Inizio</mat-label>
+        <input type="text" title="inizio" matInput value="John" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data Fine</mat-label>
+        <input type="text" title="fine" matInput value="Doe" readonly>
+      </mat-form-field>
+    </form>
+    </mat-dialog-content>
+    </div>
+
+    <div *ngIf="data.type == 'AddDoc'">
+      <h2 mat-dialog-title>Aggiungi Documento</h2>
+      <mat-dialog-content>
+         <!--FORM ADD SUB-->
+       <form>
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input type="text" title="Nome" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>File</mat-label>
+          <input type="file" title="File" matInput>
+        </mat-form-field>
+      </form>
+      </mat-dialog-content>
+      </div>  
+  
+<mat-dialog-actions>
+  <button *ngIf="data.type == 'updateInfo'" mat-button (click)="Ok('updateInfo')">Conferma</button>
+  <button *ngIf="data.type == 'AddSub'" mat-button (click)="Ok('AddSub')">Conferma</button>
+  <button *ngIf="data.type == 'AddDoc'" mat-button (click)="Ok('AddDoc')">Conferma</button>
+  <button mat-button (click)="close()">Chiudi</button>
+</mat-dialog-actions>

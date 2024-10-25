@@ -27,9 +27,12 @@
                     Azioni
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" (click)="onMenuAction('info', item)">Info Utente</a></li>
-                    <li><a class="dropdown-item" (click)="onMenuAction('admin', item)">Rendi Admin</a></li>
-                    <!--<li><a class="dropdown-item" href="#" (click)="onMenuAction('delete', item)">Delete</a></li>-->
+                    <li><a class="dropdown-item" (click)="openModal('Info', item)">Info Utente</a></li>
+                    <li><a class="dropdown-item" (click)="openModal('updateInfo', item)">Aggiorna Utente</a></li>
+                    <li><a class="dropdown-item" (click)="RendiAdmin(item)">Rendi Admin</a></li>
+                    <li><a class="dropdown-item" (click)="openModal('InfoSub', item)">Info Abbonamento</a></li>
+                    <li><a class="dropdown-item" (click)="openModal('AddSub', item)">Aggiungi Abbonamento</a></li>
+                    <li><a class="dropdown-item" (click)="openModal('AddDoc', item)">Aggiungi Documento</a></li>
                   </ul>
                 </div>
               </td>    

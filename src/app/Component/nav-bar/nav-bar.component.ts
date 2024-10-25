@@ -45,9 +45,8 @@ export class NavBarComponent implements OnInit {
     this.common.deleteCookie("surname");
     this.isLogged = false;
     this.isAdmin = false;
-    this.router.navigateByUrl("/");
-    window.location.replace("/")
-    window.location.reload();
+    window.location.href = '/';
+    //window.location.reload();
   }
 
   collapse() {
