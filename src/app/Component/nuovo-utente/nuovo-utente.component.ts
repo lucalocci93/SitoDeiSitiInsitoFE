@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Model/User/User'
-import { Response } from 'src/app/Model/Base/response'
+import { Response } from 'src/app/Model/Base/Response'
 import { LoginService } from 'src/Services/Login/login.service';
 
 @Component({

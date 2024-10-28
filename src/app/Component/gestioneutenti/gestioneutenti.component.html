@@ -1,55 +1,52 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <input type="text" class="form-control" placeholder="Cerca" [(ngModel)]="searchText" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Cognome</th>
-              <th>Email</th>
-              <th>Codice Fiscale</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of filteredData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
-              <td>{{ item.nome }}</td>
-              <td>{{ item.cognome }}</td>
-              <td>{{ item.email }}</td>
-              <td>{{ item.codFiscale }}</td>
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    Azioni
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" (click)="openModal('Info', item)">Info Utente</a></li>
-                    <li><a class="dropdown-item" (click)="openModal('updateInfo', item)">Aggiorna Utente</a></li>
-                    <li><a class="dropdown-item" (click)="RendiAdmin(item)">Rendi Admin</a></li>
-                    <li><a class="dropdown-item" (click)="openModal('InfoSub', item)">Info Abbonamento</a></li>
-                    <li><a class="dropdown-item" (click)="openModal('AddSub', item)">Aggiungi Abbonamento</a></li>
-                    <li><a class="dropdown-item" (click)="openModal('AddDoc', item)">Aggiungi Documento</a></li>
-                  </ul>
-                </div>
-              </td>    
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
-      </div>
-      <div class="col-md-6 text-right">
-        <select id="itemsPerPageSelect" [(ngModel)]="itemsPerPage" class="form-control select" title="Items per page">
-            <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
-        </select>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field appearance="fill">
+        <mat-label>Cerca</mat-label>
+        <input matInput placeholder="Cerca" [(ngModel)]="searchText">
+      </mat-form-field>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table mat-table [dataSource]="filteredData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="mat-elevation-z8">
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let item"> {{ item.nome }} </td>
+        </ng-container>
+        <ng-container matColumnDef="cognome">
+          <th mat-header-cell *matHeaderCellDef> Cognome </th>
+          <td mat-cell *matCellDef="let item"> {{ item.cognome }} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let item"> {{ item.email }} </td>
+        </ng-container>
+        <ng-container matColumnDef="codFiscale">
+          <th mat-header-cell *matHeaderCellDef> Codice Fiscale </th>
+          <td mat-cell *matCellDef="let item"> {{ item.codFiscale }} </td>
+        </ng-container>
+        <ng-container matColumnDef="azioni">
+          <th mat-header-cell *matHeaderCellDef> Azioni </th>
+          <td mat-cell *matCellDef="let item">
+            <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openModal('Info', item)">Info Utente</button>
+              <button mat-menu-item (click)="openModal('updateInfo', item)">Aggiorna Utente</button>
+              <button mat-menu-item *ngIf="!item.isAdmin" (click)="ManageAdmin(item, true)">Rendi Admin</button>
+              <button mat-menu-item *ngIf="item.isAdmin" (click)="ManageAdmin(item, false)">Revoca Admin</button>
+              <button mat-menu-item (click)="openModal('InfoSub', item)">Info Abbonamento</button>
+              <button mat-menu-item (click)="openModal('AddSub', item)">Aggiungi Abbonamento</button>
+              <button mat-menu-item (click)="openModal('AddDoc', item)">Aggiungi Documento</button>
+            </mat-menu>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+  <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+  </mat-paginator>
+</div>
   

@@ -22,12 +22,11 @@
     border-radius: 50%;
     border-left-color: transparent;
     border-right-color: transparent;
-    animation: cssload-spin 500ms infinite linear;
-    -o-animation: cssload-spin 500ms infinite linear;
-    -ms-animation: cssload-spin 500ms infinite linear;
-    -webkit-animation: cssload-spin 500ms infinite linear;
     -moz-animation: cssload-spin 500ms infinite linear;
-  }
+    -webkit-animation: cssload-spin 500ms infinite linear;
+    -ms-animation: cssload-spin 500ms infinite linear;
+    -o-animation: cssload-spin 500ms infinite linear;
+    animation: cssload-spin 500ms infinite linear;  }
   
   @keyframes cssload-spin {
     100% {

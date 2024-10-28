@@ -1,4 +1,4 @@
-import { Subscription } from "rxjs";
+import { Abbonamento } from "../Abbonamento/Abbonamento";
 
 export class User{
   nome: string;
@@ -15,12 +15,12 @@ export class User{
   regione: string;
   nazione: string;
   consensoInvioMail: boolean;
-  abbonamenti: Subscription[] | null
+  abbonamenti: Abbonamento[] | null
 
 
   constructor(_nome: string, _cognome: string, _email: string, _codFiscale: string, _password: string, _isAdmin: boolean,
     _rowGuid: string | null, _dataNascita: Date, _via: string, _numero: string, _citta: string, _regione: string, _nazione: string,
-    _consensoInvioMail: boolean, _abbonamenti: Subscription[] | null
+    _consensoInvioMail: boolean, _abbonamenti: Abbonamento[] | null
   ) {
     this.nome = _nome;
     this.cognome = _cognome;

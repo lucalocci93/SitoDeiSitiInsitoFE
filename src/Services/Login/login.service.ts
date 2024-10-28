@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { catchError, firstValueFrom, map, Observable, of } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { User } from 'src/app/Model/User/User';
-import { HTTPResponseError, Response } from 'src/app/Model/Base/response';
+import { HTTPResponseError, Response } from 'src/app/Model/Base/Response';
 
 @Injectable({
   providedIn: 'root'

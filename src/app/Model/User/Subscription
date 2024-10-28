@@ -1,8 +1,0 @@
-export class Subscription{
-      id: number;
-      idTipoAbbonamento: number;
-      tipoAbbonamento: string;
-      dataIscrizione: Date;
-      dataScadenza: Date;
-      isActive: boolean;
-    }
