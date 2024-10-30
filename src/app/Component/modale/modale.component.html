@@ -21,7 +21,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Data di Nascita</mat-label>
-      <input type="text" title="DataNascita" value="{{ user?.dataNascita }}" matInput readonly>
+      <input type="text" title="DataNascita" value="{{ user?.dataNascita?.toLocaleDateString('it-IT') }}" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Via</mat-label>
@@ -139,11 +139,11 @@
     </ng-container>
     <ng-container matColumnDef="Inizio">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Inizio</th>
-      <td mat-cell *matCellDef="let element">{{element.dataIscrizione}}</td>
+      <td mat-cell *matCellDef="let element">{{element.dataIscrizione.toLocaleDateString('it-IT')}}</td>
     </ng-container>
     <ng-container matColumnDef="Scadenza">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Scadenza</th>
-      <td mat-cell *matCellDef="let element">{{element.dataScadenza}}</td>
+      <td mat-cell *matCellDef="let element">{{element.dataScadenza.toLocaleDateString('it-IT')}}</td>
     </ng-container>
     <!-- Header and row definitions -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

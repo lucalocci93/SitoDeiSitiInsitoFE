@@ -1,0 +1,82 @@
+<div *ngIf="ActiveSubscription.length > 0">
+  <h1>Abbonamenti Attivi</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tipo Abbonamento</th>
+              <th>Data Inizio</th>
+              <th>Data Scadenza</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of ActiveSubscription">
+              <td>{{ item.tipoAbbonamento }}</td>
+              <td>{{ item.dataIscrizione.toLocaleDateString('it-IT') }}</td>
+              <td>{{ item.dataScadenza?.toLocaleDateString('it-IT') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+<div *ngIf="ToBeActivatedSubscription.length > 0">
+  <h1>Abbonamenti non ancora attivi</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tipo Abbonamento</th>
+              <th>Data Inizio</th>
+              <th>Data Scadenza</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of ToBeActivatedSubscription">
+              <td>{{ item.tipoAbbonamento }}</td>
+              <td>{{ item.dataIscrizione.toLocaleDateString('it-IT') }}</td>
+              <td>{{ item.dataScadenza?.toLocaleDateString('it-IT') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+<div *ngIf="ExpiredSubscription.length > 0">
+  <h1>Storico Abbonamenti</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tipo Abbonamento</th>
+              <th>Data Inizio</th>
+              <th>Data Scadenza</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of ExpiredSubscription | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+              <td>{{ item.tipoAbbonamento }}</td>
+              <td>{{ item.dataIscrizione.toLocaleDateString('it-IT') }}</td>
+              <td>{{ item.dataScadenza?.toLocaleDateString('it-IT') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+  </div>
+</div>
+
+<br>

@@ -48,7 +48,7 @@ export class ModaleComponent implements OnInit {
       Cognome: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
       CodFiscale: ['', Validators.required],
-      DataNascita: ['', Validators.required],
+      DataNascita: [new Date(), Validators.required],
       Via: ['', Validators.required],
       Numero: ['', Validators.required],
       Citta: ['', Validators.required],
@@ -59,7 +59,7 @@ export class ModaleComponent implements OnInit {
 
     this.SubForm = this.fb.group({
       IdTipoAbbonamento: [3, Validators.required],
-      DataInizio: ['', Validators.required],
+      DataInizio: [new Date(), Validators.required],
       Utente: []
     });
   }
@@ -121,7 +121,7 @@ export class ModaleComponent implements OnInit {
         this.subList = [];   
         await(await this.subService.GetAbbonamenti(this.data.user.rowGuid)).subscribe(data => {
           if(data != null && data.Data != null){
-            this.subList = data.Data.sort((a, b) => (a.IsActive === b.IsActive) ? 0 : a.IsActive ? -1 : 1);
+            this.subList = data.Data.sort((a, b) => (a.isActive === b.isActive) ? 0 : a.isActive ? -1 : 1);
           }
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
@@ -184,7 +184,7 @@ export class ModaleComponent implements OnInit {
         
         await(await this.subService.AddAbbonamenti(abb)).subscribe(data => {
           if(data != null && data.Data != null){
-            alert("Utente Aggiornato");
+            alert("Abbonamento Inserito");
             window.location.reload();
           }
           else{
@@ -193,7 +193,7 @@ export class ModaleComponent implements OnInit {
               window.location.href = '/login';
             }
             else{
-              alert("Errore recupero Utenti");
+              alert("Errore Inserimento Abbonamento");
             }
           }
         });

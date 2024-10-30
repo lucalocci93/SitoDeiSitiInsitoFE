@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/Model/User/User';
 import { UtentiService } from 'src/Services/Utenti/utenti.service';
-import { ModaleComponent } from '../modale/modale.component';
+import { ModaleComponent } from 'src/app/Component/modale/modale.component';
 import { ModalData } from 'src/app/Interface/modal-data';
 import { HttpStatusCode } from '@angular/common/http';
 import { Operation } from 'src/app/Model/Base/enum';

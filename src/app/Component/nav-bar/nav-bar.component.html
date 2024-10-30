@@ -36,6 +36,9 @@
           <li *ngIf="isLogged && !isAdmin">
             <a class="nav-link text-dark">Eventi</a> <!--[routerLink]="['/prenota']"-->
           </li>
+          <li *ngIf="isLogged && !isAdmin">
+            <a class="nav-link text-dark" [routerLink]="['/abbonamenti']">Abbonamenti</a>
+          </li>
           <li *ngIf="isLogged && isAdmin">
             <a class="nav-link text-dark"> Gestione Immagini </a> <!--[routerLink]="['/gestione']"-->
           </li>

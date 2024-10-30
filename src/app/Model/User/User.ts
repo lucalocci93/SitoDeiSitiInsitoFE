@@ -9,12 +9,12 @@ export class User{
   isAdmin: boolean;
   rowGuid: string | null;
   dataNascita: Date;
-  via: string;
-  numero: string;
-  citta: string;
-  regione: string;
-  nazione: string;
-  consensoInvioMail: boolean;
+  via: string | null;
+  numero: string | null;
+  citta: string | null;
+  regione: string | null;
+  nazione: string | null;
+  consensoInvioMail: boolean | null;
   abbonamenti: Abbonamento[] | null
 
 
