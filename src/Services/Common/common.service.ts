@@ -122,4 +122,47 @@ removeSession(key: string): boolean {
   }
 
   //#endregion
+
+  //#region ConvertBase64
+
+  convertFileToBase64(file: File | undefined): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if(file)
+      { 
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            const base64String = (reader.result as string).split(',')[1]; // Remove the data URL prefix
+            //const base64String = reader.result as string;
+            resolve(base64String);
+        };
+        reader.onerror = error => reject(error);
+      }
+      else{
+        resolve("" as string);
+      }
+    });
+}
+
+  convertBase64ToFile(base64: string, filename: string): File {
+    const arr = base64.split(',');
+    const mimeMatch = arr[0].match(/:(.*?);/);
+    
+    if (!mimeMatch) {
+      throw new Error('Invalid base64 string');
+    }
+  
+    const mime = mimeMatch[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+  
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+  
+    return new File([u8arr], filename, { type: mime });
+  }
+  
+    //#endregion
 }

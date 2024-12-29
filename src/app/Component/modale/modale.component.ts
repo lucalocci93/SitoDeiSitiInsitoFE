@@ -12,6 +12,10 @@ import { User } from 'src/app/Model/User/User';
 import { AbbonamentiService } from 'src/Services/Abbonamenti/abbonamenti.service';
 import { UtentiService } from 'src/Services/Utenti/utenti.service';
 import { TipoAbbonamento } from 'src/app/Model/Abbonamento/tipo-abbonamento';
+import { TipoDocumento } from 'src/app/Model/Documento/TipoDocumento';
+import { DocumentiService } from 'src/Services/Documenti/documenti.service';
+import { CommonService } from 'src/Services/Common/common.service';
+import { Documento, DocumentoExt } from 'src/app/Model/Documento/Documento';
 
 @Component({
   selector: 'app-modale',
@@ -25,12 +29,17 @@ export class ModaleComponent implements OnInit {
   subscription : Abbonamento | undefined
   subList : Abbonamento[] = [];
   subType : TipoAbbonamento[] = [];
+  docType : TipoDocumento[] = [];
+  document : Document | undefined;
 
   UserForm: FormGroup;
   SubForm: FormGroup;
+  DocForm: FormGroup;
 
   displayedColumns: string[] = ['Tipo', 'Inizio', 'Scadenza'];
   dataSource = new MatTableDataSource(this.subList);
+
+  fileName: string = "";
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -38,8 +47,10 @@ export class ModaleComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ModaleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ModalData,
+    private commonService: CommonService,
     private userService: UtentiService,
     private subService: AbbonamentiService,
+    private docService: DocumentiService,
     private fb: FormBuilder
   ) {
 
@@ -62,6 +73,11 @@ export class ModaleComponent implements OnInit {
       DataInizio: [new Date(), Validators.required],
       Utente: []
     });
+
+    this.DocForm = this.fb.group({
+      IdTipoDocumento: [1, Validators.required],
+      Documento: ['', Validators.required]
+    })
   }
     
   async ngOnInit() {
@@ -82,6 +98,7 @@ export class ModaleComponent implements OnInit {
             }
             else{
               alert("Errore recupero Utenti");
+              this.dialogRef.close();
             }
           }
         });
@@ -111,7 +128,8 @@ export class ModaleComponent implements OnInit {
             window.location.href = '/login';
           }
           else{
-            alert("Errore recupero Utenti");
+            alert("Errore recupero Utente");
+            this.dialogRef.close();
           }
         });
       }
@@ -130,6 +148,7 @@ export class ModaleComponent implements OnInit {
             }
             else{
               alert("Errore recupero Abbonamenti dell'utente");
+              this.dialogRef.close();
             }
           }
         });
@@ -148,11 +167,30 @@ export class ModaleComponent implements OnInit {
           }
           else{
             alert("Errore recupero Abbonamenti dell'utente");
+            this.dialogRef.close();
           }
         }
       });
      }
-    
+
+     if(this.data.type == 'AddDoc'){
+      this.docType = [];
+      await(await this.docService.GetTipiDocumenti()).subscribe(data => {
+        if(data != null && data.Data != null){
+          this.docType = data.Data;
+        }
+        else{
+          if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            window.location.href = '/login';
+          }
+          else{
+            alert("Errore recupero Tipi documento");
+            this.dialogRef.close();
+          }
+        }
+      });
+     }
   }
 
   async Ok(type: string){
@@ -170,7 +208,8 @@ export class ModaleComponent implements OnInit {
               window.location.href = '/login';
             }
             else{
-              alert("Errore recupero Utenti");
+              alert("Errore aggiornamento Utente");
+              this.dialogRef.close();
             }
           }
         });
@@ -194,12 +233,53 @@ export class ModaleComponent implements OnInit {
             }
             else{
               alert("Errore Inserimento Abbonamento");
+              this.dialogRef.close();
             }
           }
         });
       }  
     }  
   }
+
+  async AddDoc(selectInput: HTMLSelectElement, filenameInput: HTMLInputElement, fileInput: HTMLInputElement){
+    const selectedOption = Number(selectInput.value);
+    const selectedname = filenameInput.value;
+    const file = fileInput.files?.[0];
+
+    let fileBase64 = "";
+
+    await this.commonService.convertFileToBase64(file).then(base64 => {
+      //console.log('Base64 string:', base64);
+      // You can now use the base64 string as needed
+      fileBase64 = base64;
+    }).catch(error => {
+      alert("Errore Conversione File");
+      console.error('Error converting file:', error);
+    });
+
+    let document = new DocumentoExt(selectedOption, this.data.user.rowGuid, selectedname, fileBase64);
+
+    await(await this.docService.AddDocument(document)).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Documento Inserito");
+        window.location.reload();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          window.location.href = '/login';
+        }
+        else if(data.Error != null && data.Error.Code == HttpStatusCode.PayloadTooLarge){
+          alert("Il documento che stai provando a inserire è troppo grande");
+          this.dialogRef.close();
+        }
+        else{
+          alert("Errore Inserimento Documento");
+          this.dialogRef.close();
+        }
+      }
+    });
+}
 
   close(): void {
     this.dialogRef.close();

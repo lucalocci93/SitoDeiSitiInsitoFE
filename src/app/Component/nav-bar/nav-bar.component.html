@@ -27,16 +27,16 @@
           <li *ngIf="!isLogged">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
           </li>
-          <li *ngIf="!isLogged || (isLogged && !isAdmin)">
+          <li *ngIf="!isLogged">
             <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a> 
           </li>
-          <li *ngIf="isLogged && !isAdmin">
+          <li *ngIf="isLogged">
             <a class="nav-link text-dark" [routerLink]="['/documenti']">Documenti</a>
           </li>
           <li *ngIf="isLogged && !isAdmin">
             <a class="nav-link text-dark">Eventi</a> <!--[routerLink]="['/prenota']"-->
           </li>
-          <li *ngIf="isLogged && !isAdmin">
+          <li *ngIf="isLogged">
             <a class="nav-link text-dark" [routerLink]="['/abbonamenti']">Abbonamenti</a>
           </li>
           <li *ngIf="isLogged && isAdmin">
