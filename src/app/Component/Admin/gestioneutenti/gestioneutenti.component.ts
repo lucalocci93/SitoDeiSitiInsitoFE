@@ -43,7 +43,7 @@ export class GestioneutentiComponent {
 
   openModal(type: string, user: User): void {
     const dialogRef = this.dialog.open(ModaleComponent, {
-      data: { type, user } as ModalData
+      data: { type, object: user } as ModalData<User>
     });
   }
 

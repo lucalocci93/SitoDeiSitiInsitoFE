@@ -8,6 +8,8 @@ import { ContattiComponent } from './Component/contatti/contatti.component';
 import { DocumentiComponent } from './Component/User/documenti/documenti.component';
 import { GestioneutentiComponent } from './Component/Admin/gestioneutenti/gestioneutenti.component';
 import { AbbonamentiComponent } from './Component/User/abbonamenti/abbonamenti.component';
+import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
+import { EventiComponent } from './Component/User/eventi/eventi.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'contatti', component: ContattiComponent, pathMatch: 'full' },
   { path: 'documenti', component: DocumentiComponent, pathMatch: 'full' },
   { path: 'abbonamenti', component: AbbonamentiComponent, pathMatch: 'full' },
-  { path: 'gestioneutenti', component: GestioneutentiComponent, pathMatch: 'full' }
+  { path: 'eventi', component: EventiComponent, pathMatch: 'full' },
+  { path: 'gestioneutenti', component: GestioneutentiComponent, pathMatch: 'full' },
+  { path: 'gestioneeventi', component: GestioneEventiComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

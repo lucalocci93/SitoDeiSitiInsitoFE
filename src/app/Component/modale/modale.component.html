@@ -2,46 +2,46 @@
 <h2 mat-dialog-title>Informazioni Utente</h2>
 <mat-dialog-content>
   <!--FORM INFO UTENTE-->
-  <form >
+  <form [formGroup]="UserForm">
     <mat-form-field>
       <mat-label>Nome</mat-label>
-      <input type="text" title="Nome" value="{{ user?.nome }}" matInput readonly>
+      <input type="text" title="Nome" formControlName="Nome" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Cognome</mat-label>
-      <input type="text" title="Cognome" matInput value="{{ user?.cognome }}" readonly>
+      <input type="text" title="Cognome" formControlName="Cognome" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input type="text" title="Email" matInput value="{{ user?.email }}" readonly>
+      <input type="text" title="Email" formControlName="Email" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Codice Fiscale</mat-label>
-      <input type="text" title="CodFiscale" matInput value="{{ user?.codFiscale }}" readonly>
+      <input type="text" title="CodFiscale" formControlName="CodFiscale" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Data di Nascita</mat-label>
-      <input type="text" title="DataNascita" value="{{ user?.dataNascita?.toLocaleDateString('it-IT') }}" matInput readonly>
+      <input type="text" title="DataNascita" formControlName="DataNascita" matInput readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Numero Telefono</mat-label>
+      <input type="text" title="NumeroTelefono" formControlName="Numero" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Via</mat-label>
-      <input type="text" title="Via" matInput value="{{ user?.via }}" readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Numero</mat-label>
-      <input type="text" title="Numero" matInput value="{{ user?.numero }}" readonly>
+      <input type="text" title="Via"formControlName="Via" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Citta</mat-label>
-      <input type="text" title="Citta" matInput value="{{ user?.citta }}" readonly>
+      <input type="text" title="Citta" formControlName="Citta" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Regione</mat-label>
-      <input type="text" title="Regione" matInput value="{{ user?.regione }}" readonly>
+      <input type="text" title="Regione" formControlName="Regione" matInput readonly>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Nazione</mat-label>
-      <input type="text" title="Nazione" matInput value="{{ user?.nazione }}" readonly>
+      <input type="text" title="Nazione" formControlName="Nazione" matInput readonly>
     </mat-form-field>
   </form>
 </mat-dialog-content>
@@ -91,17 +91,17 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Numero Telefono</mat-label>
+        <input type="text" title="NumeroTelefono" formControlName="Numero" matInput>
+        <mat-error *ngIf="UserForm.get('Numero')?.hasError('required')">
+          Campo Numero Obbligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
         <mat-label>Via</mat-label>
         <input type="text" title="Via" formControlName="Via" matInput>
         <mat-error *ngIf="UserForm.get('Via')?.hasError('required')">
           Campo Via Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Numero</mat-label>
-        <input type="text" title="Numero" formControlName="Numero" matInput>
-        <mat-error *ngIf="UserForm.get('Numero')?.hasError('required')">
-          Campo Numero Obbligatorio
         </mat-error>
       </mat-form-field>
       <mat-form-field>
@@ -193,10 +193,134 @@
     </form>
   </mat-dialog-content>
 </div>  
+
+<div *ngIf="data.type == 'AddEvent'">
+  <h2 mat-dialog-title>Inserisci Evento</h2>
+  <mat-dialog-content>
+      <!--FORM ADD EVENT-->
+      <form (ngSubmit)="AddEvent(eventNameInput, fileInput, dataInizioInput, dataFineInput, luogoEventoInput, descrizioneEventoInput,linkEventoInput,CategoriesData)" enctype="multipart/form-data">
+        <label for="name">Nome Evento</label><br>
+        <input type="text" id="name" name="Nome file" #eventNameInput>
+        <br><br>
+        <label for="file">Locandina Evento</label><br>
+        <input type="file" id="file" name="file" #fileInput>
+        <br><br>
+        <label for="dataInizio">Data Inizio</label><br>
+        <input type="date" id="dataInizio" name="dataInizio" #dataInizioInput>
+        <br><br>
+        <label for="dataFine">Data Fine</label><br>
+        <input type="date" id="dataFine" name="dataFine" #dataFineInput>
+        <br><br>
+        <label for="luogoEvento">Luogo Evento</label><br>
+        <input type="text" id="luogoEvento" name="luogoEvento" #luogoEventoInput>
+        <br><br>
+        <label for="descrizione">Descrizione</label><br>
+        <input type="text" id="descrizione" name="descrizione" #descrizioneEventoInput>
+        <br><br>
+        <label for="link">Link (nel caso di piu link separare con ;)</label><br>
+        <input type="text" id="link" name="link" #linkEventoInput>
+        <br><br>
+        <label for="Categorie">Categorie</label><br><br>
+          <div class="checkbox-column" *ngFor="let category of CategoriesData">
+            <label>
+              <input type="checkbox" value="category.Id" (change)="onCheckboxChange($event, category)">
+              {{ category.Descrizione }}
+            </label>
+          </div>
+        <br>
+        <button type="submit">Crea Evento</button>
+    </form>
+  </mat-dialog-content>
+  </div>
+  
+<div *ngIf="data.type == 'updateEventInfo'">
+  <h2 mat-dialog-title>Informazioni Evento</h2>
+  <mat-dialog-content>
+    <!--FORM UPDATE EVENTO-->
+      <form [formGroup]="EventForm">
+        <mat-form-field hidden>
+          <input type="text" title="Id" formControlName="IdEvento" matInput hidden>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nome Evento</mat-label>
+          <input type="text" title="NomeEvento" formControlName="NomeEvento" matInput>
+          <mat-error *ngIf="EventForm.get('NomeEvento')?.hasError('required')">
+            Campo Nome Evento Obbligatorio
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data Inizio</mat-label>
+          <input type="date" title="DataInizio" formControlName="DataInizio" matInput>
+          <mat-error *ngIf="EventForm.get('DataInizio')?.hasError('required')">
+            Campo Data Inizio Obbligatorio
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data Fine</mat-label>
+          <input type="date" title="DataFine" formControlName="DataFine" matInput>
+          <mat-error *ngIf="EventForm.get('DataFine')?.hasError('required')">
+            Campo Data Fine Obbligatorio
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Luogo Evento</mat-label>
+          <input type="text" title="LuogoEvento" formControlName="LuogoEvento" matInput>
+          <mat-error *ngIf="EventForm.get('LuogoEvento')?.hasError('required')">
+            Campo Luogo Evento Obbligatorio
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descrizione Evento</mat-label>
+          <input type="text" title="DescrEvento" formControlName="DescrEvento" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Link</mat-label>
+          <input type="text" title="LinkEvento" formControlName="LinkEvento" matInput>
+        </mat-form-field>
+        <!--<mat-form-field>
+          <mat-label>Categorie</mat-label>
+          <div class="checkbox-column" *ngFor="let category of CategoriesData">
+            <label>
+              <input type="checkbox" value="category.Id" (change)="onCheckboxChange($event, category)">
+              {{ category.Descrizione }}
+            </label>
+          </div>
+        </mat-form-field>-->
+      </form>
+    </mat-dialog-content>
+  </div>
+
+  <div *ngIf="data.type == 'SubscribeEvent'">
+    <h2 mat-dialog-title>Seleziona le Categorie per cui vuoi gareggiare</h2>
+      <!--FORM Categorie Iscrizione-->
+      <div class="modal-checkbox" *ngFor="let category of DataEvent?.categorie">
+      <label>
+      <input type="checkbox" title="category.Descrizione" value="category.Id" (change)="onCheckboxChange($event, category)">
+        {{category.Descrizione}}
+      </label>
+    </div>
+    <br>
+    <label for="note" class="modal-text">Note:</label><br>
+    <textarea id="SubscriptionNote" name="note" rows="5" cols="50" class="modal-text" title="Note"></textarea>
+  </div>  
+
+  <div *ngIf="data.type == 'GetCompetitors'">
+    <h2 mat-dialog-title>Lista Partecipanti Evento</h2>
+    <div class="competitors-container"></div>
+      <div class="modal-competitors" *ngFor="let competitor of Competitors">
+          <ul>
+              <li>{{competitor.utente.nome}} {{competitor.utente.cognome}} - {{getCategorieDescrizione(competitor.iscrizione.categoria)}}</li>
+          </ul>
+      </div>
+    </div>
+
+
   
 <mat-dialog-actions>
   <button *ngIf="data.type == 'updateInfo'" mat-button (click)="Ok('updateInfo')">Conferma</button>
+  <button *ngIf="data.type == 'updateEventInfo'" mat-button (click)="Ok('updateEventInfo')">Conferma</button>
   <button *ngIf="data.type == 'AddSub'" mat-button (click)="Ok('AddSub')">Conferma</button>
   <!--<button *ngIf="data.type == 'AddDoc'" mat-button (click)="Ok('AddDoc')">Conferma</button>-->
+  <button *ngIf="data.type == 'SubscribeEvent'" mat-button (click)="Ok('SubscribeEvent')">Conferma</button>
   <button mat-button (click)="close()">Chiudi</button>
 </mat-dialog-actions>

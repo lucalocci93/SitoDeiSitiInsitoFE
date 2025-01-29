@@ -36,6 +36,9 @@ import { LoadingInterceptor } from './Interceptor/loading.interceptor';
 import { AbbonamentiComponent } from './Component/User/abbonamenti/abbonamenti.component';
 import { FakeBackendInterceptor, fakeBackendProvider } from './Interceptor/fake-backend.interceptor';
 import { environment } from 'src/environments/environment';
+import { EventiService } from 'src/Services/Eventi/eventi.service';
+import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
+import { EventiComponent } from './Component/User/eventi/eventi.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -46,8 +49,10 @@ import { environment } from 'src/environments/environment';
         CookieConsentComponent,
         ContattiComponent,
         DocumentiComponent,
+        EventiComponent,
         AbbonamentiComponent,
         GestioneutentiComponent,
+        GestioneEventiComponent,
         ModaleComponent,
         SpinnerComponent
     ],
@@ -71,6 +76,7 @@ import { environment } from 'src/environments/environment';
             CommonService,
             LoginService,
             UtentiService,
+            EventiService,
             provideHttpClient(withInterceptorsFromDi()),
             provideAnimationsAsync(),
             {

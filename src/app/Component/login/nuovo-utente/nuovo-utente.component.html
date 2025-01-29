@@ -34,18 +34,18 @@
       </div>
       <br/>
       <div class="form-group">
+        <label for="number">Numero Telefono</label>
+        <input type="text" id="number" formControlName="number" class="form-control" />
+        <div *ngIf="userForm.get('number')?.invalid && userForm.get('number')?.touched" class="text-danger">
+          Numero Telefono obbligatorio.
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
         <label for="street">Via</label>
         <input type="text" id="street" formControlName="street" class="form-control" />
         <div *ngIf="userForm.get('street')?.invalid && userForm.get('street')?.touched" class="text-danger">
           Via obbligatoria.
-        </div>
-      </div>
-      <br/>
-      <div class="form-group">
-        <label for="number">Numero</label>
-        <input type="text" id="number" formControlName="number" class="form-control" />
-        <div *ngIf="userForm.get('number')?.invalid && userForm.get('number')?.touched" class="text-danger">
-          Numero obbligatoria.
         </div>
       </div>
       <br/>
