@@ -39,6 +39,7 @@ import { environment } from 'src/environments/environment';
 import { EventiService } from 'src/Services/Eventi/eventi.service';
 import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
 import { EventiComponent } from './Component/User/eventi/eventi.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -84,7 +85,8 @@ import { EventiComponent } from './Component/User/eventi/eventi.component';
                 useClass: LoadingInterceptor, 
                 multi: true
             },
-            (environment.demo ? [{ provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true }] : [])
+            (environment.demo ? [{ provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true }] : []),
+            DatePipe
             ]
         }
     )

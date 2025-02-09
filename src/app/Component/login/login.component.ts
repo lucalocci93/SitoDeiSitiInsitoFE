@@ -30,21 +30,21 @@ export class LoginComponent {
 
       await (await this.account.login(this.email, this.password)).subscribe(response => {
             //this.response = response;
-            if(response != null){
+            if(response != null && response.Data != null && response.Data.success){
               if(this.common.getStorage("cookieConsent") == "accepted"){
-                this.common.setCookieForToken("Token", response.toString());
-                let decodedJWT = this.common.manageRoles(response.toString());  
+                this.common.setCookieForToken("Token", response.Data.data.token.toString());
+                let decodedJWT = this.common.manageRoles(response.Data.data.token.toString());  
                 this.Name = decodedJWT[0];
                 this.isLogged = true;  
               }
               else if(this.common.getStorage("cookieConsent") == "declined"){
-                let decodedJWT = this.common.DecodeToken(response.toString());
+                let decodedJWT = this.common.DecodeToken(response.Data.data.token);
                 this.Name = decodedJWT[0];
                 this.isLogged = true;  
               }
               else{
-                this.common.setCookieForToken("Token", response.toString());
-                let decodedJWT = this.common.manageRoles(response.toString());  
+                this.common.setCookieForToken("Token", response.Data.data.token);
+                let decodedJWT = this.common.manageRoles(response.Data.data.token.toString());  
                 this.Name = decodedJWT[0];
                 this.isLogged = true;  
                 localStorage.setItem('cookieConsent', 'accepted');

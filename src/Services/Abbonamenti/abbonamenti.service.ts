@@ -6,6 +6,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { Response, HTTPResponseError } from 'src/app/Model/Base/Response';
 import { Abbonamento } from 'src/app/Model/Abbonamento/Abbonamento';
 import { TipoAbbonamento } from 'src/app/Model/Abbonamento/tipo-abbonamento';
+import { SubscriptionOperation } from 'src/app/Model/Base/enum';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,17 @@ export class AbbonamentiService {
     let body = JSON.stringify(Subscription);
 
     return this.http.post<string>(endpoint, body, {headers}).pipe(
+      map(response => new Response<string>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<string>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  async UpdateAbbonamenti(operation: SubscriptionOperation, Subscription : Abbonamento | null) : Promise<Observable<Response<string>>> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("UpdateSubscription/" + operation);
+    let body = JSON.stringify(Subscription);
+
+    return this.http.put<string>(endpoint, body, {headers}).pipe(
       map(response => new Response<string>(response, new HTTPResponseError(200, "OK"))),
       catchError(response => of(new Response<string>(null, new HTTPResponseError(response.status, response.error))))
     );

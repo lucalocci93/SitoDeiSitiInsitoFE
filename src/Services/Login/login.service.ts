@@ -8,6 +8,7 @@ import { catchError, firstValueFrom, map, Observable, of } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { User } from 'src/app/Model/User/User';
 import { HTTPResponseError, Response } from 'src/app/Model/Base/Response';
+import { Jwt } from 'src/app/Interface/Jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -26,14 +27,14 @@ export class LoginService {
     const headers = new HttpHeaders({'accept': '*/*' });
     let endpoint = this.ApiEndpoint.concat("Authenticate?Username=", cryptedEmail, "&", "Password=", cryptedPassword);
 
-    const params = {
-      Username: cryptedEmail,
-      Password: cryptedPassword
-    };
+    return this.http.get<Jwt>(endpoint, {headers}).pipe(
+      map(response => new Response<Jwt>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Jwt>(null, new HTTPResponseError(response.status, response.error))))
+     );
+    
+    //return await this.http.get(endpoint, { responseType: "text" });
 
-    return await this.http.get(endpoint, { responseType: "text" });
-
-    //return this.http.get<Response<string>>(endpoint, { headers, responseType: 'text'}).pipe(
+    //return this.http.get(endpoint, { headers, responseType: 'text'}).pipe(
     //  map(response => {
     //    new Response<string>(response, new HTTPResponseError(200, "OK"))}),
     //    catchError(response => of(new Response<string>(null, new HTTPResponseError(response.status, response.error)))) 

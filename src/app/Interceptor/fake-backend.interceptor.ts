@@ -187,7 +187,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         tipoAbbonamento: "Giornaliero",
                         dataIscrizione: new Date("2024-10-28"),
                         dataScadenza: new Date("2024-10-29"),
+                        urlPagamento: "test_test.test",
+                        importo: 10,
+                        idCheckout: "",    
                         isActive: false,
+                        isPayed: false,
                         utente: "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4"
                     },
                     {
@@ -196,7 +200,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         tipoAbbonamento: "Mensile",
                         dataIscrizione: new Date("2024-11-01"),
                         dataScadenza: new Date("2024-11-30"),
+                        urlPagamento: "test1_test.test",
+                        importo: 10,
+                        idCheckout: "",    
                         isActive: false,
+                        isPayed: false,
                         utente: "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4"
                     }
                 ]
@@ -213,7 +221,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     tipoAbbonamento: "Mensile",
                     dataIscrizione: new Date("2024-11-01"),
                     dataScadenza: new Date("2024-11-30"),
+                    urlPagamento: "test_test.test",
+                    importo: 10,
+                    idCheckout: "",
                     isActive: false,
+                    isPayed: false,
                     utente: "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4"
                 },
                 {
@@ -222,7 +234,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     tipoAbbonamento: "Giornaliero",
                     dataIscrizione: new Date("2024-10-28"),
                     dataScadenza: new Date("2024-10-29"),
+                    urlPagamento: "test1_test.test",
+                    importo: 10,
+                    idCheckout: "",
                     isActive: false,
+                    isPayed: false,
                     utente: "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4"
                 },
                 {
@@ -230,7 +246,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     idTipoAbbonamento : 0,
                     dataIscrizione : new Date("2024-10-30"),
                     dataScadenza : new Date("2024-10-31"),
+                    urlPagamento: "test2_test.test",
+                    importo: 10,
+                    idCheckout: "",
                     isActive : true,
+                    isPayed: true,
                     tipoAbbonamento : "Giornaliero",
                     utente : "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4"
                 }

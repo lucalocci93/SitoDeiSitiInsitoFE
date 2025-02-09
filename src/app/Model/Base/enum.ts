@@ -7,3 +7,12 @@ export enum Operation {
     AggiornaPassword,
     AggiornaAll
 }
+
+export enum SubscriptionOperation {
+    SospendiAbbonamento,
+    EstendiAbbonamento,
+    CambiaTipoAbbonamento,
+    CancellaAbbonamento,
+    AggiornaInfoPagamento,
+    SetAbbonamentoPagato
+}

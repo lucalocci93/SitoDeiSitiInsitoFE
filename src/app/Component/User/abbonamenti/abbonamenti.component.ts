@@ -2,6 +2,7 @@ import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Abbonamento } from 'src/app/Model/Abbonamento/Abbonamento';
+import { SubscriptionOperation } from 'src/app/Model/Base/enum';
 import { AbbonamentiService } from 'src/Services/Abbonamenti/abbonamenti.service';
 import { CommonService } from 'src/Services/Common/common.service';
 
@@ -38,15 +39,19 @@ export class AbbonamentiComponent {
             tipoAbbonamento: item.tipoAbbonamento,
             dataIscrizione: new Date(item.dataIscrizione),
             dataScadenza: item.dataScadenza ? new Date(item.dataScadenza) : null,
+            urlPagamento: item.urlPagamento,
+            importo: item.importo,
+            idCheckout: item.idCheckout,
             isActive: item.isActive,
+            isPayed: item.isPayed,
             utente: item.utente
           }));
 
-          this.ActiveSubscription = this.Abbonamenti.filter(a => a.isActive);
+          this.ActiveSubscription = this.Abbonamenti.filter(a => a.isActive && a.isPayed);
 
-          this.ExpiredSubscription = this.Abbonamenti.filter(a => !a.isActive && a.dataScadenza != null && a.dataScadenza < this.today);
+          this.ExpiredSubscription = this.Abbonamenti.filter(a => !a.isActive && a.isPayed && a.dataScadenza != null && a.dataScadenza < this.today);
 
-          this.ToBeActivatedSubscription = this.Abbonamenti.filter(a => !a.isActive && a.dataIscrizione != null && a.dataIscrizione > this.today);
+          this.ToBeActivatedSubscription = this.Abbonamenti.filter(a => !a.isActive && (a.dataScadenza == null || a.dataScadenza >= this.today));
 
         }
         else if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
@@ -57,5 +62,87 @@ export class AbbonamentiComponent {
           alert("Errore recupero Abbonamenti");
         }
       });
+    }
+
+    async UpdateSub(action: string, subscription: Abbonamento){
+      switch(action){
+        case "SetPayedSub":
+          {
+            await(await this.SubService.UpdateAbbonamenti(SubscriptionOperation.SetAbbonamentoPagato, subscription)).subscribe(data => {
+              if(data != null && data.Data != null){
+                alert("Pagamento Confermato");
+                window.location.reload();
+              }
+              else{
+                if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+                  alert("La tua sessione è scaduta, rieffettua il login");
+                  window.location.href = '/login';
+                }
+                else{
+                  alert("Errore conferma pagamento");
+                }
+              }
+            });
+          break;
+          }
+    
+          case "SetPaymentInProgress":
+            {
+              subscription.isPayed = null;
+              subscription.dataIscrizione = new Date();
+              subscription.dataScadenza = null;
+    
+              await(await this.SubService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
+                if(data != null && data.Data != null){
+                  alert("Il pagamento è stato processato, non appena avremo ricevuto l'esito ti notificheremo l'abilitazione dell'abbonamento."+ 
+                    "In caso di problemi nel pagamento contattare .....");
+                  window.location.reload();
+                }
+                else{
+                  if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+                    alert("La tua sessione è scaduta, rieffettua il login");
+                    window.location.href = '/login';
+                  }
+                  else{
+                    alert("Il tuo pagamento è stato processato, ritorna piu tardi per verificare l'abilitazione dell'abbonamento");
+                  }
+                }
+              });
+            break;
+            }   
+    
+            case "DeleteSub":
+              { 
+                await(await this.SubService.UpdateAbbonamenti(SubscriptionOperation.CancellaAbbonamento, subscription)).subscribe(data => {
+                  if(data != null && data.Data != null){
+                    alert("Abbonamento Cancellato");
+                    window.location.reload();
+                  }
+                  else{
+                    if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+                      alert("La tua sessione è scaduta, rieffettua il login");
+                      window.location.href = '/login';
+                    }
+                    else{
+                      alert("Errore cancellazione abbonamento");
+                    }
+                  }
+                });
+              break;
+              }   
+      
+      }
+    }
+
+    async Pay(sub: Abbonamento){
+
+      await this.UpdateSub("SetPaymentInProgress", sub);
+
+      if(sub.urlPagamento != null){
+        window.open(sub.urlPagamento, '_blank');
+      }
+      
+      window.location.reload();
+
     }
 }

@@ -36,6 +36,7 @@
               <th>Tipo Abbonamento</th>
               <th>Data Inizio</th>
               <th>Data Scadenza</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +44,19 @@
               <td>{{ item.tipoAbbonamento }}</td>
               <td>{{ item.dataIscrizione.toLocaleDateString('it-IT') }}</td>
               <td>{{ item.dataScadenza?.toLocaleDateString('it-IT') }}</td>
+              <td>
+                <div *ngIf="item.isPayed === true; else inProgress">
+                  Confermato
+                </div>
+                <ng-template #inProgress>
+                  <div *ngIf="item.isPayed != null; else notPayed">
+                    <input type="button" title="Paga" value="Paga" (click)="Pay(item)">
+                  </div>
+                  <ng-template #notPayed>
+                    Verifica In Corso
+                  </ng-template>
+                </ng-template>
+              </td>
             </tr>
           </tbody>
         </table>

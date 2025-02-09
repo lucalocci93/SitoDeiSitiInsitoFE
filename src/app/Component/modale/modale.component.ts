@@ -6,7 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { eventData, ModalData, userData } from 'src/app/Interface/modal-data';
-import { Operation } from 'src/app/Model/Base/enum';
+import { Operation, SubscriptionOperation } from 'src/app/Model/Base/enum';
 import { Abbonamento } from 'src/app/Model/Abbonamento/Abbonamento';
 import { User } from 'src/app/Model/User/User';
 import { AbbonamentiService } from 'src/Services/Abbonamenti/abbonamenti.service';
@@ -19,7 +19,7 @@ import { Documento, DocumentoExt } from 'src/app/Model/Documento/Documento';
 import { Categoria } from 'src/app/Model/Evento/Categoria';
 import { EventiService } from 'src/Services/Eventi/eventi.service';
 import { Evento } from 'src/app/Model/Evento/Evento';
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Iscrizione } from 'src/app/Model/Evento/Iscrizione';
 import { Competitors } from 'src/app/Interface/Competitors';
 
@@ -48,7 +48,7 @@ export class ModaleComponent implements OnInit {
   DocForm: FormGroup;
   EventForm : FormGroup;
 
-  displayedColumns: string[] = ['Tipo', 'Inizio', 'Scadenza'];
+  displayedColumns: string[] = ['Tipo', 'Inizio', 'Scadenza', "Pagato", "Azioni"];
   dataSource = new MatTableDataSource(this.subList);
 
   fileName: string = "";
@@ -64,7 +64,8 @@ export class ModaleComponent implements OnInit {
     private subService: AbbonamentiService,
     private docService: DocumentiService,
     private eventService : EventiService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private datePipe: DatePipe
   ) {
 
     this.UserForm = this.fb.group({
@@ -84,6 +85,9 @@ export class ModaleComponent implements OnInit {
     this.SubForm = this.fb.group({
       IdTipoAbbonamento: [3, Validators.required],
       DataInizio: [new Date(), Validators.required],
+      DataFine: [new Date(), Validators.required],
+      UrlPagamento: [""],
+      Importo:[0],
       Utente: []
     });
 
@@ -388,7 +392,8 @@ export class ModaleComponent implements OnInit {
 
         let userData = this.data.object as userData;
 
-        let abb = new Abbonamento(null, this.SubForm.value.IdTipoAbbonamento, null, this.SubForm.value.DataInizio, null, false, userData.rowGuid);
+        let abb = new Abbonamento(null, this.SubForm.value.IdTipoAbbonamento, null, this.SubForm.value.DataInizio, this.SubForm.value.DataFine, this.SubForm.value.UrlPagamento,
+          this.SubForm.value.Importo, "", false, false, userData.rowGuid);
         
         await(await this.subService.AddAbbonamenti(abb)).subscribe(data => {
           if(data != null && data.Data != null){
@@ -559,6 +564,100 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
   });
 }
 
+async UpdateSub(action: string, subscription: Abbonamento){
+  switch(action){
+    case "SetPayedSub":
+      {
+        subscription.isPayed = true;
+        await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
+          if(data != null && data.Data != null){
+            alert("Pagamento Confermato");
+            window.location.reload();
+          }
+          else{
+            if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+              alert("La tua sessione è scaduta, rieffettua il login");
+              window.location.href = '/login';
+            }
+            else{
+              alert("Errore conferma pagamento");
+              this.dialogRef.close();
+            }
+          }
+        });
+      break;
+      }
+
+      case "RefuseSubPayment":
+        {
+          subscription.isPayed = false;
+          await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
+            if(data != null && data.Data != null){
+              alert("Pagamento Rifuitato");
+              window.location.reload();
+            }
+            else{
+              if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+                alert("La tua sessione è scaduta, rieffettua il login");
+                window.location.href = '/login';
+              }
+              else{
+                alert("Errore rifiuto pagamento");
+                this.dialogRef.close();
+              }
+            }
+          });
+        break;
+        }
+  
+      case "SetPaymentInProgress":
+        {
+          subscription.isPayed = null;
+
+          await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
+            if(data != null && data.Data != null){
+              alert("Il pagamento è stato processato, non appena avremo ricevuto l'esito ti notificheremo l'abilitazione dell'abbonamento."+ 
+                "In caso di problemi nel pagamento contattare .....");
+              window.location.reload();
+            }
+            else{
+              if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+                alert("La tua sessione è scaduta, rieffettua il login");
+                window.location.href = '/login';
+              }
+              else{
+                alert("Errore aggiornamento url");
+                this.dialogRef.close();
+              }
+            }
+          });
+        break;
+        }   
+
+        case "DeleteSub":
+          { 
+            await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.CancellaAbbonamento, subscription)).subscribe(data => {
+              if(data != null && data.Data != null){
+                alert("Abbonamento Cancellato");
+                window.location.reload();
+              }
+              else{
+                if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+                  alert("La tua sessione è scaduta, rieffettua il login");
+                  window.location.href = '/login';
+                }
+                else{
+                  alert("Errore cancellazione abbonamento");
+                  this.dialogRef.close();
+                }
+              }
+            });
+          break;
+          }   
+  
+  }
+}
+
   getCategorieDescrizione(CategoriaId: number): string | undefined {
     return this.CategoriesData.find(c => c.Id == CategoriaId)?.Descrizione;
   }
@@ -572,6 +671,17 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
         this.selectedCategories.splice(index, 1);
       }
     }
+  }
+
+  formatDate(date: Date): string {
+    let _formatdate = this.datePipe.transform(date);
+    if(_formatdate == null){
+      return "";
+    } 
+    else{
+      return _formatdate
+    }
+
   }
 
   close(): void {
