@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CommonService } from '../Common/common.service';
 import { environment } from 'src/environments/environment';
 import { Evento } from 'src/app/Model/Evento/Evento';
-import { Response, HTTPResponseError } from 'src/app/Model/Base/Response';
+import { Response, HTTPResponseError } from 'src/app/Model/Base/response';
 import { catchError, map, of } from 'rxjs';
 import { Categoria } from 'src/app/Model/Evento/Categoria';
 import { Iscrizione, SingolaIscrizione } from 'src/app/Model/Evento/Iscrizione';

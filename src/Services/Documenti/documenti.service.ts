@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CommonService } from '../Common/common.service';
 import { environment } from 'src/environments/environment';
 import { TipoDocumento } from 'src/app/Model/Documento/TipoDocumento';
-import { Response, HTTPResponseError } from 'src/app/Model/Base/Response';
+import { Response, HTTPResponseError } from 'src/app/Model/Base/response';
 import { catchError, map, of } from 'rxjs';
 import { Documento, DocumentoExt } from 'src/app/Model/Documento/Documento';
 
