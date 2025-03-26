@@ -1,0 +1,48 @@
+<div class="slider">
+    <div *ngFor="let slide of slides; let i = index" 
+         class="slide" 
+         [class.active]="currentSlide === i"
+         [style.backgroundImage]="'url(' + slide.image + ')'"
+         [@fadeAnimation]="currentSlide === i ? 'in' : 'void'">
+      <div class="slide-content" [@slideAnimation]>
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.description }}</p>
+        <button class="cta-button">{{ slide.buttonText }}</button>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="nav-button prev" (click)="prevSlide()">❮</button>
+      <div class="dots">
+        <span *ngFor="let slide of slides; let i = index" 
+              class="dot" 
+              [class.active]="currentSlide === i"
+              (click)="goToSlide(i)"></span>
+      </div>
+      <button class="nav-button next" (click)="nextSlide()">❯</button>
+    </div>
+  </div>
+
+  <section class="features" [@slideAnimation]>
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features" [@slideAnimation]>
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="membership-plans" [@slideAnimation]>
+    <h2 class="section-title">Membership Plans</h2>
+    <div class="plans-grid">
+      <div class="plan-card" *ngFor="let plan of plans">
+        <h3>{{ plan.title }}</h3>
+        <div class="price">{{ plan.price }}</div>
+        <ul class="plan-features">
+          <li *ngFor="let feature of plan.features">{{ feature }}</li>
+        </ul>
+        <button class="plan-button">Choose Plan</button>
+      </div>
+    </div>
+  </section>
