@@ -1,5 +1,5 @@
 {
-  "name": "sito-dei-siti-insito-fe",
+  "name": "SitoDeiSitiInsitoFE",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploydemo": "ng build --configuration=demo"
+    "deploydemo": "ng build --configuration=demo --base-href=/SitoDeiSitiInsitoFE/"
   },
   "private": true,
   "dependencies": {
