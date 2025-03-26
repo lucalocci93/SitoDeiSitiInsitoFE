@@ -25,7 +25,7 @@ jobs:
         npm run-script deploydemo
 
     - name: List dist folder contents
-      run: ls -la dist/angular-ci-cd
+      run: ls -la dist/sito-dei-siti-insito-fe
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
