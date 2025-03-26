@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploydemo": "ng build --configuration=demo --base-href=/sito-dei-siti-insito-fe/"
+    "deploydemo": "ng build --configuration=demo"
   },
   "private": true,
   "dependencies": {
