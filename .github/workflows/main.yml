@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - 1.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '18.x'
+
+    - name: Build
+      run: |
+        npm install
+        npm run-script deploydemo
+
+    - name: List dist folder contents
+      run: ls -la dist/sito-dei-siti-insito-fe
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: dist/sito-dei-siti-insito-fe
