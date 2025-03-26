@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploydemo": "ng build --configuration=demo --base-href=/angular-ci-cd/"
   },
   "private": true,
   "dependencies": {
