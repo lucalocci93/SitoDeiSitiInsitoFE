@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkSitoDeiSitiInsitoFE"] = self["webpackChunkSitoDeiSitiInsitoFE"] || []).push([["main"],{
 
-/***/ 585:
+/***/ 881:
 /*!*********************************************************!*\
   !*** ./src/Services/Abbonamenti/abbonamenti.service.ts ***!
   \*********************************************************/
@@ -13,13 +13,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 7144);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 5312);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 271);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 1318);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ 9452);
-/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 5418);
+/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 7797);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 6297);
+/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 9009);
 
 
 
@@ -104,7 +104,7 @@ class AbbonamentiService {
 
 /***/ }),
 
-/***/ 6297:
+/***/ 9009:
 /*!***********************************************!*\
   !*** ./src/Services/Common/common.service.ts ***!
   \***********************************************/
@@ -257,7 +257,7 @@ class CommonService {
 
 /***/ }),
 
-/***/ 3415:
+/***/ 8879:
 /*!***********************************************!*\
   !*** ./src/Services/Common/loader.service.ts ***!
   \***********************************************/
@@ -295,7 +295,7 @@ class LoaderService {
 
 /***/ }),
 
-/***/ 6717:
+/***/ 2325:
 /*!*****************************************************!*\
   !*** ./src/Services/Documenti/documenti.service.ts ***!
   \*****************************************************/
@@ -307,13 +307,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 7144);
-/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 5418);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 5312);
+/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 7797);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 271);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 1318);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ 9452);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 6297);
+/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 9009);
 
 
 
@@ -397,7 +397,7 @@ class DocumentiService {
 
 /***/ }),
 
-/***/ 8645:
+/***/ 6365:
 /*!***********************************************!*\
   !*** ./src/Services/Eventi/eventi.service.ts ***!
   \***********************************************/
@@ -409,13 +409,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 7144);
-/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 5418);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 5312);
+/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 7797);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 271);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 1318);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ 9452);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 6297);
+/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 9009);
 
 
 
@@ -579,7 +579,7 @@ class EventiService {
 
 /***/ }),
 
-/***/ 6369:
+/***/ 6377:
 /*!*********************************************!*\
   !*** ./src/Services/Login/login.service.ts ***!
   \*********************************************/
@@ -591,11 +591,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 7144);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 5312);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ 271);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 1318);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 9452);
-/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 5418);
+/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 7797);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 7580);
 
 
@@ -660,7 +660,7 @@ class LoginService {
 
 /***/ }),
 
-/***/ 3549:
+/***/ 2933:
 /*!***********************************************!*\
   !*** ./src/Services/Utenti/utenti.service.ts ***!
   \***********************************************/
@@ -672,13 +672,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 7144);
-/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 5418);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 5312);
+/* harmony import */ var src_app_Model_Base_response__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/response */ 7797);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 271);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 1318);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ 9452);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 6297);
+/* harmony import */ var _Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/common.service */ 9009);
 
 
 
@@ -749,7 +749,7 @@ class UtentiService {
 
 /***/ }),
 
-/***/ 7249:
+/***/ 713:
 /*!*****************************************************************************!*\
   !*** ./src/app/Component/Admin/gestioneEventi/gestione-eventi.component.ts ***!
   \*****************************************************************************/
@@ -761,10 +761,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var _modale_modale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modale/modale.component */ 6954);
+/* harmony import */ var _modale_modale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modale/modale.component */ 7010);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 8645);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
+/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 6365);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/dialog */ 2587);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser */ 436);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 316);
@@ -1182,7 +1182,7 @@ class GestioneEventiComponent {
 
 /***/ }),
 
-/***/ 876:
+/***/ 6548:
 /*!****************************************************************************!*\
   !*** ./src/app/Component/Admin/gestioneutenti/gestioneutenti.component.ts ***!
   \****************************************************************************/
@@ -1193,12 +1193,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GestioneutentiComponent: () => (/* binding */ GestioneutentiComponent)
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
-/* harmony import */ var src_app_Component_modale_modale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Component/modale/modale.component */ 6954);
+/* harmony import */ var src_app_Component_modale_modale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Component/modale/modale.component */ 7010);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/enum */ 9807);
+/* harmony import */ var src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Base/enum */ 855);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Utenti/utenti.service */ 3549);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
+/* harmony import */ var src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Utenti/utenti.service */ 2933);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/dialog */ 2587);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 316);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ 4456);
@@ -1535,7 +1535,7 @@ class GestioneutentiComponent {
 
 /***/ }),
 
-/***/ 7382:
+/***/ 110:
 /*!*********************************************************************!*\
   !*** ./src/app/Component/User/abbonamenti/abbonamenti.component.ts ***!
   \*********************************************************************/
@@ -1547,10 +1547,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Model/Base/enum */ 9807);
+/* harmony import */ var src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Model/Base/enum */ 855);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Abbonamenti_abbonamenti_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Abbonamenti/abbonamenti.service */ 585);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
+/* harmony import */ var src_Services_Abbonamenti_abbonamenti_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Abbonamenti/abbonamenti.service */ 881);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/dialog */ 2587);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ 316);
 /* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-pagination */ 2423);
@@ -1920,7 +1920,7 @@ class AbbonamentiComponent {
 
 /***/ }),
 
-/***/ 3906:
+/***/ 1802:
 /*!*****************************************************************!*\
   !*** ./src/app/Component/User/documenti/documenti.component.ts ***!
   \*****************************************************************/
@@ -1933,8 +1933,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 6443);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
-/* harmony import */ var src_Services_Documenti_documenti_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Documenti/documenti.service */ 6717);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
+/* harmony import */ var src_Services_Documenti_documenti_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Documenti/documenti.service */ 2325);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/dialog */ 2587);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 316);
 
@@ -2112,7 +2112,7 @@ class DocumentiComponent {
 
 /***/ }),
 
-/***/ 6350:
+/***/ 6070:
 /*!***********************************************************!*\
   !*** ./src/app/Component/User/eventi/eventi.component.ts ***!
   \***********************************************************/
@@ -2124,11 +2124,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ 6443);
-/* harmony import */ var _modale_modale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modale/modale.component */ 6954);
-/* harmony import */ var src_app_Model_Evento_Iscrizione__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Evento/Iscrizione */ 2901);
+/* harmony import */ var _modale_modale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../modale/modale.component */ 7010);
+/* harmony import */ var src_app_Model_Evento_Iscrizione__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Evento/Iscrizione */ 973);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 8645);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
+/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 6365);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/dialog */ 2587);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 316);
 /* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-pagination */ 2423);
@@ -2471,7 +2471,7 @@ class EventiComponent {
 
 /***/ }),
 
-/***/ 3574:
+/***/ 9054:
 /*!**********************************************************!*\
   !*** ./src/app/Component/contatti/contatti.component.ts ***!
   \**********************************************************/
@@ -2700,7 +2700,7 @@ class ContattiComponent {
 
 /***/ }),
 
-/***/ 5912:
+/***/ 4816:
 /*!**********************************************************************!*\
   !*** ./src/app/Component/cookie-consent/cookie-consent.component.ts ***!
   \**********************************************************************/
@@ -2711,7 +2711,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   CookieConsentComponent: () => (/* binding */ CookieConsentComponent)
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 316);
 
 
@@ -2776,7 +2776,7 @@ class CookieConsentComponent {
 
 /***/ }),
 
-/***/ 2624:
+/***/ 3016:
 /*!**************************************************!*\
   !*** ./src/app/Component/home/home.component.ts ***!
   \**************************************************/
@@ -3042,7 +3042,7 @@ class HomeComponent {
 
 /***/ }),
 
-/***/ 3580:
+/***/ 2660:
 /*!****************************************************!*\
   !*** ./src/app/Component/login/login.component.ts ***!
   \****************************************************/
@@ -3054,8 +3054,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _Services_Common_common_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/Common/common.service */ 6297);
-/* harmony import */ var _Services_Login_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Services/Login/login.service */ 6369);
+/* harmony import */ var _Services_Common_common_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/Common/common.service */ 9009);
+/* harmony import */ var _Services_Login_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Services/Login/login.service */ 6377);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 5072);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 316);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 4456);
@@ -3224,7 +3224,7 @@ class LoginComponent {
 
 /***/ }),
 
-/***/ 6290:
+/***/ 1994:
 /*!************************************************************************!*\
   !*** ./src/app/Component/login/nuovo-utente/nuovo-utente.component.ts ***!
   \************************************************************************/
@@ -3236,9 +3236,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _home_runner_work_SitoDeiSitiInsitoFE_SitoDeiSitiInsitoFE_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 4456);
-/* harmony import */ var src_app_Model_User_User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Model/User/User */ 3719);
+/* harmony import */ var src_app_Model_User_User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Model/User/User */ 8127);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Login_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Login/login.service */ 6369);
+/* harmony import */ var src_Services_Login_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/Services/Login/login.service */ 6377);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 5072);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 316);
 
@@ -3556,7 +3556,7 @@ class NuovoUtenteComponent {
 
 /***/ }),
 
-/***/ 6954:
+/***/ 7010:
 /*!******************************************************!*\
   !*** ./src/app/Component/modale/modale.component.ts ***!
   \******************************************************/
@@ -3573,18 +3573,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/paginator */ 4624);
 /* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/sort */ 2047);
 /* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/table */ 7697);
-/* harmony import */ var src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Model/Base/enum */ 9807);
-/* harmony import */ var src_app_Model_Abbonamento_Abbonamento__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Abbonamento/Abbonamento */ 8135);
-/* harmony import */ var src_app_Model_Documento_Documento__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Model/Documento/Documento */ 211);
-/* harmony import */ var src_app_Model_Evento_Evento__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Model/Evento/Evento */ 83);
+/* harmony import */ var src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Model/Base/enum */ 855);
+/* harmony import */ var src_app_Model_Abbonamento_Abbonamento__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Abbonamento/Abbonamento */ 9391);
+/* harmony import */ var src_app_Model_Documento_Documento__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Model/Documento/Documento */ 443);
+/* harmony import */ var src_app_Model_Evento_Evento__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Model/Evento/Evento */ 1611);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common */ 316);
-/* harmony import */ var src_app_Model_Evento_Iscrizione__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/Model/Evento/Iscrizione */ 2901);
+/* harmony import */ var src_app_Model_Evento_Iscrizione__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/Model/Evento/Iscrizione */ 973);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
-/* harmony import */ var src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/Services/Utenti/utenti.service */ 3549);
-/* harmony import */ var src_Services_Abbonamenti_abbonamenti_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/Services/Abbonamenti/abbonamenti.service */ 585);
-/* harmony import */ var src_Services_Documenti_documenti_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/Services/Documenti/documenti.service */ 6717);
-/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 8645);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
+/* harmony import */ var src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/Services/Utenti/utenti.service */ 2933);
+/* harmony import */ var src_Services_Abbonamenti_abbonamenti_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/Services/Abbonamenti/abbonamenti.service */ 881);
+/* harmony import */ var src_Services_Documenti_documenti_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/Services/Documenti/documenti.service */ 2325);
+/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 6365);
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/button */ 4175);
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/input */ 5541);
 /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/form-field */ 4950);
@@ -5054,7 +5054,7 @@ class ModaleComponent {
 
 /***/ }),
 
-/***/ 9248:
+/***/ 3976:
 /*!********************************************************!*\
   !*** ./src/app/Component/nav-bar/nav-bar.component.ts ***!
   \********************************************************/
@@ -5065,7 +5065,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   NavBarComponent: () => (/* binding */ NavBarComponent)
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/common.service */ 6297);
+/* harmony import */ var src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/common.service */ 9009);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 5072);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 316);
 
@@ -5293,7 +5293,7 @@ class NavBarComponent {
 
 /***/ }),
 
-/***/ 4488:
+/***/ 7664:
 /*!********************************************************!*\
   !*** ./src/app/Component/spinner/spinner.component.ts ***!
   \********************************************************/
@@ -5304,7 +5304,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SpinnerComponent: () => (/* binding */ SpinnerComponent)
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Common_loader_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/loader.service */ 3415);
+/* harmony import */ var src_Services_Common_loader_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/loader.service */ 8879);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 316);
 
 
@@ -5349,7 +5349,7 @@ class SpinnerComponent {
 
 /***/ }),
 
-/***/ 5665:
+/***/ 1913:
 /*!*********************************************************!*\
   !*** ./src/app/Interceptor/fake-backend.interceptor.ts ***!
   \*********************************************************/
@@ -5811,7 +5811,7 @@ const fakeBackendProvider = {
 
 /***/ }),
 
-/***/ 5871:
+/***/ 1975:
 /*!****************************************************!*\
   !*** ./src/app/Interceptor/loading.interceptor.ts ***!
   \****************************************************/
@@ -5823,7 +5823,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 9475);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var src_Services_Common_loader_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/loader.service */ 3415);
+/* harmony import */ var src_Services_Common_loader_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/Services/Common/loader.service */ 8879);
 
 
 
@@ -5858,7 +5858,7 @@ class LoadingInterceptor {
 
 /***/ }),
 
-/***/ 8135:
+/***/ 9391:
 /*!**************************************************!*\
   !*** ./src/app/Model/Abbonamento/Abbonamento.ts ***!
   \**************************************************/
@@ -5886,7 +5886,7 @@ class Abbonamento {
 
 /***/ }),
 
-/***/ 9807:
+/***/ 855:
 /*!************************************!*\
   !*** ./src/app/Model/Base/enum.ts ***!
   \************************************/
@@ -5919,7 +5919,7 @@ var SubscriptionOperation;
 
 /***/ }),
 
-/***/ 5418:
+/***/ 7797:
 /*!****************************************!*\
   !*** ./src/app/Model/Base/response.ts ***!
   \****************************************/
@@ -5945,7 +5945,7 @@ class HTTPResponseError {
 
 /***/ }),
 
-/***/ 211:
+/***/ 443:
 /*!**********************************************!*\
   !*** ./src/app/Model/Documento/Documento.ts ***!
   \**********************************************/
@@ -5974,7 +5974,7 @@ class DocumentoExt extends Documento {
 
 /***/ }),
 
-/***/ 83:
+/***/ 1611:
 /*!****************************************!*\
   !*** ./src/app/Model/Evento/Evento.ts ***!
   \****************************************/
@@ -6007,7 +6007,7 @@ class Copertina {
 
 /***/ }),
 
-/***/ 2901:
+/***/ 973:
 /*!********************************************!*\
   !*** ./src/app/Model/Evento/Iscrizione.ts ***!
   \********************************************/
@@ -6044,7 +6044,7 @@ class IscrizioneExt {
 
 /***/ }),
 
-/***/ 3719:
+/***/ 8127:
 /*!************************************!*\
   !*** ./src/app/Model/User/User.ts ***!
   \************************************/
@@ -6076,7 +6076,7 @@ class User {
 
 /***/ }),
 
-/***/ 3818:
+/***/ 4114:
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
   \***************************************/
@@ -6087,15 +6087,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AppRoutingModule: () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ 5072);
-/* harmony import */ var _Component_home_home_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Component/home/home.component */ 2624);
-/* harmony import */ var _Component_login_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component/login/login.component */ 3580);
-/* harmony import */ var _Component_login_nuovo_utente_nuovo_utente_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Component/login/nuovo-utente/nuovo-utente.component */ 6290);
-/* harmony import */ var _Component_contatti_contatti_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Component/contatti/contatti.component */ 3574);
-/* harmony import */ var _Component_User_documenti_documenti_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Component/User/documenti/documenti.component */ 3906);
-/* harmony import */ var _Component_Admin_gestioneutenti_gestioneutenti_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Component/Admin/gestioneutenti/gestioneutenti.component */ 876);
-/* harmony import */ var _Component_User_abbonamenti_abbonamenti_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Component/User/abbonamenti/abbonamenti.component */ 7382);
-/* harmony import */ var _Component_Admin_gestioneEventi_gestione_eventi_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Component/Admin/gestioneEventi/gestione-eventi.component */ 7249);
-/* harmony import */ var _Component_User_eventi_eventi_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Component/User/eventi/eventi.component */ 6350);
+/* harmony import */ var _Component_home_home_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Component/home/home.component */ 3016);
+/* harmony import */ var _Component_login_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component/login/login.component */ 2660);
+/* harmony import */ var _Component_login_nuovo_utente_nuovo_utente_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Component/login/nuovo-utente/nuovo-utente.component */ 1994);
+/* harmony import */ var _Component_contatti_contatti_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Component/contatti/contatti.component */ 9054);
+/* harmony import */ var _Component_User_documenti_documenti_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Component/User/documenti/documenti.component */ 1802);
+/* harmony import */ var _Component_Admin_gestioneutenti_gestioneutenti_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Component/Admin/gestioneutenti/gestioneutenti.component */ 6548);
+/* harmony import */ var _Component_User_abbonamenti_abbonamenti_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Component/User/abbonamenti/abbonamenti.component */ 110);
+/* harmony import */ var _Component_Admin_gestioneEventi_gestione_eventi_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Component/Admin/gestioneEventi/gestione-eventi.component */ 713);
+/* harmony import */ var _Component_User_eventi_eventi_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Component/User/eventi/eventi.component */ 6070);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 7580);
 
 
@@ -6176,7 +6176,7 @@ class AppRoutingModule {
 
 /***/ }),
 
-/***/ 4836:
+/***/ 92:
 /*!**********************************!*\
   !*** ./src/app/app.component.ts ***!
   \**********************************/
@@ -6188,9 +6188,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7580);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 5072);
-/* harmony import */ var _Component_nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Component/nav-bar/nav-bar.component */ 9248);
-/* harmony import */ var _Component_cookie_consent_cookie_consent_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component/cookie-consent/cookie-consent.component */ 5912);
-/* harmony import */ var _Component_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Component/spinner/spinner.component */ 4488);
+/* harmony import */ var _Component_nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Component/nav-bar/nav-bar.component */ 3976);
+/* harmony import */ var _Component_cookie_consent_cookie_consent_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component/cookie-consent/cookie-consent.component */ 4816);
+/* harmony import */ var _Component_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Component/spinner/spinner.component */ 7664);
 
 
 
@@ -6234,7 +6234,7 @@ class AppComponent {
 
 /***/ }),
 
-/***/ 803:
+/***/ 635:
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
@@ -6257,29 +6257,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/material/menu */ 1034);
 /* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @angular/material/select */ 5175);
 /* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @angular/material/core */ 4646);
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 3818);
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 4836);
-/* harmony import */ var _Component_nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Component/nav-bar/nav-bar.component */ 9248);
-/* harmony import */ var _Component_home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Component/home/home.component */ 2624);
-/* harmony import */ var _Component_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Component/login/login.component */ 3580);
-/* harmony import */ var _Component_login_nuovo_utente_nuovo_utente_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Component/login/nuovo-utente/nuovo-utente.component */ 6290);
-/* harmony import */ var _Component_cookie_consent_cookie_consent_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Component/cookie-consent/cookie-consent.component */ 5912);
-/* harmony import */ var _Component_contatti_contatti_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Component/contatti/contatti.component */ 3574);
-/* harmony import */ var _Component_User_documenti_documenti_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Component/User/documenti/documenti.component */ 3906);
-/* harmony import */ var _Component_Admin_gestioneutenti_gestioneutenti_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Component/Admin/gestioneutenti/gestioneutenti.component */ 876);
-/* harmony import */ var _Component_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Component/spinner/spinner.component */ 4488);
-/* harmony import */ var _Services_Common_common_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Services/Common/common.service */ 6297);
-/* harmony import */ var _Services_Login_login_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Services/Login/login.service */ 6369);
-/* harmony import */ var src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/Services/Utenti/utenti.service */ 3549);
-/* harmony import */ var _Component_modale_modale_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Component/modale/modale.component */ 6954);
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 4114);
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 92);
+/* harmony import */ var _Component_nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Component/nav-bar/nav-bar.component */ 3976);
+/* harmony import */ var _Component_home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Component/home/home.component */ 3016);
+/* harmony import */ var _Component_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Component/login/login.component */ 2660);
+/* harmony import */ var _Component_login_nuovo_utente_nuovo_utente_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Component/login/nuovo-utente/nuovo-utente.component */ 1994);
+/* harmony import */ var _Component_cookie_consent_cookie_consent_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Component/cookie-consent/cookie-consent.component */ 4816);
+/* harmony import */ var _Component_contatti_contatti_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Component/contatti/contatti.component */ 9054);
+/* harmony import */ var _Component_User_documenti_documenti_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Component/User/documenti/documenti.component */ 1802);
+/* harmony import */ var _Component_Admin_gestioneutenti_gestioneutenti_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Component/Admin/gestioneutenti/gestioneutenti.component */ 6548);
+/* harmony import */ var _Component_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Component/spinner/spinner.component */ 7664);
+/* harmony import */ var _Services_Common_common_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Services/Common/common.service */ 9009);
+/* harmony import */ var _Services_Login_login_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Services/Login/login.service */ 6377);
+/* harmony import */ var src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/Services/Utenti/utenti.service */ 2933);
+/* harmony import */ var _Component_modale_modale_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Component/modale/modale.component */ 7010);
 /* harmony import */ var _angular_platform_browser_animations_async__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/platform-browser/animations/async */ 6970);
-/* harmony import */ var _Interceptor_loading_interceptor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Interceptor/loading.interceptor */ 5871);
-/* harmony import */ var _Component_User_abbonamenti_abbonamenti_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Component/User/abbonamenti/abbonamenti.component */ 7382);
-/* harmony import */ var _Interceptor_fake_backend_interceptor__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Interceptor/fake-backend.interceptor */ 5665);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! src/environments/environment */ 7144);
-/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 8645);
-/* harmony import */ var _Component_Admin_gestioneEventi_gestione_eventi_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Component/Admin/gestioneEventi/gestione-eventi.component */ 7249);
-/* harmony import */ var _Component_User_eventi_eventi_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Component/User/eventi/eventi.component */ 6350);
+/* harmony import */ var _Interceptor_loading_interceptor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Interceptor/loading.interceptor */ 1975);
+/* harmony import */ var _Component_User_abbonamenti_abbonamenti_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Component/User/abbonamenti/abbonamenti.component */ 110);
+/* harmony import */ var _Interceptor_fake_backend_interceptor__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Interceptor/fake-backend.interceptor */ 1913);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! src/environments/environment */ 5312);
+/* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 6365);
+/* harmony import */ var _Component_Admin_gestioneEventi_gestione_eventi_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Component/Admin/gestioneEventi/gestione-eventi.component */ 713);
+/* harmony import */ var _Component_User_eventi_eventi_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Component/User/eventi/eventi.component */ 6070);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/common */ 316);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/core */ 7580);
 
@@ -6356,7 +6356,7 @@ class AppModule {
 
 /***/ }),
 
-/***/ 7144:
+/***/ 5312:
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
   \*****************************************/
@@ -6374,7 +6374,7 @@ const environment = {
 
 /***/ }),
 
-/***/ 5413:
+/***/ 4429:
 /*!*********************!*\
   !*** ./src/main.ts ***!
   \*********************/
@@ -6382,7 +6382,7 @@ const environment = {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ 436);
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app.module */ 803);
+/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app.module */ 635);
 
 
 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__.platformBrowser().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_0__.AppModule).catch(err => console.error(err));
@@ -6392,7 +6392,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__.platformBrowser().bootstr
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["vendor"], () => (__webpack_exec__(5413)));
+/******/ __webpack_require__.O(0, ["vendor"], () => (__webpack_exec__(4429)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
