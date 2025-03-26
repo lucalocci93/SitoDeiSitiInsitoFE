@@ -47,11 +47,11 @@ export class AbbonamentiComponent {
             utente: item.utente
           }));
 
-          this.ActiveSubscription = this.Abbonamenti.filter(a => a.isActive && a.isPayed);
+          this.ActiveSubscription = this.Abbonamenti.filter(a => a.isPayed && a.dataIscrizione <= this.today && a.dataScadenza != null && a.dataScadenza > this.today);
 
-          this.ExpiredSubscription = this.Abbonamenti.filter(a => !a.isActive && a.isPayed && a.dataScadenza != null && a.dataScadenza < this.today);
+          this.ExpiredSubscription = this.Abbonamenti.filter(a => a.isPayed && a.dataScadenza != null && a.dataScadenza < this.today);
 
-          this.ToBeActivatedSubscription = this.Abbonamenti.filter(a => !a.isActive && (a.dataScadenza == null || a.dataScadenza >= this.today));
+          this.ToBeActivatedSubscription = this.Abbonamenti.filter(a => !a.isPayed && a.dataIscrizione > this.today && (a.dataScadenza == null || a.dataScadenza >= this.today));
 
         }
         else if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){

@@ -74,7 +74,8 @@ export class EventiComponent implements OnInit {
           if (data != null && data.Data != null) 
           {
             const EventIds = new Set(this.Events.map(sub => sub.id));
-            this.SubscribedEvent = data.Data.filter(event => EventIds.has(event.eventId));
+            const PastEvents = new Set(this.PastEvent.map(sub => sub.id));
+            this.SubscribedEvent = data.Data.filter(event => EventIds.has(event.eventId) && !PastEvents.has(event.eventId));
 
             this.SubscribedEvent.forEach(e =>
               this.ExtendedSub.push(new IscrizioneExt(e, this.Events.find(ev => ev.id == e.eventId)))
