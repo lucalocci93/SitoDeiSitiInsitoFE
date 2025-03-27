@@ -12,7 +12,8 @@ import { CommonService } from 'src/Services/Common/common.service';
 @Component({
   selector: 'app-gestioneutenti',
   templateUrl: './gestioneutenti.component.html',
-  styleUrls: ['./gestioneutenti.component.css']
+  styleUrls: ['./gestioneutenti.component.css'],
+  standalone: false
 })
 export class GestioneutentiComponent {
 

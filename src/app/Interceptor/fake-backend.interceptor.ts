@@ -39,8 +39,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             }
 
             switch (true) {
-                case method === 'PUT' || method === 'POST':
-                    return ok();
+                //case method === 'PUT' || method === 'POST':
+                //    return ok();
                 case url.toLowerCase().includes('authenticate') && method === 'GET':
                     return authenticate();
                 case url.toLowerCase().includes('getallusers') && method === 'GET':

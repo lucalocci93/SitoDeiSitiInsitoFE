@@ -12,7 +12,8 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-documenti',
   templateUrl: './documenti.component.html',
-  styleUrls: ['./documenti.component.css']
+  styleUrls: ['./documenti.component.css'],
+  standalone: false
 })
 export class DocumentiComponent {
   DocList: Documento[] = [];

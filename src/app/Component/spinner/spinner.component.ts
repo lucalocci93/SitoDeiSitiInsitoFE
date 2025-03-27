@@ -5,7 +5,8 @@ import { LoaderService } from 'src/Services/Common/loader.service';
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.css'],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.ShadowDom,
+  standalone: false
 })
 export class SpinnerComponent {
   constructor(public loader: LoaderService) { }

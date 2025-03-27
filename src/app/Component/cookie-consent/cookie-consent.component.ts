@@ -4,7 +4,8 @@ import { CommonService } from 'src/Services/Common/common.service';
 @Component({
   selector: 'app-cookie-consent',
   templateUrl: './cookie-consent.component.html',
-  styleUrls: ['./cookie-consent.component.css']
+  styleUrls: ['./cookie-consent.component.css'],
+  standalone: false
 })
 export class CookieConsentComponent implements OnInit {
   consent: string | null = null;

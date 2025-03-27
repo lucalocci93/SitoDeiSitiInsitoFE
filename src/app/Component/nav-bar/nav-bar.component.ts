@@ -6,7 +6,8 @@ import { CommonService } from 'src/Services/Common/common.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
+  standalone: false
 })
 export class NavBarComponent implements OnInit {
   isLogged = false;
@@ -45,8 +46,7 @@ export class NavBarComponent implements OnInit {
     this.common.deleteCookie("surname");
     this.isLogged = false;
     this.isAdmin = false;
-    window.location.href = '/';
-    //window.location.reload();
+    this.router.navigate(['/'])
   }
 
   collapse() {

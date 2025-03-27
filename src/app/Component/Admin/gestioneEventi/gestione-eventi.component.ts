@@ -12,7 +12,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-gestione-eventi',
   templateUrl: './gestione-eventi.component.html',
-  styleUrl: './gestione-eventi.component.css'
+  styleUrl: './gestione-eventi.component.css',
+  standalone: false
 })
 export class GestioneEventiComponent {
 

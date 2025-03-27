@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-contatti',
   templateUrl: './contatti.component.html',
-  styleUrls: ['./contatti.component.css']
+  styleUrls: ['./contatti.component.css'],
+  standalone: false
 })
 export class ContattiComponent {
 

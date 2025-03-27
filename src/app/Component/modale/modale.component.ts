@@ -22,11 +22,13 @@ import { Evento } from 'src/app/Model/Evento/Evento';
 import { DatePipe, formatDate } from '@angular/common';
 import { Iscrizione } from 'src/app/Model/Evento/Iscrizione';
 import { Competitors } from 'src/app/Interface/Competitors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modale',
   templateUrl: './modale.component.html',
-  styleUrls: ['./modale.component.css']
+  styleUrls: ['./modale.component.css'],
+  standalone: false
 })
 export class ModaleComponent implements OnInit {
   
@@ -65,7 +67,8 @@ export class ModaleComponent implements OnInit {
     private docService: DocumentiService,
     private eventService : EventiService,
     private fb: FormBuilder,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private router: Router
   ) {
 
     this.UserForm = this.fb.group({
@@ -106,6 +109,7 @@ export class ModaleComponent implements OnInit {
       LinkEvento: [''],
       //CatEvento: this.fb.array(this.CategoriesData.map(() => false))
     });
+
   }
     
   async ngOnInit() {
@@ -135,7 +139,7 @@ export class ModaleComponent implements OnInit {
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore recupero Utenti");
@@ -168,7 +172,7 @@ export class ModaleComponent implements OnInit {
            }
           else if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            this.router.navigate(['/login']);
           }
           else{
             alert("Errore recupero Utente");
@@ -189,7 +193,7 @@ export class ModaleComponent implements OnInit {
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore recupero Abbonamenti dell'utente");
@@ -210,7 +214,7 @@ export class ModaleComponent implements OnInit {
         else{
           if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            this.router.navigate(['/login']);
           }
           else{
             alert("Errore recupero Abbonamenti dell'utente");
@@ -229,7 +233,7 @@ export class ModaleComponent implements OnInit {
         else{
           if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            this.router.navigate(['/login']);
           }
           else{
             alert("Errore recupero Tipi documento");
@@ -251,7 +255,7 @@ export class ModaleComponent implements OnInit {
           {
             if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore recupero categorie");
@@ -273,7 +277,7 @@ export class ModaleComponent implements OnInit {
           else{
             if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore recupero categorie");
@@ -296,7 +300,7 @@ export class ModaleComponent implements OnInit {
            }
           else if(event.Error != null && event.Error.Code == HttpStatusCode.Unauthorized){
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            this.router.navigate(['/login']);
           }
           else{
             alert("Errore recupero Evento");
@@ -316,7 +320,7 @@ export class ModaleComponent implements OnInit {
          }
         else if(event.Error != null && event.Error.Code == HttpStatusCode.Unauthorized){
           alert("La tua sessione è scaduta, rieffettua il login");
-          window.location.href = '/login';
+          this.router.navigate(['/login']);
         }
         else{
           alert("Errore recupero Evento");
@@ -338,7 +342,7 @@ export class ModaleComponent implements OnInit {
         else{
           if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            this.router.navigate(['/login']);
           }
           else{
             alert("Errore recupero categorie");
@@ -353,7 +357,7 @@ export class ModaleComponent implements OnInit {
          }
         else if(comp.Error != null && comp.Error.Code == HttpStatusCode.Unauthorized){
           alert("La tua sessione è scaduta, rieffettua il login");
-          window.location.href = '/login';
+          this.router.navigate(['/login']);
         }
         else{
           alert("Errore recupero Evento");
@@ -371,12 +375,16 @@ export class ModaleComponent implements OnInit {
         await(await this.userService.UpdateUtente(this.UserForm.value, Operation.AggiornaAll)).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Utente Aggiornato");
-            window.location.reload();
+            this.dialogRef.close();
+            let currentUrl = this.router.url;
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                this.router.navigate([currentUrl]);
+            });
           }
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore aggiornamento Utente");
@@ -398,12 +406,15 @@ export class ModaleComponent implements OnInit {
         await(await this.subService.AddAbbonamenti(abb)).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Abbonamento Inserito");
-            window.location.reload();
+            let currentUrl = this.router.url;
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                this.router.navigate([currentUrl]);
+            });
           }
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore Inserimento Abbonamento");
@@ -425,12 +436,15 @@ export class ModaleComponent implements OnInit {
         await(await this.eventService.UpdateEvent(e)).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Evento Aggiornato");
-            window.location.reload();
+            let currentUrl = this.router.url;
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                this.router.navigate([currentUrl]);
+            });
           }
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore Aggiornamento Evento");
@@ -451,12 +465,15 @@ export class ModaleComponent implements OnInit {
       await(await this.eventService.Subscribe(EventSubscription)).subscribe(data => {
         if(data != null && data.Data != null){
           alert("Iscrizione effettuata");
-          window.location.reload();
+          let currentUrl = this.router.url;
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+              this.router.navigate([currentUrl]);
+          });
         }
         else{
           if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            this.router.navigate(['/login']);
           }
           else if(data.Error != null && data.Error.Code == HttpStatusCode.Conflict){
             alert("E' gia stata effettuata un iscrizione per queste categorie");
@@ -499,12 +516,15 @@ export class ModaleComponent implements OnInit {
     await(await this.docService.AddDocument(document)).subscribe(data => {
       if(data != null && data.Data != null){
         alert("Documento Inserito");
-        window.location.reload();
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate([currentUrl]);
+        });
       }
       else{
         if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
           alert("La tua sessione è scaduta, rieffettua il login");
-          window.location.href = '/login';
+          this.router.navigate(['/login']);
         }
         else if(data.Error != null && data.Error.Code == HttpStatusCode.PayloadTooLarge){
           alert("Il documento che stai provando a inserire è troppo grande");
@@ -549,12 +569,15 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
   await(await this.eventService.AddEvent(event)).subscribe(data => {
     if(data != null && data.Data != null){
       alert("Evento Creato");
-      window.location.reload();
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+      });
     }
     else{
       if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
         alert("La tua sessione è scaduta, rieffettua il login");
-        window.location.href = '/login';
+        this.router.navigate(['/login']);
       }
       else{
         alert("Errore creazione Evento");
@@ -572,12 +595,15 @@ async UpdateSub(action: string, subscription: Abbonamento){
         await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Pagamento Confermato");
-            window.location.reload();
+            let currentUrl = this.router.url;
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                this.router.navigate([currentUrl]);
+            });
           }
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              this.router.navigate(['/login']);
             }
             else{
               alert("Errore conferma pagamento");
@@ -594,12 +620,15 @@ async UpdateSub(action: string, subscription: Abbonamento){
           await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
             if(data != null && data.Data != null){
               alert("Pagamento Rifuitato");
-              window.location.reload();
+              let currentUrl = this.router.url;
+              this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                  this.router.navigate([currentUrl]);
+              });
             }
             else{
               if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
                 alert("La tua sessione è scaduta, rieffettua il login");
-                window.location.href = '/login';
+                this.router.navigate(['/login']);
               }
               else{
                 alert("Errore rifiuto pagamento");
@@ -618,12 +647,15 @@ async UpdateSub(action: string, subscription: Abbonamento){
             if(data != null && data.Data != null){
               alert("Il pagamento è stato processato, non appena avremo ricevuto l'esito ti notificheremo l'abilitazione dell'abbonamento."+ 
                 "In caso di problemi nel pagamento contattare .....");
-              window.location.reload();
+                let currentUrl = this.router.url;
+                this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                    this.router.navigate([currentUrl]);
+                });
             }
             else{
               if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
                 alert("La tua sessione è scaduta, rieffettua il login");
-                window.location.href = '/login';
+                this.router.navigate(['/login']);
               }
               else{
                 alert("Errore aggiornamento url");
@@ -639,12 +671,15 @@ async UpdateSub(action: string, subscription: Abbonamento){
             await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.CancellaAbbonamento, subscription)).subscribe(data => {
               if(data != null && data.Data != null){
                 alert("Abbonamento Cancellato");
-                window.location.reload();
+                let currentUrl = this.router.url;
+                this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                    this.router.navigate([currentUrl]);
+                });
               }
               else{
                 if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
                   alert("La tua sessione è scaduta, rieffettua il login");
-                  window.location.href = '/login';
+                  this.router.navigate(['/login']);
                 }
                 else{
                   alert("Errore cancellazione abbonamento");

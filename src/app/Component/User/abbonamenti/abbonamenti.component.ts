@@ -9,7 +9,8 @@ import { CommonService } from 'src/Services/Common/common.service';
 @Component({
   selector: 'app-abbonamenti',
   templateUrl: './abbonamenti.component.html',
-  styleUrl: './abbonamenti.component.css'
+  styleUrl: './abbonamenti.component.css',
+  standalone: false
 })
 export class AbbonamentiComponent {
 

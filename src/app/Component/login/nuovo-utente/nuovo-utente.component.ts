@@ -9,7 +9,8 @@ import { LoginService } from 'src/Services/Login/login.service';
 @Component({
   selector: 'app-nuovo-utente',
   templateUrl: './nuovo-utente.component.html',
-  styleUrls: ['./nuovo-utente.component.css']
+  styleUrls: ['./nuovo-utente.component.css'],
+  standalone: false
 })
 export class NuovoUtenteComponent {
 

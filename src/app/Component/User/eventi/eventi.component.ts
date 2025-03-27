@@ -12,7 +12,8 @@ import { Categoria } from 'src/app/Model/Evento/Categoria';
 @Component({
   selector: 'app-eventi',
   templateUrl: './eventi.component.html',
-  styleUrl: './eventi.component.css'
+  styleUrl: './eventi.component.css',
+  standalone: false
 })
 export class EventiComponent implements OnInit {
 
