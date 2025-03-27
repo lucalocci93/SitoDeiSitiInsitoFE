@@ -3570,8 +3570,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ 6443);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/forms */ 4456);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/dialog */ 2587);
-/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/paginator */ 4624);
-/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/sort */ 2047);
+/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/paginator */ 4624);
+/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/sort */ 2047);
 /* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/table */ 7697);
 /* harmony import */ var src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/Model/Base/enum */ 855);
 /* harmony import */ var src_app_Model_Abbonamento_Abbonamento__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Model/Abbonamento/Abbonamento */ 9391);
@@ -3585,12 +3585,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_Services_Abbonamenti_abbonamenti_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/Services/Abbonamenti/abbonamenti.service */ 881);
 /* harmony import */ var src_Services_Documenti_documenti_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/Services/Documenti/documenti.service */ 2325);
 /* harmony import */ var src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/Services/Eventi/eventi.service */ 6365);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/button */ 4175);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/input */ 5541);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/form-field */ 4950);
-/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/menu */ 1034);
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/select */ 5175);
-/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/core */ 4646);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/router */ 5072);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/button */ 4175);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/input */ 5541);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/form-field */ 4950);
+/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/menu */ 1034);
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/select */ 5175);
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/core */ 4646);
+
 
 
 
@@ -4445,7 +4447,7 @@ function ModaleComponent_button_13_Template(rf, ctx) {
   }
 }
 class ModaleComponent {
-  constructor(dialogRef, data, commonService, userService, subService, docService, eventService, fb, datePipe) {
+  constructor(dialogRef, data, commonService, userService, subService, docService, eventService, fb, datePipe, router) {
     this.dialogRef = dialogRef;
     this.data = data;
     this.commonService = commonService;
@@ -4455,6 +4457,7 @@ class ModaleComponent {
     this.eventService = eventService;
     this.fb = fb;
     this.datePipe = datePipe;
+    this.router = router;
     this.subList = [];
     this.subType = [];
     this.docType = [];
@@ -4526,7 +4529,7 @@ class ModaleComponent {
           } else {
             if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this.router.navigate(['/login']);
             } else {
               alert("Errore recupero Utenti");
               _this.dialogRef.close();
@@ -4554,7 +4557,7 @@ class ModaleComponent {
             });
           } else if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            _this.router.navigate(['/login']);
           } else {
             alert("Errore recupero Utente");
             _this.dialogRef.close();
@@ -4570,7 +4573,7 @@ class ModaleComponent {
           } else {
             if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this.router.navigate(['/login']);
             } else {
               alert("Errore recupero Abbonamenti dell'utente");
               _this.dialogRef.close();
@@ -4587,7 +4590,7 @@ class ModaleComponent {
           } else {
             if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this.router.navigate(['/login']);
             } else {
               alert("Errore recupero Abbonamenti dell'utente");
               _this.dialogRef.close();
@@ -4603,7 +4606,7 @@ class ModaleComponent {
           } else {
             if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this.router.navigate(['/login']);
             } else {
               alert("Errore recupero Tipi documento");
               _this.dialogRef.close();
@@ -4620,7 +4623,7 @@ class ModaleComponent {
           } else {
             if (cat.Error != null && cat.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this.router.navigate(['/login']);
             } else {
               alert("Errore recupero categorie");
               _this.dialogRef.close();
@@ -4638,7 +4641,7 @@ class ModaleComponent {
           } else {
             if (cat.Error != null && cat.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this.router.navigate(['/login']);
             } else {
               alert("Errore recupero categorie");
               _this.dialogRef.close();
@@ -4658,7 +4661,7 @@ class ModaleComponent {
             });
           } else if (event.Error != null && event.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            _this.router.navigate(['/login']);
           } else {
             alert("Errore recupero Evento");
             _this.dialogRef.close();
@@ -4674,7 +4677,7 @@ class ModaleComponent {
             _this.DataEvent = event.Data;
           } else if (event.Error != null && event.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            _this.router.navigate(['/login']);
           } else {
             alert("Errore recupero Evento");
             _this.dialogRef.close();
@@ -4692,7 +4695,7 @@ class ModaleComponent {
           } else {
             if (cat.Error != null && cat.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this.router.navigate(['/login']);
             } else {
               alert("Errore recupero categorie");
               _this.dialogRef.close();
@@ -4704,7 +4707,7 @@ class ModaleComponent {
             _this.Competitors = comp.Data;
           } else if (comp.Error != null && comp.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            _this.router.navigate(['/login']);
           } else {
             alert("Errore recupero Evento");
             _this.dialogRef.close();
@@ -4721,11 +4724,17 @@ class ModaleComponent {
           yield (yield _this2.userService.UpdateUtente(_this2.UserForm.value, src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__.Operation.AggiornaAll)).subscribe(data => {
             if (data != null && data.Data != null) {
               alert("Utente Aggiornato");
-              window.location.reload();
+              _this2.dialogRef.close();
+              let currentUrl = _this2.router.url;
+              _this2.router.navigateByUrl('/', {
+                skipLocationChange: true
+              }).then(() => {
+                _this2.router.navigate([currentUrl]);
+              });
             } else {
               if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
                 alert("La tua sessione è scaduta, rieffettua il login");
-                window.location.href = '/login';
+                _this2.router.navigate(['/login']);
               } else {
                 alert("Errore aggiornamento Utente");
                 _this2.dialogRef.close();
@@ -4741,11 +4750,16 @@ class ModaleComponent {
           yield (yield _this2.subService.AddAbbonamenti(abb)).subscribe(data => {
             if (data != null && data.Data != null) {
               alert("Abbonamento Inserito");
-              window.location.reload();
+              let currentUrl = _this2.router.url;
+              _this2.router.navigateByUrl('/', {
+                skipLocationChange: true
+              }).then(() => {
+                _this2.router.navigate([currentUrl]);
+              });
             } else {
               if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
                 alert("La tua sessione è scaduta, rieffettua il login");
-                window.location.href = '/login';
+                _this2.router.navigate(['/login']);
               } else {
                 alert("Errore Inserimento Abbonamento");
                 _this2.dialogRef.close();
@@ -4761,11 +4775,16 @@ class ModaleComponent {
           yield (yield _this2.eventService.UpdateEvent(e)).subscribe(data => {
             if (data != null && data.Data != null) {
               alert("Evento Aggiornato");
-              window.location.reload();
+              let currentUrl = _this2.router.url;
+              _this2.router.navigateByUrl('/', {
+                skipLocationChange: true
+              }).then(() => {
+                _this2.router.navigate([currentUrl]);
+              });
             } else {
               if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
                 alert("La tua sessione è scaduta, rieffettua il login");
-                window.location.href = '/login';
+                _this2.router.navigate(['/login']);
               } else {
                 alert("Errore Aggiornamento Evento");
                 _this2.dialogRef.close();
@@ -4782,11 +4801,16 @@ class ModaleComponent {
         yield (yield _this2.eventService.Subscribe(EventSubscription)).subscribe(data => {
           if (data != null && data.Data != null) {
             alert("Iscrizione effettuata");
-            window.location.reload();
+            let currentUrl = _this2.router.url;
+            _this2.router.navigateByUrl('/', {
+              skipLocationChange: true
+            }).then(() => {
+              _this2.router.navigate([currentUrl]);
+            });
           } else {
             if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
               alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
+              _this2.router.navigate(['/login']);
             } else if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Conflict) {
               alert("E' gia stata effettuata un iscrizione per queste categorie");
               _this2.dialogRef.close();
@@ -4822,11 +4846,16 @@ class ModaleComponent {
       yield (yield _this3.docService.AddDocument(document)).subscribe(data => {
         if (data != null && data.Data != null) {
           alert("Documento Inserito");
-          window.location.reload();
+          let currentUrl = _this3.router.url;
+          _this3.router.navigateByUrl('/', {
+            skipLocationChange: true
+          }).then(() => {
+            _this3.router.navigate([currentUrl]);
+          });
         } else {
           if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            _this3.router.navigate(['/login']);
           } else if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.PayloadTooLarge) {
             alert("Il documento che stai provando a inserire è troppo grande");
             _this3.dialogRef.close();
@@ -4864,11 +4893,16 @@ class ModaleComponent {
       yield (yield _this4.eventService.AddEvent(event)).subscribe(data => {
         if (data != null && data.Data != null) {
           alert("Evento Creato");
-          window.location.reload();
+          let currentUrl = _this4.router.url;
+          _this4.router.navigateByUrl('/', {
+            skipLocationChange: true
+          }).then(() => {
+            _this4.router.navigate([currentUrl]);
+          });
         } else {
           if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
             alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
+            _this4.router.navigate(['/login']);
           } else {
             alert("Errore creazione Evento");
             _this4.dialogRef.close();
@@ -4887,11 +4921,16 @@ class ModaleComponent {
             yield (yield _this5.subService.UpdateAbbonamenti(src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__.SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
               if (data != null && data.Data != null) {
                 alert("Pagamento Confermato");
-                window.location.reload();
+                let currentUrl = _this5.router.url;
+                _this5.router.navigateByUrl('/', {
+                  skipLocationChange: true
+                }).then(() => {
+                  _this5.router.navigate([currentUrl]);
+                });
               } else {
                 if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
                   alert("La tua sessione è scaduta, rieffettua il login");
-                  window.location.href = '/login';
+                  _this5.router.navigate(['/login']);
                 } else {
                   alert("Errore conferma pagamento");
                   _this5.dialogRef.close();
@@ -4906,11 +4945,16 @@ class ModaleComponent {
             yield (yield _this5.subService.UpdateAbbonamenti(src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__.SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
               if (data != null && data.Data != null) {
                 alert("Pagamento Rifuitato");
-                window.location.reload();
+                let currentUrl = _this5.router.url;
+                _this5.router.navigateByUrl('/', {
+                  skipLocationChange: true
+                }).then(() => {
+                  _this5.router.navigate([currentUrl]);
+                });
               } else {
                 if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
                   alert("La tua sessione è scaduta, rieffettua il login");
-                  window.location.href = '/login';
+                  _this5.router.navigate(['/login']);
                 } else {
                   alert("Errore rifiuto pagamento");
                   _this5.dialogRef.close();
@@ -4925,11 +4969,16 @@ class ModaleComponent {
             yield (yield _this5.subService.UpdateAbbonamenti(src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__.SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
               if (data != null && data.Data != null) {
                 alert("Il pagamento è stato processato, non appena avremo ricevuto l'esito ti notificheremo l'abilitazione dell'abbonamento." + "In caso di problemi nel pagamento contattare .....");
-                window.location.reload();
+                let currentUrl = _this5.router.url;
+                _this5.router.navigateByUrl('/', {
+                  skipLocationChange: true
+                }).then(() => {
+                  _this5.router.navigate([currentUrl]);
+                });
               } else {
                 if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
                   alert("La tua sessione è scaduta, rieffettua il login");
-                  window.location.href = '/login';
+                  _this5.router.navigate(['/login']);
                 } else {
                   alert("Errore aggiornamento url");
                   _this5.dialogRef.close();
@@ -4943,11 +4992,16 @@ class ModaleComponent {
             yield (yield _this5.subService.UpdateAbbonamenti(src_app_Model_Base_enum__WEBPACK_IMPORTED_MODULE_1__.SubscriptionOperation.CancellaAbbonamento, subscription)).subscribe(data => {
               if (data != null && data.Data != null) {
                 alert("Abbonamento Cancellato");
-                window.location.reload();
+                let currentUrl = _this5.router.url;
+                _this5.router.navigateByUrl('/', {
+                  skipLocationChange: true
+                }).then(() => {
+                  _this5.router.navigate([currentUrl]);
+                });
               } else {
                 if (data.Error != null && data.Error.Code == _angular_common_http__WEBPACK_IMPORTED_MODULE_14__.HttpStatusCode.Unauthorized) {
                   alert("La tua sessione è scaduta, rieffettua il login");
-                  window.location.href = '/login';
+                  _this5.router.navigate(['/login']);
                 } else {
                   alert("Errore cancellazione abbonamento");
                   _this5.dialogRef.close();
@@ -4985,7 +5039,7 @@ class ModaleComponent {
   }
   static {
     this.ɵfac = function ModaleComponent_Factory(__ngFactoryType__) {
-      return new (__ngFactoryType__ || ModaleComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogRef), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MAT_DIALOG_DATA), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_6__.CommonService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_7__.UtentiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Abbonamenti_abbonamenti_service__WEBPACK_IMPORTED_MODULE_8__.AbbonamentiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Documenti_documenti_service__WEBPACK_IMPORTED_MODULE_9__.DocumentiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_10__.EventiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_15__.DatePipe));
+      return new (__ngFactoryType__ || ModaleComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogRef), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MAT_DIALOG_DATA), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Common_common_service__WEBPACK_IMPORTED_MODULE_6__.CommonService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Utenti_utenti_service__WEBPACK_IMPORTED_MODULE_7__.UtentiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Abbonamenti_abbonamenti_service__WEBPACK_IMPORTED_MODULE_8__.AbbonamentiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Documenti_documenti_service__WEBPACK_IMPORTED_MODULE_9__.DocumentiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](src_Services_Eventi_eventi_service__WEBPACK_IMPORTED_MODULE_10__.EventiService), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_15__.DatePipe), _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_17__.Router));
     };
   }
   static {
@@ -4994,8 +5048,8 @@ class ModaleComponent {
       selectors: [["app-modale"]],
       viewQuery: function ModaleComponent_Query(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵviewQuery"](_angular_material_sort__WEBPACK_IMPORTED_MODULE_17__.MatSort, 5);
-          _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵviewQuery"](_angular_material_paginator__WEBPACK_IMPORTED_MODULE_18__.MatPaginator, 5);
+          _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵviewQuery"](_angular_material_sort__WEBPACK_IMPORTED_MODULE_18__.MatSort, 5);
+          _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵviewQuery"](_angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__.MatPaginator, 5);
         }
         if (rf & 2) {
           let _t;
@@ -5046,7 +5100,7 @@ class ModaleComponent {
           _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵproperty"]("ngIf", ctx.data.type == "SubscribeEvent");
         }
       },
-      dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_15__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_15__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgSelectOption, _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ɵNgSelectMultipleOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgForm, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormControlName, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogTitle, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogActions, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogContent, _angular_material_button__WEBPACK_IMPORTED_MODULE_19__.MatButton, _angular_material_input__WEBPACK_IMPORTED_MODULE_20__.MatInput, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_21__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_21__.MatLabel, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_21__.MatError, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatTable, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderCellDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderRowDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatColumnDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatCellDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatRowDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderCell, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatCell, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderRow, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatRow, _angular_material_sort__WEBPACK_IMPORTED_MODULE_17__.MatSort, _angular_material_sort__WEBPACK_IMPORTED_MODULE_17__.MatSortHeader, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_18__.MatPaginator, _angular_material_menu__WEBPACK_IMPORTED_MODULE_22__.MatMenu, _angular_material_menu__WEBPACK_IMPORTED_MODULE_22__.MatMenuItem, _angular_material_menu__WEBPACK_IMPORTED_MODULE_22__.MatMenuTrigger, _angular_material_select__WEBPACK_IMPORTED_MODULE_23__.MatSelect, _angular_material_core__WEBPACK_IMPORTED_MODULE_24__.MatOption],
+      dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_15__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_15__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgSelectOption, _angular_forms__WEBPACK_IMPORTED_MODULE_13__["ɵNgSelectMultipleOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.NgForm, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormControlName, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogTitle, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogActions, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__.MatDialogContent, _angular_material_button__WEBPACK_IMPORTED_MODULE_20__.MatButton, _angular_material_input__WEBPACK_IMPORTED_MODULE_21__.MatInput, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_22__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_22__.MatLabel, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_22__.MatError, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatTable, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderCellDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderRowDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatColumnDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatCellDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatRowDef, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderCell, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatCell, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatHeaderRow, _angular_material_table__WEBPACK_IMPORTED_MODULE_12__.MatRow, _angular_material_sort__WEBPACK_IMPORTED_MODULE_18__.MatSort, _angular_material_sort__WEBPACK_IMPORTED_MODULE_18__.MatSortHeader, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__.MatPaginator, _angular_material_menu__WEBPACK_IMPORTED_MODULE_23__.MatMenu, _angular_material_menu__WEBPACK_IMPORTED_MODULE_23__.MatMenuItem, _angular_material_menu__WEBPACK_IMPORTED_MODULE_23__.MatMenuTrigger, _angular_material_select__WEBPACK_IMPORTED_MODULE_24__.MatSelect, _angular_material_core__WEBPACK_IMPORTED_MODULE_25__.MatOption],
       styles: [".checkbox-column[_ngcontent-%COMP%] {\n    display: flex;\n    flex-direction: column;\n    margin-bottom: 10px;\n  }\n  \n.modal-checkbox[_ngcontent-%COMP%] {\n    display: flex;\n    align-items: center;\n    margin-left: 20px; \n\n  }\n\n.modal-text[_ngcontent-%COMP%] {\n    display: flex;\n    align-items: center;\n    margin-left: 20px; \n\n  }\n\n.modal-competitors[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: column;\n  margin-left: 20px; \n\n}\n\n  \n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9hcHAvQ29tcG9uZW50L21vZGFsZS9tb2RhbGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsbUJBQW1CO0VBQ3JCOztBQUVGO0lBQ0ksYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixpQkFBaUIsRUFBRSwrQkFBK0I7RUFDcEQ7O0FBRUY7SUFDSSxhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLGlCQUFpQixFQUFFLCtCQUErQjtFQUNwRDs7QUFFRjtFQUNFLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsaUJBQWlCLEVBQUUsK0JBQStCO0FBQ3BEIiwic291cmNlc0NvbnRlbnQiOlsiLmNoZWNrYm94LWNvbHVtbiB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gIH1cbiAgXG4ubW9kYWwtY2hlY2tib3gge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBtYXJnaW4tbGVmdDogMjBweDsgLyogQWRqdXN0IHRoZSB2YWx1ZSBhcyBuZWVkZWQgKi9cbiAgfVxuXG4ubW9kYWwtdGV4dCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIG1hcmdpbi1sZWZ0OiAyMHB4OyAvKiBBZGp1c3QgdGhlIHZhbHVlIGFzIG5lZWRlZCAqL1xuICB9XG5cbi5tb2RhbC1jb21wZXRpdG9ycyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjb2x1bW47XG4gIG1hcmdpbi1sZWZ0OiAyMHB4OyAvKiBBZGp1c3QgdGhlIHZhbHVlIGFzIG5lZWRlZCAqL1xufVxuXG4gICJdLCJzb3VyY2VSb290IjoiIn0= */"]
     });
   }
@@ -5217,8 +5271,7 @@ class NavBarComponent {
     this.common.deleteCookie("surname");
     this.isLogged = false;
     this.isAdmin = false;
-    window.location.href = '/';
-    //window.location.reload();
+    this.router.navigate(['/']);
   }
   collapse() {
     this.isExpanded = false;
@@ -5395,8 +5448,8 @@ class FakeBackendInterceptor {
         if (!url.toLowerCase().includes('authenticate')) return unathorized();
       }
       switch (true) {
-        case method === 'PUT' || method === 'POST':
-          return ok();
+        //case method === 'PUT' || method === 'POST':
+        //    return ok();
         case url.toLowerCase().includes('authenticate') && method === 'GET':
           return authenticate();
         case url.toLowerCase().includes('getallusers') && method === 'GET':
