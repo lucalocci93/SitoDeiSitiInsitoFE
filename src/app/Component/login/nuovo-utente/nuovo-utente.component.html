@@ -1,4 +1,5 @@
-<div class="container mt-5">
+<div class="registration-page">
+<div class="registration-container container mt-5" [@fadeIn]>
     <h2>INSERISCI I TUOI DATI PER REGISTRARTI</h2>
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -85,8 +86,10 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input id="password" type="password" formControlName="password" class="form-control" />
-        <div *ngIf="userForm.get(['password'])?.errors?.['required']">Password obbligatoria.</div>
-        <div *ngIf="userForm.get(['password'])?.errors?.['minLength']">La Password deve essere di almeno 6 caratteri.</div>
+        <div *ngIf="userForm.get(['password'])?.invalid && userForm.get(['password'])?.touched" class="text-danger">
+          <div *ngIf="userForm.get(['password'])?.errors?.['required']">Password obbligatoria.</div>
+          <!--<div *ngIf="userForm.get(['password'])?.errors?.['minLength']">La Password deve essere di almeno 6 caratteri.</div>-->
+        </div>
       </div>
       <br/>
       <div class="form-group">
@@ -101,4 +104,5 @@
       <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Registrati</button>
     </form>
   </div>
+</div>
   

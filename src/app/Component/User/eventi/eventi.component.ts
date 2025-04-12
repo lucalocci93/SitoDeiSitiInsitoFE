@@ -8,6 +8,7 @@ import { ModaleComponent } from '../../modale/modale.component';
 import { ModalData } from 'src/app/Interface/modal-data';
 import { Iscrizione, IscrizioneExt, SingolaIscrizione } from 'src/app/Model/Evento/Iscrizione';
 import { Categoria } from 'src/app/Model/Evento/Categoria';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-eventi',
@@ -34,6 +35,8 @@ export class EventiComponent implements OnInit {
   pageSizes = [5, 10, 15, 20];
 
   displayedColumns: string[] = ['TipoAbbonamento', 'DataInizio', 'DataScadenza'];
+
+  datePipe: DatePipe = new DatePipe('en-US');
 
   async ngOnInit() {
 

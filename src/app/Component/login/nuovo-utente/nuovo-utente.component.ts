@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/Model/User/User'
 import { Response } from 'src/app/Model/Base/response'
 import { LoginService } from 'src/Services/Login/login.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-nuovo-utente',
@@ -30,7 +31,7 @@ export class NuovoUtenteComponent {
         region: ['', Validators.required],
         nation: ['', Validators.required],
         userEmail: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        password: ['', [Validators.required]],//, Validators.minLength(6)]],
         consensoInvioEmail: [true]
       });
     }

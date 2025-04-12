@@ -8,6 +8,7 @@ import { DocumentiService } from 'src/Services/Documenti/documenti.service';
 import { ModalDocumentData } from 'src/app/Interface/modal-document-data';
 import { Task } from 'zone.js/lib/zone-impl';
 import { map } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-documenti',
@@ -20,6 +21,7 @@ export class DocumentiComponent {
   DocType : TipoDocumento[] = [];
 
   UserId: string | null = "";
+  datePipe: DatePipe = new DatePipe('en-US');
 
   constructor(private CommonService : CommonService, private DocumentService: DocumentiService, public dialog: MatDialog) {
     this.UserId = CommonService.getCookie("sub");
