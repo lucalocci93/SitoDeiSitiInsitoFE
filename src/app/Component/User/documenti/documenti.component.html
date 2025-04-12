@@ -1,28 +1,24 @@
 <div *ngIf="DocList.length > 0">
   <div class="container mt-5">
-    <table class="table table-striped">
-      <thead>
+    <table class="table table-striped table-responsive">
+      <thead class="thead-dark">
         <tr>
           <th scope="col">Tipo Documento</th>
           <th scope="col">Nome Documento</th>
           <th scope="col">Data Caricamento</th>
-          <th scope="col">Actions</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of DocList">
           <td scope="row">{{getTypeById(item.idTipoDocumento)}}</td>
           <td scope="row">{{item.nomeDocumento}}</td>
-          <td scope="row">{{item.dataCaricamento}}</td>
+          <td scope="row">{{this.datePipe.transform(item.dataCaricamento, 'dd-MM-yyyy')}}</td>
           <td>
             <div class="dropdown">
-              <button class="btn btn-secondary" type="button" id="viewDoc" (click)="openDoc(item.idDocumento)" aria-expanded="false">
+              <button class="btn btn-primary" type="button" id="viewDoc" (click)="openDoc(item.idDocumento)" aria-expanded="false">
                 Scarica
               </button>
-              <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#" (click)="onMenuAction('view', item)">Visualizza</a></li>
-                <li><a class="dropdown-item" href="#" (click)="onMenuAction('edit', item)">Scarica</a></li>
-              </ul>-->
             </div>
           </td>
         </tr>
@@ -31,6 +27,5 @@
   </div>
 </div>
 <div *ngIf="DocList.length == 0">
-  <h2>Al momento non hai nessun documento</h2>
+  <h2 class="text-center mt-5">Al momento non hai nessun documento</h2>
 </div>
-  

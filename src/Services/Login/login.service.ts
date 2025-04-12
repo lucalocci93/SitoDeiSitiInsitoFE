@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 import { User } from 'src/app/Model/User/User';
 import { HTTPResponseError, Response } from 'src/app/Model/Base/response';
 import { Jwt } from 'src/app/Interface/Jwt';
+import { sha256 } from 'js-sha256';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class LoginService {
 
   async login(email: string, password: string){
 
-    var cryptedEmail = email;//sha256('sha256').update(email).digest('hex');
-    var cryptedPassword = password;//sha256('sha256').update(password).digest('hex');
+    var cryptedEmail = sha256(email);
+    var cryptedPassword = sha256(password);
 
     const headers = new HttpHeaders({'accept': '*/*' });
     let endpoint = this.ApiEndpoint.concat("Authenticate?Username=", cryptedEmail, "&", "Password=", cryptedPassword);

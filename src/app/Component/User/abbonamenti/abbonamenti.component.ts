@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -27,6 +28,8 @@ export class AbbonamentiComponent {
   displayedColumns: string[] = ['TipoAbbonamento', 'DataInizio', 'DataScadenza'];
 
   today = new Date();
+  datePipe: DatePipe = new DatePipe('en-US');
+  
 
   constructor(private SubService: AbbonamentiService, private common: CommonService, public dialog: MatDialog) {}
     

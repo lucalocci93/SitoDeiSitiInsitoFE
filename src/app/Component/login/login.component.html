@@ -1,18 +1,20 @@
 <body>
+  <div class="card mx-auto mt-5 p-4 shadow" *ngIf="!isLogged" style="max-width: 400px;">
+    <h2 class="text-center">Login</h2>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control mb-3" placeholder="Inserisci email per login" required [(ngModel)]="email" name="email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control mb-3" placeholder="Inserisci password per login" required [(ngModel)]="password" name="password">
+      </div>
+      <button type="button" class="btn btn-primary btn-block" (click)="Login()">Login</button>
+    </form>
+    <p class="text-center mt-3">Per registrarti clicca <a [routerLink]="['/login/newuser']">qui</a></p>
+  </div>
 
-<div class="card" *ngIf="!isLogged">
-  <h2>Login</h2>
-  <form>
-      <input type="text" placeholder="Inserisci email per login" required [(ngModel)]="email" name="email">
-      <input type="password" placeholder="Inserisci password per login" required [(ngModel)]="password" name="password">
-      <button type="button" (click)="Login()">Login</button>
-  </form>
-  <p class="btn info"> per registrarti clicca <a [routerLink]="['/login/newuser']">qui</a></p> 
-</div>
-
-<div class="card" *ngIf="isLogged">
-  <h2>Benvenuto {{Name}}</h2>
-  <button (keydown.enter)='Inizia()' (click)="Inizia()">Clicca qui per iniziare</button>
-</div>
-
+  <div class="card mx-auto mt-5 p-4 shadow" *ngIf="isLogged" style="max-width: 400px;">
+    <h2 class="text-center">Benvenuto {{Name}}</h2>
+    <button class="btn btn-success btn-block" (keydown.enter)='Inizia()' (click)="Inizia()">Clicca qui per iniziare</button>
+  </div>
 </body>
