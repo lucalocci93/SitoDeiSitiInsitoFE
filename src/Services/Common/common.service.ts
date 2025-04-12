@@ -164,5 +164,8 @@ removeSession(key: string): boolean {
     return new File([u8arr], filename, { type: mime });
   }
   
+  getUrlForGoogleDrive(url: string): string {
+    return url.replace('https://drive.google.com/file', 'https://lh3.googleusercontent.com').replace('/view?usp=drive_link', '');
+  }
     //#endregion
 }

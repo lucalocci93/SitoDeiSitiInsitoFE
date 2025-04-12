@@ -269,4 +269,10 @@
     .section-title {
       font-size: 2rem;
     }
+
+    .slide-image {
+      width: 100%;
+      height: auto;
+    }
+    
   }

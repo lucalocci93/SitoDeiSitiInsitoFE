@@ -10,6 +10,7 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 })
 export class HomeComponent implements OnInit {
 
+  constructor(private commonService: CommonService) { }
   currentSlide = 0;
   autoPlayInterval: any;
 
@@ -19,12 +20,12 @@ export class HomeComponent implements OnInit {
 
   slides = [
     {
-      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48',
+      image: this.commonService.getUrlForGoogleDrive('https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link'),
       title: 'Transform Your Body',
       description: 'Start your fitness journey today with our expert trainers',
       buttonText: 'Start Now'
-    },
-    {
+    }
+    ,{
       image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438',
       title: 'Expert Trainers',
       description: 'Get personalized workout plans tailored to your goals',
