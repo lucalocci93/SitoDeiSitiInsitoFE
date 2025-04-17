@@ -22,11 +22,11 @@ export class LoginService {
 
   async login(email: string, password: string){
 
-    var cryptedEmail = sha256(email);
+    //var cryptedEmail = sha256(email);
     var cryptedPassword = sha256(password);
 
     const headers = new HttpHeaders({'accept': '*/*' });
-    let endpoint = this.ApiEndpoint.concat("Authenticate?Username=", cryptedEmail, "&", "Password=", cryptedPassword);
+    let endpoint = this.ApiEndpoint.concat("Authenticate?Username=", email, "&", "Password=", cryptedPassword);
 
     return this.http.get<Jwt>(endpoint, {headers}).pipe(
       map(response => new Response<Jwt>(response, new HTTPResponseError(200, "OK"))),

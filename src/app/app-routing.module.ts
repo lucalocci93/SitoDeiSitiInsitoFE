@@ -10,6 +10,7 @@ import { GestioneutentiComponent } from './Component/Admin/gestioneutenti/gestio
 import { AbbonamentiComponent } from './Component/User/abbonamenti/abbonamenti.component';
 import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
 import { EventiComponent } from './Component/User/eventi/eventi.component';
+import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gestionegrafica.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'abbonamenti', component: AbbonamentiComponent, pathMatch: 'full' },
   { path: 'eventi', component: EventiComponent, pathMatch: 'full' },
   { path: 'gestioneutenti', component: GestioneutentiComponent, pathMatch: 'full' },
-  { path: 'gestioneeventi', component: GestioneEventiComponent, pathMatch: 'full' }
+  { path: 'gestioneeventi', component: GestioneEventiComponent, pathMatch: 'full' },
+  { path: 'gestionegrafica', component: GestioneGraficaComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
