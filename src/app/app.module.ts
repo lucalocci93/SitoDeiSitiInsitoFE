@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,6 +40,7 @@ import { EventiService } from 'src/Services/Eventi/eventi.service';
 import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
 import { EventiComponent } from './Component/User/eventi/eventi.component';
 import { DatePipe } from '@angular/common';
+import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gestionegrafica.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -53,6 +55,7 @@ import { DatePipe } from '@angular/common';
         AbbonamentiComponent,
         GestioneutentiComponent,
         GestioneEventiComponent,
+        GestioneGraficaComponent,
         ModaleComponent,
         SpinnerComponent
     ],
@@ -70,7 +73,9 @@ import { DatePipe } from '@angular/common';
         MatPaginatorModule,
         MatMenuModule,
         MatSelectModule,
-        MatOptionModule
+        MatOptionModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule
     ],
     providers: [
             CommonService,

@@ -16,3 +16,8 @@ export enum SubscriptionOperation {
     AggiornaInfoPagamento,
     SetAbbonamentoPagato
 }
+
+export enum Pagine{
+    Homepage = 1,
+    Contatti = 2
+}

@@ -51,6 +51,9 @@
           <li *ngIf="isLogged && isAdmin">
             <a class="nav-link text-dark" [routerLink]="['/gestioneutenti']"> Gestione Utenti </a>
           </li>
+          <li *ngIf="isLogged && isAdmin">
+            <a class="nav-link text-dark" [routerLink]="['/gestionegrafica']"> Gestione Grafica </a>
+          </li>
 
         </ul>
       </div>

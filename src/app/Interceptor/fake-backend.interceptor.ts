@@ -11,6 +11,8 @@ import { TipoDocumento } from '../Model/Documento/TipoDocumento';
 import { Documento, DocumentoExt } from '../Model/Documento/Documento';
 import { Evento } from '../Model/Evento/Evento';
 import { Categoria } from '../Model/Evento/Categoria';
+import { Pages } from '../Interface/Pagine';
+import { Images } from '../Model/Sito/Immagine';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -25,18 +27,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             
             const token = request.headers.get('authorization');
 
-            if (token) {
-                const decodedToken: any = jwtDecode(token);
-                const currentTime = Math.floor(Date.now() / 1000);
+            //if (token) {
+            //    const decodedToken: any = jwtDecode(token);
+            //    const currentTime = Math.floor(Date.now() / 1000);
 
-                if (decodedToken.exp < currentTime) {
-                    return unathorized();
-                }
-            }
-            else{
-                if(!url.toLowerCase().includes('authenticate'))
-                    return unathorized();
-            }
+            //    if (decodedToken.exp < currentTime) {
+            //        return unathorized();
+            //    }
+            //}
+            //else{
+            //    if(!url.toLowerCase().includes('authenticate'))
+            //        return unathorized();
+            //}
 
             switch (true) {
                 //case method === 'PUT' || method === 'POST':
@@ -59,6 +61,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return GetEvents();
                 case url.toLowerCase().includes('getcategories') && method === 'GET':
                     return GetCategories();
+                case url.toLowerCase().includes('getpagine') && method === 'GET':
+                    return GetPages();
+                case url.toLowerCase().includes('getimmmagini') && method === 'GET':
+                    return GetImages();
+                //case url.toLowerCase().includes('bypagina') && method === 'GET':
+                //    return GetImagesByPage();
                 default:
                     // Pass through any requests not handled above
                     return next.handle(request);
@@ -70,12 +78,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             let loginoutputAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3N1cm5hbWUiOiJ0ZXN0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoidGVzdEB0ZXN0LnRlc3QiLCJDb2RGaXNjYWxlIjoidHN0dHN0OTNjMDZjNDE1bSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwic3ViIjoiZGJmZGJkOTAtOTY2Yy00NGM5LWIzMWMtMDk5ZTU2OTJiMzVhIiwiZXhwIjoyNzM1NTM4ODE2LCJpc3MiOiJpbyIsImF1ZCI6InZvaSJ9.c0YoVEzSAPAlX4RXfe7oYf98F6cvZwKYLdxHmTveMiQ";
             let loginoutputUser = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibHUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zdXJuYW1lIjoibG9jY2kiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJub2FkbWluQHRlc3QudGVzdCIsIkNvZEZpc2NhbGUiOiJsY2NsY3U5M2MwNmM0MTVtIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsInN1YiI6IjRiYjdkNWVmLTM0YWEtNGFkOS1hZDRiLTRmMTU4OTdjMzRjNCIsImV4cCI6MjczNTUzODg3OCwiaXNzIjoiaW8iLCJhdWQiOiJ2b2kifQ.ZqXcJTPV_Vd1u1hZQDW0mrVDRBQlcL9yXdAmiRz_t8g";
             
-            if(url.toLowerCase().includes("username=7e6ea62ad413e64265919670246b2992f4d15ca38b994c27298b63a588dd8ba8")
+            if(url.toLowerCase().includes("username=test@test.test")
                  && url.toLowerCase().includes("password=9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08")){
                 return of(new HttpResponse({ status: 200, body: {success:true, data: {token:loginoutputAdmin}} }));
             }
 
-            if(url.toLowerCase().includes("username=1500c3a138a65a9d4f7e719c5b53959375453162fead62ad94c32413b280c45c") 
+            if(url.toLowerCase().includes("username=noadmin@test.test") 
                 && url.toLowerCase().includes("password=fbe03dc7f00d059debe445169f331bba6d217008c91a6e98678556eef11ed85a")){
                 return of(new HttpResponse({ status: 200, body: {success:true, data: {token:loginoutputUser}} }));
 
@@ -435,6 +443,111 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 {
                     Id: 7,
                     Descrizione: "OVER65"
+                }
+            ];
+            return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+        }
+
+        function GetPages(){
+            let response : Pages[] = [{id:1,page:"Homepage"},{id:2,page:"Contatti"}];
+            return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+        }
+
+        function GetImagesByPage(){
+            let response : Images[] = [
+                {
+                    id: 3,
+                    urlImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+                    page: 1,
+                    section: 1,
+                    urlFromGoogleDrive: false,
+                    title: "Expert Trainers",
+                    description: "Get personalized workout plans tailored to your goals",
+                    additionalText: "Meet Our Trainers",
+                    order: 2
+                },
+                {
+                    id: 4,
+                    urlImage: "",
+                    page: 1,
+                    section: 3,
+                    urlFromGoogleDrive: false,
+                    title: "Basic",
+                    description: "$29/month",
+                    additionalText: " Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
+                    order: 1
+                },
+                {
+                    id: 5,
+                    urlImage: "",
+                    page: 1,
+                    section: 3,
+                    urlFromGoogleDrive: false,
+                    title: "Elite",
+                    description: "$99/month",
+                    additionalText: "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
+                    order: 3
+                },
+                {
+                    id: 6,
+                    urlImage: "",
+                    page: 1,
+                    section: 3,
+                    urlFromGoogleDrive: false,
+                    title: "Premium",
+                    description: "$59/month",
+                    additionalText: "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
+                    order: 2
+                }
+            ];
+            return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+        }
+
+        function GetImages(){
+            let response : Images[] = [
+                {
+                    id: 3,
+                    urlImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+                    page: 1,
+                    section: 1,
+                    urlFromGoogleDrive: false,
+                    title: "Expert Trainers",
+                    description: "Get personalized workout plans tailored to your goals",
+                    additionalText: "Meet Our Trainers",
+                    order: 2
+                },
+                {
+                    id: 4,
+                    urlImage: "",
+                    page: 1,
+                    section: 3,
+                    urlFromGoogleDrive: false,
+                    title: "Basic",
+                    description: "$29/month",
+                    additionalText: " Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
+                    order: 1
+                },
+                {
+                    id: 5,
+                    urlImage: "",
+                    page: 1,
+                    section: 3,
+                    urlFromGoogleDrive: false,
+                    title: "Elite",
+                    description: "$99/month",
+                    additionalText: "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
+                    order: 3
+                },
+                {
+                    id: 6,
+                    urlImage: "",
+                    page: 1,
+                    section: 3,
+                    urlFromGoogleDrive: false,
+                    title: "Premium",
+                    description: "$59/month",
+                    additionalText: "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
+                    order: 2
                 }
             ];
             return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));

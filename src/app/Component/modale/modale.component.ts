@@ -23,6 +23,9 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Iscrizione } from 'src/app/Model/Evento/Iscrizione';
 import { Competitors } from 'src/app/Interface/Competitors';
 import { Router } from '@angular/router';
+import { SitoService } from 'src/Services/Sito/sito.service';
+import { Pages } from 'src/app/Interface/Pagine';
+import { Images } from 'src/app/Model/Sito/Immagine';
 
 @Component({
   selector: 'app-modale',
@@ -42,13 +45,17 @@ export class ModaleComponent implements OnInit {
 
   DataEvent : Evento | undefined;
   CategoriesData : Categoria[] = [];
-  selectedCategories: number[] = [];
   Competitors: Competitors[] = [];
+
+  Pages: Pages[] = [];
+
+  selected: number[] = [];
 
   UserForm: FormGroup;
   SubForm: FormGroup;
   DocForm: FormGroup;
   EventForm : FormGroup;
+  ImageForm : FormGroup;
 
   displayedColumns: string[] = ['Tipo', 'Inizio', 'Scadenza', "Pagato", "Azioni"];
   dataSource = new MatTableDataSource(this.subList);
@@ -66,6 +73,7 @@ export class ModaleComponent implements OnInit {
     private subService: AbbonamentiService,
     private docService: DocumentiService,
     private eventService : EventiService,
+    private sitoService : SitoService,
     private fb: FormBuilder,
     private datePipe: DatePipe,
     private router: Router
@@ -110,6 +118,15 @@ export class ModaleComponent implements OnInit {
       //CatEvento: this.fb.array(this.CategoriesData.map(() => false))
     });
 
+    this.ImageForm = this.fb.group({
+      UrlImage: ['', Validators.required],
+      Pagina: ['', Validators.required],
+      Sezione: ['', Validators.required],
+      UrldaGoogleDrive:[ false, Validators.required],
+      Titolo: ['', Validators.required],
+      Descrizione: ['', Validators.required],
+      TestoAzione: ['', Validators.required]
+    });
   }
     
   async ngOnInit() {
@@ -246,7 +263,7 @@ export class ModaleComponent implements OnInit {
     if(this.data.type == 'AddEvent')
     {
         this.CategoriesData = [];
-        this.selectedCategories = [];
+        this.selected = [];
         await(await this.eventService.GetCategorie()).subscribe(cat => {
           if(cat != null && cat.Data != null){
             this.CategoriesData = cat.Data;
@@ -267,7 +284,7 @@ export class ModaleComponent implements OnInit {
 
     if(this.data.type == 'updateEventInfo'){
         this.CategoriesData = [];
-        this.selectedCategories = [];
+        this.selected = [];
         let eventData = this.data.object as eventData;
 
         await(await this.eventService.GetCategorie()).subscribe(cat => {
@@ -311,7 +328,7 @@ export class ModaleComponent implements OnInit {
 
     if(this.data.type == 'SubscribeEvent'){
       this.CategoriesData = [];
-      this.selectedCategories = [];
+      this.selected = [];
       let eventData = this.data.object as eventData;
 
       await(await this.eventService.GetEvento(eventData.id)).subscribe(event => {
@@ -331,7 +348,7 @@ export class ModaleComponent implements OnInit {
 
     if(this.data.type == 'GetCompetitors'){
       this.CategoriesData = [];
-      this.selectedCategories = [];
+      this.selected = [];
       this.Competitors = [];
       let eventData = this.data.object as eventData;
 
@@ -364,7 +381,26 @@ export class ModaleComponent implements OnInit {
           this.dialogRef.close();
         }
       });
-  }
+    }
+
+    if(this.data.type == 'AddImage'){
+      this.selected = [];
+      this.Pages = [];
+
+      await(await this.sitoService.GetPagine()).subscribe(pages => {
+        if(pages != null && pages.Data != null){
+          this.Pages = pages.Data;
+        }
+        else if(pages.Error != null && pages.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+        }
+        else{
+          alert("Errore recupero Pagine");
+          this.dialogRef.close();
+        }
+      });
+    }
 
   }
 
@@ -460,7 +496,7 @@ export class ModaleComponent implements OnInit {
       const EventId = this.DataEvent?.id;
       const UserId = this.commonService.getCookie("sub");
 
-      let EventSubscription = new Iscrizione(EventId, UserId, this.selectedCategories, SubscriptionNote)
+      let EventSubscription = new Iscrizione(EventId, UserId, this.selected, SubscriptionNote)
 
       await(await this.eventService.Subscribe(EventSubscription)).subscribe(data => {
         if(data != null && data.Data != null){
@@ -547,7 +583,7 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
   const eventLocation = luogoEventoInput.value;
   const eventDescr = descrizioneEventoInput.value;
   const eventLink = linkEventoInput.value;
-  const eventCategories = this.selectedCategories;
+  const eventCategories = this.selected;
   const locandina = fileInput.files?.[0];
 
   let fileBase64 = "";
@@ -693,17 +729,45 @@ async UpdateSub(action: string, subscription: Abbonamento){
   }
 }
 
+async AddImage(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezioneInput: HTMLInputElement, urlDaGoogleDriveInput: HTMLInputElement, titoloInput : HTMLInputElement,
+  descrizioneInput: HTMLInputElement, testoAggiuntivoInput: HTMLInputElement, ordineInputi: HTMLInputElement)
+  {
+    let image = new Images(null, urlInput.value, parseInt(paginaInput.value, 10), parseInt(sezioneInput.value, 10), urlDaGoogleDriveInput.checked, titoloInput.value, descrizioneInput.value, testoAggiuntivoInput.value, parseInt(ordineInputi.value, 10));
+  
+    await(await this.sitoService.AddImmagine(image)).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Immagine inserita");
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate([currentUrl]);
+        });
+        this.dialogRef.close();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+        }
+        else{
+          alert("Errore inserimento immagine");
+          this.dialogRef.close();
+        }
+      }
+    });
+
+  }
+
   getCategorieDescrizione(CategoriaId: number): string | undefined {
     return this.CategoriesData.find(c => c.Id == CategoriaId)?.Descrizione;
   }
 
-  onCheckboxChange(event: any, category: any) {
+  onCheckboxChange(event: any, checkboxList: any) {
     if (event.target.checked) {
-      this.selectedCategories.push(category.Id);
+      this.selected.push(checkboxList.Id);
     } else {
-      const index = this.selectedCategories.indexOf(category.Id);
+      const index = this.selected.indexOf(checkboxList.Id);
       if (index > -1) {
-        this.selectedCategories.splice(index, 1);
+        this.selected.splice(index, 1);
       }
     }
   }
