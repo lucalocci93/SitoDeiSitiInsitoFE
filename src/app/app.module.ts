@@ -41,6 +41,7 @@ import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestio
 import { EventiComponent } from './Component/User/eventi/eventi.component';
 import { DatePipe } from '@angular/common';
 import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gestionegrafica.component';
+import { NewsComponent } from './Component/news/news.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -57,7 +58,8 @@ import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gest
         GestioneEventiComponent,
         GestioneGraficaComponent,
         ModaleComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        NewsComponent
     ],
     bootstrap: [AppComponent],
     imports: [BrowserModule,

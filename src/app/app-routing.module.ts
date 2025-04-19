@@ -11,12 +11,14 @@ import { AbbonamentiComponent } from './Component/User/abbonamenti/abbonamenti.c
 import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
 import { EventiComponent } from './Component/User/eventi/eventi.component';
 import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gestionegrafica.component';
+import { NewsComponent } from './Component/news/news.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'login/newuser', component: NuovoUtenteComponent, pathMatch: 'full' },
   { path: 'contatti', component: ContattiComponent, pathMatch: 'full' },
+  { path: 'news', component: NewsComponent, pathMatch: 'full' },
   { path: 'documenti', component: DocumentiComponent, pathMatch: 'full' },
   { path: 'abbonamenti', component: AbbonamentiComponent, pathMatch: 'full' },
   { path: 'eventi', component: EventiComponent, pathMatch: 'full' },

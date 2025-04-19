@@ -24,11 +24,14 @@
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
           </li>
-          <li *ngIf="!isLogged">
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
           </li>
-          <li *ngIf="!isLogged">
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a> 
+          </li>
+          <li>
+            <a class="nav-link text-dark" [routerLink]="['/news']">News</a> 
           </li>
           <li *ngIf="isLogged">
             <a class="nav-link text-dark" [routerLink]="['/documenti']">Documenti</a>
