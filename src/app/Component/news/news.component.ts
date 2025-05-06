@@ -5,9 +5,10 @@ import { CommonService } from 'src/Services/Common/common.service';
 import { SitoService } from 'src/Services/Sito/sito.service';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrl: './news.component.css'
+    selector: 'app-news',
+    templateUrl: './news.component.html',
+    styleUrl: './news.component.css',
+    standalone: false
 })
 export class NewsComponent {
 

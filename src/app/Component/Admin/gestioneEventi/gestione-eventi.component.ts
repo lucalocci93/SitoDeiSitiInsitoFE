@@ -27,7 +27,7 @@ export class GestioneEventiComponent {
     displayedColumns: string[] = ['NomeEvento', 'DataInizioEvento', 'DataFineEvento', 'LuogoEvento', 'Categorie', 'Descrizione', 'Link', 'Azioni'];
 
 
-  constructor(private EventiService: EventiService, private common: CommonService, public dialog: MatDialog, private sanitizer: DomSanitizer) { }
+  constructor(private EventiService: EventiService, private common: CommonService, public dialog: MatDialog) { }
     
     async ngOnInit() {
       await (await this.EventiService.GetEventi()).subscribe(data => {
@@ -50,10 +50,10 @@ export class GestioneEventiComponent {
     );
   }
   
-  getSanitizedImage(imageData: string, contentType: string): SafeUrl {
-    if(imageData === null || imageData === undefined || imageData.trim().length === 0) return ""
-    return this.sanitizer.bypassSecurityTrustUrl(`data:${contentType};base64,${imageData}`);
-  }
+  //getSanitizedImage(imageData: string, contentType: string): SafeUrl {
+  //  if(imageData === null || imageData === undefined || imageData.trim().length === 0) return ""
+  //  return this.sanitizer.bypassSecurityTrustUrl(`data:${contentType};base64,${imageData}`);
+  //}
 
   getCategorieDescrizione(categorie: any[]): string {
     return categorie.map(c => c.Descrizione).join(', ');
