@@ -19,5 +19,6 @@ export enum SubscriptionOperation {
 
 export enum Pagine{
     Homepage = 1,
-    Contatti = 2
+    Contatti = 2,
+    News = 3,
 }

@@ -161,8 +161,8 @@
       </td>
     </ng-container>
     <!-- Header and row definitions -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="SubdisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: SubdisplayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
@@ -220,6 +220,38 @@
     </form>
   </mat-dialog-content>
 </div>  
+<div *ngIf="data.type == 'GetDoc'">
+  <h2 mat-dialog-title>Lista Documenti</h2>
+  <table mat-table [dataSource]="documents" class="mat-elevation-z8" matSort>
+    <!-- Define columns -->
+    <ng-container matColumnDef="Tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Documento<th>
+      <td mat-cell *matCellDef="let element" class="center-text">{{getTypeById(element.idTipoDocumento)}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome Documento</th>
+      <td mat-cell *matCellDef="let element" class="center-text">{{element.nomeDocumento}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Data">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Data Caricamento</th>
+      <td mat-cell *matCellDef="let element" class="center-text">{{ this.datePipe.transform(element.dataCaricamento)}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Azioni">
+      <th mat-header-cell *matHeaderCellDef> Azioni </th>
+      <td mat-cell *matCellDef="let element" class="center-text">
+        <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openDoc(element.idDocumento)">Scarica</button>
+          <!--<button mat-menu-item (click)="UpdateSub('RefuseSubPayment', element)">Rifiuta Pagamento</button>-->
+        </mat-menu>
+      </td>
+    </ng-container>
+    <!-- Header and row definitions -->
+    <tr mat-header-row *matHeaderRowDef="DocumentdisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: DocumentdisplayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="documents.length" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>
+</div>
 
 <div *ngIf="data.type == 'AddEvent'">
   <h2 mat-dialog-title>Inserisci Evento</h2>
@@ -260,11 +292,11 @@
   </mat-dialog-content>
   </div>
 
-  <div *ngIf="data.type == 'AddImage'">
+  <div *ngIf="data.type == 'AddSezione'">
     <h2 mat-dialog-title>Inserisci Grafica</h2>
     <mat-dialog-content>
         <!--FORM ADD EVENT-->
-        <form (ngSubmit)="AddImage(UrlInput, paginaInput, sezioneInput, urldaGoogleDriveInput, titoloInput, descrizioneInput, testoAggiuntivoInput, ordineInput)" enctype="multipart/form-data">
+        <form (ngSubmit)="AddSection(UrlInput, paginaInput, sezioneInput, urldaGoogleDriveInput, titoloInput, descrizioneInput, testoAggiuntivoInput, ordineInput)" enctype="multipart/form-data">
           <label for="url">Url</label><br>
           <input type="text" id="url" name="Url" #UrlInput>
           <br><br>
@@ -283,13 +315,13 @@
           <input type="text" id="titolo" name="titolo" #titoloInput>
           <br><br>
           <label for="descrizione">Descrizione</label><br>
-          <input type="text" id="descrizione" name="descrizione" #descrizioneInput>
+          <textarea id="descrizione" name="descrizione" #descrizioneInput></textarea>
           <br><br>
           <label for="testoAggiuntivo">Testo Aggiuntivo</label><br>
-          <input type="text" id="testoAggiuntivo" name="testoAggiuntivo" #testoAggiuntivoInput>
+          <textarea id="testoAggiuntivo" name="testoAggiuntivo" #testoAggiuntivoInput></textarea>
           <br><br>
           <label for="ordine">Ordine</label><br>
-          <input type="ordine" id="ordine" name="ordine" #ordineInput>
+          <input type="number" id="ordine" name="ordine" #ordineInput>
           <br><br>
           <button type="submit">Aggiungi Grafica</button>
           <br><br>

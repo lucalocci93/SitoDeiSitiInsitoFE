@@ -12,7 +12,7 @@ import { Documento, DocumentoExt } from '../Model/Documento/Documento';
 import { Evento } from '../Model/Evento/Evento';
 import { Categoria } from '../Model/Evento/Categoria';
 import { Pages } from '../Interface/Pagine';
-import { Images } from '../Model/Sito/Immagine';
+import { Graphics } from '../Model/Sito/Grafica';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -454,7 +454,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function GetImagesByPage(){
-            let response : Images[] = [
+            let response : Graphics[] = [
                 {
                     id: 3,
                     urlImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
@@ -464,6 +464,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Expert Trainers",
                     description: "Get personalized workout plans tailored to your goals",
                     additionalText: "Meet Our Trainers",
+                    isAdditionalTextMarkdown: false,
                     order: 2
                 },
                 {
@@ -475,6 +476,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Basic",
                     description: "$29/month",
                     additionalText: " Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
+                    isAdditionalTextMarkdown: false,
                     order: 1
                 },
                 {
@@ -486,6 +488,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Elite",
                     description: "$99/month",
                     additionalText: "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
+                    isAdditionalTextMarkdown: false,
                     order: 3
                 },
                 {
@@ -497,6 +500,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Premium",
                     description: "$59/month",
                     additionalText: "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
+                    isAdditionalTextMarkdown: false,
                     order: 2
                 }
             ];
@@ -504,7 +508,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function GetImages(){
-            let response : Images[] = [
+            let response : Graphics[] = [
                 {
                     id: 3,
                     urlImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
@@ -514,6 +518,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Expert Trainers",
                     description: "Get personalized workout plans tailored to your goals",
                     additionalText: "Meet Our Trainers",
+                    isAdditionalTextMarkdown: false,
                     order: 2
                 },
                 {
@@ -525,6 +530,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Basic",
                     description: "$29/month",
                     additionalText: " Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
+                    isAdditionalTextMarkdown: false,
                     order: 1
                 },
                 {
@@ -536,6 +542,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Elite",
                     description: "$99/month",
                     additionalText: "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
+                    isAdditionalTextMarkdown: false,
                     order: 3
                 },
                 {
@@ -547,6 +554,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Premium",
                     description: "$59/month",
                     additionalText: "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
+                    isAdditionalTextMarkdown: false,
                     order: 2
                 }
             ];

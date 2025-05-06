@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CommonService } from '../../../Services/Common/common.service';
 import { LoginService } from '../../../Services/Login/login.service';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -52,8 +53,13 @@ export class LoginComponent {
               }
             }
             else{
-              alert("L'Utente o la Password inseriti non sono corretti");
-              //window.location.reload();
+              if(response.Error != null)
+              {
+                alert(response.Error.Message);
+              }
+              else{
+                alert("L'Utente o la Password inseriti non sono corretti");
+              }
             }
           });
     }

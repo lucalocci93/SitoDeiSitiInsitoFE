@@ -24,9 +24,9 @@
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
           </li>
-          <li>
+          <!--<li>
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
-          </li>
+          </li>-->
           <li>
             <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a> 
           </li>
@@ -55,7 +55,7 @@
             <a class="nav-link text-dark" [routerLink]="['/gestioneutenti']"> Gestione Utenti </a>
           </li>
           <li *ngIf="isLogged && isAdmin">
-            <a class="nav-link text-dark" [routerLink]="['/gestionegrafica']"> Gestione Grafica </a>
+            <a class="nav-link text-dark" [routerLink]="['/gestionesito']"> Gestione Sito </a>
           </li>
 
         </ul>

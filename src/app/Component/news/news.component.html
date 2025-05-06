@@ -1,1 +1,18 @@
-<p>news works!</p>
+<h1>NEWS</h1>
+
+<section class="membership-plans">
+    <div class="plans-grid">
+      <div class="plan-card" *ngFor="let notizia of news">
+        <h3>{{ notizia.title }}</h3>
+        <div class="descr">{{ notizia.description }}</div>
+        <div *ngIf="notizia.isAdditionalTextMarkdown" class="markdown">
+          <p>markdown: {{ notizia.additionalText }}</p>
+          <br><br>
+        </div>
+        <div *ngIf="!notizia.isAdditionalTextMarkdown" class="nomarkdown">
+            <p>Data: {{ notizia.additionalText }}</p>
+            <br><br>
+        </div>
+    </div>
+    </div>
+</section>

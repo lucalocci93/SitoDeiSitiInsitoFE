@@ -25,7 +25,7 @@ import { Competitors } from 'src/app/Interface/Competitors';
 import { Router } from '@angular/router';
 import { SitoService } from 'src/Services/Sito/sito.service';
 import { Pages } from 'src/app/Interface/Pagine';
-import { Images } from 'src/app/Model/Sito/Immagine';
+import { Graphics } from 'src/app/Model/Sito/Grafica';
 
 @Component({
   selector: 'app-modale',
@@ -40,8 +40,10 @@ export class ModaleComponent implements OnInit {
   subscription : Abbonamento | undefined;
   subList : Abbonamento[] = [];
   subType : TipoAbbonamento[] = [];
+
   docType : TipoDocumento[] = [];
   document : Document | undefined;
+  documents : Documento[] = [];
 
   DataEvent : Evento | undefined;
   CategoriesData : Categoria[] = [];
@@ -57,10 +59,14 @@ export class ModaleComponent implements OnInit {
   EventForm : FormGroup;
   ImageForm : FormGroup;
 
-  displayedColumns: string[] = ['Tipo', 'Inizio', 'Scadenza', "Pagato", "Azioni"];
+  SubdisplayedColumns: string[] = ['Tipo', 'Inizio', 'Scadenza', "Pagato", "Azioni"];
+  DocumentdisplayedColumns: string[] = ['Tipo', 'Nome', 'Data', "Azioni"];
+
   dataSource = new MatTableDataSource(this.subList);
 
   fileName: string = "";
+
+  datePipe: DatePipe = new DatePipe('en-GB');
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -75,7 +81,6 @@ export class ModaleComponent implements OnInit {
     private eventService : EventiService,
     private sitoService : SitoService,
     private fb: FormBuilder,
-    private datePipe: DatePipe,
     private router: Router
   ) {
 
@@ -260,6 +265,42 @@ export class ModaleComponent implements OnInit {
       });
     }
 
+    if(this.data.type == 'GetDoc'){
+      this.docType = [];
+      this.documents = [];
+      let userData = this.data.object as userData;
+
+      await(await this.docService.GetTipiDocumenti()).subscribe(data => {
+        if(data != null && data.Data != null){
+          this.docType = data.Data;
+        }
+        else{
+          if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            this.router.navigate(['/login']);
+          }
+          else{
+            alert("Errore recupero Tipi documento");
+            this.dialogRef.close();
+          }
+        }
+      });
+
+      await(await this.docService.GetUserDocuments(userData.rowGuid)).subscribe(data => {
+        if(data != null && data.Data != null){
+          this.documents = data.Data;
+        }
+        else if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+        }
+        else{
+          alert("Errore recupero Documenti dell'utente");
+          this.dialogRef.close();
+        }
+      });
+    }
+
     if(this.data.type == 'AddEvent')
     {
         this.CategoriesData = [];
@@ -383,7 +424,7 @@ export class ModaleComponent implements OnInit {
       });
     }
 
-    if(this.data.type == 'AddImage'){
+    if(this.data.type == 'AddSezione'){
       this.selected = [];
       this.Pages = [];
 
@@ -729,10 +770,10 @@ async UpdateSub(action: string, subscription: Abbonamento){
   }
 }
 
-async AddImage(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezioneInput: HTMLInputElement, urlDaGoogleDriveInput: HTMLInputElement, titoloInput : HTMLInputElement,
-  descrizioneInput: HTMLInputElement, testoAggiuntivoInput: HTMLInputElement, ordineInputi: HTMLInputElement)
+async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezioneInput: HTMLInputElement, urlDaGoogleDriveInput: HTMLInputElement, titoloInput : HTMLInputElement,
+  descrizioneInput: HTMLTextAreaElement, testoAggiuntivoInput: HTMLTextAreaElement, ordineInputi: HTMLInputElement)
   {
-    let image = new Images(null, urlInput.value, parseInt(paginaInput.value, 10), parseInt(sezioneInput.value, 10), urlDaGoogleDriveInput.checked, titoloInput.value, descrizioneInput.value, testoAggiuntivoInput.value, parseInt(ordineInputi.value, 10));
+    let image = new Graphics(null, urlInput.value, parseInt(paginaInput.value, 10), parseInt(sezioneInput.value, 10), urlDaGoogleDriveInput.checked, titoloInput.value, descrizioneInput.value, testoAggiuntivoInput.value, null, parseInt(ordineInputi.value, 10));
   
     await(await this.sitoService.AddImmagine(image)).subscribe(data => {
       if(data != null && data.Data != null){
@@ -771,6 +812,47 @@ async AddImage(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezio
       }
     }
   }
+
+  getTypeById(_id: number): string {
+    const valueObj = this.docType.find(value => value.id === _id);
+    return valueObj ? valueObj.descrizione : '';
+  }  
+
+  async openDoc(DocId: string | null) {
+    var doc = null;
+    await(await this.docService.GetDocument(DocId)).subscribe(data => {
+      if(data != null && data.Data != null){
+          doc = data.Data.datiDocumento.replace('data:application/pdf;base64,','');
+          
+          const byteArray = new Uint8Array(
+            atob(doc)
+            .split('')
+            .map((char) => char.charCodeAt(0))
+          );
+  
+          const file = new Blob([byteArray], {type: 'application/pdf'});
+          const fileUrl = URL.createObjectURL(file);
+  
+          let fileName = data.Data.nomeDocumento;
+          let link = document.createElement('a');
+          link.download = fileName;
+          link.target = '_blank';
+          link.href = fileUrl;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link)
+        }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          window.location.href = '/login';
+        }
+        else{
+          alert("Errore recupero Utenti");
+        }
+      }
+    });
+  }  
 
   formatDate(date: Date): string {
     let _formatdate = this.datePipe.transform(date);

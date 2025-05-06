@@ -21,4 +21,11 @@
   align-items: column;
   margin-left: 20px; /* Adjust the value as needed */
 }
+
+.center-text {
+  text-align: center; /* Center text horizontally */
+  vertical-align: middle; /* Center text vertically */
+  padding: 8px; /* Adjust padding as needed */
+}
+
   

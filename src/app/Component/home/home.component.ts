@@ -3,7 +3,7 @@ import { CommonService } from 'src/Services/Common/common.service';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { SitoService } from 'src/Services/Sito/sito.service';
 import { Pagine } from 'src/app/Model/Base/enum';
-import { Images } from 'src/app/Model/Sito/Immagine';
+import { Graphics } from 'src/app/Model/Sito/Grafica';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +13,9 @@ import { Images } from 'src/app/Model/Sito/Immagine';
 })
 export class HomeComponent {
 
-  images: Images[] = [];
-  slides: Images[] = [];
-  plans: Images[] = [];
+  images: Graphics[] = [];
+  slides: Graphics[] = [];
+  plans: Graphics[] = [];
 
   constructor(private commonService: CommonService, private sitoService: SitoService)
   {
@@ -140,7 +140,7 @@ export class HomeComponent {
     await (await this.sitoService.GetImmaginiByPagina(Pagine.Homepage.valueOf())).subscribe(data => {
       if(data != null && data.Data != null)
         {
-          data.Data.forEach((item: Images) => {
+          data.Data.forEach((item: Graphics) => {
             item.urlImage = item.urlFromGoogleDrive ? this.commonService.getUrlForGoogleDrive(item.urlImage) : item.urlImage;
 
             this.images.push(item);

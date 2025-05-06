@@ -40,14 +40,16 @@ import { EventiService } from 'src/Services/Eventi/eventi.service';
 import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
 import { EventiComponent } from './Component/User/eventi/eventi.component';
 import { DatePipe } from '@angular/common';
-import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gestionegrafica.component';
+import { GestioneGraficaComponent } from './Component/Admin/gestione-sito/gestioneGrafica/gestionegrafica.component';
 import { NewsComponent } from './Component/news/news.component';
+import { GestioneSitoComponent } from './Component/Admin/gestione-sito/gestione-sito.component';
 
 @NgModule({ declarations: [
         AppComponent,
         NavBarComponent,
         HomeComponent,
         LoginComponent,
+        NewsComponent,
         NuovoUtenteComponent,
         CookieConsentComponent,
         ContattiComponent,
@@ -56,10 +58,10 @@ import { NewsComponent } from './Component/news/news.component';
         AbbonamentiComponent,
         GestioneutentiComponent,
         GestioneEventiComponent,
+        GestioneSitoComponent,
         GestioneGraficaComponent,
         ModaleComponent,
-        SpinnerComponent,
-        NewsComponent
+        SpinnerComponent
     ],
     bootstrap: [AppComponent],
     imports: [BrowserModule,
