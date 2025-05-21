@@ -328,7 +328,43 @@
       </form>
     </mat-dialog-content>
     </div>
-  
+
+    <div *ngIf="data.type == 'AddRedirezione'">
+      <h2 mat-dialog-title>Inserisci Redirezione</h2>
+      <mat-dialog-content>
+          <!--FORM ADD EVENT-->
+          <form (ngSubmit)="AddRedirezione(UrlInput)" enctype="multipart/form-data">
+            <label for="url">Url</label><br>
+            <input type="text" id="url" name="Url" #UrlInput>
+            <br><br>
+            <button type="submit">Aggiungi Redirezione</button>
+            <br><br>
+        </form>
+      </mat-dialog-content>
+      </div>
+
+      <div *ngIf="data.type == 'AddVideo'">
+        <h2 mat-dialog-title>Inserisci Video</h2>
+        <mat-dialog-content>
+            <!--FORM ADD EVENT-->
+            <form (ngSubmit)="AddVideo(UrlInput, TitoloInput, DescrizioneInput, OrdineInput)" enctype="multipart/form-data">
+              <label for="url">Url</label><br>
+              <input type="text" id="url" name="Url" #UrlInput>
+              <br><br>
+              <label for="titolo">Titolo</label><br>
+              <input type="text" id="titolo" name="Titolo" #TitoloInput>
+              <br><br>
+              <label for="descrizione">Descrizione</label><br>
+              <textarea type="text" id="descrizione" name="Descrizione" #DescrizioneInput></textarea>
+              <br><br>
+              <label for="ordinamento">Ordinamento</label><br>
+              <input type="number" id="ordinamento" name="Ordinamento" #OrdineInput>
+              <br><br>
+              <button type="submit">Aggiungi Video</button>
+              <br><br>
+          </form>
+        </mat-dialog-content>
+        </div>  
   
 <div *ngIf="data.type == 'updateEventInfo'">
   <h2 mat-dialog-title>Informazioni Evento</h2>

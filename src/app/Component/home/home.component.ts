@@ -137,7 +137,7 @@ export class HomeComponent {
   }
 
   async GetHomepageImages(){
-    await (await this.sitoService.GetImmaginiByPagina(Pagine.Homepage.valueOf())).subscribe(data => {
+    await (await this.sitoService.GetGraficheByPagina(Pagine.Homepage.valueOf())).subscribe(data => {
       if(data != null && data.Data != null)
         {
           data.Data.forEach((item: Graphics) => {
@@ -146,8 +146,8 @@ export class HomeComponent {
             this.images.push(item);
 
             //inizializzo immagini nelle varie sezioni
-            this.slides = this.images.filter(f => f.section ==1).sort((a, b) => (a.order || 0) - (b.order || 0));
-            this.plans = this.images.filter(f => f.section == 3).sort((a, b) => (a.order || 0) - (b.order || 0));
+            this.slides = this.images.filter(f => f.section ==1 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+            this.plans = this.images.filter(f => f.section == 3 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
           });
         }
         else{

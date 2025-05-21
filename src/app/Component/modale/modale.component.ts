@@ -26,6 +26,8 @@ import { Router } from '@angular/router';
 import { SitoService } from 'src/Services/Sito/sito.service';
 import { Pages } from 'src/app/Interface/Pagine';
 import { Graphics } from 'src/app/Model/Sito/Grafica';
+import { Redirection } from 'src/app/Model/Sito/Redirezioni';
+import { Video } from 'src/app/Model/Sito/Video';
 
 @Component({
   selector: 'app-modale',
@@ -52,6 +54,8 @@ export class ModaleComponent implements OnInit {
   Pages: Pages[] = [];
 
   selected: number[] = [];
+
+  redirezione: Redirection | undefined;
 
   UserForm: FormGroup;
   SubForm: FormGroup;
@@ -442,7 +446,6 @@ export class ModaleComponent implements OnInit {
         }
       });
     }
-
   }
 
   async Ok(type: string){
@@ -615,6 +618,31 @@ export class ModaleComponent implements OnInit {
     });
 }
 
+async AddRedirezione(urlInput: HTMLInputElement){
+  let redirezione = new Redirection(null, urlInput.value, null, true);
+
+  await(await this.sitoService.AddRedirezioni(redirezione)).subscribe(data => {
+    if(data != null && data.Data != null){
+      alert("Redirezione Inserita");
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+      });
+      this.dialogRef.close();
+    }
+    else{
+      if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+        alert("La tua sessione è scaduta, rieffettua il login");
+        this.router.navigate(['/login']);
+      }
+      else{
+        alert("Errore Inserimento Redirezione");
+        this.dialogRef.close();
+      }
+    }
+  });
+}
+
 async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, dataInizioInput: HTMLDataElement, dataFineInput : HTMLDataElement,
   luogoEventoInput: HTMLInputElement, descrizioneEventoInput: HTMLInputElement, linkEventoInput: HTMLInputElement, categories : Categoria[])
   {
@@ -773,11 +801,11 @@ async UpdateSub(action: string, subscription: Abbonamento){
 async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezioneInput: HTMLInputElement, urlDaGoogleDriveInput: HTMLInputElement, titoloInput : HTMLInputElement,
   descrizioneInput: HTMLTextAreaElement, testoAggiuntivoInput: HTMLTextAreaElement, ordineInputi: HTMLInputElement)
   {
-    let image = new Graphics(null, urlInput.value, parseInt(paginaInput.value, 10), parseInt(sezioneInput.value, 10), urlDaGoogleDriveInput.checked, titoloInput.value, descrizioneInput.value, testoAggiuntivoInput.value, null, parseInt(ordineInputi.value, 10));
+    let image = new Graphics(null, urlInput.value, parseInt(paginaInput.value, 10), parseInt(sezioneInput.value, 10), urlDaGoogleDriveInput.checked, titoloInput.value, descrizioneInput.value, testoAggiuntivoInput.value, null, parseInt(ordineInputi.value, 10), true);
   
-    await(await this.sitoService.AddImmagine(image)).subscribe(data => {
+    await(await this.sitoService.AddGrafica(image)).subscribe(data => {
       if(data != null && data.Data != null){
-        alert("Immagine inserita");
+        alert("Grafica inserita");
         let currentUrl = this.router.url;
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate([currentUrl]);
@@ -790,13 +818,40 @@ async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sez
           this.router.navigate(['/login']);
         }
         else{
-          alert("Errore inserimento immagine");
+          alert("Errore inserimento grafica");
           this.dialogRef.close();
         }
       }
     });
 
   }
+
+  async AddVideo(urlInput: HTMLInputElement, titoloInput: HTMLInputElement, descrizioneInput: HTMLTextAreaElement, ordineInput: HTMLInputElement)
+    {
+      let video = new Video(null, urlInput.value, titoloInput.value, descrizioneInput.value, null, true);
+    
+      await(await this.sitoService.AddVideo(video)).subscribe(data => {
+        if(data != null && data.Data != null){
+          alert("Video inserito");
+          let currentUrl = this.router.url;
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+              this.router.navigate([currentUrl]);
+          });
+          this.dialogRef.close();
+        }
+        else{
+          if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            this.router.navigate(['/login']);
+          }
+          else{
+            alert("Errore inserimento video");
+            this.dialogRef.close();
+          }
+        }
+      });
+  
+    }  
 
   getCategorieDescrizione(CategoriaId: number): string | undefined {
     return this.CategoriesData.find(c => c.Id == CategoriaId)?.Descrizione;

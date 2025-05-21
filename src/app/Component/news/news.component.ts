@@ -3,6 +3,7 @@ import { Pagine } from 'src/app/Model/Base/enum';
 import { Graphics } from 'src/app/Model/Sito/Grafica';
 import { CommonService } from 'src/Services/Common/common.service';
 import { SitoService } from 'src/Services/Sito/sito.service';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
     selector: 'app-news',
@@ -22,15 +23,14 @@ export class NewsComponent {
   
 
     async GetNews(){
-      await (await this.sitoService.GetImmaginiByPagina(Pagine.News.valueOf())).subscribe(data => {
+      await (await this.sitoService.GetGraficheByPagina(Pagine.News.valueOf())).subscribe(data => {
         if(data != null && data.Data != null)
           {
-            this.news = data.Data;
+            this.news = data.Data.sort((a, b) => (a.order || 0) - (b.order || 0));
           }
           else{
-            alert("Errore recupero immagini homepage");
+            alert("Errore recupero News");
           } 
         });
       }
-  
 }

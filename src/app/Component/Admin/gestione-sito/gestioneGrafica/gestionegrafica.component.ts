@@ -46,7 +46,7 @@ export class GestioneGraficaComponent {
     itemsPerPage = 5;
     pageSizes = [5, 10, 15, 20];
   
-    displayedColumns: string[] = ['Url', 'Sezione', 'Titolo', 'Descrizione', 'TestoAggiuntivo', 'Ordinamento', 'Azioni'];
+    displayedColumns: string[] = ['Url', 'Sezione', 'Titolo', 'Descrizione', 'TestoAggiuntivo', 'Ordinamento', 'Attiva', 'Azioni'];
   
     constructor(private sitoService: SitoService, private common: CommonService, public dialog: MatDialog) { }
   
@@ -197,7 +197,7 @@ export class GestioneGraficaComponent {
     }
 
     async CancellaImmagine(immagine: Graphics){
-      await (await this.sitoService.RemoveImmagine(immagine)).subscribe(data => {
+      await (await this.sitoService.RemoveGrafica(immagine)).subscribe(data => {
         if(data != null && data.Data != null){
           window.location.reload();
         }
@@ -211,6 +211,22 @@ export class GestioneGraficaComponent {
       });  
     }
   
+    async ToggleGrafica(grafica: Graphics, toggle: boolean){
+      let graphic = new Graphics(grafica.id, grafica.urlImage, grafica.page, grafica.section, grafica.urlFromGoogleDrive, grafica.title, grafica.description, grafica.additionalText, grafica.isAdditionalTextMarkdown, grafica.order, toggle);
+      await (await this.sitoService.ToggleGrafica(graphic)).subscribe(data => {
+        if(data != null && data.Data != null){
+          window.location.reload();
+        }
+        else if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          window.location.href = '/login';
+        }
+        else{
+          alert("Errore cancellazione immagine");
+        }
+      });  
+
+    }
     
     toggleCollapseHomepage() 
     {
