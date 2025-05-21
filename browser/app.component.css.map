@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.css"],
+  "sourcesContent": ["footer {\n    background: #ef8b8b;\n    color: #fff;\n    text-align: center;\n    padding: 10px 0;\n    position: fixed;\n    width: 100%;\n    height: 5%;\n    bottom: 0;\n}\n"],
+  "mappings": ";AAAA;AACI,cAAY;AACZ,SAAO;AACP,cAAY;AACZ,WAAS,KAAK;AACd,YAAU;AACV,SAAO;AACP,UAAQ;AACR,UAAQ;AACZ;",
+  "names": []
+}

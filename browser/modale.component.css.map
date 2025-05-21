@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/Component/modale/modale.component.css"],
+  "sourcesContent": [".checkbox-column {\n    display: flex;\n    flex-direction: column;\n    margin-bottom: 10px;\n  }\n  \n.modal-checkbox {\n    display: flex;\n    align-items: center;\n    margin-left: 20px; /* Adjust the value as needed */\n  }\n\n.modal-text {\n    display: flex;\n    align-items: center;\n    margin-left: 20px; /* Adjust the value as needed */\n  }\n\n.modal-competitors {\n  display: flex;\n  align-items: column;\n  margin-left: 20px; /* Adjust the value as needed */\n}\n\n.center-text {\n  text-align: center; /* Center text horizontally */\n  vertical-align: middle; /* Center text vertically */\n  padding: 8px; /* Adjust padding as needed */\n}\n\n  "],
+  "mappings": ";AAAA,CAAC;AACG,WAAS;AACT,kBAAgB;AAChB,iBAAe;AACjB;AAEF,CAAC;AACG,WAAS;AACT,eAAa;AACb,eAAa;AACf;AAEF,CAAC;AACG,WAAS;AACT,eAAa;AACb,eAAa;AACf;AAEF,CAAC;AACC,WAAS;AACT,eAAa;AACb,eAAa;AACf;AAEA,CAAC;AACC,cAAY;AACZ,kBAAgB;AAChB,WAAS;AACX;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/Component/Admin/gestioneutenti/gestioneutenti.component.css"],
+  "sourcesContent": ["/* Structure */\n.example-container {\n    display: flex;\n    flex-direction: column;\n    min-width: 300px;\n  }\n  \n  .example-header {\n    min-height: 64px;\n    padding: 8px 24px 0;\n  }\n  \n  .mat-form-field {\n    font-size: 14px;\n    width: 100%;\n  }\n  \n  .mat-table {\n    overflow: auto;\n    max-height: 500px;\n  }\n  "],
+  "mappings": ";AACA,CAAC;AACG,WAAS;AACT,kBAAgB;AAChB,aAAW;AACb;AAEA,CAAC;AACC,cAAY;AACZ,WAAS,IAAI,KAAK;AACpB;AAEA,CAAC;AACC,aAAW;AACX,SAAO;AACT;AAEA,CAAC;AACC,YAAU;AACV,cAAY;AACd;",
+  "names": []
+}
