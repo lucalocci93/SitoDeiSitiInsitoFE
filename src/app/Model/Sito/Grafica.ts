@@ -1,4 +1,4 @@
-export class Images {
+export class Graphics {
     id: number;
     urlImage: string;
     page: number;
@@ -7,10 +7,12 @@ export class Images {
     title: string;
     description: string;
     additionalText: string;
+    isAdditionalTextMarkdown: boolean | null;
     order: number;
+    active: boolean;
 
     constructor(_id: number | null, _urlImage: string, _page: number, _section: number, _urlFromGoogleDrive: boolean, _title: string | null,
-        _description: string | null, _additionalText: string | null, _order: number)
+        _description: string | null, _additionalText: string | null, _isAdditionalTextMarkdown: boolean | null, _order: number, _active: boolean | null)
     {
         this.id = _id != null ? _id : 0;
         this.urlImage = _urlImage;
@@ -20,7 +22,9 @@ export class Images {
         this.title = _title != null ? _title : "";
         this.description = _description != null ? _description : "";
         this.additionalText = _additionalText != null ? _additionalText : "";
+        this.isAdditionalTextMarkdown = _isAdditionalTextMarkdown != null ? _isAdditionalTextMarkdown : false;
         this.order = _order != null ? _order : 0;    
+        this.active = _active != null ? _active : false;
     }
     
 }

@@ -10,8 +10,12 @@ import { GestioneutentiComponent } from './Component/Admin/gestioneutenti/gestio
 import { AbbonamentiComponent } from './Component/User/abbonamenti/abbonamenti.component';
 import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
 import { EventiComponent } from './Component/User/eventi/eventi.component';
-import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gestionegrafica.component';
+import { GestioneGraficaComponent } from './Component/Admin/gestione-sito/gestioneGrafica/gestionegrafica.component';
 import { NewsComponent } from './Component/news/news.component';
+import { GestioneSitoComponent } from './Component/Admin/gestione-sito/gestione-sito.component';
+import { GestioneRedirezioniComponent } from './Component/Admin/gestione-sito/gestione-redirezioni/gestione-redirezioni.component';
+import { GestioneVideoComponent } from './Component/Admin/gestione-sito/gestione-video/gestione-video.component';
+import { VideoComponent } from './Component/User/video/video.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -22,9 +26,13 @@ const routes: Routes = [
   { path: 'documenti', component: DocumentiComponent, pathMatch: 'full' },
   { path: 'abbonamenti', component: AbbonamentiComponent, pathMatch: 'full' },
   { path: 'eventi', component: EventiComponent, pathMatch: 'full' },
+  { path: 'video', component: VideoComponent, pathMatch: 'full' },
   { path: 'gestioneutenti', component: GestioneutentiComponent, pathMatch: 'full' },
   { path: 'gestioneeventi', component: GestioneEventiComponent, pathMatch: 'full' },
-  { path: 'gestionegrafica', component: GestioneGraficaComponent, pathMatch: 'full' }
+  { path: 'gestionesito', component: GestioneSitoComponent, pathMatch: 'full' },
+  { path: 'gestionesito/gestionegrafica', component: GestioneGraficaComponent, pathMatch: 'full' },
+  { path: 'gestionesito/gestioneredirezioni', component: GestioneRedirezioniComponent, pathMatch: 'full' },
+  { path: 'gestionesito/gestionevideo', component: GestioneVideoComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -35,4 +43,5 @@ const routes: Routes = [
   })],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

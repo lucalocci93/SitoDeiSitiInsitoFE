@@ -12,7 +12,9 @@ import { Documento, DocumentoExt } from '../Model/Documento/Documento';
 import { Evento } from '../Model/Evento/Evento';
 import { Categoria } from '../Model/Evento/Categoria';
 import { Pages } from '../Interface/Pagine';
-import { Images } from '../Model/Sito/Immagine';
+import { Graphics } from '../Model/Sito/Grafica';
+import { Video } from '../Model/Sito/Video';
+import { Redirection } from '../Model/Sito/Redirezioni';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -63,10 +65,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return GetCategories();
                 case url.toLowerCase().includes('getpagine') && method === 'GET':
                     return GetPages();
-                case url.toLowerCase().includes('getimmmagini') && method === 'GET':
+                case url.toLowerCase().includes('getgrafiche') && method === 'GET':
+                    return GetGrafiche();
+                case url.toLowerCase().includes('getgrafichebypagina?pagina=1') && method === 'GET':
                     return GetImages();
-                //case url.toLowerCase().includes('bypagina') && method === 'GET':
-                //    return GetImagesByPage();
+                case url.toLowerCase().includes('getgrafichebypagina?pagina=3') && method === 'GET':
+                    return GetNews();
+                case url.toLowerCase().includes('getvideo') && method === 'GET':
+                    return GetVideo();
+                case url.toLowerCase().includes('getredirezioni') && method === 'GET':
+                    return GetRedirezioni()
                 default:
                     // Pass through any requests not handled above
                     return next.handle(request);
@@ -454,7 +462,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function GetImagesByPage(){
-            let response : Images[] = [
+            let response : Graphics[] = [
                 {
                     id: 3,
                     urlImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
@@ -464,7 +472,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Expert Trainers",
                     description: "Get personalized workout plans tailored to your goals",
                     additionalText: "Meet Our Trainers",
-                    order: 2
+                    isAdditionalTextMarkdown: false,
+                    order: 2,
+                    active: true
                 },
                 {
                     id: 4,
@@ -475,7 +485,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Basic",
                     description: "$29/month",
                     additionalText: " Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
-                    order: 1
+                    isAdditionalTextMarkdown: false,
+                    order: 1,
+                    active: true
                 },
                 {
                     id: 5,
@@ -486,7 +498,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Elite",
                     description: "$99/month",
                     additionalText: "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
-                    order: 3
+                    isAdditionalTextMarkdown: false,
+                    order: 3,
+                    active: true
                 },
                 {
                     id: 6,
@@ -497,60 +511,225 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     title: "Premium",
                     description: "$59/month",
                     additionalText: "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
-                    order: 2
+                    isAdditionalTextMarkdown: false,
+                    order: 2,
+                    active: true
                 }
             ];
             return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
         }
 
         function GetImages(){
-            let response : Images[] = [
+            let response : Graphics[] = [
                 {
-                    id: 3,
-                    urlImage: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
-                    page: 1,
-                    section: 1,
-                    urlFromGoogleDrive: false,
-                    title: "Expert Trainers",
-                    description: "Get personalized workout plans tailored to your goals",
-                    additionalText: "Meet Our Trainers",
-                    order: 2
+                    "id": 1,
+                    "urlImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+                    "page": 1,
+                    "section": 1,
+                    "urlFromGoogleDrive": false,
+                    "title": "Expert Trainers",
+                    "description": "Get personalized workout plans tailored to your goals",
+                    "additionalText": "Meet Our Trainers",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 1,
+                    "active": true
                 },
                 {
-                    id: 4,
-                    urlImage: "",
-                    page: 1,
-                    section: 3,
-                    urlFromGoogleDrive: false,
-                    title: "Basic",
-                    description: "$29/month",
-                    additionalText: " Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
-                    order: 1
+                    "id": 2,
+                    "urlImage": "https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link",
+                    "page": 1,
+                    "section": 1,
+                    "urlFromGoogleDrive": true,
+                    "title": "test",
+                    "description": "test da google",
+                    "additionalText": "drive",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 2,
+                    "active": true
                 },
                 {
-                    id: 5,
-                    urlImage: "",
-                    page: 1,
-                    section: 3,
-                    urlFromGoogleDrive: false,
-                    title: "Elite",
-                    description: "$99/month",
-                    additionalText: "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
-                    order: 3
+                    "id": 3,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 3,
+                    "urlFromGoogleDrive": false,
+                    "title": "Basic",
+                    "description": "$29/month",
+                    "additionalText": "Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 1,
+                    "active": true
                 },
                 {
-                    id: 6,
-                    urlImage: "",
-                    page: 1,
-                    section: 3,
-                    urlFromGoogleDrive: false,
-                    title: "Premium",
-                    description: "$59/month",
-                    additionalText: "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
-                    order: 2
+                    "id": 4,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 3,
+                    "urlFromGoogleDrive": false,
+                    "title": "Elite",
+                    "description": "$99/month",
+                    "additionalText": "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 2,
+                    "active": true
+                },
+                {
+                    "id": 5,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 3,
+                    "urlFromGoogleDrive": false,
+                    "title": "Premium",
+                    "description": "$59/month",
+                    "additionalText": "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 1,
+                    "active": true
+            }
+        ];
+            return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+        }
+
+        function GetNews(){
+            let response : Graphics[] = [
+            {
+                "id": 6,
+                "urlImage": "",
+                "page": 3,
+                "section": 1,
+                "urlFromGoogleDrive": false,
+                "title": "",
+                "description": "",
+                "additionalText": "# \uD83C\uDFCB️‍♂️ Nuova Apertura della Palestra FitLife! \uD83C\uDFCB️‍♀️\r\n\r\n<img src=\"https://logos-world.net/wp-content/uploads/2023/05/Golds-Gym-Logo-1965.png\" alt=\"FitLife logo\" title=\"logo\" width=\"50%\" height=\"30%\" />\r\n\r\nSiamo entusiasti di annunciare l'apertura della nostra nuova palestra, **FitLife**, nel cuore della città! \uD83C\uDF89\r\n\r\n## Cosa Offriamo:\r\n- **Attrezzature all'avanguardia**: Le migliori macchine e pesi per ogni tipo di allenamento.\r\n- **Corsi di gruppo**: Yoga, Pilates, Zumba e molto altro.\r\n- **Personal Trainer**: Professionisti qualificati per aiutarti a raggiungere i tuoi obiettivi.\r\n- **Orari flessibili**: Aperto 24/7 per adattarsi al tuo stile di vita.\r\n\r\n## Offerta di Benvenuto:\r\nIscriviti entro la fine del mese e ricevi uno **sconto del 20%** sul tuo primo abbonamento! Non perdere questa occasione per iniziare il tuo percorso di fitness con noi.\r\n\r\n\uD83D\uDCCD **Indirizzo**: Via Roma 123, Città\r\n\uD83D\uDCDE **Contatti**: 0123-456789\r\n\uD83C\uDF10 **Sito Web**: [www.fitlifecom](#eni a trovarci e scopri come FitLife può trasformare la tua vita! \uD83D\uDCAA\r\n",
+                "isAdditionalTextMarkdown": true,
+                "order": 1,
+                "active": true
+            },
+            ]
+
+            return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+        }
+
+        function GetVideo(){
+            let response : Video[] = [
+                {
+                    "id": 2,
+                    "url": "https://www.youtube.com/watch?v=S1yszOtBW4w&list=PLP5MAKLy8lP-x-Ust2YGwspgt4wMJBFXJ",
+                    "title": "test",
+                    "description": "test video",
+                    "provider": null,
+                    "active": true
+                },
+                {
+                    "id": 3,
+                    "url": "https://www.youtube.com/watch?v=2Sa5jpD-3pU&list=PLP5MAKLy8lP-x-Ust2YGwspgt4wMJBFXJ&index=2",
+                    "title": "2 video",
+                    "description": "secondo video",
+                    "provider": null,
+                    "active": true
                 }
             ];
             return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+        }
+
+        function GetGrafiche(){
+            let response : Graphics[] =
+                [
+    {
+        "id": 1,
+        "urlImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+        "page": 1,
+        "section": 1,
+        "urlFromGoogleDrive": false,
+        "title": "Expert Trainers",
+        "description": "Get personalized workout plans tailored to your goals",
+        "additionalText": "Meet Our Trainers",
+        "isAdditionalTextMarkdown": false,
+        "order": 1,
+        "active": true
+    },
+    {
+        "id": 2,
+        "urlImage": "https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link",
+        "page": 1,
+        "section": 1,
+        "urlFromGoogleDrive": true,
+        "title": "test",
+        "description": "test da google",
+        "additionalText": "drive",
+        "isAdditionalTextMarkdown": false,
+        "order": 2,
+        "active": true
+    },
+    {
+        "id": 3,
+        "urlImage": "",
+        "page": 1,
+        "section": 3,
+        "urlFromGoogleDrive": false,
+        "title": "Basic",
+        "description": "$29/month",
+        "additionalText": "Full gym access 24/7, All equipment access,  Unlimited group classes, One personal training session/month",
+        "isAdditionalTextMarkdown": false,
+        "order": 1,
+        "active": true
+    },
+    {
+        "id": 4,
+        "urlImage": "",
+        "page": 1,
+        "section": 3,
+        "urlFromGoogleDrive": false,
+        "title": "Elite",
+        "description": "$99/month",
+        "additionalText": "All Premium features, Weekly personal training, Custom nutrition plan, Spa access",
+        "isAdditionalTextMarkdown": false,
+        "order": 2,
+        "active": true
+    },
+    {
+        "id": 5,
+        "urlImage": "",
+        "page": 1,
+        "section": 3,
+        "urlFromGoogleDrive": false,
+        "title": "Premium",
+        "description": "$59/month",
+        "additionalText": "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
+        "isAdditionalTextMarkdown": false,
+        "order": 1,
+        "active": true
+    },
+    {
+        "id": 6,
+        "urlImage": "",
+        "page": 3,
+        "section": 1,
+        "urlFromGoogleDrive": false,
+        "title": "",
+        "description": "",
+        "additionalText": "# \uD83C\uDFCB️‍♂️ Nuova Apertura della Palestra FitLife! \uD83C\uDFCB️‍♀️\r\n\r\n<img src=\"https://logos-world.net/wp-content/uploads/2023/05/Golds-Gym-Logo-1965.png\" alt=\"FitLife logo\" title=\"logo\" width=\"50%\" height=\"30%\" />\r\n\r\nSiamo entusiasti di annunciare l'apertura della nostra nuova palestra, **FitLife**, nel cuore della città! \uD83C\uDF89\r\n\r\n## Cosa Offriamo:\r\n- **Attrezzature all'avanguardia**: Le migliori macchine e pesi per ogni tipo di allenamento.\r\n- **Corsi di gruppo**: Yoga, Pilates, Zumba e molto altro.\r\n- **Personal Trainer**: Professionisti qualificati per aiutarti a raggiungere i tuoi obiettivi.\r\n- **Orari flessibili**: Aperto 24/7 per adattarsi al tuo stile di vita.\r\n\r\n## Offerta di Benvenuto:\r\nIscriviti entro la fine del mese e ricevi uno **sconto del 20%** sul tuo primo abbonamento! Non perdere questa occasione per iniziare il tuo percorso di fitness con noi.\r\n\r\n\uD83D\uDCCD **Indirizzo**: Via Roma 123, Città\r\n\uD83D\uDCDE **Contatti**: 0123-456789\r\n\uD83C\uDF10 **Sito Web**: [www.fitlifecom](#eni a trovarci e scopri come FitLife può trasformare la tua vita! \uD83D\uDCAA\r\n",
+        "isAdditionalTextMarkdown": true,
+        "order": 1,
+        "active": true
+    }
+]
+            return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+        }
+
+        function GetRedirezioni(){
+            let response : Redirection[] = 
+                [
+                {
+                    "id": 1,
+                    "url": "https://www.youtube.com/",
+                    "redirectUrl": "https://localhost:7278/redirect?Id=1",
+                    "active": false
+                }
+                ];
+
+            return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
+
         }
 
         function ok(){

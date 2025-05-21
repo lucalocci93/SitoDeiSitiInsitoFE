@@ -13,6 +13,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { MarkdownModule } from 'ngx-markdown';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -40,14 +42,21 @@ import { EventiService } from 'src/Services/Eventi/eventi.service';
 import { GestioneEventiComponent } from './Component/Admin/gestioneEventi/gestione-eventi.component';
 import { EventiComponent } from './Component/User/eventi/eventi.component';
 import { DatePipe } from '@angular/common';
-import { GestioneGraficaComponent } from './Component/Admin/gestioneGrafica/gestionegrafica.component';
+import { GestioneGraficaComponent } from './Component/Admin/gestione-sito/gestioneGrafica/gestionegrafica.component';
 import { NewsComponent } from './Component/news/news.component';
+import { GestioneSitoComponent } from './Component/Admin/gestione-sito/gestione-sito.component';
+import { GestioneRedirezioniComponent } from './Component/Admin/gestione-sito/gestione-redirezioni/gestione-redirezioni.component';
+import { GestioneVideoComponent } from './Component/Admin/gestione-sito/gestione-video/gestione-video.component';
+import { VideoComponent } from './Component/User/video/video.component';
+import { SitoService } from 'src/Services/Sito/sito.service';
 
 @NgModule({ declarations: [
         AppComponent,
         NavBarComponent,
         HomeComponent,
         LoginComponent,
+        NewsComponent,
+        VideoComponent,
         NuovoUtenteComponent,
         CookieConsentComponent,
         ContattiComponent,
@@ -56,10 +65,12 @@ import { NewsComponent } from './Component/news/news.component';
         AbbonamentiComponent,
         GestioneutentiComponent,
         GestioneEventiComponent,
+        GestioneSitoComponent,
         GestioneGraficaComponent,
+        GestioneRedirezioniComponent,
+        GestioneVideoComponent,
         ModaleComponent,
-        SpinnerComponent,
-        NewsComponent
+        SpinnerComponent
     ],
     bootstrap: [AppComponent],
     imports: [BrowserModule,
@@ -77,13 +88,16 @@ import { NewsComponent } from './Component/news/news.component';
         MatSelectModule,
         MatOptionModule,
         BrowserAnimationsModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        MarkdownModule.forRoot(),
+        YouTubePlayerModule
     ],
     providers: [
             CommonService,
             LoginService,
             UtentiService,
             EventiService,
+            SitoService,
             provideHttpClient(withInterceptorsFromDi()),
             provideAnimationsAsync(),
             {
@@ -92,7 +106,7 @@ import { NewsComponent } from './Component/news/news.component';
                 multi: true
             },
             (environment.demo ? [{ provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true }] : []),
-            DatePipe
+            DatePipe,
             ]
         }
     )

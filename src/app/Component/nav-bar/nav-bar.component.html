@@ -24,9 +24,9 @@
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
           </li>
-          <li>
+          <!--<li>
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
-          </li>
+          </li>-->
           <li>
             <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a> 
           </li>
@@ -34,28 +34,25 @@
             <a class="nav-link text-dark" [routerLink]="['/news']">News</a> 
           </li>
           <li *ngIf="isLogged">
+            <a class="nav-link text-dark" [routerLink]="['/video']">Video</a>
+          </li>
+          <li *ngIf="isLogged">
             <a class="nav-link text-dark" [routerLink]="['/documenti']">Documenti</a>
           </li>
           <li *ngIf="isLogged">
             <a class="nav-link text-dark" [routerLink]="['/abbonamenti']">Abbonamenti</a>
           </li>
-          <li *ngIf="isLogged && !isAdmin">
+          <li *ngIf="isLogged">
             <a class="nav-link text-dark" [routerLink]="['/eventi']">Eventi</a> 
           </li>
-          <!--<li *ngIf="isLogged && isAdmin">
-            <a class="nav-link text-dark"> Gestione Immagini </a>
-          </li>-->
-          <!--<li *ngIf="isLogged && isAdmin">
-            <a class="nav-link text-dark"> Gestione Documenti </a>
-          </li>-->
           <li *ngIf="isLogged && isAdmin">
-            <a class="nav-link text-dark" [routerLink]="['/gestioneeventi']"> Gestione Eventi </a> <!--[routerLink]="['/gestione']"-->
+            <a class="nav-link text-dark" [routerLink]="['/gestioneeventi']"> Gestione Eventi </a>
           </li>
           <li *ngIf="isLogged && isAdmin">
             <a class="nav-link text-dark" [routerLink]="['/gestioneutenti']"> Gestione Utenti </a>
           </li>
           <li *ngIf="isLogged && isAdmin">
-            <a class="nav-link text-dark" [routerLink]="['/gestionegrafica']"> Gestione Grafica </a>
+            <a class="nav-link text-dark" [routerLink]="['/gestionesito']"> Gestione Sito </a>
           </li>
 
         </ul>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cookie-consent',
-  templateUrl: './cookie-consent.component.html',
-  styleUrls: ['./cookie-consent.component.css']
+    selector: 'app-cookie-consent',
+    templateUrl: './cookie-consent.component.html',
+    styleUrls: ['./cookie-consent.component.css'],
+    standalone: false
 })
 export class CookieConsentComponent implements OnInit {
   consent: string | null = null;
