@@ -24,11 +24,11 @@ jobs:
       run: npm run deploydemo
 
     - name: List dist folder contents
-      run: ls -la dist/SitoDeiSitiInsitoFE
+      run: ls -la dist/SitoDeiSitiInsitoFE/browser
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
-        folder: dist/SitoDeiSitiInsitoFE
+        folder: dist/SitoDeiSitiInsitoFE/browser
