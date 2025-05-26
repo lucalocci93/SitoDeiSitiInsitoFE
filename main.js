@@ -54101,9 +54101,9 @@ var SitoService = class _SitoService {
 })();
 
 // src/app/Component/home/home.component.ts
-function HomeComponent_div_1_Template(rf, ctx) {
+function HomeComponent_div_13_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 14)(1, "div", 15)(2, "h1");
+    \u0275\u0275elementStart(0, "div", 21)(1, "div", 22)(2, "h1");
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(4, "p");
@@ -54115,33 +54115,37 @@ function HomeComponent_div_1_Template(rf, ctx) {
     const i_r2 = ctx.index;
     const ctx_r2 = \u0275\u0275nextContext();
     \u0275\u0275styleProp("background-image", "url(" + slide_r1.urlImage + ")");
-    \u0275\u0275classProp("active", ctx_r2.currentSlide === i_r2);
+    \u0275\u0275classProp("active", ctx_r2.currentSlide1 === i_r2);
     \u0275\u0275advance(3);
     \u0275\u0275textInterpolate(slide_r1.title);
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(slide_r1.description);
   }
 }
-function HomeComponent_span_6_Template(rf, ctx) {
+function HomeComponent_div_24_Template(rf, ctx) {
   if (rf & 1) {
-    const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "span", 16);
-    \u0275\u0275listener("click", function HomeComponent_span_6_Template_span_click_0_listener() {
-      const i_r5 = \u0275\u0275restoreView(_r4).index;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.goToSlide(i_r5));
-    });
+    \u0275\u0275elementStart(0, "div", 21)(1, "div", 22)(2, "h1");
+    \u0275\u0275text(3);
     \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(4, "p");
+    \u0275\u0275text(5);
+    \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
+    const slide_r4 = ctx.$implicit;
     const i_r5 = ctx.index;
     const ctx_r2 = \u0275\u0275nextContext();
-    \u0275\u0275classProp("active", ctx_r2.currentSlide === i_r5);
+    \u0275\u0275styleProp("background-image", "url(" + slide_r4.urlImage + ")");
+    \u0275\u0275classProp("active", ctx_r2.currentSlide2 === i_r5);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(slide_r4.title);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(slide_r4.description);
   }
 }
-function HomeComponent_div_13_Template(rf, ctx) {
+function HomeComponent_div_29_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 17)(1, "div", 18);
+    \u0275\u0275elementStart(0, "div", 23)(1, "div", 24);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(3, "h3");
@@ -54154,45 +54158,66 @@ function HomeComponent_div_13_Template(rf, ctx) {
   if (rf & 2) {
     const feature_r6 = ctx.$implicit;
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(feature_r6.icon);
-    \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(feature_r6.title);
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(feature_r6.description);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(feature_r6.additionalText);
   }
 }
-function HomeComponent_div_18_li_6_Template(rf, ctx) {
+function HomeComponent_div_34_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 21)(1, "div", 22)(2, "h1");
+    \u0275\u0275text(3);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(4, "p");
+    \u0275\u0275text(5);
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const slide_r7 = ctx.$implicit;
+    const i_r8 = ctx.index;
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275styleProp("background-image", "url(" + slide_r7.urlImage + ")");
+    \u0275\u0275classProp("active", ctx_r2.currentSlide3 === i_r8);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(slide_r7.title);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(slide_r7.description);
+  }
+}
+function HomeComponent_div_39_li_6_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "li");
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const feature_r7 = ctx.$implicit;
+    const feature_r9 = ctx.$implicit;
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate(feature_r7);
+    \u0275\u0275textInterpolate(feature_r9);
   }
 }
-function HomeComponent_div_18_Template(rf, ctx) {
+function HomeComponent_div_39_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 19)(1, "h3");
+    \u0275\u0275elementStart(0, "div", 25)(1, "h3");
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "div", 20);
+    \u0275\u0275elementStart(3, "div", 26);
     \u0275\u0275text(4);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "ul", 21);
-    \u0275\u0275template(6, HomeComponent_div_18_li_6_Template, 2, 1, "li", 22);
+    \u0275\u0275elementStart(5, "ul", 27);
+    \u0275\u0275template(6, HomeComponent_div_39_li_6_Template, 2, 1, "li", 28);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const plan_r8 = ctx.$implicit;
+    const plan_r10 = ctx.$implicit;
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(plan_r8.title);
+    \u0275\u0275textInterpolate(plan_r10.title);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(plan_r8.description);
+    \u0275\u0275textInterpolate(plan_r10.description);
     \u0275\u0275advance(2);
-    \u0275\u0275property("ngForOf", plan_r8.additionalText.split(","));
+    \u0275\u0275property("ngForOf", plan_r10.additionalText.split(","));
   }
 }
 var HomeComponent = class _HomeComponent {
@@ -54200,34 +54225,66 @@ var HomeComponent = class _HomeComponent {
     this.commonService = commonService;
     this.sitoService = sitoService;
     this.images = [];
-    this.slides = [];
+    this.slides_1 = [];
+    this.slides_2 = [];
+    this.slides_3 = [];
+    this.whowheare = void 0;
+    this.features = [];
     this.plans = [];
-    this.currentSlide = 0;
-    this.features = [
-      {
-        icon: "\u{1F4AA}",
-        title: "Personal Training",
-        description: "One-on-one sessions with certified trainers customized to your needs"
-      },
-      {
-        icon: "\u{1F552}",
-        title: "24/7 Access",
-        description: "Work out on your schedule with round-the-clock facility access"
-      },
-      {
-        icon: "\u{1F465}",
-        title: "Group Classes",
-        description: "Join our energetic group workouts with expert instructors"
-      },
-      {
-        icon: "\u{1F957}",
-        title: "Nutrition Plans",
-        description: "Custom meal plans designed to help you reach your fitness goals"
-      }
-    ];
+    this.currentSlide1 = 0;
+    this.currentSlide2 = 0;
+    this.currentSlide3 = 0;
     this.GetHomepageImages();
     this.startAutoPlay();
   }
+  //[
+  // {
+  //   image: this.commonService.getUrlForGoogleDrive('https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link'),
+  //   title: 'Transform Your Body',
+  //   description: 'Start your fitness journey today with our expert trainers',
+  //   buttonText: 'Start Now'
+  // }
+  // ,{
+  //   image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438',
+  //   title: 'Expert Trainers',
+  //   description: 'Get personalized workout plans tailored to your goals',
+  //   buttonText: 'Meet Our Trainers'
+  // },
+  // {
+  //   image: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f',
+  //   title: 'Modern Equipment',
+  //   description: 'Train with state-of-the-art facilities and equipment',
+  //   buttonText: 'View Gym'
+  // },
+  // {
+  //   image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c',
+  //   title: 'Group Classes',
+  //   description: 'Join our energetic group workouts and make new friends',
+  //   buttonText: 'View Schedule'
+  // }
+  //];
+  //features = [
+  //  {
+  //    icon: '💪',
+  //    title: 'Personal Training',
+  //    description: 'One-on-one sessions with certified trainers customized to your needs'
+  //  },
+  //  {
+  //    icon: '🕒',
+  //    title: '24/7 Access',
+  //    description: 'Work out on your schedule with round-the-clock facility access'
+  //  },
+  //  {
+  //    icon: '👥',
+  //    title: 'Group Classes',
+  //    description: 'Join our energetic group workouts with expert instructors'
+  //  },
+  //  {
+  //    icon: '🥗',
+  //    title: 'Nutrition Plans',
+  //    description: 'Custom meal plans designed to help you reach your fitness goals'
+  //  }
+  //];
   //plans = [
   //  {
   //    title: 'Basic',
@@ -54262,7 +54319,9 @@ var HomeComponent = class _HomeComponent {
   //];
   startAutoPlay() {
     this.autoPlayInterval = setInterval(() => {
-      this.nextSlide();
+      this.nextSlide1();
+      this.nextSlide2();
+      this.nextSlide3();
     }, 7e3);
   }
   stopAutoPlay() {
@@ -54270,16 +54329,30 @@ var HomeComponent = class _HomeComponent {
       clearInterval(this.autoPlayInterval);
     }
   }
-  nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+  nextSlide1() {
+    this.currentSlide1 = (this.currentSlide1 + 1) % this.slides_1.length;
   }
-  prevSlide() {
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+  nextSlide2() {
+    this.currentSlide2 = (this.currentSlide2 + 1) % this.slides_2.length;
   }
-  goToSlide(index) {
-    this.currentSlide = index;
-    this.stopAutoPlay();
-    this.startAutoPlay();
+  nextSlide3() {
+    this.currentSlide3 = (this.currentSlide3 + 1) % this.slides_3.length;
+  }
+  // prevSlide() {
+  //   this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+  // }
+  // goToSlide(index: number) {
+  //   this.currentSlide = index;
+  //   this.stopAutoPlay();
+  //   this.startAutoPlay();
+  // }
+  GoToSection(sectionName) {
+    const section = document.getElementById(sectionName);
+    section?.scrollIntoView({ behavior: "smooth" });
+  }
+  BacktoMain() {
+    const main = document.getElementById("buttons");
+    main?.scrollIntoView({ behavior: "smooth" });
   }
   GetHomepageImages() {
     return __async(this, null, function* () {
@@ -54288,9 +54361,13 @@ var HomeComponent = class _HomeComponent {
           data.Data.forEach((item) => {
             item.urlImage = item.urlFromGoogleDrive ? this.commonService.getUrlForGoogleDrive(item.urlImage) : item.urlImage;
             this.images.push(item);
-            this.slides = this.images.filter((f) => f.section == 1 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
-            this.plans = this.images.filter((f) => f.section == 3 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
           });
+          this.slides_1 = this.images.filter((f) => f.section == 1 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+          this.whowheare = this.images.filter((f) => f.section == 2 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0))[0];
+          this.slides_2 = this.images.filter((f) => f.section == 3 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+          this.features = this.images.filter((f) => f.section == 4 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+          this.slides_3 = this.images.filter((f) => f.section == 5 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+          this.plans = this.images.filter((f) => f.section == 6 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
         } else {
           alert("Errore recupero immagini homepage");
         }
@@ -54303,56 +54380,102 @@ var HomeComponent = class _HomeComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HomeComponent, selectors: [["app-home"]], standalone: false, decls: 19, vars: 4, consts: [[1, "slider"], ["class", "slide", 3, "active", "backgroundImage", 4, "ngFor", "ngForOf"], [1, "slider-controls"], [1, "nav-button", "prev", 3, "click"], [1, "dots"], ["class", "dot", 3, "active", "click", 4, "ngFor", "ngForOf"], [1, "nav-button", "next", 3, "click"], [1, "features"], [1, "section-title"], [1, "features-grid"], ["class", "feature-card", 4, "ngFor", "ngForOf"], [1, "membership-plans"], [1, "plans-grid"], ["class", "plan-card", 4, "ngFor", "ngForOf"], [1, "slide"], [1, "slide-content"], [1, "dot", 3, "click"], [1, "feature-card"], [1, "feature-icon"], [1, "plan-card"], [1, "price"], [1, "plan-features"], [4, "ngFor", "ngForOf"]], template: function HomeComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HomeComponent, selectors: [["app-home"]], standalone: false, decls: 43, vars: 6, consts: [["charset", "UTF-8"], ["name", "viewport", "content", "width=device-width, initial-scale=1.0"], ["id", "buttons", 1, "buttons"], [1, "whowearebutton", 3, "click"], [1, "featuresbutton", 3, "click"], [1, "membershipbutton", 3, "click"], [1, "image-section"], ["id", "foto_1", 1, "slider"], ["class", "slide", 3, "active", "backgroundImage", 4, "ngFor", "ngForOf"], ["id", "whoweare"], [1, "section-title"], [1, "whowearedescr"], [1, "backtomain", 3, "click"], ["id", "foto_2", 1, "slider"], ["id", "features"], [1, "features-grid"], ["class", "feature-card", 4, "ngFor", "ngForOf"], ["id", "foto_3", 1, "slider"], ["id", "membership"], [1, "plans-grid"], ["class", "plan-card", 4, "ngFor", "ngForOf"], [1, "slide"], [1, "slide-content"], [1, "feature-card"], [1, "feature-icon"], [1, "plan-card"], [1, "price"], [1, "plan-features"], [4, "ngFor", "ngForOf"]], template: function HomeComponent_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275elementStart(0, "div", 0);
-        \u0275\u0275template(1, HomeComponent_div_1_Template, 6, 6, "div", 1);
-        \u0275\u0275elementStart(2, "div", 2)(3, "button", 3);
-        \u0275\u0275listener("click", function HomeComponent_Template_button_click_3_listener() {
-          return ctx.prevSlide();
+        \u0275\u0275elementStart(0, "head");
+        \u0275\u0275element(1, "meta", 0)(2, "meta", 1);
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(3, "body")(4, "div", 2)(5, "button", 3);
+        \u0275\u0275listener("click", function HomeComponent_Template_button_click_5_listener() {
+          return ctx.GoToSection("whoweare");
         });
-        \u0275\u0275text(4, "\u276E");
+        \u0275\u0275text(6, "CHI SIAMO");
         \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(5, "div", 4);
-        \u0275\u0275template(6, HomeComponent_span_6_Template, 1, 2, "span", 5);
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(7, "button", 6);
+        \u0275\u0275elementStart(7, "button", 4);
         \u0275\u0275listener("click", function HomeComponent_Template_button_click_7_listener() {
-          return ctx.nextSlide();
+          return ctx.GoToSection("features");
         });
-        \u0275\u0275text(8, "\u276F");
+        \u0275\u0275text(8, "COSA OFFRIAMO");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(9, "button", 5);
+        \u0275\u0275listener("click", function HomeComponent_Template_button_click_9_listener() {
+          return ctx.GoToSection("membership");
+        });
+        \u0275\u0275text(10, "I NOSTRI PIANI");
+        \u0275\u0275elementEnd()();
+        \u0275\u0275element(11, "section", 6);
+        \u0275\u0275elementStart(12, "section", 7);
+        \u0275\u0275template(13, HomeComponent_div_13_Template, 6, 6, "div", 8);
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(14, "section", 9)(15, "h2", 10);
+        \u0275\u0275text(16, "Chi siamo?");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(17, "div", 11)(18, "p");
+        \u0275\u0275text(19);
+        \u0275\u0275elementEnd()();
+        \u0275\u0275element(20, "br");
+        \u0275\u0275elementStart(21, "button", 12);
+        \u0275\u0275listener("click", function HomeComponent_Template_button_click_21_listener() {
+          return ctx.BacktoMain();
+        });
+        \u0275\u0275text(22, "\u2191");
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(23, "section", 13);
+        \u0275\u0275template(24, HomeComponent_div_24_Template, 6, 6, "div", 8);
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(25, "section", 14)(26, "h2", 10);
+        \u0275\u0275text(27, "Cosa offriamo?");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(28, "div", 15);
+        \u0275\u0275template(29, HomeComponent_div_29_Template, 7, 3, "div", 16);
+        \u0275\u0275elementEnd();
+        \u0275\u0275element(30, "br");
+        \u0275\u0275elementStart(31, "button", 12);
+        \u0275\u0275listener("click", function HomeComponent_Template_button_click_31_listener() {
+          return ctx.BacktoMain();
+        });
+        \u0275\u0275text(32, "\u2191");
+        \u0275\u0275elementEnd()();
+        \u0275\u0275elementStart(33, "section", 17);
+        \u0275\u0275template(34, HomeComponent_div_34_Template, 6, 6, "div", 8);
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(35, "section", 18)(36, "h2", 10);
+        \u0275\u0275text(37, "Piani Abbonamento");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(38, "div", 19);
+        \u0275\u0275template(39, HomeComponent_div_39_Template, 7, 3, "div", 20);
+        \u0275\u0275elementEnd();
+        \u0275\u0275element(40, "br");
+        \u0275\u0275elementStart(41, "button", 12);
+        \u0275\u0275listener("click", function HomeComponent_Template_button_click_41_listener() {
+          return ctx.BacktoMain();
+        });
+        \u0275\u0275text(42, "\u2191");
         \u0275\u0275elementEnd()()();
-        \u0275\u0275elementStart(9, "section", 7)(10, "h2", 8);
-        \u0275\u0275text(11, "Why Choose Us?");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(12, "div", 9);
-        \u0275\u0275template(13, HomeComponent_div_13_Template, 7, 3, "div", 10);
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(14, "section", 11)(15, "h2", 8);
-        \u0275\u0275text(16, "Membership Plans");
-        \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(17, "div", 12);
-        \u0275\u0275template(18, HomeComponent_div_18_Template, 7, 3, "div", 13);
-        \u0275\u0275elementEnd()();
       }
       if (rf & 2) {
-        \u0275\u0275advance();
-        \u0275\u0275property("ngForOf", ctx.slides);
+        \u0275\u0275advance(13);
+        \u0275\u0275property("ngForOf", ctx.slides_1);
+        \u0275\u0275advance(6);
+        \u0275\u0275textInterpolate(ctx.whowheare.description);
         \u0275\u0275advance(5);
-        \u0275\u0275property("ngForOf", ctx.slides);
-        \u0275\u0275advance(7);
+        \u0275\u0275property("ngForOf", ctx.slides_2);
+        \u0275\u0275advance(5);
         \u0275\u0275property("ngForOf", ctx.features);
+        \u0275\u0275advance(5);
+        \u0275\u0275property("ngForOf", ctx.slides_3);
         \u0275\u0275advance(5);
         \u0275\u0275property("ngForOf", ctx.plans);
       }
-    }, dependencies: [NgForOf], styles: ['\n\n*[_ngcontent-%COMP%] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nbody[_ngcontent-%COMP%] {\n  font-family: "Arial", sans-serif;\n  line-height: 1.6;\n  overflow-x: hidden;\n}\n.slider[_ngcontent-%COMP%] {\n  position: relative;\n  height: 100vh;\n  overflow: hidden;\n}\n.slide[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n  transition: opacity 1s ease-in-out;\n  background-size: cover;\n  background-position: center;\n}\n.slide[_ngcontent-%COMP%]::before {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.4);\n}\n.slide.active[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.slide-content[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  text-align: center;\n  color: white;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);\n  width: 80%;\n  max-width: 800px;\n}\n.slide-content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  font-size: 4rem;\n  margin-bottom: 1rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: _ngcontent-%COMP%_slideUp 0.8s forwards;\n}\n.slide-content[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  margin-bottom: 2rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: _ngcontent-%COMP%_slideUp 0.8s 0.2s forwards;\n}\n@keyframes _ngcontent-%COMP%_slideUp {\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.cta-button[_ngcontent-%COMP%] {\n  padding: 1rem 2rem;\n  font-size: 1.2rem;\n  background-color: #ff4444;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.3s;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: _ngcontent-%COMP%_slideUp 0.8s 0.4s forwards;\n}\n.cta-button[_ngcontent-%COMP%]:hover {\n  background-color: #ff6666;\n  transform: translateY(-2px);\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.slider-controls[_ngcontent-%COMP%] {\n  position: absolute;\n  bottom: 40px;\n  left: 50%;\n  transform: translateX(-50%);\n  display: flex;\n  align-items: center;\n  gap: 20px;\n  z-index: 10;\n}\n.nav-button[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.3);\n  border: none;\n  color: white;\n  padding: 10px 20px;\n  cursor: pointer;\n  font-size: 1.5rem;\n  border-radius: 50%;\n  transition: all 0.3s;\n}\n.nav-button[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.5);\n}\n.dots[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 10px;\n}\n.dot[_ngcontent-%COMP%] {\n  width: 12px;\n  height: 12px;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  cursor: pointer;\n  transition: all 0.3s;\n}\n.dot.active[_ngcontent-%COMP%] {\n  background: white;\n  transform: scale(1.2);\n}\n.section-title[_ngcontent-%COMP%] {\n  text-align: center;\n  font-size: 2.5rem;\n  margin-bottom: 3rem;\n  color: #333;\n}\n.features[_ngcontent-%COMP%] {\n  padding: 6rem 2rem;\n  background-color: #f5f5f5;\n}\n.features-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.feature-card[_ngcontent-%COMP%] {\n  background: white;\n  padding: 2rem;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  text-align: center;\n  transition: all 0.3s;\n}\n.feature-card[_ngcontent-%COMP%]:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n.feature-icon[_ngcontent-%COMP%] {\n  font-size: 3rem;\n  margin-bottom: 1rem;\n}\n.feature-card[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 1rem 0;\n  color: #333;\n  font-size: 1.5rem;\n}\n.feature-card[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  color: #666;\n}\n.membership-plans[_ngcontent-%COMP%] {\n  padding: 6rem 2rem;\n  background-color: white;\n}\n.plans-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.plan-card[_ngcontent-%COMP%] {\n  background: #f8f9fa;\n  padding: 3rem 2rem;\n  border-radius: 15px;\n  text-align: center;\n  transition: all 0.3s;\n  border: 2px solid transparent;\n}\n.plan-card[_ngcontent-%COMP%]:hover {\n  border-color: #ff4444;\n  transform: translateY(-5px);\n}\n.plan-card[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  font-size: 1.8rem;\n  color: #333;\n  margin-bottom: 1rem;\n}\n.price[_ngcontent-%COMP%] {\n  font-size: 2.5rem;\n  color: #ff4444;\n  margin-bottom: 2rem;\n  font-weight: bold;\n}\n.plan-features[_ngcontent-%COMP%] {\n  list-style: none;\n  margin-bottom: 2rem;\n}\n.plan-features[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  margin-bottom: 1rem;\n  color: #666;\n}\n.plan-button[_ngcontent-%COMP%] {\n  padding: 1rem 2rem;\n  background-color: #ff4444;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.3s;\n  font-size: 1.1rem;\n}\n.plan-button[_ngcontent-%COMP%]:hover {\n  background-color: #ff6666;\n  transform: translateY(-2px);\n}\n@media (max-width: 768px) {\n  .slide-content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n    font-size: 2.5rem;\n  }\n  .slide-content[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 1.2rem;\n  }\n  .section-title[_ngcontent-%COMP%] {\n    font-size: 2rem;\n  }\n  .slide-image[_ngcontent-%COMP%] {\n    width: 100%;\n    height: auto;\n  }\n}\n/*# sourceMappingURL=home.component.css.map */'] });
+    }, dependencies: [NgForOf], styles: ['\n\nbody[_ngcontent-%COMP%] {\n  font-family: Arial, sans-serif;\n  margin: -1000;\n  padding: 0;\n  width: 100%;\n  background-color: #f4f4f4;\n  align-content: center;\n}\nheader[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 20px;\n  background-color: #333;\n  color: #fff;\n}\n.logo[_ngcontent-%COMP%] {\n  font-size: 24px;\n}\nnav[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%] {\n  list-style: none;\n  display: flex;\n  gap: 20px;\n}\nnav[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  display: inline;\n}\nnav[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  color: #fff;\n  text-decoration: none;\n}\n.image-section[_ngcontent-%COMP%] {\n  position: relative;\n  height: 225vh;\n  overflow: hidden;\n  display: flex;\n  background-image: url("./media/logo.jpg");\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  width: 100%;\n  max-width: 100%;\n}\nh1[_ngcontent-%COMP%] {\n  font-size: 48px;\n  color: #333;\n}\nsection[_ngcontent-%COMP%] {\n  padding: 6rem 2rem;\n  position: relative;\n  align-items: center;\n}\n.section-title[_ngcontent-%COMP%] {\n  font-family: "papyrus", fantasy;\n  font-size: 78px;\n  color: black;\n  animation: _ngcontent-%COMP%_colorChange 10s infinite;\n  position: relative;\n  text-align: center;\n}\n.backtomain[_ngcontent-%COMP%] {\n  width: 5vh;\n  height: 5vh;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f0f0f0;\n  border: none;\n  cursor: pointer;\n  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);\n  transition: background-color 0.3s ease;\n}\n.backtomain[_ngcontent-%COMP%]:hover {\n  background-color: #e0e0e0;\n}\n.buttons[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  position: relative;\n  gap: 5%;\n  margin-top: 1%;\n  margin-bottom: 1%;\n  background-color: rgba(255, 255, 255, 0);\n  border: none;\n  box-shadow: #333;\n}\n.whowearebutton[_ngcontent-%COMP%] {\n  border: none;\n  box-shadow: #333;\n  background-color: rgba(255, 255, 255, 0);\n  cursor: pointer;\n  font-family: "papyrus", fantasy;\n  color: rgb(87, 4, 4);\n  font-weight: bold;\n  position: relative;\n  font-size: large;\n}\n.membershipbutton[_ngcontent-%COMP%] {\n  border: none;\n  box-shadow: #333;\n  background-color: rgba(255, 255, 255, 0);\n  cursor: pointer;\n  font-family: "papyrus", fantasy;\n  color: rgb(87, 4, 4);\n  font-weight: bold;\n  position: relative;\n  font-size: large;\n}\n.featuresbutton[_ngcontent-%COMP%] {\n  border: none;\n  box-shadow: #333;\n  background-color: rgba(255, 255, 255, 0);\n  cursor: pointer;\n  font-family: "papyrus", fantasy;\n  color: rgb(87, 4, 4);\n  font-weight: bold;\n  position: relative;\n  font-size: large;\n}\n@keyframes _ngcontent-%COMP%_colorChange {\n  0% {\n    color: rgb(230, 184, 184);\n  }\n  50% {\n    color: red;\n  }\n  100% {\n    color: rgb(183, 8, 8);\n  }\n}\n.title[_ngcontent-%COMP%] {\n  font-family: "papyrus", fantasy;\n  font-size: 108px;\n  color: rgb(87, 4, 4);\n  animation: _ngcontent-%COMP%_colorChangeTitle 60s infinite;\n  position: relative;\n  top: -450px;\n}\n@keyframes _ngcontent-%COMP%_colorChangeTitle {\n  0% {\n    color: rgb(230, 184, 184);\n  }\n  25% {\n    color: rgb(233, 114, 114);\n  }\n  50% {\n    color: red;\n  }\n  75% {\n    color: rgb(201, 10, 10);\n  }\n  100% {\n    color: rgb(183, 8, 8);\n  }\n}\n.whoweare[_ngcontent-%COMP%] {\n  padding: 6rem 2 rem;\n  position: relative;\n  margin-top: 100px;\n  margin-bottom: 100px;\n}\n.whowearedescr[_ngcontent-%COMP%] {\n  font-family:\n    Arial,\n    Helvetica,\n    fantasy;\n  margin-left: 50px;\n}\n.features[_ngcontent-%COMP%] {\n  padding: 6rem 2rem;\n}\n.features-grid[_ngcontent-%COMP%] {\n  display: grid;\n  position: relative;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.feature-card[_ngcontent-%COMP%] {\n  background: white;\n  padding: 2rem;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  text-align: center;\n  transition: all 0.3s;\n}\n.feature-card[_ngcontent-%COMP%]:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n.feature-icon[_ngcontent-%COMP%] {\n  font-size: 3rem;\n  margin-bottom: 1rem;\n}\n.feature-card[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 1rem 0;\n  color: #333;\n  font-size: 1.5rem;\n}\n.feature-card[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  color: #666;\n}\n@media (min-width: 768px) {\n  .slider[_ngcontent-%COMP%] {\n    position: relative;\n    height: 100vh;\n    overflow: hidden;\n    display: flex;\n  }\n  .slide[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    transition: opacity 1s ease-in-out;\n    background-size: cover;\n    background-position: center;\n    max-width: 100%;\n  }\n  .slide[_ngcontent-%COMP%]::before {\n    content: "";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.4);\n    max-width: 100%;\n  }\n  .slide.active[_ngcontent-%COMP%] {\n    opacity: 1;\n    max-width: 100%;\n  }\n}\n@media (max-width: 767px) {\n  .slider[_ngcontent-%COMP%] {\n    position: relative;\n    height: 100vh;\n    overflow: hidden;\n    display: flex;\n  }\n  .slide[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    transition: opacity 1s ease-in-out;\n    background-size: cover;\n    background-position: center;\n    max-width: 767px;\n  }\n  .slide[_ngcontent-%COMP%]::before {\n    content: "";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.4);\n    max-width: 767px;\n  }\n  .slide.active[_ngcontent-%COMP%] {\n    opacity: 1;\n    max-width: 767px;\n  }\n}\n.slide-content[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  text-align: center;\n  color: white;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);\n  width: 80%;\n  max-width: 800px;\n}\n.slide-content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  font-size: 4rem;\n  margin-bottom: 1rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: _ngcontent-%COMP%_slideUp 0.8s forwards;\n}\n.slide-content[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  margin-bottom: 2rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: _ngcontent-%COMP%_slideUp 0.8s 0.2s forwards;\n}\n@keyframes _ngcontent-%COMP%_slideUp {\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.membership-plans[_ngcontent-%COMP%] {\n  padding: 6rem 2rem;\n}\n.plans-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.plan-card[_ngcontent-%COMP%] {\n  background: #f8f9fa;\n  padding: 3rem 2rem;\n  border-radius: 15px;\n  text-align: center;\n  transition: all 0.3s;\n  border: 2px solid transparent;\n}\n.plan-card[_ngcontent-%COMP%]:hover {\n  border-color: #ff4444;\n  transform: translateY(-5px);\n}\n.plan-card[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  font-size: 1.8rem;\n  color: #333;\n  margin-bottom: 1rem;\n}\n.price[_ngcontent-%COMP%] {\n  font-size: 2.5rem;\n  color: #ff4444;\n  margin-bottom: 2rem;\n  font-weight: bold;\n}\n.plan-features[_ngcontent-%COMP%] {\n  list-style: none;\n  margin-bottom: 2rem;\n}\n.plan-features[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  margin-bottom: 1rem;\n  color: #666;\n}\n.plan-button[_ngcontent-%COMP%] {\n  padding: 1rem 2rem;\n  background-color: #ff4444;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.3s;\n  font-size: 1.1rem;\n}\n.plan-button[_ngcontent-%COMP%]:hover {\n  background-color: #ff6666;\n  transform: translateY(-2px);\n}\n@media (max-width: 768px) {\n  .slide-content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n    font-size: 2.5rem;\n  }\n  .slide-content[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 1.2rem;\n  }\n  .slide-image[_ngcontent-%COMP%] {\n    width: 100%;\n    height: auto;\n  }\n}\n/*# sourceMappingURL=home.component.css.map */'] });
   }
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(HomeComponent, [{
     type: Component,
-    args: [{ selector: "app-home", standalone: false, template: `<!--Sezione 1-->
-<div class="slider">
+    args: [{ selector: "app-home", standalone: false, template: `
+<!--Sezione 1-->
+<!--<div class="slider">
     <div *ngFor="let slide of slides; let i = index" 
          class="slide" 
          [class.active]="currentSlide === i"
@@ -54361,7 +54484,6 @@ var HomeComponent = class _HomeComponent {
       <div class="slide-content">
         <h1>{{ slide.title }}</h1>
         <p>{{ slide.description }}</p>
-        <!--<button class="cta-button">{{ slide.buttonText }}</button>-->
       </div>
     </div>
     <div class="slider-controls">
@@ -54385,11 +54507,112 @@ var HomeComponent = class _HomeComponent {
         <p>{{ feature.description }}</p>
       </div>
     </div>
+  </section> -->
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+          
+  <div class="buttons" id="buttons">
+    <button class="whowearebutton" (click)="GoToSection('whoweare')">CHI SIAMO</button>
+    <button class="featuresbutton" (click)="GoToSection('features')">COSA OFFRIAMO</button>
+    <button class="membershipbutton" (click)="GoToSection('membership')">I NOSTRI PIANI</button>
+  </div>
+
+  <!--main class="logo-section">
+      <div class="logo-image"></div>
+  </main>-->
+
+  
+  <section class="image-section">
   </section>
 
-  <!--Sezione 3-->
-  <section class="membership-plans">
-    <h2 class="section-title">Membership Plans</h2>
+
+    <!--Sezione 1-->
+    <section class="slider" id="foto_1">
+      <div *ngFor="let slide of slides_1; let i = index" 
+          class="slide" 
+          [class.active]="currentSlide1 === i"
+          [style.backgroundImage]="'url(' + slide.urlImage + ')'"
+        >
+      <div class="slide-content">
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.description }}</p>
+      </div>
+    </div>
+    </section>
+
+    <!--Sezione 2-->
+    <section id="whoweare">
+      <h2 class="section-title">Chi siamo?</h2>
+      <div class="whowearedescr">
+        <p>{{whowheare.description}}</p>
+          <!--<p>la vispa teresa avea tra l'erbetta a volo sorpresa gentil farfalletta e tutta giuliva f\xECgridava distesa l'ho presa l'ho presa <br>
+          l'hai presa cretina e bene ti sta grid\xF2 farfallina la radioattivita</p>-->
+      </div>
+      <br>
+      <button class="backtomain" (click)="BacktoMain()">\u2191</button>
+    </section>
+
+    <!--Sezione 3-->
+    <section class="slider" id="foto_2">
+      <div *ngFor="let slide of slides_2; let i = index" 
+          class="slide" 
+          [class.active]="currentSlide2 === i"
+          [style.backgroundImage]="'url(' + slide.urlImage + ')'"
+        >
+      <div class="slide-content">
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.description }}</p>
+      </div>
+    </div>
+    </section>
+
+    <!--Sezione 4-->
+    <section id="features">
+      <h2 class="section-title">Cosa offriamo?</h2>
+      <div class="features-grid">
+        <div class="feature-card" *ngFor="let feature of features">
+          <div class="feature-icon">{{ feature.title }}</div>
+          <h3>{{ feature.description }}</h3>
+          <p>{{ feature.additionalText }}</p>
+        </div>
+      </div>
+      <br>
+      <button class="backtomain" (click)="BacktoMain()">\u2191</button>
+    </section>
+
+    <!--Sezione 5-->
+    <section class="slider" id="foto_3">
+     <div *ngFor="let slide of slides_3; let i = index" 
+          class="slide" 
+          [class.active]="currentSlide3 === i"
+          [style.backgroundImage]="'url(' + slide.urlImage + ')'"
+        >
+      <div class="slide-content">
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.description }}</p>
+      </div>
+     </div>
+    </section>
+      <!--<div class="slider-controls">
+        <button class="nav-button prev" (click)="prevSlide()">\u276E</button>
+        <div class="dots">
+          <span *ngFor="let slide of slides; let i = index" 
+                class="dot" 
+                [class.active]="currentSlide === i"
+                (click)="goToSlide(i)"></span>
+        </div>
+        <button class="nav-button next" (click)="nextSlide()">\u276F</button>
+      </div>-->
+
+
+  <!--Sezione 6-->
+  <section id="membership">
+    <h2 class="section-title">Piani Abbonamento</h2>
     <div class="plans-grid">
       <div class="plan-card" *ngFor="let plan of plans">
         <h3>{{ plan.title }}</h3>
@@ -54397,10 +54620,14 @@ var HomeComponent = class _HomeComponent {
         <ul class="plan-features">
           <li *ngFor="let feature of plan.additionalText.split(',')">{{ feature }}</li>
         </ul>
-        <!--<button class="plan-button">Choose Plan</button>-->
       </div>
     </div>
-  </section>`, styles: ['/* src/app/Component/home/home.component.css */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nbody {\n  font-family: "Arial", sans-serif;\n  line-height: 1.6;\n  overflow-x: hidden;\n}\n.slider {\n  position: relative;\n  height: 100vh;\n  overflow: hidden;\n}\n.slide {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n  transition: opacity 1s ease-in-out;\n  background-size: cover;\n  background-position: center;\n}\n.slide::before {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.4);\n}\n.slide.active {\n  opacity: 1;\n}\n.slide-content {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  text-align: center;\n  color: white;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);\n  width: 80%;\n  max-width: 800px;\n}\n.slide-content h1 {\n  font-size: 4rem;\n  margin-bottom: 1rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: slideUp 0.8s forwards;\n}\n.slide-content p {\n  font-size: 1.5rem;\n  margin-bottom: 2rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: slideUp 0.8s 0.2s forwards;\n}\n@keyframes slideUp {\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.cta-button {\n  padding: 1rem 2rem;\n  font-size: 1.2rem;\n  background-color: #ff4444;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.3s;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: slideUp 0.8s 0.4s forwards;\n}\n.cta-button:hover {\n  background-color: #ff6666;\n  transform: translateY(-2px);\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.slider-controls {\n  position: absolute;\n  bottom: 40px;\n  left: 50%;\n  transform: translateX(-50%);\n  display: flex;\n  align-items: center;\n  gap: 20px;\n  z-index: 10;\n}\n.nav-button {\n  background: rgba(255, 255, 255, 0.3);\n  border: none;\n  color: white;\n  padding: 10px 20px;\n  cursor: pointer;\n  font-size: 1.5rem;\n  border-radius: 50%;\n  transition: all 0.3s;\n}\n.nav-button:hover {\n  background: rgba(255, 255, 255, 0.5);\n}\n.dots {\n  display: flex;\n  gap: 10px;\n}\n.dot {\n  width: 12px;\n  height: 12px;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  cursor: pointer;\n  transition: all 0.3s;\n}\n.dot.active {\n  background: white;\n  transform: scale(1.2);\n}\n.section-title {\n  text-align: center;\n  font-size: 2.5rem;\n  margin-bottom: 3rem;\n  color: #333;\n}\n.features {\n  padding: 6rem 2rem;\n  background-color: #f5f5f5;\n}\n.features-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.feature-card {\n  background: white;\n  padding: 2rem;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  text-align: center;\n  transition: all 0.3s;\n}\n.feature-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n.feature-icon {\n  font-size: 3rem;\n  margin-bottom: 1rem;\n}\n.feature-card h3 {\n  margin: 1rem 0;\n  color: #333;\n  font-size: 1.5rem;\n}\n.feature-card p {\n  color: #666;\n}\n.membership-plans {\n  padding: 6rem 2rem;\n  background-color: white;\n}\n.plans-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.plan-card {\n  background: #f8f9fa;\n  padding: 3rem 2rem;\n  border-radius: 15px;\n  text-align: center;\n  transition: all 0.3s;\n  border: 2px solid transparent;\n}\n.plan-card:hover {\n  border-color: #ff4444;\n  transform: translateY(-5px);\n}\n.plan-card h3 {\n  font-size: 1.8rem;\n  color: #333;\n  margin-bottom: 1rem;\n}\n.price {\n  font-size: 2.5rem;\n  color: #ff4444;\n  margin-bottom: 2rem;\n  font-weight: bold;\n}\n.plan-features {\n  list-style: none;\n  margin-bottom: 2rem;\n}\n.plan-features li {\n  margin-bottom: 1rem;\n  color: #666;\n}\n.plan-button {\n  padding: 1rem 2rem;\n  background-color: #ff4444;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.3s;\n  font-size: 1.1rem;\n}\n.plan-button:hover {\n  background-color: #ff6666;\n  transform: translateY(-2px);\n}\n@media (max-width: 768px) {\n  .slide-content h1 {\n    font-size: 2.5rem;\n  }\n  .slide-content p {\n    font-size: 1.2rem;\n  }\n  .section-title {\n    font-size: 2rem;\n  }\n  .slide-image {\n    width: 100%;\n    height: auto;\n  }\n}\n/*# sourceMappingURL=home.component.css.map */\n'] }]
+    <br>
+    <button class="backtomain" (click)="BacktoMain()">\u2191</button>
+  </section>
+
+</body>
+`, styles: ['/* src/app/Component/home/home.component.css */\nbody {\n  font-family: Arial, sans-serif;\n  margin: -1000;\n  padding: 0;\n  width: 100%;\n  background-color: #f4f4f4;\n  align-content: center;\n}\nheader {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 20px;\n  background-color: #333;\n  color: #fff;\n}\n.logo {\n  font-size: 24px;\n}\nnav ul {\n  list-style: none;\n  display: flex;\n  gap: 20px;\n}\nnav ul li {\n  display: inline;\n}\nnav ul li a {\n  color: #fff;\n  text-decoration: none;\n}\n.image-section {\n  position: relative;\n  height: 225vh;\n  overflow: hidden;\n  display: flex;\n  background-image: url("./media/logo.jpg");\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n  width: 100%;\n  max-width: 100%;\n}\nh1 {\n  font-size: 48px;\n  color: #333;\n}\nsection {\n  padding: 6rem 2rem;\n  position: relative;\n  align-items: center;\n}\n.section-title {\n  font-family: "papyrus", fantasy;\n  font-size: 78px;\n  color: black;\n  animation: colorChange 10s infinite;\n  position: relative;\n  text-align: center;\n}\n.backtomain {\n  width: 5vh;\n  height: 5vh;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #f0f0f0;\n  border: none;\n  cursor: pointer;\n  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);\n  transition: background-color 0.3s ease;\n}\n.backtomain:hover {\n  background-color: #e0e0e0;\n}\n.buttons {\n  display: flex;\n  justify-content: center;\n  position: relative;\n  gap: 5%;\n  margin-top: 1%;\n  margin-bottom: 1%;\n  background-color: rgba(255, 255, 255, 0);\n  border: none;\n  box-shadow: #333;\n}\n.whowearebutton {\n  border: none;\n  box-shadow: #333;\n  background-color: rgba(255, 255, 255, 0);\n  cursor: pointer;\n  font-family: "papyrus", fantasy;\n  color: rgb(87, 4, 4);\n  font-weight: bold;\n  position: relative;\n  font-size: large;\n}\n.membershipbutton {\n  border: none;\n  box-shadow: #333;\n  background-color: rgba(255, 255, 255, 0);\n  cursor: pointer;\n  font-family: "papyrus", fantasy;\n  color: rgb(87, 4, 4);\n  font-weight: bold;\n  position: relative;\n  font-size: large;\n}\n.featuresbutton {\n  border: none;\n  box-shadow: #333;\n  background-color: rgba(255, 255, 255, 0);\n  cursor: pointer;\n  font-family: "papyrus", fantasy;\n  color: rgb(87, 4, 4);\n  font-weight: bold;\n  position: relative;\n  font-size: large;\n}\n@keyframes colorChange {\n  0% {\n    color: rgb(230, 184, 184);\n  }\n  50% {\n    color: red;\n  }\n  100% {\n    color: rgb(183, 8, 8);\n  }\n}\n.title {\n  font-family: "papyrus", fantasy;\n  font-size: 108px;\n  color: rgb(87, 4, 4);\n  animation: colorChangeTitle 60s infinite;\n  position: relative;\n  top: -450px;\n}\n@keyframes colorChangeTitle {\n  0% {\n    color: rgb(230, 184, 184);\n  }\n  25% {\n    color: rgb(233, 114, 114);\n  }\n  50% {\n    color: red;\n  }\n  75% {\n    color: rgb(201, 10, 10);\n  }\n  100% {\n    color: rgb(183, 8, 8);\n  }\n}\n.whoweare {\n  padding: 6rem 2 rem;\n  position: relative;\n  margin-top: 100px;\n  margin-bottom: 100px;\n}\n.whowearedescr {\n  font-family:\n    Arial,\n    Helvetica,\n    fantasy;\n  margin-left: 50px;\n}\n.features {\n  padding: 6rem 2rem;\n}\n.features-grid {\n  display: grid;\n  position: relative;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.feature-card {\n  background: white;\n  padding: 2rem;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  text-align: center;\n  transition: all 0.3s;\n}\n.feature-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n.feature-icon {\n  font-size: 3rem;\n  margin-bottom: 1rem;\n}\n.feature-card h3 {\n  margin: 1rem 0;\n  color: #333;\n  font-size: 1.5rem;\n}\n.feature-card p {\n  color: #666;\n}\n@media (min-width: 768px) {\n  .slider {\n    position: relative;\n    height: 100vh;\n    overflow: hidden;\n    display: flex;\n  }\n  .slide {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    transition: opacity 1s ease-in-out;\n    background-size: cover;\n    background-position: center;\n    max-width: 100%;\n  }\n  .slide::before {\n    content: "";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.4);\n    max-width: 100%;\n  }\n  .slide.active {\n    opacity: 1;\n    max-width: 100%;\n  }\n}\n@media (max-width: 767px) {\n  .slider {\n    position: relative;\n    height: 100vh;\n    overflow: hidden;\n    display: flex;\n  }\n  .slide {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    transition: opacity 1s ease-in-out;\n    background-size: cover;\n    background-position: center;\n    max-width: 767px;\n  }\n  .slide::before {\n    content: "";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.4);\n    max-width: 767px;\n  }\n  .slide.active {\n    opacity: 1;\n    max-width: 767px;\n  }\n}\n.slide-content {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  text-align: center;\n  color: white;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);\n  width: 80%;\n  max-width: 800px;\n}\n.slide-content h1 {\n  font-size: 4rem;\n  margin-bottom: 1rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: slideUp 0.8s forwards;\n}\n.slide-content p {\n  font-size: 1.5rem;\n  margin-bottom: 2rem;\n  opacity: 0;\n  transform: translateY(20px);\n  animation: slideUp 0.8s 0.2s forwards;\n}\n@keyframes slideUp {\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n.membership-plans {\n  padding: 6rem 2rem;\n}\n.plans-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 2rem;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.plan-card {\n  background: #f8f9fa;\n  padding: 3rem 2rem;\n  border-radius: 15px;\n  text-align: center;\n  transition: all 0.3s;\n  border: 2px solid transparent;\n}\n.plan-card:hover {\n  border-color: #ff4444;\n  transform: translateY(-5px);\n}\n.plan-card h3 {\n  font-size: 1.8rem;\n  color: #333;\n  margin-bottom: 1rem;\n}\n.price {\n  font-size: 2.5rem;\n  color: #ff4444;\n  margin-bottom: 2rem;\n  font-weight: bold;\n}\n.plan-features {\n  list-style: none;\n  margin-bottom: 2rem;\n}\n.plan-features li {\n  margin-bottom: 1rem;\n  color: #666;\n}\n.plan-button {\n  padding: 1rem 2rem;\n  background-color: #ff4444;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: all 0.3s;\n  font-size: 1.1rem;\n}\n.plan-button:hover {\n  background-color: #ff6666;\n  transform: translateY(-2px);\n}\n@media (max-width: 768px) {\n  .slide-content h1 {\n    font-size: 2.5rem;\n  }\n  .slide-content p {\n    font-size: 1.2rem;\n  }\n  .slide-image {\n    width: 100%;\n    height: auto;\n  }\n}\n/*# sourceMappingURL=home.component.css.map */\n'] }]
   }], () => [{ type: CommonService }, { type: SitoService }], null);
 })();
 (() => {
@@ -63287,27 +63514,29 @@ var AppComponent = class _AppComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], standalone: false, decls: 11, vars: 0, consts: [[1, "container"]], template: function AppComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], standalone: false, decls: 13, vars: 0, consts: [["name", "viewport", "content", "width=device-width, initial-scale=1.0"], [1, "container"]], template: function AppComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "head")(1, "title");
         \u0275\u0275text(2, "SitoDeiSitiInsito");
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(3, "body");
-        \u0275\u0275element(4, "app-spinner")(5, "app-nav-bar");
-        \u0275\u0275elementStart(6, "div", 0);
-        \u0275\u0275element(7, "router-outlet");
         \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(8, "footer")(9, "p");
-        \u0275\u0275text(10, "\xA9 2025 Palestra Fitness. Tutti i diritti riservati.");
-        \u0275\u0275elementEnd()()();
+        \u0275\u0275element(3, "meta", 0);
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(4, "body")(5, "div", 1);
+        \u0275\u0275element(6, "app-spinner")(7, "app-nav-bar");
+        \u0275\u0275elementStart(8, "div");
+        \u0275\u0275element(9, "router-outlet");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(10, "footer")(11, "p");
+        \u0275\u0275text(12, "\xA9 2025 Palestra Fitness. Tutti i diritti riservati.");
+        \u0275\u0275elementEnd()()()();
       }
-    }, dependencies: [RouterOutlet, NavBarComponent, SpinnerComponent], styles: ["\n\nfooter[_ngcontent-%COMP%] {\n  background: #ef8b8b;\n  color: #fff;\n  text-align: center;\n  padding: 10px 0;\n  position: fixed;\n  width: 100%;\n  height: 5%;\n  bottom: 0;\n}\n/*# sourceMappingURL=app.component.css.map */"] });
+    }, dependencies: [RouterOutlet, NavBarComponent, SpinnerComponent], styles: ["\n\nfooter[_ngcontent-%COMP%] {\n  background: #ef8b8b;\n  color: #fff;\n  text-align: center;\n  padding: 10px 0;\n  position: relative;\n  width: 100%;\n  height: 5%;\n  bottom: 0;\n}\n.container[_ngcontent-%COMP%] {\n  width: 100%;\n  margin: 0 auto;\n}\n@media (min-width: 768px) {\n  .container[_ngcontent-%COMP%] {\n    max-width: 100%;\n    padding: 20px;\n  }\n}\n@media (max-width: 767px) {\n  .container[_ngcontent-%COMP%] {\n    padding: 10px;\n  }\n}\n/*# sourceMappingURL=app.component.css.map */"] });
   }
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AppComponent, [{
     type: Component,
-    args: [{ selector: "app-root", standalone: false, template: '<head>\n  <title>SitoDeiSitiInsito</title>\n</head>\n<body>\n  <app-spinner></app-spinner>\n  <app-nav-bar></app-nav-bar>\n  <div class="container">\n    <router-outlet></router-outlet>\n  </div>\n  <!--<app-cookie-consent></app-cookie-consent>-->\n  <footer>\n    <p>&copy; 2025 Palestra Fitness. Tutti i diritti riservati.</p>\n  </footer>\n</body>\n', styles: ["/* src/app/app.component.css */\nfooter {\n  background: #ef8b8b;\n  color: #fff;\n  text-align: center;\n  padding: 10px 0;\n  position: fixed;\n  width: 100%;\n  height: 5%;\n  bottom: 0;\n}\n/*# sourceMappingURL=app.component.css.map */\n"] }]
+    args: [{ selector: "app-root", standalone: false, template: '<head>\n  <title>SitoDeiSitiInsito</title>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n</head>\n<body>\n  <div class="container">\n  <app-spinner></app-spinner>\n  <app-nav-bar></app-nav-bar>\n  <div >\n    <router-outlet></router-outlet>\n  </div>\n  <!--<app-cookie-consent></app-cookie-consent>-->\n  <footer>\n    <p>&copy; 2025 Palestra Fitness. Tutti i diritti riservati.</p>\n  </footer>\n  </div>\n</body>\n', styles: ["/* src/app/app.component.css */\nfooter {\n  background: #ef8b8b;\n  color: #fff;\n  text-align: center;\n  padding: 10px 0;\n  position: relative;\n  width: 100%;\n  height: 5%;\n  bottom: 0;\n}\n.container {\n  width: 100%;\n  margin: 0 auto;\n}\n@media (min-width: 768px) {\n  .container {\n    max-width: 100%;\n    padding: 20px;\n  }\n}\n@media (max-width: 767px) {\n  .container {\n    padding: 10px;\n  }\n}\n/*# sourceMappingURL=app.component.css.map */\n"] }]
   }], null, null);
 })();
 (() => {
@@ -63671,12 +63900,12 @@ var FakeBackendInterceptor = class _FakeBackendInterceptor {
           return GetCategories();
         case (url.toLowerCase().includes("getpagine") && method === "GET"):
           return GetPages();
+        case (url.toLowerCase().includes("bypagina?pagina=1") && method === "GET"):
+          return GetImages();
+        case (url.toLowerCase().includes("bypagina?pagina=3") && method === "GET"):
+          return GetNews();
         case (url.toLowerCase().includes("getgrafiche") && method === "GET"):
           return GetGrafiche();
-        case (url.toLowerCase().includes("getgrafichebypagina?pagina=1") && method === "GET"):
-          return GetImages();
-        case (url.toLowerCase().includes("getgrafichebypagina?pagina=3") && method === "GET"):
-          return GetNews();
         case (url.toLowerCase().includes("getvideo") && method === "GET"):
           return GetVideo();
         case (url.toLowerCase().includes("getredirezioni") && method === "GET"):
@@ -64130,10 +64359,62 @@ var FakeBackendInterceptor = class _FakeBackendInterceptor {
           "active": true
         },
         {
+          "id": 1,
+          "urlImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+          "page": 1,
+          "section": 3,
+          "urlFromGoogleDrive": false,
+          "title": "Expert Trainers",
+          "description": "Get personalized workout plans tailored to your goals",
+          "additionalText": "Meet Our Trainers",
+          "isAdditionalTextMarkdown": false,
+          "order": 1,
+          "active": true
+        },
+        {
+          "id": 2,
+          "urlImage": "https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link",
+          "page": 1,
+          "section": 3,
+          "urlFromGoogleDrive": true,
+          "title": "test",
+          "description": "test da google",
+          "additionalText": "drive",
+          "isAdditionalTextMarkdown": false,
+          "order": 2,
+          "active": true
+        },
+        {
+          "id": 1,
+          "urlImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+          "page": 1,
+          "section": 5,
+          "urlFromGoogleDrive": false,
+          "title": "Expert Trainers",
+          "description": "Get personalized workout plans tailored to your goals",
+          "additionalText": "Meet Our Trainers",
+          "isAdditionalTextMarkdown": false,
+          "order": 1,
+          "active": true
+        },
+        {
+          "id": 2,
+          "urlImage": "https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link",
+          "page": 1,
+          "section": 5,
+          "urlFromGoogleDrive": true,
+          "title": "test",
+          "description": "test da google",
+          "additionalText": "drive",
+          "isAdditionalTextMarkdown": false,
+          "order": 2,
+          "active": true
+        },
+        {
           "id": 3,
           "urlImage": "",
           "page": 1,
-          "section": 3,
+          "section": 6,
           "urlFromGoogleDrive": false,
           "title": "Basic",
           "description": "$29/month",
@@ -64146,7 +64427,7 @@ var FakeBackendInterceptor = class _FakeBackendInterceptor {
           "id": 4,
           "urlImage": "",
           "page": 1,
-          "section": 3,
+          "section": 6,
           "urlFromGoogleDrive": false,
           "title": "Elite",
           "description": "$99/month",
@@ -64159,13 +64440,78 @@ var FakeBackendInterceptor = class _FakeBackendInterceptor {
           "id": 5,
           "urlImage": "",
           "page": 1,
-          "section": 3,
+          "section": 6,
           "urlFromGoogleDrive": false,
           "title": "Premium",
           "description": "$59/month",
           "additionalText": "Full gym access 24/7, All equipment access, Unlimited group classes, One personal training session/month",
           "isAdditionalTextMarkdown": false,
           "order": 1,
+          "active": true
+        },
+        {
+          "id": 6,
+          "urlImage": "",
+          "page": 1,
+          "section": 2,
+          "urlFromGoogleDrive": false,
+          "title": "",
+          "description": "esempio descrizione della sezione chi siamo",
+          "additionalText": "",
+          "isAdditionalTextMarkdown": false,
+          "order": 1,
+          "active": true
+        },
+        {
+          "id": 7,
+          "urlImage": "",
+          "page": 1,
+          "section": 4,
+          "urlFromGoogleDrive": false,
+          "title": "\u{1F4AA}",
+          "description": "Personal Training",
+          "additionalText": "One-on-one sessions with certified trainers customized to your needs",
+          "isAdditionalTextMarkdown": false,
+          "order": 1,
+          "active": true
+        },
+        {
+          "id": 8,
+          "urlImage": "",
+          "page": 1,
+          "section": 4,
+          "urlFromGoogleDrive": false,
+          "title": "\u{1F552}",
+          "description": "24/7 Access",
+          "additionalText": "Work out on your schedule with round-the-clock facility access",
+          "isAdditionalTextMarkdown": false,
+          "order": 2,
+          "active": true
+        },
+        {
+          "id": 9,
+          "urlImage": "",
+          "page": 1,
+          "section": 4,
+          "urlFromGoogleDrive": false,
+          "title": "\u{1F465}",
+          "description": "Group Classes",
+          "additionalText": "Join our energetic group workouts with expert instructors",
+          "isAdditionalTextMarkdown": false,
+          "order": 3,
+          "active": true
+        },
+        {
+          "id": 9,
+          "urlImage": "",
+          "page": 1,
+          "section": 4,
+          "urlFromGoogleDrive": false,
+          "title": "\u{1F957}",
+          "description": "Nutrition Plans",
+          "additionalText": "Custom meal plans designed to help you reach your fitness goals",
+          "isAdditionalTextMarkdown": false,
+          "order": 4,
           "active": true
         }
       ];
