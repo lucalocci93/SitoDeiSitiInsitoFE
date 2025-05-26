@@ -14,7 +14,13 @@ import { Graphics } from 'src/app/Model/Sito/Grafica';
 export class HomeComponent {
 
   images: Graphics[] = [];
-  slides: Graphics[] = [];
+
+  slides_1: Graphics[] = [];
+  slides_2: Graphics[] = [];
+  slides_3: Graphics[] = [];
+
+  whowheare: Graphics = undefined as any;
+  features: Graphics[] = [];
   plans: Graphics[] = [];
 
   constructor(private commonService: CommonService, private sitoService: SitoService)
@@ -23,7 +29,10 @@ export class HomeComponent {
     this.startAutoPlay()
   }
 
-  currentSlide = 0;
+  currentSlide1 = 0;
+  currentSlide2 = 0;
+  currentSlide3 = 0;
+
   autoPlayInterval: any;
 
 
@@ -54,28 +63,28 @@ export class HomeComponent {
    // }
    //];
 
-  features = [
-    {
-      icon: '💪',
-      title: 'Personal Training',
-      description: 'One-on-one sessions with certified trainers customized to your needs'
-    },
-    {
-      icon: '🕒',
-      title: '24/7 Access',
-      description: 'Work out on your schedule with round-the-clock facility access'
-    },
-    {
-      icon: '👥',
-      title: 'Group Classes',
-      description: 'Join our energetic group workouts with expert instructors'
-    },
-    {
-      icon: '🥗',
-      title: 'Nutrition Plans',
-      description: 'Custom meal plans designed to help you reach your fitness goals'
-    }
-  ];
+  //features = [
+  //  {
+  //    icon: '💪',
+  //    title: 'Personal Training',
+  //    description: 'One-on-one sessions with certified trainers customized to your needs'
+  //  },
+  //  {
+  //    icon: '🕒',
+  //    title: '24/7 Access',
+  //    description: 'Work out on your schedule with round-the-clock facility access'
+  //  },
+  //  {
+  //    icon: '👥',
+  //    title: 'Group Classes',
+  //    description: 'Join our energetic group workouts with expert instructors'
+  //  },
+  //  {
+  //    icon: '🥗',
+  //    title: 'Nutrition Plans',
+  //    description: 'Custom meal plans designed to help you reach your fitness goals'
+  //  }
+  //];
 
   //plans = [
   //  {
@@ -112,7 +121,10 @@ export class HomeComponent {
 
   startAutoPlay() {
     this.autoPlayInterval = setInterval(() => {
-      this.nextSlide();
+      this.nextSlide1();
+      this.nextSlide2();
+      this.nextSlide3();
+
     }, 7000);
   }
 
@@ -122,18 +134,36 @@ export class HomeComponent {
     }
   }
 
-  nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+  nextSlide1() {
+    this.currentSlide1 = (this.currentSlide1 + 1) % this.slides_1.length;
+  }
+  nextSlide2() {
+    this.currentSlide2 = (this.currentSlide2 + 1) % this.slides_2.length;
+  }
+  nextSlide3() {
+    this.currentSlide3 = (this.currentSlide3 + 1) % this.slides_3.length;
   }
 
-  prevSlide() {
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+
+  // prevSlide() {
+  //   this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+  // }
+
+  // goToSlide(index: number) {
+  //   this.currentSlide = index;
+  //   this.stopAutoPlay();
+  //   this.startAutoPlay();
+  // }
+
+  GoToSection(sectionName : string){
+    const section = document.getElementById(sectionName);
+    section?.scrollIntoView({behavior: 'smooth'});
   }
 
-  goToSlide(index: number) {
-    this.currentSlide = index;
-    this.stopAutoPlay();
-    this.startAutoPlay();
+  BacktoMain(){
+    const main = document.getElementById('buttons');
+    main?.scrollIntoView({behavior: 'smooth'});
+
   }
 
   async GetHomepageImages(){
@@ -142,13 +172,17 @@ export class HomeComponent {
         {
           data.Data.forEach((item: Graphics) => {
             item.urlImage = item.urlFromGoogleDrive ? this.commonService.getUrlForGoogleDrive(item.urlImage) : item.urlImage;
-
             this.images.push(item);
+          });
 
             //inizializzo immagini nelle varie sezioni
-            this.slides = this.images.filter(f => f.section ==1 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
-            this.plans = this.images.filter(f => f.section == 3 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
-          });
+            this.slides_1 = this.images.filter(f => f.section == 1 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+            this.whowheare = this.images.filter(f => f.section == 2 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0))[0];
+            this.slides_2 = this.images.filter(f => f.section == 3 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+            this.features = this.images.filter(f => f.section == 4 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+            this.slides_3 = this.images.filter(f => f.section == 5 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+            this.plans = this.images.filter(f => f.section == 6 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
+
         }
         else{
           alert("Errore recupero immagini homepage");
