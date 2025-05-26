@@ -65,12 +65,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return GetCategories();
                 case url.toLowerCase().includes('getpagine') && method === 'GET':
                     return GetPages();
+                case url.toLowerCase().includes('bypagina?pagina=1') && method === 'GET':
+                    return GetImages();
+                case url.toLowerCase().includes('bypagina?pagina=3') && method === 'GET':
+                    return GetNews();
                 case url.toLowerCase().includes('getgrafiche') && method === 'GET':
                     return GetGrafiche();
-                case url.toLowerCase().includes('getgrafichebypagina?pagina=1') && method === 'GET':
-                    return GetImages();
-                case url.toLowerCase().includes('getgrafichebypagina?pagina=3') && method === 'GET':
-                    return GetNews();
                 case url.toLowerCase().includes('getvideo') && method === 'GET':
                     return GetVideo();
                 case url.toLowerCase().includes('getredirezioni') && method === 'GET':
@@ -548,10 +548,62 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     "active": true
                 },
                 {
+                    "id": 1,
+                    "urlImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+                    "page": 1,
+                    "section": 3,
+                    "urlFromGoogleDrive": false,
+                    "title": "Expert Trainers",
+                    "description": "Get personalized workout plans tailored to your goals",
+                    "additionalText": "Meet Our Trainers",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 1,
+                    "active": true
+                },
+                {
+                    "id": 2,
+                    "urlImage": "https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link",
+                    "page": 1,
+                    "section": 3,
+                    "urlFromGoogleDrive": true,
+                    "title": "test",
+                    "description": "test da google",
+                    "additionalText": "drive",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 2,
+                    "active": true
+                },
+                {
+                    "id": 1,
+                    "urlImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+                    "page": 1,
+                    "section": 5,
+                    "urlFromGoogleDrive": false,
+                    "title": "Expert Trainers",
+                    "description": "Get personalized workout plans tailored to your goals",
+                    "additionalText": "Meet Our Trainers",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 1,
+                    "active": true
+                },
+                {
+                    "id": 2,
+                    "urlImage": "https://drive.google.com/file/d/1uRx8iJu6Wck9Xj2SnlgMmsJkqPUpAM5O/view?usp=drive_link",
+                    "page": 1,
+                    "section": 5,
+                    "urlFromGoogleDrive": true,
+                    "title": "test",
+                    "description": "test da google",
+                    "additionalText": "drive",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 2,
+                    "active": true
+                },
+                {
                     "id": 3,
                     "urlImage": "",
                     "page": 1,
-                    "section": 3,
+                    "section": 6,
                     "urlFromGoogleDrive": false,
                     "title": "Basic",
                     "description": "$29/month",
@@ -564,7 +616,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     "id": 4,
                     "urlImage": "",
                     "page": 1,
-                    "section": 3,
+                    "section": 6,
                     "urlFromGoogleDrive": false,
                     "title": "Elite",
                     "description": "$99/month",
@@ -577,7 +629,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     "id": 5,
                     "urlImage": "",
                     "page": 1,
-                    "section": 3,
+                    "section": 6,
                     "urlFromGoogleDrive": false,
                     "title": "Premium",
                     "description": "$59/month",
@@ -585,7 +637,73 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     "isAdditionalTextMarkdown": false,
                     "order": 1,
                     "active": true
-            }
+                },
+                                {
+                    "id": 6,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 2,
+                    "urlFromGoogleDrive": false,
+                    "title": "",
+                    "description": "esempio descrizione della sezione chi siamo",
+                    "additionalText": "",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 1,
+                    "active": true
+                },
+                {
+                    "id": 7,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 4,
+                    "urlFromGoogleDrive": false,
+                    "title": "💪",
+                    "description": "Personal Training",
+                    "additionalText": "One-on-one sessions with certified trainers customized to your needs",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 1,
+                    "active": true
+                },
+                {
+                    "id": 8,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 4,
+                    "urlFromGoogleDrive": false,
+                    "title": "🕒",
+                    "description": "24/7 Access",
+                    "additionalText": "Work out on your schedule with round-the-clock facility access",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 2,
+                    "active": true
+                },
+                {
+                    "id": 9,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 4,
+                    "urlFromGoogleDrive": false,
+                    "title": "👥",
+                    "description": "Group Classes",
+                    "additionalText": "Join our energetic group workouts with expert instructors",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 3,
+                    "active": true
+                },
+                                {
+                    "id": 9,
+                    "urlImage": "",
+                    "page": 1,
+                    "section": 4,
+                    "urlFromGoogleDrive": false,
+                    "title": "🥗",
+                    "description": "Nutrition Plans",
+                    "additionalText": "Custom meal plans designed to help you reach your fitness goals",
+                    "isAdditionalTextMarkdown": false,
+                    "order": 4,
+                    "active": true
+                }
+
         ];
             return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));
         }
