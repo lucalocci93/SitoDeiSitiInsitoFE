@@ -1,4 +1,5 @@
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    
     <div class="container">
       <div *ngIf="!isLogged">
         <button class="btn btn-light" [routerLink]="'/login'">Login</button>
@@ -7,7 +8,7 @@
         <button class="btn btn-light" (click)="Logout()">Logout</button>
       </div>
 
-      <a class="navbar-brand" [routerLink]="['/']">SitoDeiSitiInsito</a>
+      <a class="navbar-brand" [routerLink]="['/']">A.S.D JUTSUKA</a>
       <button class="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -24,9 +25,9 @@
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
           </li>
-          <!--<li>
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
-          </li>-->
+          </li>
           <li>
             <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a> 
           </li>

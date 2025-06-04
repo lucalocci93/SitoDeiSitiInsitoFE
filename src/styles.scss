@@ -1,0 +1,26 @@
+// filepath: src/styles.scss
+@use "bootstrap/scss/bootstrap";
+
+html, body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #fafafa;
+}
+
+body {
+  flex-direction: column;
+  width: 100vw;
+}
+
+app-root {
+  flex-direction: column;
+}
+
+.container {
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.1em;
+  }
+}
