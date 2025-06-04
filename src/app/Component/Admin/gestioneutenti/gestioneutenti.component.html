@@ -33,8 +33,12 @@
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="openModal('Info', item)">Info Utente</button>
               <button mat-menu-item (click)="openModal('updateInfo', item)">Aggiorna Utente</button>
-              <button mat-menu-item *ngIf="!item.isAdmin" (click)="ManageAdmin(item, true)">Rendi Admin</button>
-              <button mat-menu-item *ngIf="item.isAdmin" (click)="ManageAdmin(item, false)">Revoca Admin</button>
+              @if (!item.isAdmin) {
+                <button mat-menu-item (click)="ManageAdmin(item, true)">Rendi Admin</button>
+              }
+              @if (item.isAdmin) {
+                <button mat-menu-item (click)="ManageAdmin(item, false)">Revoca Admin</button>
+              }
               <button mat-menu-item (click)="openModal('InfoSub', item)">Info Abbonamento</button>
               <button mat-menu-item (click)="openModal('AddSub', item)">Aggiungi Abbonamento</button>
               <button mat-menu-item (click)="openModal('AddDoc', item)">Aggiungi Documento</button>
@@ -50,4 +54,3 @@
   <mat-paginator [length]="filteredData.length" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
   </mat-paginator>
 </div>
-  

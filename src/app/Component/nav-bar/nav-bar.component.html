@@ -1,62 +1,80 @@
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    
-    <div class="container">
-      <div *ngIf="!isLogged">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+
+  <div class="container">
+    @if (!isLogged) {
+      <div>
         <button class="btn btn-light" [routerLink]="'/login'">Login</button>
       </div>
-      <div *ngIf="isLogged">
+    }
+    @if (isLogged) {
+      <div>
         <button class="btn btn-light" (click)="Logout()">Logout</button>
       </div>
+    }
 
-      <a class="navbar-brand" [routerLink]="['/']">A.S.D JUTSUKA</a>
-      <button class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target=".navbar-collapse"
-              aria-label="Toggle navigation"
-              [attr.aria-expanded]="isExpanded"
-              (click)="toggle()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-           [ngClass]="{ show: isExpanded }">
-        <ul class="navbar-nav flex-grow">
-          <li class="nav-item"
-              [routerLinkActive]="['link-active']"
-              [routerLinkActiveOptions]="{ exact: true }">
-          </li>
+    <a class="navbar-brand" [routerLink]="['/']">A.S.D JUTSUKA</a>
+    <button class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target=".navbar-collapse"
+      aria-label="Toggle navigation"
+      [attr.aria-expanded]="isExpanded"
+      (click)="toggle()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+      [ngClass]="{ show: isExpanded }">
+      <ul class="navbar-nav flex-grow">
+        <li class="nav-item"
+          [routerLinkActive]="['link-active']"
+          [routerLinkActiveOptions]="{ exact: true }">
+        </li>
+        <li>
+          <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+        </li>
+        <li>
+          <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a>
+        </li>
+        <li>
+          <a class="nav-link text-dark" [routerLink]="['/news']">News</a>
+        </li>
+        @if (isLogged) {
           <li>
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
-          </li>
-          <li>
-            <a class="nav-link text-dark" [routerLink]="['/contatti']">Contatti</a> 
-          </li>
-          <li>
-            <a class="nav-link text-dark" [routerLink]="['/news']">News</a> 
-          </li>
-          <li *ngIf="isLogged">
             <a class="nav-link text-dark" [routerLink]="['/video']">Video</a>
           </li>
-          <li *ngIf="isLogged">
+        }
+        @if (isLogged) {
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/documenti']">Documenti</a>
           </li>
-          <li *ngIf="isLogged">
+        }
+        @if (isLogged) {
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/abbonamenti']">Abbonamenti</a>
           </li>
-          <li *ngIf="isLogged">
-            <a class="nav-link text-dark" [routerLink]="['/eventi']">Eventi</a> 
+        }
+        @if (isLogged) {
+          <li>
+            <a class="nav-link text-dark" [routerLink]="['/eventi']">Eventi</a>
           </li>
-          <li *ngIf="isLogged && isAdmin">
+        }
+        @if (isLogged && isAdmin) {
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/gestioneeventi']"> Gestione Eventi </a>
           </li>
-          <li *ngIf="isLogged && isAdmin">
+        }
+        @if (isLogged && isAdmin) {
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/gestioneutenti']"> Gestione Utenti </a>
           </li>
-          <li *ngIf="isLogged && isAdmin">
+        }
+        @if (isLogged && isAdmin) {
+          <li>
             <a class="nav-link text-dark" [routerLink]="['/gestionesito']"> Gestione Sito </a>
           </li>
+        }
 
-        </ul>
-      </div>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>

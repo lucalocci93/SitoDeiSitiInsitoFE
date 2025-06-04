@@ -1,214 +1,251 @@
-<div *ngIf="data.type == 'Info'">
-<h2 mat-dialog-title>Informazioni Utente</h2>
-<mat-dialog-content>
-  <!--FORM INFO UTENTE-->
-  <form [formGroup]="UserForm">
-    <mat-form-field>
-      <mat-label>Nome</mat-label>
-      <input type="text" title="Nome" formControlName="Nome" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Cognome</mat-label>
-      <input type="text" title="Cognome" formControlName="Cognome" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input type="text" title="Email" formControlName="Email" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Codice Fiscale</mat-label>
-      <input type="text" title="CodFiscale" formControlName="CodFiscale" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Data di Nascita</mat-label>
-      <input type="text" title="DataNascita" formControlName="DataNascita" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Numero Telefono</mat-label>
-      <input type="text" title="NumeroTelefono" formControlName="Numero" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Via</mat-label>
-      <input type="text" title="Via"formControlName="Via" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Citta</mat-label>
-      <input type="text" title="Citta" formControlName="Citta" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Regione</mat-label>
-      <input type="text" title="Regione" formControlName="Regione" matInput readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Nazione</mat-label>
-      <input type="text" title="Nazione" formControlName="Nazione" matInput readonly>
-    </mat-form-field>
-  </form>
-</mat-dialog-content>
-</div>
-
-<div *ngIf="data.type == 'updateInfo'">
-  <h2 mat-dialog-title>Informazioni Utente</h2>
-  <mat-dialog-content>
-    <!--FORM INFO UTENTE-->
-    <form [formGroup]="UserForm">
-      <mat-form-field>
-        <mat-label>Nome</mat-label>
-        <input type="text" title="Nome" formControlName="Nome" matInput>
-        <mat-error *ngIf="UserForm.get('Nome')?.hasError('required')">
-          Campo Nome Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Cognome</mat-label>
-        <input type="text" title="Cognome" formControlName="Cognome" matInput>
-        <mat-error *ngIf="UserForm.get('Cognome')?.hasError('required')">
-          Campo Cognome Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input type="text" title="Email" formControlName="Email" matInput readonly>
-        <mat-error *ngIf="UserForm.get('Email')?.hasError('required')">
-          Campo Email Obbligatorio
-        </mat-error>
-        <mat-error *ngIf="UserForm.get('Email')?.hasError('email')">
-          Campo Email non Valido
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Codice Fiscale</mat-label>
-        <input type="text" title="CodFiscale" formControlName="CodFiscale" matInput>
-        <mat-error *ngIf="UserForm.get('CodFiscale')?.hasError('required')">
-          Campo Cognome Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Data di Nascita</mat-label>
-        <input type="text" title="DataNascita" formControlName="DataNascita" matInput>
-        <mat-error *ngIf="UserForm.get('DataNascita')?.hasError('required')">
-          Campo Data Nascita Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Numero Telefono</mat-label>
-        <input type="text" title="NumeroTelefono" formControlName="Numero" matInput>
-        <mat-error *ngIf="UserForm.get('Numero')?.hasError('required')">
-          Campo Numero Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Via</mat-label>
-        <input type="text" title="Via" formControlName="Via" matInput>
-        <mat-error *ngIf="UserForm.get('Via')?.hasError('required')">
-          Campo Via Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Citta</mat-label>
-        <input type="text" title="Citta" formControlName="Citta" matInput>
-        <mat-error *ngIf="UserForm.get('Citta')?.hasError('required')">
-          Campo Citta Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Regione</mat-label>
-        <input type="text" title="Regione" formControlName="Regione" matInput>
-        <mat-error *ngIf="UserForm.get('Regione')?.hasError('required')">
-          Campo Regione Obbligatorio
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Nazione</mat-label>
-        <input type="text" title="Nazione" formControlName="Nazione" matInput>
-        <mat-error *ngIf="UserForm.get('Nazione')?.hasError('required')">
-          Campo Nazione Obbligatorio
-        </mat-error>
-      </mat-form-field>
-    </form>
-  </mat-dialog-content>
+@if (data.type == 'Info') {
+  <div>
+    <h2 mat-dialog-title>Informazioni Utente</h2>
+    <mat-dialog-content>
+      <!--FORM INFO UTENTE-->
+      <form [formGroup]="UserForm">
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input type="text" title="Nome" formControlName="Nome" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Cognome</mat-label>
+          <input type="text" title="Cognome" formControlName="Cognome" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="text" title="Email" formControlName="Email" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Codice Fiscale</mat-label>
+          <input type="text" title="CodFiscale" formControlName="CodFiscale" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data di Nascita</mat-label>
+          <input type="text" title="DataNascita" formControlName="DataNascita" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Numero Telefono</mat-label>
+          <input type="text" title="NumeroTelefono" formControlName="Numero" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Via</mat-label>
+          <input type="text" title="Via"formControlName="Via" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Citta</mat-label>
+          <input type="text" title="Citta" formControlName="Citta" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Regione</mat-label>
+          <input type="text" title="Regione" formControlName="Regione" matInput readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nazione</mat-label>
+          <input type="text" title="Nazione" formControlName="Nazione" matInput readonly>
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
   </div>
+}
 
-<div *ngIf="data.type == 'InfoSub'">
-  <h2 mat-dialog-title>Informazioni Abbonamento</h2>
-  <table mat-table [dataSource]="subList" matSort>
-    <!-- Define columns -->
-    <ng-container matColumnDef="Tipo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Abbonamento</th>
-      <td mat-cell *matCellDef="let element">{{element.tipoAbbonamento}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Inizio">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Inizio</th>
-      <td mat-cell *matCellDef="let element">{{formatDate(element.dataIscrizione)}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Scadenza">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Scadenza</th>
-      <td mat-cell *matCellDef="let element">{{formatDate(element.dataScadenza)}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Pagato">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pagato</th>
-      <td mat-cell *matCellDef="let element">{{element.isPayed ? "Si" : "No"}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Azioni">
-      <th mat-header-cell *matHeaderCellDef> Azioni </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button [matMenuTriggerFor]="menu" *ngIf="element.isPayed == false || element.isPayed == null">Azioni</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="UpdateSub('SetPayedSub', element)">Conferma Pagamento</button>
-          <button mat-menu-item (click)="UpdateSub('RefuseSubPayment', element)">Rifiuta Pagamento</button>
-          <button mat-menu-item (click)="UpdateSub('DeleteSub', element)">Cancella Abbonamento</button>
-        </mat-menu>
-      </td>
-    </ng-container>
-    <!-- Header and row definitions -->
-    <tr mat-header-row *matHeaderRowDef="SubdisplayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: SubdisplayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div>
-  
-<div *ngIf="data.type == 'AddSub'">
-  <h2 mat-dialog-title>Aggiungi Abbonamento</h2>
-  <mat-dialog-content>
-    <!--FORM ADD SUB-->
-    <form [formGroup]="SubForm">
-      <mat-form-field>
-        <mat-label>Tipo Abbonamento</mat-label>
-        <mat-select formControlName="IdTipoAbbonamento">
-          <mat-option *ngFor="let option of subType" [value]="option.id">
-            {{ option.descrizione }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Data Inizio</mat-label>
-        <input type="date" title="DataInizio" formControlName="DataInizio" matInput>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Data Fine</mat-label>
-        <input type="date" title="DataFine" formControlName="DataFine" matInput>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Url Pagamento</mat-label>
-        <input type="text" title="Se non inserito verrà calcolato automaticamente" formControlName="UrlPagamento" matInput>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Importo</mat-label>
-        <input type="text" title="Importo" formControlName="Importo" matInput>
-      </mat-form-field>
-    </form>
-      </mat-dialog-content>
-</div>
+@if (data.type == 'updateInfo') {
+  <div>
+    <h2 mat-dialog-title>Informazioni Utente</h2>
+    <mat-dialog-content>
+      <!--FORM INFO UTENTE-->
+      <form [formGroup]="UserForm">
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input type="text" title="Nome" formControlName="Nome" matInput>
+          @if (UserForm.get('Nome')?.hasError('required')) {
+            <mat-error>
+              Campo Nome Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Cognome</mat-label>
+          <input type="text" title="Cognome" formControlName="Cognome" matInput>
+          @if (UserForm.get('Cognome')?.hasError('required')) {
+            <mat-error>
+              Campo Cognome Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="text" title="Email" formControlName="Email" matInput readonly>
+          @if (UserForm.get('Email')?.hasError('required')) {
+            <mat-error>
+              Campo Email Obbligatorio
+            </mat-error>
+          }
+          @if (UserForm.get('Email')?.hasError('email')) {
+            <mat-error>
+              Campo Email non Valido
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Codice Fiscale</mat-label>
+          <input type="text" title="CodFiscale" formControlName="CodFiscale" matInput>
+          @if (UserForm.get('CodFiscale')?.hasError('required')) {
+            <mat-error>
+              Campo Cognome Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data di Nascita</mat-label>
+          <input type="text" title="DataNascita" formControlName="DataNascita" matInput>
+          @if (UserForm.get('DataNascita')?.hasError('required')) {
+            <mat-error>
+              Campo Data Nascita Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Numero Telefono</mat-label>
+          <input type="text" title="NumeroTelefono" formControlName="Numero" matInput>
+          @if (UserForm.get('Numero')?.hasError('required')) {
+            <mat-error>
+              Campo Numero Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Via</mat-label>
+          <input type="text" title="Via" formControlName="Via" matInput>
+          @if (UserForm.get('Via')?.hasError('required')) {
+            <mat-error>
+              Campo Via Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Citta</mat-label>
+          <input type="text" title="Citta" formControlName="Citta" matInput>
+          @if (UserForm.get('Citta')?.hasError('required')) {
+            <mat-error>
+              Campo Citta Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Regione</mat-label>
+          <input type="text" title="Regione" formControlName="Regione" matInput>
+          @if (UserForm.get('Regione')?.hasError('required')) {
+            <mat-error>
+              Campo Regione Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nazione</mat-label>
+          <input type="text" title="Nazione" formControlName="Nazione" matInput>
+          @if (UserForm.get('Nazione')?.hasError('required')) {
+            <mat-error>
+              Campo Nazione Obbligatorio
+            </mat-error>
+          }
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+  </div>
+}
 
-<div *ngIf="data.type == 'AddDoc'">
-  <h2 mat-dialog-title>Aggiungi Documento</h2>
+@if (data.type == 'InfoSub') {
+  <div>
+    <h2 mat-dialog-title>Informazioni Abbonamento</h2>
+    <table mat-table [dataSource]="subList" matSort>
+      <!-- Define columns -->
+      <ng-container matColumnDef="Tipo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Abbonamento</th>
+        <td mat-cell *matCellDef="let element">{{element.tipoAbbonamento}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Inizio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Inizio</th>
+        <td mat-cell *matCellDef="let element">{{formatDate(element.dataIscrizione)}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Scadenza">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Scadenza</th>
+        <td mat-cell *matCellDef="let element">{{formatDate(element.dataScadenza)}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Pagato">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pagato</th>
+        <td mat-cell *matCellDef="let element">{{element.isPayed ? "Si" : "No"}}</td>
+      </ng-container>
+      <ng-container matColumnDef="Azioni">
+        <th mat-header-cell *matHeaderCellDef> Azioni </th>
+        <td mat-cell *matCellDef="let element">
+          @if (element.isPayed == false || element.isPayed == null) {
+            <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
+          }
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="UpdateSub('SetPayedSub', element)">Conferma Pagamento</button>
+            <button mat-menu-item (click)="UpdateSub('RefuseSubPayment', element)">Rifiuta Pagamento</button>
+            <button mat-menu-item (click)="UpdateSub('DeleteSub', element)">Cancella Abbonamento</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+      <!-- Header and row definitions -->
+      <tr mat-header-row *matHeaderRowDef="SubdisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: SubdisplayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+}
+
+@if (data.type == 'AddSub') {
+  <div>
+    <h2 mat-dialog-title>Aggiungi Abbonamento</h2>
+    <mat-dialog-content>
+      <!--FORM ADD SUB-->
+      <form [formGroup]="SubForm">
+        <mat-form-field>
+          <mat-label>Tipo Abbonamento</mat-label>
+          <mat-select formControlName="IdTipoAbbonamento">
+            @for (option of subType; track option) {
+              <mat-option [value]="option.id">
+                {{ option.descrizione }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data Inizio</mat-label>
+          <input type="date" title="DataInizio" formControlName="DataInizio" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data Fine</mat-label>
+          <input type="date" title="DataFine" formControlName="DataFine" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Url Pagamento</mat-label>
+          <input type="text" title="Se non inserito verrà calcolato automaticamente" formControlName="UrlPagamento" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Importo</mat-label>
+          <input type="text" title="Importo" formControlName="Importo" matInput>
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+  </div>
+}
+
+@if (data.type == 'AddDoc') {
+  <div>
+    <h2 mat-dialog-title>Aggiungi Documento</h2>
     <mat-dialog-content>
       <!--FORM ADD DOC-->
       <form (ngSubmit)="AddDoc(selectInput, fileNameInput, fileInput)" enctype="multipart/form-data">
         <label for="options">Tipo Abbonamento</label><br>
         <select id="options" name="options" #selectInput>
-          <option *ngFor="let option of docType" [value]="option.id">{{ option.descrizione }}</option>
-        </select>      
+          @for (option of docType; track option) {
+            <option [value]="option.id">{{ option.descrizione }}</option>
+          }
+        </select>
         <br><br>
         <label for="name">Nome Documento</label><br>
         <input type="text" id="name" name="Nome file" #fileNameInput>
@@ -217,121 +254,133 @@
         <input type="file" id="file" name="file" #fileInput>
         <br><br>
         <button type="submit">Aggiungi</button>
-    </form>
-  </mat-dialog-content>
-</div>  
-<div *ngIf="data.type == 'GetDoc'">
-  <h2 mat-dialog-title>Lista Documenti</h2>
-  <table mat-table [dataSource]="documents" class="mat-elevation-z8" matSort>
-    <!-- Define columns -->
-    <ng-container matColumnDef="Tipo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Documento<th>
-      <td mat-cell *matCellDef="let element" class="center-text">{{getTypeById(element.idTipoDocumento)}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Nome">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome Documento</th>
-      <td mat-cell *matCellDef="let element" class="center-text">{{element.nomeDocumento}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Data">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Data Caricamento</th>
-      <td mat-cell *matCellDef="let element" class="center-text">{{ this.datePipe.transform(element.dataCaricamento)}}</td>
-    </ng-container>
-    <ng-container matColumnDef="Azioni">
-      <th mat-header-cell *matHeaderCellDef> Azioni </th>
-      <td mat-cell *matCellDef="let element" class="center-text">
-        <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="openDoc(element.idDocumento)">Scarica</button>
-          <!--<button mat-menu-item (click)="UpdateSub('RefuseSubPayment', element)">Rifiuta Pagamento</button>-->
-        </mat-menu>
-      </td>
-    </ng-container>
-    <!-- Header and row definitions -->
-    <tr mat-header-row *matHeaderRowDef="DocumentdisplayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: DocumentdisplayedColumns;"></tr>
-  </table>
-  <mat-paginator [length]="documents.length" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>
-</div>
-
-<div *ngIf="data.type == 'AddEvent'">
-  <h2 mat-dialog-title>Inserisci Evento</h2>
-  <mat-dialog-content>
-      <!--FORM ADD EVENT-->
-      <form (ngSubmit)="AddEvent(eventNameInput, fileInput, dataInizioInput, dataFineInput, luogoEventoInput, descrizioneEventoInput,linkEventoInput,CategoriesData)" enctype="multipart/form-data">
-        <label for="name">Nome Evento</label><br>
-        <input type="text" id="name" name="Nome file" #eventNameInput>
-        <br><br>
-        <label for="file">Locandina Evento</label><br>
-        <input type="file" id="file" name="file" #fileInput>
-        <br><br>
-        <label for="dataInizio">Data Inizio</label><br>
-        <input type="date" id="dataInizio" name="dataInizio" #dataInizioInput>
-        <br><br>
-        <label for="dataFine">Data Fine</label><br>
-        <input type="date" id="dataFine" name="dataFine" #dataFineInput>
-        <br><br>
-        <label for="luogoEvento">Luogo Evento</label><br>
-        <input type="text" id="luogoEvento" name="luogoEvento" #luogoEventoInput>
-        <br><br>
-        <label for="descrizione">Descrizione</label><br>
-        <input type="text" id="descrizione" name="descrizione" #descrizioneEventoInput>
-        <br><br>
-        <label for="link">Link (nel caso di piu link separare con ;)</label><br>
-        <input type="text" id="link" name="link" #linkEventoInput>
-        <br><br>
-        <label for="Categorie">Categorie</label><br><br>
-          <div class="checkbox-column" *ngFor="let category of CategoriesData">
-            <label>
-              <input type="checkbox" value="category.Id" (change)="onCheckboxChange($event, category)">
-              {{ category.Descrizione }}
-            </label>
-          </div>
-        <br>
-        <button type="submit">Crea Evento</button>
-    </form>
-  </mat-dialog-content>
-  </div>
-
-  <div *ngIf="data.type == 'AddSezione'">
-    <h2 mat-dialog-title>Inserisci Grafica</h2>
-    <mat-dialog-content>
-        <!--FORM ADD EVENT-->
-        <form (ngSubmit)="AddSection(UrlInput, paginaInput, sezioneInput, urldaGoogleDriveInput, titoloInput, descrizioneInput, testoAggiuntivoInput, ordineInput)" enctype="multipart/form-data">
-          <label for="url">Url</label><br>
-          <input type="text" id="url" name="Url" #UrlInput>
-          <br><br>
-          <label for="Pagina">Pagina</label><br>
-            <select id="options" name="options" #paginaInput>
-              <option *ngFor="let Page of Pages" [value]="Page.id">{{ Page.page }}</option>
-            </select>      
-          <br><br>
-          <label for="sezione">Sezione</label><br>
-          <input type="number" id="sezione" name="sezione" #sezioneInput>
-          <br><br>
-          <label for="urldaGoogleDrive">Da Google Drive</label><br>
-          <input type="checkbox" id="urldaGoogleDrive" name="urldaGoogleDrive" #urldaGoogleDriveInput>
-          <br><br>
-          <label for="titolo">Titolo</label><br>
-          <input type="text" id="titolo" name="titolo" #titoloInput>
-          <br><br>
-          <label for="descrizione">Descrizione</label><br>
-          <textarea id="descrizione" name="descrizione" #descrizioneInput></textarea>
-          <br><br>
-          <label for="testoAggiuntivo">Testo Aggiuntivo</label><br>
-          <textarea id="testoAggiuntivo" name="testoAggiuntivo" #testoAggiuntivoInput></textarea>
-          <br><br>
-          <label for="ordine">Ordine</label><br>
-          <input type="number" id="ordine" name="ordine" #ordineInput>
-          <br><br>
-          <button type="submit">Aggiungi Grafica</button>
-          <br><br>
       </form>
     </mat-dialog-content>
+  </div>
+}
+@if (data.type == 'GetDoc') {
+  <div>
+    <h2 mat-dialog-title>Lista Documenti</h2>
+    <table mat-table [dataSource]="documents" class="mat-elevation-z8" matSort>
+      <!-- Define columns -->
+      <ng-container matColumnDef="Tipo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Documento<th>
+          <td mat-cell *matCellDef="let element" class="center-text">{{getTypeById(element.idTipoDocumento)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Nome">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome Documento</th>
+          <td mat-cell *matCellDef="let element" class="center-text">{{element.nomeDocumento}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Data">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Data Caricamento</th>
+          <td mat-cell *matCellDef="let element" class="center-text">{{ this.datePipe.transform(element.dataCaricamento)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Azioni">
+          <th mat-header-cell *matHeaderCellDef> Azioni </th>
+          <td mat-cell *matCellDef="let element" class="center-text">
+            <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openDoc(element.idDocumento)">Scarica</button>
+              <!--<button mat-menu-item (click)="UpdateSub('RefuseSubPayment', element)">Rifiuta Pagamento</button>-->
+            </mat-menu>
+          </td>
+        </ng-container>
+        <!-- Header and row definitions -->
+        <tr mat-header-row *matHeaderRowDef="DocumentdisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: DocumentdisplayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="documents.length" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>
     </div>
+  }
 
-    <div *ngIf="data.type == 'AddRedirezione'">
-      <h2 mat-dialog-title>Inserisci Redirezione</h2>
+  @if (data.type == 'AddEvent') {
+    <div>
+      <h2 mat-dialog-title>Inserisci Evento</h2>
       <mat-dialog-content>
+        <!--FORM ADD EVENT-->
+        <form (ngSubmit)="AddEvent(eventNameInput, fileInput, dataInizioInput, dataFineInput, luogoEventoInput, descrizioneEventoInput,linkEventoInput,CategoriesData)" enctype="multipart/form-data">
+          <label for="name">Nome Evento</label><br>
+          <input type="text" id="name" name="Nome file" #eventNameInput>
+          <br><br>
+          <label for="file">Locandina Evento</label><br>
+          <input type="file" id="file" name="file" #fileInput>
+          <br><br>
+          <label for="dataInizio">Data Inizio</label><br>
+          <input type="date" id="dataInizio" name="dataInizio" #dataInizioInput>
+          <br><br>
+          <label for="dataFine">Data Fine</label><br>
+          <input type="date" id="dataFine" name="dataFine" #dataFineInput>
+          <br><br>
+          <label for="luogoEvento">Luogo Evento</label><br>
+          <input type="text" id="luogoEvento" name="luogoEvento" #luogoEventoInput>
+          <br><br>
+          <label for="descrizione">Descrizione</label><br>
+          <input type="text" id="descrizione" name="descrizione" #descrizioneEventoInput>
+          <br><br>
+          <label for="link">Link (nel caso di piu link separare con ;)</label><br>
+          <input type="text" id="link" name="link" #linkEventoInput>
+          <br><br>
+          <label for="Categorie">Categorie</label><br><br>
+          @for (category of CategoriesData; track category) {
+            <div class="checkbox-column">
+              <label>
+                <input type="checkbox" value="category.Id" (change)="onCheckboxChange($event, category)">
+                {{ category.Descrizione }}
+              </label>
+            </div>
+          }
+          <br>
+            <button type="submit">Crea Evento</button>
+          </form>
+        </mat-dialog-content>
+      </div>
+    }
+
+    @if (data.type == 'AddSezione') {
+      <div>
+        <h2 mat-dialog-title>Inserisci Grafica</h2>
+        <mat-dialog-content>
+          <!--FORM ADD EVENT-->
+          <form (ngSubmit)="AddSection(UrlInput, paginaInput, sezioneInput, urldaGoogleDriveInput, titoloInput, descrizioneInput, testoAggiuntivoInput, ordineInput)" enctype="multipart/form-data">
+            <label for="url">Url</label><br>
+            <input type="text" id="url" name="Url" #UrlInput>
+            <br><br>
+            <label for="Pagina">Pagina</label><br>
+            <select id="options" name="options" #paginaInput>
+              @for (Page of Pages; track Page) {
+                <option [value]="Page.id">{{ Page.page }}</option>
+              }
+            </select>
+            <br><br>
+            <label for="sezione">Sezione</label><br>
+            <input type="number" id="sezione" name="sezione" #sezioneInput>
+            <br><br>
+            <label for="urldaGoogleDrive">Da Google Drive</label><br>
+            <input type="checkbox" id="urldaGoogleDrive" name="urldaGoogleDrive" #urldaGoogleDriveInput>
+            <br><br>
+            <label for="titolo">Titolo</label><br>
+            <input type="text" id="titolo" name="titolo" #titoloInput>
+            <br><br>
+            <label for="descrizione">Descrizione</label><br>
+            <textarea id="descrizione" name="descrizione" #descrizioneInput></textarea>
+            <br><br>
+            <label for="testoAggiuntivo">Testo Aggiuntivo</label><br>
+            <textarea id="testoAggiuntivo" name="testoAggiuntivo" #testoAggiuntivoInput></textarea>
+            <br><br>
+            <label for="ordine">Ordine</label><br>
+            <input type="number" id="ordine" name="ordine" #ordineInput>
+            <br><br>
+            <button type="submit">Aggiungi Grafica</button>
+            <br><br>
+          </form>
+        </mat-dialog-content>
+      </div>
+    }
+
+    @if (data.type == 'AddRedirezione') {
+      <div>
+        <h2 mat-dialog-title>Inserisci Redirezione</h2>
+        <mat-dialog-content>
           <!--FORM ADD EVENT-->
           <form (ngSubmit)="AddRedirezione(UrlInput)" enctype="multipart/form-data">
             <label for="url">Url</label><br>
@@ -339,121 +388,150 @@
             <br><br>
             <button type="submit">Aggiungi Redirezione</button>
             <br><br>
-        </form>
-      </mat-dialog-content>
-      </div>
-
-      <div *ngIf="data.type == 'AddVideo'">
-        <h2 mat-dialog-title>Inserisci Video</h2>
-        <mat-dialog-content>
-            <!--FORM ADD EVENT-->
-            <form (ngSubmit)="AddVideo(UrlInput, TitoloInput, DescrizioneInput, OrdineInput)" enctype="multipart/form-data">
-              <label for="url">Url</label><br>
-              <input type="text" id="url" name="Url" #UrlInput>
-              <br><br>
-              <label for="titolo">Titolo</label><br>
-              <input type="text" id="titolo" name="Titolo" #TitoloInput>
-              <br><br>
-              <label for="descrizione">Descrizione</label><br>
-              <textarea type="text" id="descrizione" name="Descrizione" #DescrizioneInput></textarea>
-              <br><br>
-              <label for="ordinamento">Ordinamento</label><br>
-              <input type="number" id="ordinamento" name="Ordinamento" #OrdineInput>
-              <br><br>
-              <button type="submit">Aggiungi Video</button>
-              <br><br>
           </form>
         </mat-dialog-content>
-        </div>  
-  
-<div *ngIf="data.type == 'updateEventInfo'">
-  <h2 mat-dialog-title>Informazioni Evento</h2>
-  <mat-dialog-content>
-    <!--FORM UPDATE EVENTO-->
-      <form [formGroup]="EventForm">
-        <mat-form-field hidden>
-          <input type="text" title="Id" formControlName="IdEvento" matInput hidden>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Nome Evento</mat-label>
-          <input type="text" title="NomeEvento" formControlName="NomeEvento" matInput>
-          <mat-error *ngIf="EventForm.get('NomeEvento')?.hasError('required')">
-            Campo Nome Evento Obbligatorio
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Data Inizio</mat-label>
-          <input type="date" title="DataInizio" formControlName="DataInizio" matInput>
-          <mat-error *ngIf="EventForm.get('DataInizio')?.hasError('required')">
-            Campo Data Inizio Obbligatorio
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Data Fine</mat-label>
-          <input type="date" title="DataFine" formControlName="DataFine" matInput>
-          <mat-error *ngIf="EventForm.get('DataFine')?.hasError('required')">
-            Campo Data Fine Obbligatorio
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Luogo Evento</mat-label>
-          <input type="text" title="LuogoEvento" formControlName="LuogoEvento" matInput>
-          <mat-error *ngIf="EventForm.get('LuogoEvento')?.hasError('required')">
-            Campo Luogo Evento Obbligatorio
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Descrizione Evento</mat-label>
-          <input type="text" title="DescrEvento" formControlName="DescrEvento" matInput>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Link</mat-label>
-          <input type="text" title="LinkEvento" formControlName="LinkEvento" matInput>
-        </mat-form-field>
-        <!--<mat-form-field>
-          <mat-label>Categorie</mat-label>
-          <div class="checkbox-column" *ngFor="let category of CategoriesData">
-            <label>
-              <input type="checkbox" value="category.Id" (change)="onCheckboxChange($event, category)">
-              {{ category.Descrizione }}
-            </label>
-          </div>
-        </mat-form-field>-->
-      </form>
-    </mat-dialog-content>
-  </div>
-
-  <div *ngIf="data.type == 'SubscribeEvent'">
-    <h2 mat-dialog-title>Seleziona le Categorie per cui vuoi gareggiare</h2>
-      <!--FORM Categorie Iscrizione-->
-      <div class="modal-checkbox" *ngFor="let category of DataEvent?.categorie">
-      <label>
-      <input type="checkbox" title="category.Descrizione" value="category.Id" (change)="onCheckboxChange($event, category)">
-        {{category.Descrizione}}
-      </label>
-    </div>
-    <br>
-    <label for="note" class="modal-text">Note:</label><br>
-    <textarea id="SubscriptionNote" name="note" rows="5" cols="50" class="modal-text" title="Note"></textarea>
-  </div>  
-
-  <div *ngIf="data.type == 'GetCompetitors'">
-    <h2 mat-dialog-title>Lista Partecipanti Evento</h2>
-    <div class="competitors-container"></div>
-      <div class="modal-competitors" *ngFor="let competitor of Competitors">
-          <ul>
-              <li>{{competitor.utente.nome}} {{competitor.utente.cognome}} - {{getCategorieDescrizione(competitor.iscrizione.categoria)}}</li>
-          </ul>
       </div>
+    }
+
+    @if (data.type == 'AddVideo') {
+      <div>
+        <h2 mat-dialog-title>Inserisci Video</h2>
+        <mat-dialog-content>
+          <!--FORM ADD EVENT-->
+          <form (ngSubmit)="AddVideo(UrlInput, TitoloInput, DescrizioneInput, OrdineInput)" enctype="multipart/form-data">
+            <label for="url">Url</label><br>
+            <input type="text" id="url" name="Url" #UrlInput>
+            <br><br>
+            <label for="titolo">Titolo</label><br>
+            <input type="text" id="titolo" name="Titolo" #TitoloInput>
+            <br><br>
+            <label for="descrizione">Descrizione</label><br>
+            <textarea type="text" id="descrizione" name="Descrizione" #DescrizioneInput></textarea>
+            <br><br>
+            <label for="ordinamento">Ordinamento</label><br>
+            <input type="number" id="ordinamento" name="Ordinamento" #OrdineInput>
+            <br><br>
+            <button type="submit">Aggiungi Video</button>
+            <br><br>
+          </form>
+        </mat-dialog-content>
+      </div>
+    }
+
+    @if (data.type == 'updateEventInfo') {
+      <div>
+        <h2 mat-dialog-title>Informazioni Evento</h2>
+        <mat-dialog-content>
+          <!--FORM UPDATE EVENTO-->
+          <form [formGroup]="EventForm">
+            <mat-form-field hidden>
+              <input type="text" title="Id" formControlName="IdEvento" matInput hidden>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Nome Evento</mat-label>
+              <input type="text" title="NomeEvento" formControlName="NomeEvento" matInput>
+              @if (EventForm.get('NomeEvento')?.hasError('required')) {
+                <mat-error>
+                  Campo Nome Evento Obbligatorio
+                </mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Data Inizio</mat-label>
+              <input type="date" title="DataInizio" formControlName="DataInizio" matInput>
+              @if (EventForm.get('DataInizio')?.hasError('required')) {
+                <mat-error>
+                  Campo Data Inizio Obbligatorio
+                </mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Data Fine</mat-label>
+              <input type="date" title="DataFine" formControlName="DataFine" matInput>
+              @if (EventForm.get('DataFine')?.hasError('required')) {
+                <mat-error>
+                  Campo Data Fine Obbligatorio
+                </mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Luogo Evento</mat-label>
+              <input type="text" title="LuogoEvento" formControlName="LuogoEvento" matInput>
+              @if (EventForm.get('LuogoEvento')?.hasError('required')) {
+                <mat-error>
+                  Campo Luogo Evento Obbligatorio
+                </mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Descrizione Evento</mat-label>
+              <input type="text" title="DescrEvento" formControlName="DescrEvento" matInput>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Link</mat-label>
+              <input type="text" title="LinkEvento" formControlName="LinkEvento" matInput>
+            </mat-form-field>
+            <!--<mat-form-field>
+            <mat-label>Categorie</mat-label>
+            <div class="checkbox-column" *ngFor="let category of CategoriesData">
+              <label>
+                <input type="checkbox" value="category.Id" (change)="onCheckboxChange($event, category)">
+                {{ category.Descrizione }}
+              </label>
+            </div>
+          </mat-form-field>-->
+        </form>
+      </mat-dialog-content>
     </div>
+  }
+
+  @if (data.type == 'SubscribeEvent') {
+    <div>
+      <h2 mat-dialog-title>Seleziona le Categorie per cui vuoi gareggiare</h2>
+      <!--FORM Categorie Iscrizione-->
+      @for (category of DataEvent?.categorie; track category) {
+        <div class="modal-checkbox">
+          <label>
+            <input type="checkbox" title="category.Descrizione" value="category.Id" (change)="onCheckboxChange($event, category)">
+            {{category.Descrizione}}
+          </label>
+        </div>
+      }
+      <br>
+        <label for="note" class="modal-text">Note:</label><br>
+        <textarea id="SubscriptionNote" name="note" rows="5" cols="50" class="modal-text" title="Note"></textarea>
+      </div>
+    }
+
+    @if (data.type == 'GetCompetitors') {
+      <div>
+        <h2 mat-dialog-title>Lista Partecipanti Evento</h2>
+        <div class="competitors-container"></div>
+        @for (competitor of Competitors; track competitor) {
+          <div class="modal-competitors">
+            <ul>
+              <li>{{competitor.utente.nome}} {{competitor.utente.cognome}} - {{getCategorieDescrizione(competitor.iscrizione.categoria)}}</li>
+            </ul>
+          </div>
+        }
+      </div>
+    }
 
 
-  
-<mat-dialog-actions>
-  <button *ngIf="data.type == 'updateInfo'" mat-button (click)="Ok('updateInfo')">Conferma</button>
-  <button *ngIf="data.type == 'updateEventInfo'" mat-button (click)="Ok('updateEventInfo')">Conferma</button>
-  <button *ngIf="data.type == 'AddSub'" mat-button (click)="Ok('AddSub')">Conferma</button>
-  <!--<button *ngIf="data.type == 'AddDoc'" mat-button (click)="Ok('AddDoc')">Conferma</button>-->
-  <button *ngIf="data.type == 'SubscribeEvent'" mat-button (click)="Ok('SubscribeEvent')">Conferma</button>
-  <button mat-button (click)="close()">Chiudi</button>
-</mat-dialog-actions>
+
+    <mat-dialog-actions>
+      @if (data.type == 'updateInfo') {
+        <button mat-button (click)="Ok('updateInfo')">Conferma</button>
+      }
+      @if (data.type == 'updateEventInfo') {
+        <button mat-button (click)="Ok('updateEventInfo')">Conferma</button>
+      }
+      @if (data.type == 'AddSub') {
+        <button mat-button (click)="Ok('AddSub')">Conferma</button>
+      }
+      <!--<button *ngIf="data.type == 'AddDoc'" mat-button (click)="Ok('AddDoc')">Conferma</button>-->
+      @if (data.type == 'SubscribeEvent') {
+        <button mat-button (click)="Ok('SubscribeEvent')">Conferma</button>
+      }
+      <button mat-button (click)="close()">Chiudi</button>
+    </mat-dialog-actions>

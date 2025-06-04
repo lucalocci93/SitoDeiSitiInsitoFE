@@ -1,21 +1,31 @@
 <!--<h1>NEWS</h1>-->
 
-<div class="card mb-3"  *ngFor="let notizia of news">
-  <div class="card-body">
-    <div *ngIf="notizia.title.length != 0">
-      <h5 class="card-title" >{{ notizia.title }}</h5>
-    </div>
-    <div *ngIf="notizia.description.length != 0">
-      <p class="card-text">{{ notizia.description }}</p>
-    </div>
-    <div *ngIf="notizia.isAdditionalTextMarkdown" class="markdown">
-      <markdown [data]="notizia.additionalText"></markdown>
-      <br><br>
-    </div>
-    <div *ngIf="!notizia.isAdditionalTextMarkdown" class="nomarkdown">
-        <p>{{ notizia.additionalText }}</p>
-        <br><br>
+@for (notizia of news; track notizia) {
+  <div class="card mb-3" >
+    <div class="card-body">
+      @if (notizia.title.length != 0) {
+        <div>
+          <h5 class="card-title" >{{ notizia.title }}</h5>
+        </div>
+      }
+      @if (notizia.description.length != 0) {
+        <div>
+          <p class="card-text">{{ notizia.description }}</p>
+        </div>
+      }
+      @if (notizia.isAdditionalTextMarkdown) {
+        <div class="markdown">
+          <markdown [data]="notizia.additionalText"></markdown>
+          <br><br>
+        </div>
+      }
+      @if (!notizia.isAdditionalTextMarkdown) {
+        <div class="nomarkdown">
+          <p>{{ notizia.additionalText }}</p>
+          <br><br>
+        </div>
+      }
     </div>
   </div>
-</div>
+}
 

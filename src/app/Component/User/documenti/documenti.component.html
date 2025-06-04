@@ -1,31 +1,37 @@
-<div *ngIf="DocList.length > 0">
-  <div class="container mt-5">
-    <table class="table table-striped table-responsive">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Tipo</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Data</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of DocList">
-          <td scope="row">{{getTypeById(item.idTipoDocumento)}}</td>
-          <td scope="row">{{item.nomeDocumento}}</td>
-          <td scope="row">{{this.datePipe.transform(item.dataCaricamento, 'dd-MM-yyyy')}}</td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-primary" type="button" id="viewDoc" (click)="openDoc(item.idDocumento)" aria-expanded="false">
-                Scarica
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+@if (DocList.length > 0) {
+  <div>
+    <div class="container mt-5">
+      <table class="table table-striped table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Data</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of DocList; track item) {
+            <tr>
+              <td scope="row">{{getTypeById(item.idTipoDocumento)}}</td>
+              <td scope="row">{{item.nomeDocumento}}</td>
+              <td scope="row">{{this.datePipe.transform(item.dataCaricamento, 'dd-MM-yyyy')}}</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-primary" type="button" id="viewDoc" (click)="openDoc(item.idDocumento)" aria-expanded="false">
+                    Scarica
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-<div *ngIf="DocList.length == 0">
-  <h2 class="text-center mt-5">Al momento non hai nessun documento</h2>
-</div>
+}
+@if (DocList.length == 0) {
+  <div>
+    <h2 class="text-center mt-5">Al momento non hai nessun documento</h2>
+  </div>
+}

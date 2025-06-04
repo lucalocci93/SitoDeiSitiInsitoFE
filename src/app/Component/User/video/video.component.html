@@ -1,33 +1,35 @@
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Allenamenti per Utenti Registrati</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Allenamenti per Utenti Registrati</title>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1>Allenamenti Esclusivi</h1>
-        </div>
-    </header>
+  <header>
     <div class="container">
-        <div class="caption">
-            <p>Benvenuti nella nostra sezione video dedicata agli utenti registrati. Qui troverete allenamenti esclusivi per migliorare la vostra forma fisica.</p>
-        </div>
-        <div class="video-section">
-            <div class="video" *ngFor="let video of videos">
-                <h3>{{video.title}}</h3>
-                <youtube-player
-                    [videoId]="video.videoId"
-                    (ready)="onPlayerReady($event)"
-                    (stateChange)="onPlayerStateChange($event)">
-              </youtube-player>
-              <br>
-              <p>{{video.description}}</p>
-              <br>
-              <hr>
-            </div>
-        </div>
-        <br><br>
+      <h1>Allenamenti Esclusivi</h1>
     </div>
-</body>
+  </header>
+  <div class="container">
+    <div class="caption">
+      <p>Benvenuti nella nostra sezione video dedicata agli utenti registrati. Qui troverete allenamenti esclusivi per migliorare la vostra forma fisica.</p>
+    </div>
+    <div class="video-section">
+      @for (video of videos; track video) {
+        <div class="video">
+          <h3>{{video.title}}</h3>
+          <youtube-player
+            [videoId]="video.videoId"
+            (ready)="onPlayerReady($event)"
+            (stateChange)="onPlayerStateChange($event)">
+          </youtube-player>
+          <br>
+            <p>{{video.description}}</p>
+            <br>
+              <hr>
+              </div>
+            }
+          </div>
+          <br><br>
+        </div>
+      </body>
