@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonService } from 'src/Services/Common/common.service';
 import { SitoService } from 'src/Services/Sito/sito.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -15,9 +15,15 @@ export class VideoComponent {
 
   videos: ExtendedVideo[] = [];
 
+  videoHeight: number | undefined;
+  videoWidth: number | undefined;
+
+
   constructor(private sitoService: SitoService, private commonService: CommonService, private route: ActivatedRoute) {
     this.GetVideo();
-    
+    this.videoWidth = document.documentElement.scrollWidth / 1.5; // Set video width to half of the screen width
+    this.videoHeight = this.videoWidth * 0.6; // Maintain aspect ratio
+
   }
 
   async GetVideo(){
@@ -52,7 +58,18 @@ export class VideoComponent {
   }
   
   onPlayerStateChange(event: any) {
+    if (event.data === YT.PlayerState.PLAYING) {
+      event.target.height = 20;
+      event.target.width = 20;
+
+    }
+    else if (event.data === YT.PlayerState.PAUSED) {
+    }
+    else if (event.data === YT.PlayerState.ENDED) {
+    }
+
     console.log('Player state changed:', event);
   }
+
   
 }

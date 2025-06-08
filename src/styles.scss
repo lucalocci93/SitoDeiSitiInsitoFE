@@ -4,11 +4,12 @@
 html, body {
   font-family: 'Roboto', Arial, sans-serif;
   background: #fafafa;
+  width: 100vw;
+  height: 100vh;
 }
 
 body {
   flex-direction: column;
-  width: 100vw;
 }
 
 app-root {

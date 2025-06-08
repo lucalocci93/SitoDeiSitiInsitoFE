@@ -14,22 +14,22 @@
     <div class="caption">
       <p>Benvenuti nella nostra sezione video dedicata agli utenti registrati. Qui troverete allenamenti esclusivi per migliorare la vostra forma fisica.</p>
     </div>
-    <div class="video-section">
+    <div class="video-section" >
       @for (video of videos; track video) {
         <div class="video">
           <h3>{{video.title}}</h3>
           <youtube-player
             [videoId]="video.videoId"
+            [playerVars]="{ controls: 1, fs: 1, modestbranding: 1, rel: 0 }"
+            [width]="videoWidth"
+            [height]="videoHeight" 
             (ready)="onPlayerReady($event)"
             (stateChange)="onPlayerStateChange($event)">
           </youtube-player>
-          <br>
             <p>{{video.description}}</p>
-            <br>
-              <hr>
-              </div>
-            }
-          </div>
-          <br><br>
         </div>
-      </body>
+      }
+    </div>
+    <br>
+  </div>
+</body>

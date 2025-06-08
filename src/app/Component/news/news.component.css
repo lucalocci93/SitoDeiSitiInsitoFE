@@ -16,7 +16,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    max-width: 100%;
+    max-width: 90%;
     overflow: hidden;
     transition: transform 0.2s;
 }
@@ -48,8 +48,4 @@ h1 {
     line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-    .card {
-        margin: 10px;
-    }
-}
+
