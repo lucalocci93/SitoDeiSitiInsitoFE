@@ -13,17 +13,14 @@ function initZone() {
     performance && performance["measure"] && performance["measure"](name, label);
   }
   mark("Zone");
-  class ZoneImpl {
-    static {
-      this.__symbol__ = __symbol__;
-    }
+  const _ZoneImpl = class _ZoneImpl {
     static assertZonePatched() {
       if (global["Promise"] !== patches["ZoneAwarePromise"]) {
         throw new Error("Zone.js has detected that ZoneAwarePromise `(window|global).Promise` has been overwritten.\nMost likely cause is that a Promise polyfill has been loaded after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. If you must load one, do so before loading zone.js.)");
       }
     }
     static get root() {
-      let zone = ZoneImpl.current;
+      let zone = _ZoneImpl.current;
       while (zone.parent) {
         zone = zone.parent;
       }
@@ -45,7 +42,7 @@ function initZone() {
       } else if (!global["__Zone_disable_" + name]) {
         const perfName = "Zone:" + name;
         mark(perfName);
-        patches[name] = fn(global, ZoneImpl, _api);
+        patches[name] = fn(global, _ZoneImpl, _api);
         performanceMeasure(perfName, perfName);
       }
     }
@@ -222,7 +219,9 @@ function initZone() {
         zoneDelegates[i]._updateTaskCount(task.type, count);
       }
     }
-  }
+  };
+  _ZoneImpl.__symbol__ = __symbol__;
+  let ZoneImpl = _ZoneImpl;
   const DELEGATE_ZS = {
     name: "",
     onHasTask: (delegate, _, target, hasTaskState) => delegate.hasTask(target, hasTaskState),

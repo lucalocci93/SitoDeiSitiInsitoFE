@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["src/app/Component/nav-bar/nav-bar.component.css"],
-  "sourcesContent": ["a.navbar-brand {\n  white-space: normal;\n  text-align: center;\n  word-break: break-all;\n}\n\nhtml {\n  font-size: 14px;\n}\n\n@media (min-width: 768px) {\n  html {\n    font-size: 16px;\n  }\n}\n\n.box-shadow {\n  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);\n}\n"],
-  "mappings": ";AAAA,CAAC,CAAC;AACA,eAAa;AACb,cAAY;AACZ,cAAY;AACd;AAEA;AACE,aAAW;AACb;AAEA,OAAO,CAAC,SAAS,EAAE;AACjB;AACE,eAAW;AACb;AACF;AAEA,CAAC;AACC,cAAY,EAAE,OAAO,OAAO,KAAK,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE;AAC5C;",
+  "sourcesContent": ["a.navbar-brand {\n  white-space: normal;\n  text-align: center;\n  word-break: break-all;\n}\n\nhtml {\n  font-size: 2.5em;\n}\n\n.navbar{\n  width: 100vw;\n}\n\n.box-shadow {\n  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);\n}\n"],
+  "mappings": ";AAAA,CAAC,CAAC;AACA,eAAa;AACb,cAAY;AACZ,cAAY;AACd;AAEA;AACE,aAAW;AACb;AAEA,CAAC;AACC,SAAO;AACT;AAEA,CAAC;AACC,cAAY,EAAE,OAAO,OAAO,KAAK,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE;AAC5C;",
   "names": []
 }

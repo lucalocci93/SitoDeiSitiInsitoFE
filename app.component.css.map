@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["src/app/app.component.css"],
-  "sourcesContent": ["footer {\n    background: #ef8b8b;\n    color: #fff;\n    text-align: center;\n    padding: 10px 0;\n    position: relative;\n    width: 100%;\n    height: 5%;\n    bottom: 0;\n}\n\n\n.container {\n    width: 100%;\n     margin: 0 auto;\n     }\n\n /* Styles for desktop */\n @media (min-width: 768px) {\n     .container {\n         max-width: 100%;\n         padding: 20px;\n         }\n    }\n\n /* Styles for mobile */\n @media (max-width: 767px) {\n     .container {\n         padding: 10px;\n         }\n }\n"],
-  "mappings": ";AAAA;AACI,cAAY;AACZ,SAAO;AACP,cAAY;AACZ,WAAS,KAAK;AACd,YAAU;AACV,SAAO;AACP,UAAQ;AACR,UAAQ;AACZ;AAGA,CAAC;AACG,SAAO;AACN,UAAQ,EAAE;AACV;AAGJ,OAAO,CAAC,SAAS,EAAE;AACf,GAPJ;AAQQ,eAAW;AACX,aAAS;AACT;AACL;AAGH,OAAO,CAAC,SAAS,EAAE;AACf,GAfJ;AAgBQ,aAAS;AACT;AACR;",
+  "sourcesContent": ["footer {\n    background: #ef8b8b;\n    color: #fff;\n    text-align: center;\n    font-size: 1em;\n    box-sizing: border-box;\n}\n\nhtml{\n  width: 100vw;\n  height: 100vh;\n}\n\n/* Styles for mobile */\n@media (max-width: 768px) {\n  footer {\n    font-size: 0.95em;\n    padding: 8px 0;\n  }\n}\n"],
+  "mappings": ";AAAA;AACI,cAAY;AACZ,SAAO;AACP,cAAY;AACZ,aAAW;AACX,cAAY;AAChB;AAEA;AACE,SAAO;AACP,UAAQ;AACV;AAGA,OAAO,CAAC,SAAS,EAAE;AACjB;AACE,eAAW;AACX,aAAS,IAAI;AACf;AACF;",
   "names": []
 }
