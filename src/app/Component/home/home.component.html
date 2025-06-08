@@ -1,46 +1,46 @@
 
 <!--Sezione 1-->
 <!--<div class="slider">
-    <div *ngFor="let slide of slides; let i = index" 
-         class="slide" 
-         [class.active]="currentSlide === i"
-         [style.backgroundImage]="'url(' + slide.urlImage + ')'"
-         >
-      <div class="slide-content">
-        <h1>{{ slide.title }}</h1>
-        <p>{{ slide.description }}</p>
-      </div>
-    </div>
-    <div class="slider-controls">
-      <button class="nav-button prev" (click)="prevSlide()">❮</button>
-      <div class="dots">
-        <span *ngFor="let slide of slides; let i = index" 
-              class="dot" 
-              [class.active]="currentSlide === i"
-              (click)="goToSlide(i)"></span>
-      </div>
-      <button class="nav-button next" (click)="nextSlide()">❯</button>
+<div *ngFor="let slide of slides; let i = index"
+  class="slide"
+  [class.active]="currentSlide === i"
+  [style.backgroundImage]="'url(' + slide.urlImage + ')'"
+  >
+  <div class="slide-content">
+    <h1>{{ slide.title }}</h1>
+    <p>{{ slide.description }}</p>
+  </div>
+</div>
+<div class="slider-controls">
+  <button class="nav-button prev" (click)="prevSlide()">❮</button>
+  <div class="dots">
+    <span *ngFor="let slide of slides; let i = index"
+      class="dot"
+      [class.active]="currentSlide === i"
+    (click)="goToSlide(i)"></span>
+  </div>
+  <button class="nav-button next" (click)="nextSlide()">❯</button>
+</div>
+</div>
+
+<section class="features">
+  <h2 class="section-title">Why Choose Us?</h2>
+  <div class="features-grid">
+    <div class="feature-card" *ngFor="let feature of features">
+      <div class="feature-icon">{{ feature.icon }}</div>
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
     </div>
   </div>
-
-  <section class="features">
-    <h2 class="section-title">Why Choose Us?</h2>
-    <div class="features-grid">
-      <div class="feature-card" *ngFor="let feature of features">
-        <div class="feature-icon">{{ feature.icon }}</div>
-        <h3>{{ feature.title }}</h3>
-        <p>{{ feature.description }}</p>
-      </div>
-    </div>
-  </section> -->
+</section> -->
 
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-          
+
   <div class="buttons" id="buttons">
     <button class="whowearebutton" (click)="GoToSection('whoweare')">CHI SIAMO</button>
     <button class="featuresbutton" (click)="GoToSection('features')">COSA OFFRIAMO</button>
@@ -48,106 +48,118 @@
   </div>
 
   <!--main class="logo-section">
-      <div class="logo-image"></div>
-  </main>-->
+  <div class="logo-image"></div>
+</main>-->
 
-  
-  <section class="image-section">
+
+<section class="image-section">
+</section>
+
+
+<!--Sezione 1-->
+<section class="slider" id="foto_1">
+  @for (slide of slides_1; track slide; let i = $index) {
+    <div
+      class="slide"
+      [class.active]="currentSlide1 === i"
+      [style.backgroundImage]="'url(' + slide.urlImage + ')'"
+      >
+      <div class="slide-content">
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.description }}</p>
+      </div>
+    </div>
+  }
+</section>
+
+<!--Sezione 2-->
+<section id="whoweare">
+  <h2 class="section-title">Chi siamo?</h2>
+  <div class="whowearedescr">
+    <p>{{whowheare.description}}</p>
+    <!--<p>la vispa teresa avea tra l'erbetta a volo sorpresa gentil farfalletta e tutta giuliva fìgridava distesa l'ho presa l'ho presa <br>
+  l'hai presa cretina e bene ti sta gridò farfallina la radioattivita</p>-->
+</div>
+<br>
+  <button class="backtomain" (click)="BacktoMain()">↑</button>
+</section>
+
+<!--Sezione 3-->
+<section class="slider" id="foto_2">
+  @for (slide of slides_2; track slide; let i = $index) {
+    <div
+      class="slide"
+      [class.active]="currentSlide2 === i"
+      [style.backgroundImage]="'url(' + slide.urlImage + ')'"
+      >
+      <div class="slide-content">
+        <h1>{{ slide.title }}</h1>
+        <p>{{ slide.description }}</p>
+      </div>
+    </div>
+  }
+</section>
+
+<!--Sezione 4-->
+<section id="features">
+  <h2 class="section-title">Cosa offriamo?</h2>
+  <div class="features-grid">
+    @for (feature of features; track feature) {
+      <div class="feature-card">
+        <div class="feature-icon">{{ feature.title }}</div>
+        <h3>{{ feature.description }}</h3>
+        <p>{{ feature.additionalText }}</p>
+      </div>
+    }
+  </div>
+  <br>
+    <button class="backtomain" (click)="BacktoMain()">↑</button>
   </section>
 
-
-    <!--Sezione 1-->
-    <section class="slider" id="foto_1">
-      <div *ngFor="let slide of slides_1; let i = index" 
-          class="slide" 
-          [class.active]="currentSlide1 === i"
-          [style.backgroundImage]="'url(' + slide.urlImage + ')'"
+  <!--Sezione 5-->
+  <section class="slider" id="foto_3">
+    @for (slide of slides_3; track slide; let i = $index) {
+      <div
+        class="slide"
+        [class.active]="currentSlide3 === i"
+        [style.backgroundImage]="'url(' + slide.urlImage + ')'"
         >
-      <div class="slide-content">
-        <h1>{{ slide.title }}</h1>
-        <p>{{ slide.description }}</p>
-      </div>
-    </div>
-    </section>
-
-    <!--Sezione 2-->
-    <section id="whoweare">
-      <h2 class="section-title">Chi siamo?</h2>
-      <div class="whowearedescr">
-        <p>{{whowheare.description}}</p>
-          <!--<p>la vispa teresa avea tra l'erbetta a volo sorpresa gentil farfalletta e tutta giuliva fìgridava distesa l'ho presa l'ho presa <br>
-          l'hai presa cretina e bene ti sta gridò farfallina la radioattivita</p>-->
-      </div>
-      <br>
-      <button class="backtomain" (click)="BacktoMain()">↑</button>
-    </section>
-
-    <!--Sezione 3-->
-    <section class="slider" id="foto_2">
-      <div *ngFor="let slide of slides_2; let i = index" 
-          class="slide" 
-          [class.active]="currentSlide2 === i"
-          [style.backgroundImage]="'url(' + slide.urlImage + ')'"
-        >
-      <div class="slide-content">
-        <h1>{{ slide.title }}</h1>
-        <p>{{ slide.description }}</p>
-      </div>
-    </div>
-    </section>
-
-    <!--Sezione 4-->
-    <section id="features">
-      <h2 class="section-title">Cosa offriamo?</h2>
-      <div class="features-grid">
-        <div class="feature-card" *ngFor="let feature of features">
-          <div class="feature-icon">{{ feature.title }}</div>
-          <h3>{{ feature.description }}</h3>
-          <p>{{ feature.additionalText }}</p>
+        <div class="slide-content">
+          <h1>{{ slide.title }}</h1>
+          <p>{{ slide.description }}</p>
         </div>
       </div>
-      <br>
-      <button class="backtomain" (click)="BacktoMain()">↑</button>
-    </section>
-
-    <!--Sezione 5-->
-    <section class="slider" id="foto_3">
-     <div *ngFor="let slide of slides_3; let i = index" 
-          class="slide" 
-          [class.active]="currentSlide3 === i"
-          [style.backgroundImage]="'url(' + slide.urlImage + ')'"
-        >
-      <div class="slide-content">
-        <h1>{{ slide.title }}</h1>
-        <p>{{ slide.description }}</p>
-      </div>
-     </div>
-    </section>
-      <!--<div class="slider-controls">
-        <button class="nav-button prev" (click)="prevSlide()">❮</button>
-        <div class="dots">
-          <span *ngFor="let slide of slides; let i = index" 
-                class="dot" 
-                [class.active]="currentSlide === i"
-                (click)="goToSlide(i)"></span>
-        </div>
-        <button class="nav-button next" (click)="nextSlide()">❯</button>
-      </div>-->
+    }
+  </section>
+  <!--<div class="slider-controls">
+  <button class="nav-button prev" (click)="prevSlide()">❮</button>
+  <div class="dots">
+    <span *ngFor="let slide of slides; let i = index"
+      class="dot"
+      [class.active]="currentSlide === i"
+    (click)="goToSlide(i)"></span>
+  </div>
+  <button class="nav-button next" (click)="nextSlide()">❯</button>
+</div>-->
 
 
-  <!--Sezione 6-->
-  <section id="membership">
-    <h2 class="section-title">Piani Abbonamento</h2>
-    <div class="plans-grid">
-      <div class="plan-card" *ngFor="let plan of plans">
+<!--Sezione 6-->
+<section id="membership">
+  <h2 class="section-title">Piani Abbonamento</h2>
+  <div class="plans-grid">
+    @for (plan of plans; track plan) {
+      <div class="plan-card">
         <h3>{{ plan.title }}</h3>
         <div class="price">{{ plan.description }}</div>
         <ul class="plan-features">
-          <li *ngFor="let feature of plan.additionalText.split(',')">{{ feature }}</li>
+          @for (feature of plan.additionalText.split(','); track feature) {
+            <li>{{ feature }}</li>
+          }
         </ul>
       </div>
-    </div>
-    <br>
+    }
+  </div>
+  <br>
     <button class="backtomain" (click)="BacktoMain()">↑</button>
   </section>
 

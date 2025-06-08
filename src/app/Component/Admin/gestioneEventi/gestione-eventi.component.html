@@ -1,81 +1,84 @@
 <button type="button" class="btn btn-primary" (click)="CreaEvento()">Crea Evento </button>
 
 <br>
-<br>
+  <br>
 
-<div *ngIf="eventi.length > 0" class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <mat-form-field appearance="fill">
-          <mat-label>Cerca</mat-label>
-          <input matInput placeholder="Cerca" [(ngModel)]="searchText">
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <table mat-table [dataSource]="filteredData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="mat-elevation-z8">
-          <!--<ng-container matColumnDef="Copertina">
-            <th mat-header-cell *matHeaderCellDef> Copertina </th>
-            <td mat-cell *matCellDef="let item" > 
+    @if (eventi.length > 0) {
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field appearance="fill">
+              <mat-label>Cerca</mat-label>
+              <input matInput placeholder="Cerca" [(ngModel)]="searchText">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table mat-table [dataSource]="filteredData | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="mat-elevation-z8">
+              <!--<ng-container matColumnDef="Copertina">
+              <th mat-header-cell *matHeaderCellDef> Copertina </th>
+              <td mat-cell *matCellDef="let item" >
                 <img [src]="getSanitizedImage(item.copertina.imageData, item.copertina.contentType)" alt="Image" style="width: 50px; height: auto;">
-            </td>
-          </ng-container>-->  
-          <ng-container matColumnDef="NomeEvento">
-            <th mat-header-cell *matHeaderCellDef> Nome Evento </th>
-            <td mat-cell *matCellDef="let item"> {{ item.nomeEvento }} </td>
-          </ng-container>
-          <ng-container matColumnDef="DataInizioEvento">
-            <th mat-header-cell *matHeaderCellDef> Data Inizio Evento </th>
-            <td mat-cell *matCellDef="let item"> {{ item.dataInizioEvento }} </td>
-          </ng-container>
-          <ng-container matColumnDef="DataFineEvento">
-            <th mat-header-cell *matHeaderCellDef> Data Fine Evento </th>
-            <td mat-cell *matCellDef="let item"> {{ item.dataFineEvento }} </td>
-          </ng-container>
-          <ng-container matColumnDef="LuogoEvento">
-            <th mat-header-cell *matHeaderCellDef> Luogo Evento </th>
-            <td mat-cell *matCellDef="let item"> {{ item.luogoEvento }} </td>
-          </ng-container>
-          <ng-container matColumnDef="Categorie">
-            <th mat-header-cell *matHeaderCellDef> Categorie </th>
-            <td mat-cell *matCellDef="let item"> {{ getCategorieDescrizione(item.categorie) }} </td>
-          </ng-container>
-          <ng-container matColumnDef="Descrizione">
-            <th mat-header-cell *matHeaderCellDef> Descrizione </th>
-            <td mat-cell *matCellDef="let item"> {{ item.descrizione }} </td>
-          </ng-container>
-          <ng-container matColumnDef="Link">
-            <th mat-header-cell *matHeaderCellDef> Link </th>
-            <td mat-cell *matCellDef="let item"> {{ item.link }} </td>
-          </ng-container>
-          <ng-container matColumnDef="Azioni">
-            <th mat-header-cell *matHeaderCellDef> Azioni </th>
-            <td mat-cell *matCellDef="let item">
-              <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
-              <mat-menu #menu="matMenu">
-                <!--<button mat-menu-item (click)="openModal('InfoEvent', item)">Info Evento</button>-->
-                <button mat-menu-item (click)="openModal('updateEventInfo', item)">Aggiorna Evento</button>
-                <button mat-menu-item (click)="openModal('DeleteEvent', item)">Cancella Evento</button>
-                <button mat-menu-item (click)="openModal('GetCompetitors', item)">Lista Partecipanti</button>
-                <button mat-menu-item (click)="DownloadExcelCompetitor(item.id)">Esporta Lista Partecipanti</button>
-                <!--<button mat-menu-item (click)="openModal('AddCompetitor', item)">Aggiungi Partecipante</button>
-                <button mat-menu-item (click)="openModal('AddDoc', item)">Aggiungi Documento</button>-->
-              </mat-menu>
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+              </td>
+            </ng-container>-->
+            <ng-container matColumnDef="NomeEvento">
+              <th mat-header-cell *matHeaderCellDef> Nome Evento </th>
+              <td mat-cell *matCellDef="let item"> {{ item.nomeEvento }} </td>
+            </ng-container>
+            <ng-container matColumnDef="DataInizioEvento">
+              <th mat-header-cell *matHeaderCellDef> Data Inizio Evento </th>
+              <td mat-cell *matCellDef="let item"> {{ item.dataInizioEvento }} </td>
+            </ng-container>
+            <ng-container matColumnDef="DataFineEvento">
+              <th mat-header-cell *matHeaderCellDef> Data Fine Evento </th>
+              <td mat-cell *matCellDef="let item"> {{ item.dataFineEvento }} </td>
+            </ng-container>
+            <ng-container matColumnDef="LuogoEvento">
+              <th mat-header-cell *matHeaderCellDef> Luogo Evento </th>
+              <td mat-cell *matCellDef="let item"> {{ item.luogoEvento }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Categorie">
+              <th mat-header-cell *matHeaderCellDef> Categorie </th>
+              <td mat-cell *matCellDef="let item"> {{ getCategorieDescrizione(item.categorie) }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Descrizione">
+              <th mat-header-cell *matHeaderCellDef> Descrizione </th>
+              <td mat-cell *matCellDef="let item"> {{ item.descrizione }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Link">
+              <th mat-header-cell *matHeaderCellDef> Link </th>
+              <td mat-cell *matCellDef="let item"> {{ item.link }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Azioni">
+              <th mat-header-cell *matHeaderCellDef> Azioni </th>
+              <td mat-cell *matCellDef="let item">
+                <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
+                <mat-menu #menu="matMenu">
+                  <!--<button mat-menu-item (click)="openModal('InfoEvent', item)">Info Evento</button>-->
+                  <button mat-menu-item (click)="openModal('updateEventInfo', item)">Aggiorna Evento</button>
+                  <button mat-menu-item (click)="openModal('DeleteEvent', item)">Cancella Evento</button>
+                  <button mat-menu-item (click)="openModal('GetCompetitors', item)">Lista Partecipanti</button>
+                  <button mat-menu-item (click)="DownloadExcelCompetitor(item.id)">Esporta Lista Partecipanti</button>
+                  <!--<button mat-menu-item (click)="openModal('AddCompetitor', item)">Aggiungi Partecipante</button>
+                  <button mat-menu-item (click)="openModal('AddDoc', item)">Aggiungi Documento</button>-->
+                </mat-menu>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
       </div>
+      <mat-paginator [length]="filteredData.length" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+      </mat-paginator>
     </div>
-    <mat-paginator [length]="filteredData.length" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
-    </mat-paginator>
-  </div>
+  }
 
-  <br> 
-  
-  <div *ngIf="eventi.length < 1">
-    <h2> Al Momento non sono stati inseriti Eventi</h2>
-  </div>
-    
+  <br>
+
+    @if (eventi.length < 1) {
+      <div>
+        <h2> Al Momento non sono stati inseriti Eventi</h2>
+      </div>
+    }

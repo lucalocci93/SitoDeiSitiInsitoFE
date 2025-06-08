@@ -1,6 +1,7 @@
-<div *ngIf="!consent" class="cookie-consent-banner">
+@if (!consent) {
+  <div class="cookie-consent-banner">
     <p> Utilizziamo i cookie per migliorare la tua esperienza</p>
     <button (click)="handleAccept()">Accetta</button>
     <!--<button (click)="handleDecline()">Rifiuta</button>-->
   </div>
-  
+}

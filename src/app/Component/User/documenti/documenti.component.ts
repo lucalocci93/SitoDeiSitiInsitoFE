@@ -6,8 +6,6 @@ import { TipoDocumento } from 'src/app/Model/Documento/TipoDocumento';
 import { CommonService } from 'src/Services/Common/common.service';
 import { DocumentiService } from 'src/Services/Documenti/documenti.service';
 import { ModalDocumentData } from 'src/app/Interface/modal-document-data';
-import { Task } from 'zone.js/lib/zone-impl';
-import { map } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
 @Component({

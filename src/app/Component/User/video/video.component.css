@@ -1,40 +1,38 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f5cfcf;
-    margin: 0;
-    padding: 0;
     text-align: center; /* Center all text */
 }
 .container {
-    width: 80%;
+    width: 100vw;
     margin: auto;
     overflow: hidden;
 }
 header {
     background: #fb2c2c;
     color: #fff;
-    padding: 20px 0;
+    padding: 5% 0;
     text-align: center;
+    width: 100vw;
 }
 header h1 {
-    margin: 0;
-    font-size: 2.5em;
+    font-size: 2.0em;
 }
 .caption {
     background: #ef4c4c;
     color: #fff;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 2%;
+    margin-top: 5%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 .video-section {
-    margin-top: 20px;
+    margin-top: 5%;
 }
 .video {
     background: #fff;
     padding: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 5%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     display: flex;
@@ -46,13 +44,10 @@ header h1 {
     text-align: center;
 }
 youtube-player {
-    width: 80%;
-    max-width: 800px; /* Adjust max-width as needed */
-    height: 80%; /* Adjust height as needed */
     align-items: center;
     display: flex;
     justify-content: center;
     margin: 0 auto; /* Center the video player */
-    margin-bottom: 20px; /* Space between videos */
+    margin-bottom: 5%; /* Space between videos */
     border-radius: 5px; /* Rounded corners for the video player */
 }
