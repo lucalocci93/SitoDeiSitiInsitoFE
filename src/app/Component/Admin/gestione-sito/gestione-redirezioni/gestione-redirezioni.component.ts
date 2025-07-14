@@ -40,7 +40,7 @@ export class GestioneRedirezioniComponent {
   }
 
   async GetRedirezioni(){
-  (await this.sitoService.GetRedirezioni()).subscribe(data => {
+  this.sitoService.GetRedirezioni().subscribe(data => {
       if (data != null && data.Data != null) {
         this.redirezioni = data.Data;
       }
@@ -96,7 +96,7 @@ export class GestioneRedirezioniComponent {
     async AbilitaDisabilitaRedirezione(redirezione: Redirection, toggle: boolean){
 
       let redirection = new Redirection(redirezione.id, redirezione.url, null, toggle);
-      await (await this.sitoService.ToggleRedirezione(redirection)).subscribe(data => {
+      this.sitoService.ToggleRedirezione(redirection).subscribe(data => {
         if(data != null && data.Data != null){
           window.location.reload();
         }
@@ -111,7 +111,7 @@ export class GestioneRedirezioniComponent {
     }
 
     async CancellaRedirezione(redirezione: Redirection){
-      await (await this.sitoService.RemoveRedirezione(redirezione)).subscribe(data => {
+      this.sitoService.RemoveRedirezione(redirezione).subscribe(data => {
         if(data != null && data.Data != null){
           window.location.reload();
         }

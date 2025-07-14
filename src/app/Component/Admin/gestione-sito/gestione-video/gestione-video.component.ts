@@ -36,7 +36,7 @@ export class GestioneVideoComponent {
   }
 
   async GetVideo(){
-  (await this.sitoService.GetVideo()).subscribe(data => {
+    this.sitoService.GetVideo().subscribe(data => {
       if (data != null && data.Data != null) {
         this.video = data.Data;
       }
@@ -94,7 +94,7 @@ export class GestioneVideoComponent {
     async AbilitaDisabilitaVideo(video: Video, toggle: boolean){
 
       let redirection = new Video(video.id, video.url, video.title, video.description, video.provider, toggle);
-      await (await this.sitoService.ToggleVideo(redirection)).subscribe(data => {
+      this.sitoService.ToggleVideo(redirection).subscribe(data => {
         if(data != null && data.Data != null){
           window.location.reload();
         }
@@ -109,7 +109,7 @@ export class GestioneVideoComponent {
     }
 
     async CancellaVideo(redirezione: Video){
-      await (await this.sitoService.RemoveVideo(redirezione)).subscribe(data => {
+      this.sitoService.RemoveVideo(redirezione).subscribe(data => {
         if(data != null && data.Data != null){
           window.location.reload();
         }

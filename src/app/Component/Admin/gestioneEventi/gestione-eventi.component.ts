@@ -30,7 +30,7 @@ export class GestioneEventiComponent {
   constructor(private EventiService: EventiService, private common: CommonService, public dialog: MatDialog) { }
     
     async ngOnInit() {
-      await (await this.EventiService.GetEventi()).subscribe(data => {
+      this.EventiService.GetEventi().subscribe(data => {
         if(data != null && data.Data != null){
           this.eventi = data.Data;
         }
@@ -75,7 +75,7 @@ export class GestioneEventiComponent {
 
   async DownloadExcelCompetitor(EventId: string | null) {
     var doc = null;
-    await(await this.EventiService.GetCompetitorExcel(EventId)).subscribe(data => {
+    this.EventiService.GetCompetitorExcel(EventId).subscribe(data => {
       if(data != null && data.Data != null){
           doc = data.Data.datiDocumento.replace('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,','');
 

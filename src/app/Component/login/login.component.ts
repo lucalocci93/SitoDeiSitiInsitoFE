@@ -30,7 +30,7 @@ export class LoginComponent {
     }
     else {
 
-      await (await this.account.login(this.email.toLowerCase(), this.password)).subscribe(response => {
+      this.account.login(this.email.toLowerCase(), this.password).subscribe(response => {
             //this.response = response;
             if(response != null && response.Data != null && response.Data.success){
               if(this.common.getStorage("cookieConsent") == "accepted"){

@@ -27,7 +27,7 @@ export class DocumentiComponent {
 
   async ngOnInit() {
 
-    await(await this.DocumentService.GetTipiDocumenti()).subscribe(data => {
+    this.DocumentService.GetTipiDocumenti().subscribe(data => {
       if(data != null && data.Data != null){
         this.DocType = data.Data;
       }
@@ -43,7 +43,7 @@ export class DocumentiComponent {
     });
 
     this.DocList = [];
-    await(await this.DocumentService.GetUserDocuments(this.UserId)).subscribe(data => {
+    this.DocumentService.GetUserDocuments(this.UserId).subscribe(data => {
       if(data != null && data.Data != null){
         this.DocList = data.Data;
       }
@@ -66,7 +66,7 @@ getTypeById(_id: number): string {
 
 async openDoc(DocId: string | null) {
   var doc = null;
-  await(await this.DocumentService.GetDocument(DocId)).subscribe(data => {
+  this.DocumentService.GetDocument(DocId).subscribe(data => {
     if(data != null && data.Data != null){
         doc = data.Data.datiDocumento.replace('data:application/pdf;base64,','');
         

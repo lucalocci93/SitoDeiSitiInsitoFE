@@ -28,7 +28,7 @@ export class GestioneutentiComponent {
   constructor(private utentiService: UtentiService, private common: CommonService, public dialog: MatDialog) { }
 
   async ngOnInit() {
-    await (await this.utentiService.GetAllUtenti()).subscribe(data => {
+    this.utentiService.GetAllUtenti().subscribe(data => {
       if(data != null && data.Data != null){
         this.utenti = data.Data.filter(u => u.rowGuid !== this.common.getCookie('sub'));
       }
@@ -50,7 +50,7 @@ export class GestioneutentiComponent {
 
   async ManageAdmin(item: User, _isAdmin: boolean){
     item.isAdmin = _isAdmin;
-    await(await this.utentiService.UpdateUtente(item, Operation.SetAdmin)).subscribe(data => {
+    this.utentiService.UpdateUtente(item, Operation.SetAdmin).subscribe(data => {
       if(data != null && data.Data != null){
         alert("Utente Aggiornato");
         window.location.reload();

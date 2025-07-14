@@ -43,7 +43,7 @@ export class NuovoUtenteComponent {
           formValues.birthDate, formValues.street, formValues.number, formValues.city, formValues.region, formValues.nation,
           formValues.consensoInvioEmail, [])
 
-          await(await this.loginService.NewUser(user)).subscribe(response => {
+          this.loginService.NewUser(user).subscribe(response => {
             //this.response = response;
             if(response.Data != null){
               alert("Utenza creata correttamente, puoi procedere con il login!");

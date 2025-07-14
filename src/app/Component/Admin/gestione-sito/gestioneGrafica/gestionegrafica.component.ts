@@ -53,7 +53,7 @@ export class GestioneGraficaComponent {
     @ViewChild('homepageContainer') homepageContainer!: ElementRef;
     
     async ngOnInit() {
-      await (await this.sitoService.GetGrafiche()).subscribe(data => {
+      this.sitoService.GetGrafiche().subscribe(data => {
         if(data != null && data.Data != null){
           this.homepage = data.Data.filter(d => d.page == Pagine.Homepage);
           this.homepageTotalPages = Math.ceil(this.homepage.length / this.homepageSelectedSize);
@@ -72,7 +72,7 @@ export class GestioneGraficaComponent {
       });
       
 
-      await (await this.sitoService.GetPagine()).subscribe(data => {
+      this.sitoService.GetPagine().subscribe(data => {
         if(data != null && data.Data != null){
           this.pagine = data.Data;
         }
@@ -197,7 +197,7 @@ export class GestioneGraficaComponent {
     }
 
     async CancellaImmagine(immagine: Graphics){
-      await (await this.sitoService.RemoveGrafica(immagine)).subscribe(data => {
+      this.sitoService.RemoveGrafica(immagine).subscribe(data => {
         if(data != null && data.Data != null){
           window.location.reload();
         }
@@ -213,7 +213,7 @@ export class GestioneGraficaComponent {
   
     async ToggleGrafica(grafica: Graphics, toggle: boolean){
       let graphic = new Graphics(grafica.id, grafica.urlImage, grafica.page, grafica.section, grafica.urlFromGoogleDrive, grafica.title, grafica.description, grafica.additionalText, grafica.isAdditionalTextMarkdown, grafica.order, toggle);
-      await (await this.sitoService.ToggleGrafica(graphic)).subscribe(data => {
+      this.sitoService.ToggleGrafica(graphic).subscribe(data => {
         if(data != null && data.Data != null){
           window.location.reload();
         }

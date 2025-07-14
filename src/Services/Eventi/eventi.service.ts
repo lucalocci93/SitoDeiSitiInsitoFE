@@ -19,7 +19,7 @@ export class EventiService {
 
   constructor(private http: HttpClient, private common: CommonService) { }
 
-  async GetEventi(){
+  GetEventi(){
       const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
       let endpoint = this.ApiEndpoint.concat("GetEvents");
     
@@ -30,7 +30,7 @@ export class EventiService {
     
   }
 
-  async GetCategorie(){
+  GetCategorie(){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetCategories");
 
@@ -40,7 +40,7 @@ export class EventiService {
     );
   }
 
-  async AddEvent(event : Evento ){
+  AddEvent(event : Evento ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("CreateEvent");
     let body = JSON.stringify(event);
@@ -51,7 +51,7 @@ export class EventiService {
     );
   }
 
-  async GetEvento(Id : string | null | undefined ){
+  GetEvento(Id : string | null | undefined ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetEvent?Id=" + Id);
 
@@ -61,7 +61,7 @@ export class EventiService {
     );
   }
 
-  async UpdateEvent(event : Evento ){
+  UpdateEvent(event : Evento ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("UpdateEvent");
     let body = JSON.stringify(event);
@@ -72,7 +72,7 @@ export class EventiService {
     );
   }
 
-  async Subscribe(Subscription : Iscrizione ){
+  Subscribe(Subscription : Iscrizione ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("SubscribeEvent");
     let body = JSON.stringify(Subscription);
@@ -83,7 +83,7 @@ export class EventiService {
     );
   }
 
-  async GetSubscription(UserId : string | null){
+  GetSubscription(UserId : string | null){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetEventSubscriptionByUser?UserId=" + UserId);
 
@@ -93,7 +93,7 @@ export class EventiService {
     );
   }
 
-  async DeleteSubscription(EventId: string | null | undefined, UserId: string | null, Category: number){
+  DeleteSubscription(EventId: string | null | undefined, UserId: string | null, Category: number){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("DeleteSubscription?EventId=" + EventId + "&UserId=" + UserId + "&Category=" + Category);
 
@@ -104,7 +104,7 @@ export class EventiService {
 
   }
 
-  async GetCompetitors(EventId : string | null){
+  GetCompetitors(EventId : string | null){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetCompetitors?EventId=" + EventId);
 
@@ -115,7 +115,7 @@ export class EventiService {
 
   }
 
-  async GetCompetitorExcel(EventId : string | null){
+  GetCompetitorExcel(EventId : string | null){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetCompetitorsFile?EventId=" + EventId);
 

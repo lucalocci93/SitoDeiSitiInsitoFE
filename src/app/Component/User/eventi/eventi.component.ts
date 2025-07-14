@@ -42,7 +42,7 @@ export class EventiComponent implements OnInit {
 
     const UserId = this.common.getCookie("sub");
 
-    (await this.EventService.GetEventi()).subscribe(async (data) => {
+    this.EventService.GetEventi().subscribe(async (data) => {
       if (data != null && data.Data != null) {
         this.Events = data.Data.map(item => ({
           id: item.id,
@@ -59,7 +59,7 @@ export class EventiComponent implements OnInit {
         this.ToBeSubscribedEvent = this.Events.filter(a => a.dataInizioEvento > new Date() && a.dataFineEvento > new Date());
 
         this.PastEvent = this.Events.filter(a => a.dataFineEvento != null && a.dataFineEvento < new Date());
-        await(await this.EventService.GetCategorie()).subscribe(cat => {
+        this.EventService.GetCategorie().subscribe(cat => {
           if(cat != null && cat.Data != null){
             this.CategoriesData = cat.Data;
           }
@@ -74,7 +74,7 @@ export class EventiComponent implements OnInit {
           }
         });
 
-        (await this.EventService.GetSubscription(UserId)).subscribe(data => {
+        this.EventService.GetSubscription(UserId).subscribe(data => {
           if (data != null && data.Data != null) 
           {
             const EventIds = new Set(this.Events.map(sub => sub.id));
@@ -119,7 +119,7 @@ export class EventiComponent implements OnInit {
   }
 
   async DeleteSubscribe(Iscrizione: IscrizioneExt){
-    await(await this.EventService.DeleteSubscription(Iscrizione.Iscrizione.eventId, Iscrizione.Iscrizione.userId, Iscrizione.Iscrizione.categoria)).subscribe(cat => {
+    this.EventService.DeleteSubscription(Iscrizione.Iscrizione.eventId, Iscrizione.Iscrizione.userId, Iscrizione.Iscrizione.categoria).subscribe(cat => {
       if(cat != null && cat.Data != null){
         alert("Iscrizione Cancellata");
         window.location.reload();

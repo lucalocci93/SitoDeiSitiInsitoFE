@@ -27,7 +27,7 @@ export class VideoComponent {
   }
 
   async GetVideo(){
-    (await this.sitoService.GetVideo()).subscribe(data => {
+    this.sitoService.GetVideo().subscribe(data => {
       if (data != null && data.Data != null) {
         this.videos = data.Data.filter(video => video.active).map(video => {
           let id = this.getParamsFromUrl(video.url);

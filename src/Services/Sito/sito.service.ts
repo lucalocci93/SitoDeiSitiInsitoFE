@@ -18,7 +18,7 @@ export class SitoService {
   Token: string = "";
   constructor(private http: HttpClient, private common: CommonService) { }
 
-  async GetGrafiche(){
+  GetGrafiche(){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
       let endpoint = this.ApiEndpoint.concat("GetGrafiche");
     
@@ -29,7 +29,7 @@ export class SitoService {
     
   }
 
-  async GetGraficheByPagina(id: number){
+  GetGraficheByPagina(id: number){
     
     const headers = new HttpHeaders({'accept': '*/*' });
     let endpoint = this.ApiEndpoint.concat("GetGraficheByPagina?Pagina=" + id);
@@ -41,7 +41,7 @@ export class SitoService {
 
   }
 
-  async AddGrafica(image : Graphics ){
+  AddGrafica(image : Graphics ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("AddGrafica");
     let body = JSON.stringify(image);
@@ -52,7 +52,7 @@ export class SitoService {
     );
   }
 
-  async RemoveGrafica(image : Graphics ){
+  RemoveGrafica(image : Graphics ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("RemoveGrafica?id=" + image.id);
   
@@ -62,7 +62,7 @@ export class SitoService {
     );
   }
 
-  async ToggleGrafica(grafica : Graphics ){
+  ToggleGrafica(grafica : Graphics ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("ToggleGrafica");
     let body = JSON.stringify(grafica);
@@ -74,7 +74,7 @@ export class SitoService {
   }
 
 
-  async GetPagine(){
+  GetPagine(){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetPagine");
   
@@ -84,7 +84,7 @@ export class SitoService {
     );
   }
 
-  async GetRedirezioni(){
+  GetRedirezioni(){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetRedirezioni");
   
@@ -94,7 +94,7 @@ export class SitoService {
     );
   }
 
-  async AddRedirezioni(redirection : Redirection ){
+  AddRedirezioni(redirection : Redirection ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("AddRedirezione");
     let body = JSON.stringify(redirection);
@@ -105,7 +105,7 @@ export class SitoService {
     );
   }
 
-  async RemoveRedirezione(redirezione : Redirection ){
+  RemoveRedirezione(redirezione : Redirection ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("RemoveRedirezione?id=" + redirezione.id);
   
@@ -115,7 +115,7 @@ export class SitoService {
     );
   }
 
-  async ToggleRedirezione(redirezione : Redirection ){
+  ToggleRedirezione(redirezione : Redirection ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("ToggleRedirezione");
     let body = JSON.stringify(redirezione);
@@ -127,7 +127,7 @@ export class SitoService {
   }
 
 
-  async GetVideo(){
+  GetVideo(){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetVideo");
   
@@ -137,7 +137,7 @@ export class SitoService {
     );
   }
 
-  async AddVideo(video : Video ){
+  AddVideo(video : Video ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("AddVideo");
     let body = JSON.stringify(video);
@@ -148,7 +148,7 @@ export class SitoService {
     );
   }
 
-  async RemoveVideo(video : Video ){
+  RemoveVideo(video : Video ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("RemoveVideo?id=" + video.id);
   
@@ -158,7 +158,7 @@ export class SitoService {
     );
   }
 
-  async ToggleVideo(video : Video ){
+  ToggleVideo(video : Video ){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("ToggleVideo");
     let body = JSON.stringify(video);

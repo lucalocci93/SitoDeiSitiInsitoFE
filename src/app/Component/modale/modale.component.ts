@@ -146,7 +146,7 @@ export class ModaleComponent implements OnInit {
       {
         this.user = undefined;
         let userData = this.data.object as userData;
-        await(await this.userService.GetUtente(userData.rowGuid)).subscribe(data => {
+        this.userService.GetUtente(userData.rowGuid).subscribe(data => {
           if(data != null && data.Data != null){
             this.UserForm.setValue({
               Nome: data.Data.nome,
@@ -180,7 +180,7 @@ export class ModaleComponent implements OnInit {
         this.user = undefined;
         let userData = this.data.object as userData;
 
-        await(await this.userService.GetUtente(userData.rowGuid)).subscribe(data => {
+        this.userService.GetUtente(userData.rowGuid).subscribe(data => {
           if(data != null && data.Data != null){
             this.UserForm.setValue({
               Nome: data.Data.nome,
@@ -212,7 +212,7 @@ export class ModaleComponent implements OnInit {
         this.subList = [];   
         let userData = this.data.object as userData;
 
-        await(await this.subService.GetAbbonamenti(userData.rowGuid)).subscribe(data => {
+        this.subService.GetAbbonamenti(userData.rowGuid).subscribe(data => {
           if(data != null && data.Data != null){
             this.subList = data.Data.sort((a, b) => (a.isActive === b.isActive) ? 0 : a.isActive ? -1 : 1);
           }
@@ -233,7 +233,7 @@ export class ModaleComponent implements OnInit {
       this.subType = [];
       let userData = this.data.object as userData;
 
-      await(await this.subService.GetTipoAbbonamenti(userData.rowGuid)).subscribe(data => {
+      this.subService.GetTipoAbbonamenti(userData.rowGuid).subscribe(data => {
         if(data != null && data.Data != null){
           this.subType = data.Data;
         }
@@ -252,7 +252,7 @@ export class ModaleComponent implements OnInit {
 
     if(this.data.type == 'AddDoc'){
       this.docType = [];
-      await(await this.docService.GetTipiDocumenti()).subscribe(data => {
+      this.docService.GetTipiDocumenti().subscribe(data => {
         if(data != null && data.Data != null){
           this.docType = data.Data;
         }
@@ -274,7 +274,7 @@ export class ModaleComponent implements OnInit {
       this.documents = [];
       let userData = this.data.object as userData;
 
-      await(await this.docService.GetTipiDocumenti()).subscribe(data => {
+      this.docService.GetTipiDocumenti().subscribe(data => {
         if(data != null && data.Data != null){
           this.docType = data.Data;
         }
@@ -290,7 +290,7 @@ export class ModaleComponent implements OnInit {
         }
       });
 
-      await(await this.docService.GetUserDocuments(userData.rowGuid)).subscribe(data => {
+      this.docService.GetUserDocuments(userData.rowGuid).subscribe(data => {
         if(data != null && data.Data != null){
           this.documents = data.Data;
         }
@@ -309,7 +309,7 @@ export class ModaleComponent implements OnInit {
     {
         this.CategoriesData = [];
         this.selected = [];
-        await(await this.eventService.GetCategorie()).subscribe(cat => {
+        this.eventService.GetCategorie().subscribe(cat => {
           if(cat != null && cat.Data != null){
             this.CategoriesData = cat.Data;
           }
@@ -332,7 +332,7 @@ export class ModaleComponent implements OnInit {
         this.selected = [];
         let eventData = this.data.object as eventData;
 
-        await(await this.eventService.GetCategorie()).subscribe(cat => {
+        this.eventService.GetCategorie().subscribe(cat => {
           if(cat != null && cat.Data != null){
             this.CategoriesData = cat.Data;
           }
@@ -348,7 +348,7 @@ export class ModaleComponent implements OnInit {
           }
         });
 
-        await(await this.eventService.GetEvento(eventData.id)).subscribe(event => {
+        this.eventService.GetEvento(eventData.id).subscribe(event => {
           if(event != null && event.Data != null){
             this.EventForm.setValue({
               IdEvento: event.Data.id,
@@ -376,7 +376,7 @@ export class ModaleComponent implements OnInit {
       this.selected = [];
       let eventData = this.data.object as eventData;
 
-      await(await this.eventService.GetEvento(eventData.id)).subscribe(event => {
+      this.eventService.GetEvento(eventData.id).subscribe(event => {
         if(event != null && event.Data != null){
           this.DataEvent = event.Data;
          }
@@ -397,7 +397,7 @@ export class ModaleComponent implements OnInit {
       this.Competitors = [];
       let eventData = this.data.object as eventData;
 
-      await(await this.eventService.GetCategorie()).subscribe(cat => {
+      this.eventService.GetCategorie().subscribe(cat => {
         if(cat != null && cat.Data != null){
           this.CategoriesData = cat.Data;
         }
@@ -413,7 +413,7 @@ export class ModaleComponent implements OnInit {
         }
       });
 
-      await(await this.eventService.GetCompetitors(eventData.id)).subscribe(comp => {
+      this.eventService.GetCompetitors(eventData.id).subscribe(comp => {
         if(comp != null && comp.Data != null){
             this.Competitors = comp.Data;
          }
@@ -432,7 +432,7 @@ export class ModaleComponent implements OnInit {
       this.selected = [];
       this.Pages = [];
 
-      await(await this.sitoService.GetPagine()).subscribe(pages => {
+      this.sitoService.GetPagine().subscribe(pages => {
         if(pages != null && pages.Data != null){
           this.Pages = pages.Data;
         }
@@ -452,7 +452,7 @@ export class ModaleComponent implements OnInit {
 
     if(type === 'updateInfo'){
       if (this.UserForm.valid) {
-        await(await this.userService.UpdateUtente(this.UserForm.value, Operation.AggiornaAll)).subscribe(data => {
+        this.userService.UpdateUtente(this.UserForm.value, Operation.AggiornaAll).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Utente Aggiornato");
             this.dialogRef.close();
@@ -483,7 +483,7 @@ export class ModaleComponent implements OnInit {
         let abb = new Abbonamento(null, this.SubForm.value.IdTipoAbbonamento, null, this.SubForm.value.DataInizio, this.SubForm.value.DataFine, this.SubForm.value.UrlPagamento,
           this.SubForm.value.Importo, "", false, false, userData.rowGuid);
         
-        await(await this.subService.AddAbbonamenti(abb)).subscribe(data => {
+        this.subService.AddAbbonamenti(abb).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Abbonamento Inserito");
             let currentUrl = this.router.url;
@@ -513,7 +513,7 @@ export class ModaleComponent implements OnInit {
         
         e.id = this.EventForm.value.IdEvento;
 
-        await(await this.eventService.UpdateEvent(e)).subscribe(data => {
+        this.eventService.UpdateEvent(e).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Evento Aggiornato");
             let currentUrl = this.router.url;
@@ -542,7 +542,7 @@ export class ModaleComponent implements OnInit {
 
       let EventSubscription = new Iscrizione(EventId, UserId, this.selected, SubscriptionNote)
 
-      await(await this.eventService.Subscribe(EventSubscription)).subscribe(data => {
+      this.eventService.Subscribe(EventSubscription).subscribe(data => {
         if(data != null && data.Data != null){
           alert("Iscrizione effettuata");
           let currentUrl = this.router.url;
@@ -580,7 +580,7 @@ export class ModaleComponent implements OnInit {
 
     let fileBase64 = "";
 
-    await this.commonService.convertFileToBase64(file).then(base64 => {
+    this.commonService.convertFileToBase64(file).then(base64 => {
       //console.log('Base64 string:', base64);
       // You can now use the base64 string as needed
       fileBase64 = base64;
@@ -593,7 +593,7 @@ export class ModaleComponent implements OnInit {
 
     let document = new DocumentoExt(selectedOption, userData.rowGuid, selectedname, fileBase64);
 
-    await(await this.docService.AddDocument(document)).subscribe(data => {
+    this.docService.AddDocument(document).subscribe(data => {
       if(data != null && data.Data != null){
         alert("Documento Inserito");
         let currentUrl = this.router.url;
@@ -621,7 +621,7 @@ export class ModaleComponent implements OnInit {
 async AddRedirezione(urlInput: HTMLInputElement){
   let redirezione = new Redirection(null, urlInput.value, null, true);
 
-  await(await this.sitoService.AddRedirezioni(redirezione)).subscribe(data => {
+  this.sitoService.AddRedirezioni(redirezione).subscribe(data => {
     if(data != null && data.Data != null){
       alert("Redirezione Inserita");
       let currentUrl = this.router.url;
@@ -658,7 +658,7 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
   let fileBase64 = "";
   let categorie: Categoria[] = [];
 
-  await this.commonService.convertFileToBase64(locandina).then(base64 => {
+  this.commonService.convertFileToBase64(locandina).then(base64 => {
     //console.log('Base64 string:', base64);
     // You can now use the base64 string as needed
     fileBase64 = base64;
@@ -671,7 +671,7 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
 
   event.categorie = categories.filter(c => eventCategories.includes(c.Id));
 
-  await(await this.eventService.AddEvent(event)).subscribe(data => {
+  this.eventService.AddEvent(event).subscribe(data => {
     if(data != null && data.Data != null){
       alert("Evento Creato");
       let currentUrl = this.router.url;
@@ -697,7 +697,7 @@ async UpdateSub(action: string, subscription: Abbonamento){
     case "SetPayedSub":
       {
         subscription.isPayed = true;
-        await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
+        this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription).subscribe(data => {
           if(data != null && data.Data != null){
             alert("Pagamento Confermato");
             let currentUrl = this.router.url;
@@ -722,7 +722,7 @@ async UpdateSub(action: string, subscription: Abbonamento){
       case "RefuseSubPayment":
         {
           subscription.isPayed = false;
-          await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
+          this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription).subscribe(data => {
             if(data != null && data.Data != null){
               alert("Pagamento Rifuitato");
               let currentUrl = this.router.url;
@@ -748,7 +748,7 @@ async UpdateSub(action: string, subscription: Abbonamento){
         {
           subscription.isPayed = null;
 
-          await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription)).subscribe(data => {
+          this.subService.UpdateAbbonamenti(SubscriptionOperation.AggiornaInfoPagamento, subscription).subscribe(data => {
             if(data != null && data.Data != null){
               alert("Il pagamento è stato processato, non appena avremo ricevuto l'esito ti notificheremo l'abilitazione dell'abbonamento."+ 
                 "In caso di problemi nel pagamento contattare .....");
@@ -773,7 +773,7 @@ async UpdateSub(action: string, subscription: Abbonamento){
 
         case "DeleteSub":
           { 
-            await(await this.subService.UpdateAbbonamenti(SubscriptionOperation.CancellaAbbonamento, subscription)).subscribe(data => {
+            this.subService.UpdateAbbonamenti(SubscriptionOperation.CancellaAbbonamento, subscription).subscribe(data => {
               if(data != null && data.Data != null){
                 alert("Abbonamento Cancellato");
                 let currentUrl = this.router.url;
@@ -803,7 +803,7 @@ async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sez
   {
     let image = new Graphics(null, urlInput.value, parseInt(paginaInput.value, 10), parseInt(sezioneInput.value, 10), urlDaGoogleDriveInput.checked, titoloInput.value, descrizioneInput.value, testoAggiuntivoInput.value, null, parseInt(ordineInputi.value, 10), true);
   
-    await(await this.sitoService.AddGrafica(image)).subscribe(data => {
+    this.sitoService.AddGrafica(image).subscribe(data => {
       if(data != null && data.Data != null){
         alert("Grafica inserita");
         let currentUrl = this.router.url;
@@ -830,7 +830,7 @@ async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sez
     {
       let video = new Video(null, urlInput.value, titoloInput.value, descrizioneInput.value, null, true);
     
-      await(await this.sitoService.AddVideo(video)).subscribe(data => {
+      this.sitoService.AddVideo(video).subscribe(data => {
         if(data != null && data.Data != null){
           alert("Video inserito");
           let currentUrl = this.router.url;
@@ -875,7 +875,7 @@ async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sez
 
   async openDoc(DocId: string | null) {
     var doc = null;
-    await(await this.docService.GetDocument(DocId)).subscribe(data => {
+    this.docService.GetDocument(DocId).subscribe(data => {
       if(data != null && data.Data != null){
           doc = data.Data.datiDocumento.replace('data:application/pdf;base64,','');
           

@@ -25,7 +25,7 @@ nav ul li a {
   overflow: hidden;
   display: flex;
   object-fit: contain;
-  background-image: url('logo.jpg');
+  background-image: url('../../../assets/logo.jpg');
   background-size: cover; /* Ensures the image covers the entire section */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */

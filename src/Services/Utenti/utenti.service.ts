@@ -18,7 +18,7 @@ export class UtentiService {
     
    }
 
-  async GetAllUtenti() : Promise<Observable<Response<User[]>>>{
+  GetAllUtenti() : Observable<Response<User[]>>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetAllUsers");
 
@@ -28,7 +28,7 @@ export class UtentiService {
     );
   }
 
-  async GetUtente(RowGuid : string | null) : Promise<Observable<Response<User>>>{
+  GetUtente(RowGuid : string | null) : Observable<Response<User>>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetUser?RowGuid=" + RowGuid);
 
@@ -38,7 +38,7 @@ export class UtentiService {
     );
   }
 
-  async UpdateUtente(user : User, operation: Operation) : Promise<Observable<Response<string>>>{
+  UpdateUtente(user : User, operation: Operation) : Observable<Response<string>>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("UpdateUser/" + operation);
     let body = JSON.stringify(user);

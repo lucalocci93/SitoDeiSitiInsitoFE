@@ -17,7 +17,7 @@ export class AbbonamentiService {
 
   constructor(private http: HttpClient, private common: CommonService) { }
 
-  async GetAbbonamenti(Rowguid : string | null) : Promise<Observable<Response<Abbonamento[]>>> {
+  GetAbbonamenti(Rowguid : string | null) : Observable<Response<Abbonamento[]>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetUserSubscriptions?Utente=" + Rowguid);
 
@@ -27,7 +27,7 @@ export class AbbonamentiService {
     );
   }
 
-  async GetTipoAbbonamenti(Rowguid : string | null) : Promise<Observable<Response<TipoAbbonamento[]>>> {
+  GetTipoAbbonamenti(Rowguid : string | null) : Observable<Response<TipoAbbonamento[]>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetSubscriptionType");
 
@@ -37,7 +37,7 @@ export class AbbonamentiService {
     );
   }
 
-  async AddAbbonamenti(Subscription : Abbonamento | null) : Promise<Observable<Response<string>>> {
+  AddAbbonamenti(Subscription : Abbonamento | null) : Observable<Response<string>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("AddUserSubscription");
     let body = JSON.stringify(Subscription);
@@ -48,7 +48,7 @@ export class AbbonamentiService {
     );
   }
 
-  async UpdateAbbonamenti(operation: SubscriptionOperation, Subscription : Abbonamento | null) : Promise<Observable<Response<string>>> {
+  UpdateAbbonamenti(operation: SubscriptionOperation, Subscription : Abbonamento | null) : Observable<Response<string>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("UpdateSubscription/" + operation);
     let body = JSON.stringify(Subscription);

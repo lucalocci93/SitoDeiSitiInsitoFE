@@ -167,7 +167,7 @@ export class HomeComponent {
   }
 
   async GetHomepageImages(){
-    await (await this.sitoService.GetGraficheByPagina(Pagine.Homepage.valueOf())).subscribe(data => {
+    this.sitoService.GetGraficheByPagina(Pagine.Homepage.valueOf()).subscribe(data => {
       if(data != null && data.Data != null)
         {
           data.Data.forEach((item: Graphics) => {

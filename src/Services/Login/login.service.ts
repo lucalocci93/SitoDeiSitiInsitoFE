@@ -20,7 +20,7 @@ export class LoginService {
   Token: string = "";
   constructor(private http: HttpClient) { }
 
-  async login(email: string, password: string){
+  login(email: string, password: string){
 
     //var cryptedEmail = sha256(email);
     var cryptedPassword = sha256(password);
@@ -31,7 +31,7 @@ export class LoginService {
     return this.http.get<Jwt>(endpoint, {headers}).pipe(
       map(response => new Response<Jwt>(response, new HTTPResponseError(200, "OK"))),
       catchError(response => of(new Response<Jwt>(null, new HTTPResponseError(response.status, response.error))))
-     );
+  );
     
     //return await this.http.get(endpoint, { responseType: "text" });
 
@@ -42,7 +42,7 @@ export class LoginService {
     //  );
   }
 
-  async NewUser(userForm: User): Promise<Observable<Response<string>>> {
+  NewUser(userForm: User) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let endpoint = this.ApiEndpoint.concat("CreateUser");
     let body = JSON.stringify(userForm);

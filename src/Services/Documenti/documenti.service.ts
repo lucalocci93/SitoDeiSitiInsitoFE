@@ -16,7 +16,7 @@ export class DocumentiService {
 
   constructor(private http: HttpClient, private common: CommonService) { }
 
-  async GetTipiDocumenti(){
+  GetTipiDocumenti(){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetDocumentType");
 
@@ -27,7 +27,7 @@ export class DocumentiService {
 
   }
 
-  async AddDocument(Document : DocumentoExt){
+  AddDocument(Document : DocumentoExt){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("AddDocument");
     let body = JSON.stringify(Document);
@@ -39,7 +39,7 @@ export class DocumentiService {
 
   }
 
-  async GetUserDocuments(RowGuid : string | null){
+  GetUserDocuments(RowGuid : string | null){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetUserDocuments?User=" + RowGuid );
 
@@ -50,7 +50,7 @@ export class DocumentiService {
 
   }
 
-  async GetDocument(RowGuid : string | null){
+  GetDocument(RowGuid : string | null){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
     let endpoint = this.ApiEndpoint.concat("GetDocument?Id=" + RowGuid );
 
