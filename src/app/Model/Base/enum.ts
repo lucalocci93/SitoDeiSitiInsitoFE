@@ -1,6 +1,7 @@
 export enum Operation {
     AggiornaInfo,
     SetAdmin,
+    SetMaestro,
     AggiornaIndirizzo,
     AggiornaConsensi,
     AggiornaUser,
@@ -21,4 +22,5 @@ export enum Pagine{
     Homepage = 1,
     Contatti = 2,
     News = 3,
+    Eventi = 4,
 }

@@ -39,6 +39,12 @@
               @if (item.isAdmin) {
                 <button mat-menu-item (click)="ManageAdmin(item, false)">Revoca Admin</button>
               }
+              @if (!item.isMaestro) {
+                <button mat-menu-item (click)="ManageMaestro(item, true)">Rendi Maestro</button>
+              }
+              @if (item.isMaestro) {
+                <button mat-menu-item (click)="ManageMaestro(item, false)">Revoca Maestro</button>
+              }
               <button mat-menu-item (click)="openModal('InfoSub', item)">Info Abbonamento</button>
               <button mat-menu-item (click)="openModal('AddSub', item)">Aggiungi Abbonamento</button>
               <button mat-menu-item (click)="openModal('AddDoc', item)">Aggiungi Documento</button>

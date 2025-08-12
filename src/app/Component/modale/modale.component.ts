@@ -5,7 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { eventData, ModalData, userData } from 'src/app/Interface/modal-data';
+import { eventData, ModalData, subscribeData, userData } from 'src/app/Interface/modal-data';
 import { Operation, SubscriptionOperation } from 'src/app/Model/Base/enum';
 import { Abbonamento } from 'src/app/Model/Abbonamento/Abbonamento';
 import { User } from 'src/app/Model/User/User';
@@ -28,6 +28,10 @@ import { Pages } from 'src/app/Interface/Pagine';
 import { Graphics } from 'src/app/Model/Sito/Grafica';
 import { Redirection } from 'src/app/Model/Sito/Redirezioni';
 import { Video } from 'src/app/Model/Sito/Video';
+import { Competition } from 'src/app/Model/Evento/Competition';
+import { Organizzazioni } from 'src/app/Interface/User/Organizzazioni';
+import { Cinture } from 'src/app/Interface/User/Cinture';
+import { C } from 'node_modules/@angular/cdk/portal-directives.d-DbeNrI5D';
 
 @Component({
   selector: 'app-modale',
@@ -37,7 +41,9 @@ import { Video } from 'src/app/Model/Sito/Video';
 })
 export class ModaleComponent implements OnInit {
   
-  user : User | undefined ;
+  user : User | undefined;
+  Organizations : Organizzazioni[] = [];
+  Belts: Cinture[] = [];
 
   subscription : Abbonamento | undefined;
   subList : Abbonamento[] = [];
@@ -57,14 +63,19 @@ export class ModaleComponent implements OnInit {
 
   redirezione: Redirection | undefined;
 
+  gare: Competition[] = [];
+  eventId: string | undefined | null;
+
   UserForm: FormGroup;
   SubForm: FormGroup;
   DocForm: FormGroup;
   EventForm : FormGroup;
   ImageForm : FormGroup;
+  CompetitionForm : FormGroup;
 
   SubdisplayedColumns: string[] = ['Tipo', 'Inizio', 'Scadenza', "Pagato", "Azioni"];
   DocumentdisplayedColumns: string[] = ['Tipo', 'Nome', 'Data', "Azioni"];
+  CompetitiondisplayedColumns: string[] = ['Gara', 'Categoria', "Importo", "Azioni"];
 
   dataSource = new MatTableDataSource(this.subList);
 
@@ -99,7 +110,9 @@ export class ModaleComponent implements OnInit {
       Citta: ['', Validators.required],
       Regione: ['', Validators.required],
       Nazione: ['', Validators.required],
-      RowGuid:[]
+      RowGuid:[],
+      Organizzazione: ['', Validators.required],
+      Cintura: ['', Validators.required]
     });
 
     this.SubForm = this.fb.group({
@@ -123,7 +136,9 @@ export class ModaleComponent implements OnInit {
       DataFine: [new Date(), Validators.required],
       LuogoEvento: ['', Validators.required],
       DescrEvento: [''],
-      LinkEvento: [''],
+      EventSubAmount: [0,],
+      EventEndSubDate: [new Date()],
+      //LinkEvento: [''],
       //CatEvento: this.fb.array(this.CategoriesData.map(() => false))
     });
 
@@ -136,6 +151,13 @@ export class ModaleComponent implements OnInit {
       Descrizione: ['', Validators.required],
       TestoAzione: ['', Validators.required]
     });
+
+    this.CompetitionForm = this.fb.group({
+      Event: [''],
+      NomeGara: [''],
+      CategoriaGara: [''],
+      ImportoIscrizione: [0],
+    });
   }
     
   async ngOnInit() {
@@ -144,6 +166,38 @@ export class ModaleComponent implements OnInit {
 
     if(this.data.type === 'Info')
       {
+        this.userService.GetCinture().subscribe(data => {
+          if(data != null && data.Data != null){
+            this.Belts = data.Data;
+          }
+          else{
+            if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+              alert("La tua sessione è scaduta, rieffettua il login");
+              this.router.navigate(['/login']);
+            }
+            else{
+              alert("Errore recupero Cinture");
+              this.dialogRef.close();
+            }
+          }
+        });
+
+        this.userService.GetOrganizzazioni().subscribe(data => {
+          if(data != null && data.Data != null){
+            this.Organizations = data.Data;
+          }
+          else{
+            if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+              alert("La tua sessione è scaduta, rieffettua il login");
+              this.router.navigate(['/login']);
+            }
+            else{
+              alert("Errore recupero Organizzazioni");
+              this.dialogRef.close();
+            }
+          }
+        });
+
         this.user = undefined;
         let userData = this.data.object as userData;
         this.userService.GetUtente(userData.rowGuid).subscribe(data => {
@@ -159,8 +213,12 @@ export class ModaleComponent implements OnInit {
               Citta: data.Data.citta,
               Regione: data.Data.regione,
               Nazione: data.Data.nazione,
-              RowGuid: data.Data.rowGuid
+              RowGuid: data.Data.rowGuid,
+              Organizzazione: data.Data.organizzazione,
+              Cintura: data.Data.cintura?.toString()
             }); 
+
+            this.UserForm.disable();
           }
           else{
             if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
@@ -177,6 +235,38 @@ export class ModaleComponent implements OnInit {
       
     if(this.data.type === 'updateInfo')
       {
+        this.userService.GetCinture().subscribe(data => {
+          if(data != null && data.Data != null){
+            this.Belts = data.Data;
+          }
+          else{
+            if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+              alert("La tua sessione è scaduta, rieffettua il login");
+              this.router.navigate(['/login']);
+            }
+            else{
+              alert("Errore recupero Cinture");
+              this.dialogRef.close();
+            }
+          }
+        });
+
+        this.userService.GetOrganizzazioni().subscribe(data => {
+          if(data != null && data.Data != null){
+            this.Organizations = data.Data;
+          }
+          else{
+            if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+              alert("La tua sessione è scaduta, rieffettua il login");
+              this.router.navigate(['/login']);
+            }
+            else{
+              alert("Errore recupero Organizzazioni");
+              this.dialogRef.close();
+            }
+          }
+        });
+
         this.user = undefined;
         let userData = this.data.object as userData;
 
@@ -193,7 +283,9 @@ export class ModaleComponent implements OnInit {
               Citta: data.Data.citta,
               Regione: data.Data.regione,
               Nazione: data.Data.nazione,
-              RowGuid: data.Data.rowGuid
+              RowGuid: data.Data.rowGuid,
+              Organizzazione: data.Data.organizzazione,
+              Cintura: data.Data.cintura?.toString()
             }); 
            }
           else if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
@@ -307,24 +399,24 @@ export class ModaleComponent implements OnInit {
 
     if(this.data.type == 'AddEvent')
     {
-        this.CategoriesData = [];
-        this.selected = [];
-        this.eventService.GetCategorie().subscribe(cat => {
-          if(cat != null && cat.Data != null){
-            this.CategoriesData = cat.Data;
-          }
-          else
-          {
-            if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
-              alert("La tua sessione è scaduta, rieffettua il login");
-              this.router.navigate(['/login']);
-            }
-            else{
-              alert("Errore recupero categorie");
-              this.dialogRef.close();
-            }
-          }
-        });
+        //this.CategoriesData = [];
+        //this.selected = [];
+        //this.eventService.GetCategorie().subscribe(cat => {
+        //  if(cat != null && cat.Data != null){
+        //    this.CategoriesData = cat.Data;
+        //  }
+        //  else
+        //  {
+        //    if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
+        //      alert("La tua sessione è scaduta, rieffettua il login");
+        //      this.router.navigate(['/login']);
+        //    }
+        //    else{
+        //      alert("Errore recupero categorie");
+        //      this.dialogRef.close();
+        //    }
+        //  }
+        //});
     }
 
     if(this.data.type == 'updateEventInfo'){
@@ -332,21 +424,21 @@ export class ModaleComponent implements OnInit {
         this.selected = [];
         let eventData = this.data.object as eventData;
 
-        this.eventService.GetCategorie().subscribe(cat => {
-          if(cat != null && cat.Data != null){
-            this.CategoriesData = cat.Data;
-          }
-          else{
-            if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
-              alert("La tua sessione è scaduta, rieffettua il login");
-              this.router.navigate(['/login']);
-            }
-            else{
-              alert("Errore recupero categorie");
-              this.dialogRef.close();
-            }
-          }
-        });
+        //this.eventService.GetCategorie().subscribe(cat => {
+        //  if(cat != null && cat.Data != null){
+        //    this.CategoriesData = cat.Data;
+        //  }
+        //  else{
+        //    if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
+        //      alert("La tua sessione è scaduta, rieffettua il login");
+        //      this.router.navigate(['/login']);
+        //    }
+        //    else{
+        //      alert("Errore recupero categorie");
+        //      this.dialogRef.close();
+        //    }
+        //  }
+        //});
 
         this.eventService.GetEvento(eventData.id).subscribe(event => {
           if(event != null && event.Data != null){
@@ -357,7 +449,9 @@ export class ModaleComponent implements OnInit {
               DataFine: formatDate(event.Data.dataFineEvento, 'yyyy-MM-dd', 'en-US'),
               LuogoEvento: event.Data.luogoEvento,
               DescrEvento: event.Data.descrizione,
-              LinkEvento: event.Data.link,
+              EventSubAmount: event.Data.importoIscrizione,
+              EventEndSubDate: event.Data.chiusuraIscrizioni != null ? formatDate(event.Data.chiusuraIscrizioni, 'yyyy-MM-dd', 'en-US') : new Date(),
+              //LinkEvento: event.Data.link,
             }); 
            }
           else if(event.Error != null && event.Error.Code == HttpStatusCode.Unauthorized){
@@ -372,14 +466,13 @@ export class ModaleComponent implements OnInit {
     }
 
     if(this.data.type == 'SubscribeEvent'){
-      this.CategoriesData = [];
-      this.selected = [];
       let eventData = this.data.object as eventData;
+      let userId = this.commonService.getCookie("sub");
 
-      this.eventService.GetEvento(eventData.id).subscribe(event => {
+      this.eventService.GetCompetitionsByEventAndUser(eventData.id, userId).subscribe(event => {
         if(event != null && event.Data != null){
-          this.DataEvent = event.Data;
-         }
+          this.gare = event.Data;
+        }
         else if(event.Error != null && event.Error.Code == HttpStatusCode.Unauthorized){
           alert("La tua sessione è scaduta, rieffettua il login");
           this.router.navigate(['/login']);
@@ -389,7 +482,62 @@ export class ModaleComponent implements OnInit {
           this.dialogRef.close();
         }
       });
+
+      this.eventService.GetCategorie().subscribe(cat => {
+        if(cat != null && cat.Data != null){
+            this.CategoriesData = cat.Data;
+        }
+        else
+        {
+          if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            this.router.navigate(['/login']);
+          }
+          else{
+            alert("Errore recupero categorie");
+            this.dialogRef.close();
+          }
+        }
+      });
     }
+
+    if(this.data.type == 'BulkSubscribeEvent'){
+      let eventData = this.data.object as subscribeData;
+      let userId = eventData.idUtente;
+      let eventId = eventData.idEvento;
+
+      this.eventService.GetCompetitionsByEventAndUser(eventId, userId).subscribe(event => {
+        if(event != null && event.Data != null){
+          this.gare = event.Data;
+        }
+        else if(event.Error != null && event.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+        }
+        else{
+          alert("Errore recupero Evento");
+          this.dialogRef.close();
+        }
+      });
+
+      this.eventService.GetCategorie().subscribe(cat => {
+        if(cat != null && cat.Data != null){
+            this.CategoriesData = cat.Data;
+        }
+        else
+        {
+          if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            this.router.navigate(['/login']);
+          }
+          else{
+            alert("Errore recupero categorie");
+            this.dialogRef.close();
+          }
+        }
+      });
+    }
+
 
     if(this.data.type == 'GetCompetitors'){
       this.CategoriesData = [];
@@ -443,6 +591,64 @@ export class ModaleComponent implements OnInit {
         else{
           alert("Errore recupero Pagine");
           this.dialogRef.close();
+        }
+      });
+    }
+
+    if(this.data.type == 'createCompetition'){
+
+      let eventData = this.data.object as eventData;
+      this.eventId = eventData.id;
+      
+      this.eventService.GetCategorie().subscribe(cat => {
+        if(cat != null && cat.Data != null){
+          this.CategoriesData = cat.Data;
+        }
+        else{
+          if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            this.router.navigate(['/login']);
+          }
+          else{
+            alert("Errore recupero categorie");
+            this.dialogRef.close();
+          }
+        }
+      });
+    }
+
+    if(this.data.type == 'listCompetition'){
+
+      let eventData = this.data.object as eventData;
+      
+      this.eventService.GetCompetitionsByEvent(eventData.id).subscribe(event => {
+        if(event != null && event.Data != null){
+          this.gare = event.Data;
+        }
+        else if(event.Error != null && event.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+        }
+        else{
+          alert("Errore recupero Evento");
+          this.dialogRef.close();
+        }
+      });
+
+      this.eventService.GetCategorie().subscribe(cat => {
+        if(cat != null && cat.Data != null){
+            this.CategoriesData = cat.Data;
+        }
+        else
+        {
+          if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            this.router.navigate(['/login']);
+          }
+          else{
+            alert("Errore recupero categorie");
+            this.dialogRef.close();
+          }
         }
       });
     }
@@ -509,7 +715,8 @@ export class ModaleComponent implements OnInit {
       if (this.EventForm.valid) {
 
         let e = new Evento(this.EventForm.value.NomeEvento, this.EventForm.value.DataInizio, this.EventForm.value.DataFine,
-           this.EventForm.value.LuogoEvento, this.EventForm.value.DescrEvento, this.EventForm.value.LinkEvento, "");
+           this.EventForm.value.LuogoEvento, this.EventForm.value.DescrEvento, "", "",
+            this.EventForm.value.EventSubAmount, this.EventForm.value.EventEndSubDate);
         
         e.id = this.EventForm.value.IdEvento;
 
@@ -535,41 +742,31 @@ export class ModaleComponent implements OnInit {
       }  
     }
 
-    if(type == "SubscribeEvent"){
-      const SubscriptionNote = (document.getElementById('SubscriptionNote') as HTMLInputElement).value;
-      const EventId = this.DataEvent?.id;
-      const UserId = this.commonService.getCookie("sub");
+    if(type == "createCompetition"){
+      let competition = new Competition(null, this.eventId, this.CompetitionForm.value.NomeGara,
+         this.CompetitionForm.value.ImportoIscrizione,this.CompetitionForm.value.CategoriaGara, false);
 
-      let EventSubscription = new Iscrizione(EventId, UserId, this.selected, SubscriptionNote)
-
-      this.eventService.Subscribe(EventSubscription).subscribe(data => {
+      this.eventService.AddCompetition(competition).subscribe(data => {
         if(data != null && data.Data != null){
-          alert("Iscrizione effettuata");
+          alert("Gara Creata");
           let currentUrl = this.router.url;
           this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
               this.router.navigate([currentUrl]);
           });
+          this.dialogRef.close();
         }
         else{
           if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
             alert("La tua sessione è scaduta, rieffettua il login");
             this.router.navigate(['/login']);
-          }
-          else if(data.Error != null && data.Error.Code == HttpStatusCode.Conflict){
-            alert("E' gia stata effettuata un iscrizione per queste categorie");
-            this.dialogRef.close();
-          }
-          else if(data.Error != null && data.Error.Code == HttpStatusCode.NotFound){
-            alert("Per iscriversi è necessario selezionare almeno una categoria");
             this.dialogRef.close();
           }
           else{
-            alert("Errore durante Iscrizione Evento");
+            alert("Errore creazione Gara");
             this.dialogRef.close();
           }
         }
       });
-  
     }
   }
 
@@ -644,32 +841,42 @@ async AddRedirezione(urlInput: HTMLInputElement){
 }
 
 async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, dataInizioInput: HTMLDataElement, dataFineInput : HTMLDataElement,
-  luogoEventoInput: HTMLInputElement, descrizioneEventoInput: HTMLInputElement, linkEventoInput: HTMLInputElement, categories : Categoria[])
+  luogoEventoInput: HTMLInputElement, descrizioneEventoInput: HTMLInputElement, dataChiusuraIscrizione: HTMLDataElement, importoIscrizione : HTMLInputElement)
   {
   const eventName = eventNameInput.value;
   const eventStartDate = dataInizioInput.value;
   const eventEndDate = dataFineInput.value;
   const eventLocation = luogoEventoInput.value;
   const eventDescr = descrizioneEventoInput.value;
-  const eventLink = linkEventoInput.value;
-  const eventCategories = this.selected;
-  const locandina = fileInput.files?.[0];
+  const eventEndSub = dataChiusuraIscrizione.value;
+  const eventSubAmount = importoIscrizione.value;
+  //const locandina = fileInput.files?.[0];
 
   let fileBase64 = "";
-  let categorie: Categoria[] = [];
+  //let categorie: Categoria[] = [];
 
-  this.commonService.convertFileToBase64(locandina).then(base64 => {
-    //console.log('Base64 string:', base64);
-    // You can now use the base64 string as needed
-    fileBase64 = base64;
-  }).catch(error => {
-    alert("Errore Conversione File");
-    console.error('Error converting file:', error);
-  });
+  //this.commonService.convertFileToBase64(locandina).then(base64 => {
+  //  console.log('Base64 string:', base64);
+  //  //You can now use the base64 string as needed
+  //  fileBase64 = base64;
+  //}).catch(error => {
+  //  alert("Errore Conversione File");
+  //  console.error('Error converting file:', error);
+  //});
 
-  let event = new Evento(eventName, new Date(eventStartDate), new Date(eventEndDate), eventLocation, eventDescr, eventLink, fileBase64);
+  let event = new Evento(
+    eventName,
+    new Date(eventStartDate),
+    new Date(eventEndDate),
+    eventLocation,
+    eventDescr,
+    "",
+    "",
+    Number(eventSubAmount),
+    new Date(eventEndSub)
+  );
 
-  event.categorie = categories.filter(c => eventCategories.includes(c.Id));
+  //event.categorie = categories.filter(c => eventCategories.includes(c.Id));
 
   this.eventService.AddEvent(event).subscribe(data => {
     if(data != null && data.Data != null){
@@ -678,6 +885,7 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
           this.router.navigate([currentUrl]);
       });
+      this.dialogRef.close();
     }
     else{
       if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
@@ -692,7 +900,7 @@ async AddEvent(eventNameInput: HTMLInputElement, fileInput: HTMLInputElement, da
   });
 }
 
-async UpdateSub(action: string, subscription: Abbonamento){
+UpdateSub(action: string, subscription: Abbonamento){
   switch(action){
     case "SetPayedSub":
       {
@@ -798,7 +1006,7 @@ async UpdateSub(action: string, subscription: Abbonamento){
   }
 }
 
-async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezioneInput: HTMLInputElement, urlDaGoogleDriveInput: HTMLInputElement, titoloInput : HTMLInputElement,
+AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezioneInput: HTMLInputElement, urlDaGoogleDriveInput: HTMLInputElement, titoloInput : HTMLInputElement,
   descrizioneInput: HTMLTextAreaElement, testoAggiuntivoInput: HTMLTextAreaElement, ordineInputi: HTMLInputElement)
   {
     let image = new Graphics(null, urlInput.value, parseInt(paginaInput.value, 10), parseInt(sezioneInput.value, 10), urlDaGoogleDriveInput.checked, titoloInput.value, descrizioneInput.value, testoAggiuntivoInput.value, null, parseInt(ordineInputi.value, 10), true);
@@ -826,7 +1034,7 @@ async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sez
 
   }
 
-  async AddVideo(urlInput: HTMLInputElement, titoloInput: HTMLInputElement, descrizioneInput: HTMLTextAreaElement, ordineInput: HTMLInputElement)
+  AddVideo(urlInput: HTMLInputElement, titoloInput: HTMLInputElement, descrizioneInput: HTMLTextAreaElement, ordineInput: HTMLInputElement)
     {
       let video = new Video(null, urlInput.value, titoloInput.value, descrizioneInput.value, null, true);
     
@@ -851,7 +1059,134 @@ async AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sez
         }
       });
   
-    }  
+    } 
+  
+  ManageCompetition(id: string, event: string, action: string){
+    if(action.toLowerCase() == "delete")
+    {
+      this.eventService.DeleteCompetition(id, event).subscribe(data => {
+        if(data != null && data.Data != null){
+          alert("Gara Cancellata");
+          let currentUrl = this.router.url;
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+              this.router.navigate([currentUrl]);
+          });
+          this.dialogRef.close();
+        }
+        else{
+          if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+            alert("La tua sessione è scaduta, rieffettua il login");
+            this.router.navigate(['/login']);
+          }
+          else{
+            alert("Errore cancellazione Gara");
+            this.dialogRef.close();
+          }
+        }
+      });
+    }
+  }
+
+  SubscribeEvent(IdGara: string, IdEvent: string) {
+    let userId = this.commonService.getCookie('sub');
+
+    let note = prompt("Inserisci una nota per la tua iscrizione (opzionale):");
+
+    let subscription = new Iscrizione(IdEvent, userId, note, IdGara, false);
+
+    this.eventService.Subscribe(subscription).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Iscrizione alla Gara Effettuata");
+        this.ngOnInit();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+          this.dialogRef.close();
+        }
+        else{
+          alert("Errore Iscrizione Gara");
+          this.dialogRef.close();
+        }
+      }
+    });
+  }
+
+  BulkSubscribeEvent(IdGara: string, IdEvent: string, IdUser: string) {
+
+    let note = prompt("Inserisci una nota per la tua iscrizione (opzionale):");
+
+    let subscription = new Iscrizione(IdEvent, IdUser, note, IdGara, false);
+
+    this.eventService.Subscribe(subscription).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Iscrizione alla Gara Effettuata");
+        this.ngOnInit();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+          this.dialogRef.close();
+        }
+        else{
+          alert("Errore Iscrizione Gara");
+          this.dialogRef.close();
+        }
+      }
+    });
+  }
+
+
+  DeleteSubscription(IdGara: string, IdEvent: string) {
+    let userId = this.commonService.getCookie('sub');
+
+    let note = prompt("Inserisci il motivo per cui stai cancellando l'iscrizione (opzionale):");
+
+    let subscription = new Iscrizione(IdEvent, userId, note, IdGara, true);
+    this.eventService.DeleteSubscription(subscription).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Hai cancellato la tua iscrizione alla Gara");
+        this.ngOnInit();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+          this.dialogRef.close();
+        }
+        else{
+          alert("Errore cancellazione Gara");
+          this.dialogRef.close();
+        }
+      }
+    });
+  }
+
+  BulkDeleteSubscription(IdGara: string, IdEvent: string, IdUser: string) {
+
+    let note = prompt("Inserisci il motivo per cui stai cancellando l'iscrizione (opzionale):");
+
+    let subscription = new Iscrizione(IdEvent, IdUser, note, IdGara, true);
+    this.eventService.DeleteSubscription(subscription).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Hai cancellato la tua iscrizione alla Gara");
+        this.ngOnInit();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+          this.dialogRef.close();
+        }
+        else{
+          alert("Errore cancellazione Gara");
+          this.dialogRef.close();
+        }
+      }
+    });
+  }
 
   getCategorieDescrizione(CategoriaId: number): string | undefined {
     return this.CategoriesData.find(c => c.Id == CategoriaId)?.Descrizione;

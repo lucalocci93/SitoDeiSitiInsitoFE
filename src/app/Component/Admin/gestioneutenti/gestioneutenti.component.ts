@@ -48,7 +48,7 @@ export class GestioneutentiComponent {
     });
   }
 
-  async ManageAdmin(item: User, _isAdmin: boolean){
+  ManageAdmin(item: User, _isAdmin: boolean){
     item.isAdmin = _isAdmin;
     this.utentiService.UpdateUtente(item, Operation.SetAdmin).subscribe(data => {
       if(data != null && data.Data != null){
@@ -65,7 +65,26 @@ export class GestioneutentiComponent {
         }
       }
     });
-}
+  }
+
+  ManageMaestro(item: User, _isMaestro: boolean){
+    item.isMaestro = _isMaestro;
+    this.utentiService.UpdateUtente(item, Operation.SetMaestro).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Utente Aggiornato");
+        window.location.reload();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          window.location.href = '/login';
+        }
+        else{
+          alert("Errore recupero Utenti");
+        }
+      }
+    });
+  }
   
   get filteredData() {
     let searchValue = this.searchText.toLowerCase();

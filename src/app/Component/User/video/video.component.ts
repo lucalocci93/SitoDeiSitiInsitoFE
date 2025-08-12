@@ -15,15 +15,22 @@ export class VideoComponent {
 
   videos: ExtendedVideo[] = [];
 
-  videoHeight: number | undefined;
-  videoWidth: number | undefined;
+  //videoHeight: number | undefined;
+  //videoWidth: number | undefined;
 
+  activeIndex: number | null = null;
 
   constructor(private sitoService: SitoService, private commonService: CommonService, private route: ActivatedRoute) {
     this.GetVideo();
-    this.videoWidth = document.documentElement.scrollWidth / 1.5; // Set video width to half of the screen width
-    this.videoHeight = this.videoWidth * 0.6; // Maintain aspect ratio
+    //this.videoWidth = document.documentElement.scrollWidth / 1.5; // Set video width to half of the screen width
+    //this.videoHeight = this.videoWidth * 0.6; // Maintain aspect ratio
 
+  }
+
+
+
+  toggleDescription(index: number) {
+    this.activeIndex = this.activeIndex === index ? null : index;
   }
 
   async GetVideo(){

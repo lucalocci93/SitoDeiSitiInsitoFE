@@ -9,5 +9,8 @@ import { LoaderService } from 'src/Services/Common/loader.service';
   standalone: false
 })
 export class SpinnerComponent {
-  constructor(public loader: LoaderService) { }
+  isLoading: boolean = false;
+  constructor(public loader: LoaderService) {
+    this.isLoading = this.loader.getLoading();
+   }
 }

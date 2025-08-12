@@ -113,6 +113,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     codFiscale: "lcclcu93c06c415m",
                     password: "",
                     isAdmin: false,
+                    isMaestro : false,
                     rowGuid: "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4",
                     dataNascita: new Date(),
                     via: null,
@@ -121,7 +122,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     regione: null,
                     nazione: null,
                     consensoInvioMail: null,
-                    abbonamenti: null
+                    abbonamenti: null,
+                    cintura: null,
+                    organizzazione: null
                 },
                 {
                     nome: "test",
@@ -130,6 +133,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     codFiscale: "tsttst93c06c415m",
                     password: "",
                     isAdmin: true,
+                    isMaestro: false,
                     rowGuid: "dbfdbd90-966c-44c9-b31c-099e5692b35a",
                     dataNascita: new Date(),
                     via: null,
@@ -138,7 +142,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     regione: null,
                     nazione: null,
                     consensoInvioMail: null,
-                    abbonamenti: null
+                    abbonamenti: null,
+                    cintura: null,
+                    organizzazione: null
                 },
                 {
                     nome: "test1",
@@ -147,6 +153,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     codFiscale: "test1",
                     password: "",
                     isAdmin: false,
+                    isMaestro: false,
                     rowGuid: "00000000-0000-0000-0000-000000000000",
                     dataNascita: new Date(),
                     via: null,
@@ -155,7 +162,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     regione: null,
                     nazione: null,
                     consensoInvioMail: null,
-                    abbonamenti: null
+                    abbonamenti: null,
+                    cintura: null,
+                    organizzazione: null
                 },
                 {
                     nome: "test",
@@ -164,6 +173,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     codFiscale: "test",
                     password: "",
                     isAdmin: false,
+                    isMaestro: false,
                     rowGuid: "7f466ad6-3252-4ab7-b1e9-254a1cbceead",
                     dataNascita: new Date(),
                     via: null,
@@ -172,7 +182,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     regione: null,
                     nazione: null,
                     consensoInvioMail: null,
-                    abbonamenti: null
+                    abbonamenti: null,
+                    cintura: null,
+                    organizzazione: null
+
                 },
                 {
                     nome: "test",
@@ -181,6 +194,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     codFiscale: "test",
                     password: "",
                     isAdmin: false,
+                    isMaestro: false,
                     rowGuid: "dd0b3bc4-94e6-4353-9a31-d29ac454f9f2",
                     dataNascita: new Date(),
                     via: null,
@@ -189,7 +203,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     regione: null,
                     nazione: null,
                     consensoInvioMail: null,
-                    abbonamenti: null
+                    abbonamenti: null,
+                    cintura: null,
+                    organizzazione: null
                 }
             ];
 
@@ -204,6 +220,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 codFiscale: "lcclcu93c06c415m",
                 password: "",
                 isAdmin: false,
+                isMaestro: false,
                 rowGuid: "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4",
                 dataNascita: new Date("1993-03-06"),
                 via: "friuli",
@@ -239,7 +256,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         isPayed: false,
                         utente: "4bb7d5ef-34aa-4ad9-ad4b-4f15897c34c4"
                     }
-                ]
+                ],
+                cintura: 1,
+                organizzazione: "Test"
             };
             
             return of(new HttpResponse({ status: 200, body: response}) ).pipe(delay(500));

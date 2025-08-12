@@ -49,6 +49,8 @@ import { GestioneRedirezioniComponent } from './Component/Admin/gestione-sito/ge
 import { GestioneVideoComponent } from './Component/Admin/gestione-sito/gestione-video/gestione-video.component';
 import { VideoComponent } from './Component/User/video/video.component';
 import { SitoService } from 'src/Services/Sito/sito.service';
+import { SafeUrlPipe } from 'src/pipe/safe-url.pipe';
+import { SSEService } from 'src/Services/Sito/SSE.service';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -70,7 +72,8 @@ import { SitoService } from 'src/Services/Sito/sito.service';
         GestioneRedirezioniComponent,
         GestioneVideoComponent,
         ModaleComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        SafeUrlPipe
     ],
     bootstrap: [AppComponent],
     imports: [BrowserModule,
@@ -90,7 +93,7 @@ import { SitoService } from 'src/Services/Sito/sito.service';
         BrowserAnimationsModule,
         NoopAnimationsModule,
         MarkdownModule.forRoot(),
-        YouTubePlayerModule
+        YouTubePlayerModule,
     ],
     providers: [
             CommonService,
@@ -98,6 +101,7 @@ import { SitoService } from 'src/Services/Sito/sito.service';
             UtentiService,
             EventiService,
             SitoService,
+            SSEService,
             provideHttpClient(withInterceptorsFromDi()),
             provideAnimationsAsync(),
             {

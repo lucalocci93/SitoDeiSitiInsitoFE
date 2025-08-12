@@ -5,14 +5,18 @@ import { Evento } from "./Evento";
 export class Iscrizione{
     eventId : string | undefined | null;
     userId : string | null;
-    categories : number[];
-    note: string
+    note: string | null;
+    competitionId: string;
+    isDeleted: boolean;
 
-    constructor(eventId : string | undefined | null, userId: string | null, categories : number[], note: string) {
-        this.eventId = eventId;
-        this.userId = userId;
-        this.categories = categories;
-        this.note = note
+    constructor(_eventId : string | undefined | null, _userId: string | null, _note: string | null, _competition: string,
+        _deleted: boolean
+    ) {
+        this.eventId = _eventId;
+        this.userId = _userId;
+        this.note = _note;
+        this.competitionId = _competition;
+        this.isDeleted = _deleted;
     }
 }
 

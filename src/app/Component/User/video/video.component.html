@@ -4,7 +4,39 @@
   <title>Video Allenamenti per Utenti Registrati</title>
 </head>
 
-<body>
+<div class="container">
+  <div class="caption">
+    <h3>Benvenuti nella nostra sezione video dedicata agli utenti registrati.</h3>
+    <h5> Qui troverete allenamenti esclusivi per migliorare la vostra forma fisica.</h5>
+  </div>
+  <br>
+  <div class="video-card" *ngFor="let video of videos; let i = index">
+    <div class="video-wrapper">
+      <div class="responsive-iframe">
+        <iframe
+          [src]="video.url | safeUrl"
+          frameborder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="description" [class.show]="activeIndex === i">
+        <strong>{{ video.title }}</strong>
+        <p>{{ video.description }}</p>
+      </div>
+    </div>
+    <div class="meta"
+    (click)="toggleDescription(i)"
+    (mouseover)="activeIndex = i"
+    (mouseleave)="activeIndex = null"
+    >
+      <span class="title"
+      >{{ video.title }}</span>
+      <!--<span class="duration">{{ video.duration }}</span>-->
+    </div>
+  </div>
+</div>
+<!--<body>
   <header>
     <div class="container">
       <h1>Allenamenti Esclusivi</h1>
@@ -32,4 +64,5 @@
     </div>
     <br>
   </div>
-</body>
+</body> -->
+

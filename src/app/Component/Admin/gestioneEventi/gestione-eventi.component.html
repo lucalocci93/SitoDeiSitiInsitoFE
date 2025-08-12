@@ -38,10 +38,10 @@
               <th mat-header-cell *matHeaderCellDef> Luogo Evento </th>
               <td mat-cell *matCellDef="let item"> {{ item.luogoEvento }} </td>
             </ng-container>
-            <ng-container matColumnDef="Categorie">
+            <!--<ng-container matColumnDef="Categorie">
               <th mat-header-cell *matHeaderCellDef> Categorie </th>
               <td mat-cell *matCellDef="let item"> {{ getCategorieDescrizione(item.categorie) }} </td>
-            </ng-container>
+            </ng-container>-->
             <ng-container matColumnDef="Descrizione">
               <th mat-header-cell *matHeaderCellDef> Descrizione </th>
               <td mat-cell *matCellDef="let item"> {{ item.descrizione }} </td>
@@ -55,7 +55,8 @@
               <td mat-cell *matCellDef="let item">
                 <button mat-button [matMenuTriggerFor]="menu">Azioni</button>
                 <mat-menu #menu="matMenu">
-                  <!--<button mat-menu-item (click)="openModal('InfoEvent', item)">Info Evento</button>-->
+                  <button mat-menu-item (click)="openModal('createCompetition', item)">Crea Gara</button>
+                  <button mat-menu-item (click)="openModal('listCompetition', item)">Lista Gare</button>
                   <button mat-menu-item (click)="openModal('updateEventInfo', item)">Aggiorna Evento</button>
                   <button mat-menu-item (click)="openModal('DeleteEvent', item)">Cancella Evento</button>
                   <button mat-menu-item (click)="openModal('GetCompetitors', item)">Lista Partecipanti</button>

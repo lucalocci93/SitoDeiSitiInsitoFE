@@ -1,0 +1,40 @@
+<div class="container mt-4">
+
+  <!-- Page Title -->
+  <h2 class="text-center mt-4 event-title">Iscrivi i tuoi atleti alle gare</h2>
+
+  <button class="btn btn-primary mt-3" (click)="ReportSubOrg()" aria-expanded="false">
+    Report iscrizione dei tuoi atleti
+  </button>
+  <br>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped table-responsive">
+          <thead class="thead-dark">
+            <tr>
+              <th>Nome</th>
+              <th>Cognome</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(athlete of athletes; track athlete) {
+              <tr>
+                <td>{{ athlete.nome }}</td>
+                <td>{{ athlete.cognome }}</td>
+                <td>
+                  <button class="btn btn-primary mr-4" type="button" id="viewDoc" (click)="Subscribe(athlete)" aria-expanded="false">
+                    Iscrivi o Controlla Iscrizioni
+                  </button>
+                  &nbsp;
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

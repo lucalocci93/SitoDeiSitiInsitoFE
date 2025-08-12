@@ -74,7 +74,20 @@
                   "with": "src/environments/environment.demo.ts"
                 }
               ]
+            },
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
             }
+
           },
           "defaultConfiguration": "production"
         },
@@ -89,6 +102,9 @@
             },
             "demo": {
               "buildTarget": "SitoDeiSitiInsitoFE:build:demo"
+            },
+            "local": {
+              "buildTarget": "SitoDeiSitiInsitoFE:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -139,6 +155,9 @@
               "tsConfig": "projects/api/tsconfig.lib.json"
             },
             "demo": {
+              "tsConfig": "projects/api/tsconfig.lib.json"
+            },
+            "local": {
               "tsConfig": "projects/api/tsconfig.lib.json"
             }
           },

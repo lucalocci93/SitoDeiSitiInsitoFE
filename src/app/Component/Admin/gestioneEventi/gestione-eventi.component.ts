@@ -24,7 +24,7 @@ export class GestioneEventiComponent {
     pageSizes = [5, 10, 15, 20];
   
     //displayedColumns: string[] = ['Copertina','NomeEvento', 'DataInizioEvento', 'DataFineEvento', 'LuogoEvento', 'Categorie', 'Descrizione', 'Link', 'Azioni'];
-    displayedColumns: string[] = ['NomeEvento', 'DataInizioEvento', 'DataFineEvento', 'LuogoEvento', 'Categorie', 'Descrizione', 'Link', 'Azioni'];
+    displayedColumns: string[] = ['NomeEvento', 'DataInizioEvento', 'DataFineEvento', 'LuogoEvento', 'Descrizione', 'Link', 'Azioni'];
 
 
   constructor(private EventiService: EventiService, private common: CommonService, public dialog: MatDialog) { }

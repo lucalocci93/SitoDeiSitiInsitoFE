@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonService } from 'src/Services/Common/common.service';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { SitoService } from 'src/Services/Sito/sito.service';
 import { Pagine } from 'src/app/Model/Base/enum';
 import { Graphics } from 'src/app/Model/Sito/Grafica';
+import { SSEService } from 'src/Services/Sito/SSE.service';
+import { Notification } from 'src/app/Interface/Notification';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-home',
@@ -19,14 +22,18 @@ export class HomeComponent {
   slides_2: Graphics[] = [];
   slides_3: Graphics[] = [];
 
-  whowheare: Graphics = undefined as any;
+  whowheare: Graphics[] = [];
   features: Graphics[] = [];
   plans: Graphics[] = [];
+
+  HomeNotification: Notification[] = [];
+  @ViewChild(AppComponent) notifier!: AppComponent;
 
   constructor(private commonService: CommonService, private sitoService: SitoService)
   {
     this.GetHomepageImages();
     this.startAutoPlay()
+    this.GetHomeNotification();
   }
 
   currentSlide1 = 0;
@@ -177,7 +184,7 @@ export class HomeComponent {
 
             //inizializzo immagini nelle varie sezioni
             this.slides_1 = this.images.filter(f => f.section == 1 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
-            this.whowheare = this.images.filter(f => f.section == 2 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0))[0];
+            this.whowheare = this.images.filter(f => f.section == 2 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
             this.slides_2 = this.images.filter(f => f.section == 3 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
             this.features = this.images.filter(f => f.section == 4 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
             this.slides_3 = this.images.filter(f => f.section == 5 && f.active).sort((a, b) => (a.order || 0) - (b.order || 0));
@@ -189,4 +196,19 @@ export class HomeComponent {
         } 
       });
     }
+
+
+  GetHomeNotification() {
+    this.sitoService.GetNotificationByPage(Pagine.Homepage.valueOf()).subscribe(data => {
+      if(data != null && data.Data != null)
+        {
+          data.Data.forEach((item: Notification) => {
+            this.HomeNotification.push(item);
+          });
+        }
+        else{
+          alert("Errore recupero immagini homepage");
+        } 
+      });
+  }
 }

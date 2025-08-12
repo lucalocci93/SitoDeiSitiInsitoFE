@@ -1,5 +1,5 @@
 import { HttpStatusCode } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Evento } from 'src/app/Model/Evento/Evento';
 import { CommonService } from 'src/Services/Common/common.service';
@@ -9,6 +9,11 @@ import { ModalData } from 'src/app/Interface/modal-data';
 import { Iscrizione, IscrizioneExt, SingolaIscrizione } from 'src/app/Model/Evento/Iscrizione';
 import { Categoria } from 'src/app/Model/Evento/Categoria';
 import { DatePipe } from '@angular/common';
+import { Notification } from 'src/app/Interface/Notification';
+import { Pagine } from 'src/app/Model/Base/enum';
+import { AppComponent } from 'src/app/app.component';
+import { SitoService } from 'src/Services/Sito/sito.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eventi',
@@ -18,7 +23,8 @@ import { DatePipe } from '@angular/common';
 })
 export class EventiComponent implements OnInit {
 
-  constructor(private EventService: EventiService, private common: CommonService, public dialog: MatDialog) {
+  constructor(private router: Router, private EventService: EventiService, private common: CommonService,
+                private sitoService: SitoService, public dialog: MatDialog) {
     
   }
 
@@ -38,9 +44,28 @@ export class EventiComponent implements OnInit {
 
   datePipe: DatePipe = new DatePipe('en-US');
 
+  EventiNotification: Notification[] = [];
+
   async ngOnInit() {
 
     const UserId = this.common.getCookie("sub");
+
+    this.GetEventNotification();
+
+    this.EventService.GetCategorie().subscribe(cat => {
+      if(cat != null && cat.Data != null){
+        this.CategoriesData = cat.Data;
+      }
+      else{
+        if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          window.location.href = '/login';
+        }
+        else{
+          alert("Errore recupero categorie");
+        }
+      }
+    });
 
     this.EventService.GetEventi().subscribe(async (data) => {
       if (data != null && data.Data != null) {
@@ -53,46 +78,14 @@ export class EventiComponent implements OnInit {
           descrizione: item.descrizione,
           link: item.link,
           categorie: item.categorie,
-          copertina: item.copertina
+          copertina: item.copertina,
+          importoIscrizione: item.importoIscrizione,
+          chiusuraIscrizioni: item.chiusuraIscrizioni,
         }));
 
-        this.ToBeSubscribedEvent = this.Events.filter(a => a.dataInizioEvento > new Date() && a.dataFineEvento > new Date());
+        this.ToBeSubscribedEvent = this.Events.filter(a => a.chiusuraIscrizioni != null ? a.chiusuraIscrizioni >= new Date() : a.dataFineEvento > new Date());
 
         this.PastEvent = this.Events.filter(a => a.dataFineEvento != null && a.dataFineEvento < new Date());
-        this.EventService.GetCategorie().subscribe(cat => {
-          if(cat != null && cat.Data != null){
-            this.CategoriesData = cat.Data;
-          }
-          else{
-            if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
-              alert("La tua sessione è scaduta, rieffettua il login");
-              window.location.href = '/login';
-            }
-            else{
-              alert("Errore recupero categorie");
-            }
-          }
-        });
-
-        this.EventService.GetSubscription(UserId).subscribe(data => {
-          if (data != null && data.Data != null) 
-          {
-            const EventIds = new Set(this.Events.map(sub => sub.id));
-            const PastEvents = new Set(this.PastEvent.map(sub => sub.id));
-            this.SubscribedEvent = data.Data.filter(event => EventIds.has(event.eventId) && !PastEvents.has(event.eventId));
-
-            this.SubscribedEvent.forEach(e =>
-              this.ExtendedSub.push(new IscrizioneExt(e, this.Events.find(ev => ev.id == e.eventId)))
-            )
-          }
-          else if (data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized) {
-            alert("La tua sessione è scaduta, rieffettua il login");
-            window.location.href = '/login';
-          }
-          else {
-            alert("Errore recupero Iscrizioni");
-          }
-        });
       }
       else if (data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized) {
         alert("La tua sessione è scaduta, rieffettua il login");
@@ -118,22 +111,58 @@ export class EventiComponent implements OnInit {
     this.openModal("SubscribeEvent", evento);
   }
 
-  async DeleteSubscribe(Iscrizione: IscrizioneExt){
-    this.EventService.DeleteSubscription(Iscrizione.Iscrizione.eventId, Iscrizione.Iscrizione.userId, Iscrizione.Iscrizione.categoria).subscribe(cat => {
-      if(cat != null && cat.Data != null){
-        alert("Iscrizione Cancellata");
-        window.location.reload();
-      }
-      else{
-        if(cat.Error != null && cat.Error.Code == HttpStatusCode.Unauthorized){
-          alert("La tua sessione è scaduta, rieffettua il login");
-          window.location.href = '/login';
-        }
-        else{
-          alert("Errore recupero categorie");
-        }
+  BulkSubscribe(event: Evento){
+    this.router.navigate(['/eventi/bulksub'], { queryParams: { EventId: event.id } });
+  }
+
+  EventSubscriptionReport(evento: Evento) {
+    let UserId = this.common.getCookie("sub");
+
+    this.EventService.GetReportIscrizioni(evento.id, UserId).subscribe((data) => {
+      if (data != null && data.Data != null) {
+        
+        const byteArray = new Uint8Array(
+          atob(data.Data.datiDocumento)
+          .split('')
+          .map((char) => char.charCodeAt(0))
+        );
+
+        const file = new Blob([byteArray], {type: 'application/pdf'});
+        const fileUrl = URL.createObjectURL(file);
+
+        let link = document.createElement('a');
+        link.download = data.Data.nomeDocumento;
+        link.target = '_blank';
+        link.href = fileUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } 
+      else if (data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized) {
+        alert("La tua sessione è scaduta, rieffettua il login");
+        window.location.href = '/login';
+      } else {
+        alert(data.Error?.Message || "Errore recupero Report Iscrizioni");
       }
     });
-
   }
+
+  GetEventNotification() {
+    this.sitoService.GetNotificationByPage(Pagine.Eventi.valueOf()).subscribe(data => {
+      if(data != null && data.Data != null)
+        {
+          data.Data.forEach((item: Notification) => {
+            this.EventiNotification.push(item);
+          });
+        }
+        else{
+          alert("Errore recupero immagini homepage");
+        } 
+      });
+  }
+
+  UserIsMaster(): boolean {
+    return this.common.getCookie("SportRole") === "Maestro";
+  }
+  
 }

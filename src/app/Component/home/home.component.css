@@ -395,3 +395,29 @@ section {
   } 
 
   /**********************************/
+  /*** Custom Notification Styles ***/
+.custom-notification {
+  position: fixed;
+    right: 20px; 
+    background-color: #323232; 
+    color: #fff; 
+    padding: 16px 24px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+    font-family: Arial, sans-serif; 
+    font-size: 16px; 
+    z-index: 9999;
+     display: flex; 
+     align-items: center; 
+     justify-content: space-between; 
+     min-width: 300px;
+}
+
+.custom-notification-closebutton{
+  background: none;
+   border: none; 
+   color: #fff;
+    font-size: 20px; 
+    cursor: pointer;
+     margin-left: 16px;
+}

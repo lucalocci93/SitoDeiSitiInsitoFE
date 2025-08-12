@@ -9,6 +9,7 @@ import { CommonService } from '../Common/common.service';
 import { Graphics } from 'src/app/Model/Sito/Grafica';
 import { Redirection } from 'src/app/Model/Sito/Redirezioni';
 import { Video } from 'src/app/Model/Sito/Video';
+import { Notification } from 'src/app/Interface/Notification';
 @Injectable({
   providedIn: 'root'
 })
@@ -167,6 +168,17 @@ export class SitoService {
       map(response => new Response<Video>(response, new HTTPResponseError(200, "OK"))),
       catchError(response => of(new Response<Video>(null, new HTTPResponseError(response.status, response.error))))
     );
+  }
+
+  GetNotificationByPage(id: number){
+    const headers = new HttpHeaders({'accept': '*/*' });
+    let endpoint = this.ApiEndpoint.concat("GetNotificheByPagina?Pagina=" + id);
+
+    return this.http.get<Notification[]>(endpoint, {headers}).pipe(
+      map(response => new Response<Notification[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Notification[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+
   }
 
 }

@@ -10,9 +10,11 @@ export class Evento{
     descrizione : string;
     link : string;
     copertina : Copertina;
+    importoIscrizione?: number;
+    chiusuraIscrizioni?: Date;
 
     constructor(nomeEvento : string, dataInizioEvento : Date, dataFineEvento: Date, luogoEvento : string,
-        descrizione : string, link : string, copertina : string) 
+        descrizione : string, link : string, copertina : string, importoIscrizione?: number, chiusuraIscrizioni?: Date) 
     {
         this.id = null;
         this.nomeEvento = nomeEvento;
@@ -23,6 +25,8 @@ export class Evento{
         this.descrizione = descrizione;
         this.link = link;
         this.copertina = new Copertina(copertina);
+        this.importoIscrizione = importoIscrizione;
+        this.chiusuraIscrizioni = chiusuraIscrizioni;
     }
 
 }

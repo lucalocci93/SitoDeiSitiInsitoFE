@@ -1,45 +1,16 @@
-@if (SubscribedEvent.length > 0) {
-  <div>
-    <h1 class="text-center mt-4">Iscrizioni Attive</h1>
-    <div class="container mt-3">
-      <div class="row">
-        <div class="col-12">
-          <table class="table table-striped table-responsive">
-            <thead class="thead-dark">
-              <tr>
-                <th>Nome Evento</th>
-                <th>Inizio Evento</th>
-                <th>Fine Evento</th>
-                <th>Categoria</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (item of ExtendedSub; track item) {
-                <tr>
-                  <td>{{ item.Evento?.nomeEvento }}</td>
-                  <td>{{ this.datePipe.transform(item.Evento?.dataInizioEvento, 'dd-MM-yyyy') }}</td>
-                  <td>{{ this.datePipe.transform(item.Evento?.dataFineEvento, 'dd-MM-yyyy') }}</td>
-                  <td>{{ getCategorieDescrizione(item.Iscrizione.categoria) }}</td>
-                  <td>
-                    <button class="btn btn-secondary" type="button" id="viewDoc" (click)="DeleteSubscribe(item)" aria-expanded="false">
-                      Cancella Iscrizione
-                    </button>
-                  </td>
-                </tr>
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <br>
-    </div>
-  }
-
   @if (ToBeSubscribedEvent.length > 0) {
     <div>
-      <h1 class="text-center mt-4">Iscrizioni Aperte</h1>
+      <h1 class="text-center mt-4 event-title">Iscrizioni Aperte</h1>
+      <h3 class="text-center mt-4">Puoi controllare le tue iscrizioni stampando il Report</h3>
+    
+      @if(EventiNotification && EventiNotification.length > 0) {
+        @for(item of EventiNotification; track item) {
+          <div id="custom-notification" class="custom-notification">
+            <span>{{item.text}}</span>
+          </div>
+        }
+      }
+      
       <div class="container mt-3">
         <div class="row">
           <div class="col-12">
@@ -49,7 +20,8 @@
                   <th>Nome Evento</th>
                   <th>Inizio Evento</th>
                   <th>Fine Evento</th>
-                  <th></th>
+                  <th>Chiusura Iscrizioni</th>
+                  <th>Azioni</th>
                 </tr>
               </thead>
               <tbody>
@@ -58,10 +30,21 @@
                     <td>{{ item.nomeEvento }}</td>
                     <td>{{ this.datePipe.transform(item.dataInizioEvento, 'dd-MM-yyyy') }}</td>
                     <td>{{ this.datePipe.transform(item.dataFineEvento, 'dd-MM-yyyy') }}</td>
+                    <td>{{ this.datePipe.transform(item.chiusuraIscrizioni != null ? item.chiusuraIscrizioni : item.dataInizioEvento, 'dd-MM-yyyy') }}</td>
                     <td>
-                      <button class="btn btn-secondary" type="button" id="viewDoc" (click)="Subscribe(item)" aria-expanded="false">
-                        Iscriviti
+                      <button class="btn btn-primary mr-4" type="button" id="viewDoc" (click)="Subscribe(item)" aria-expanded="false">
+                        Iscriviti o Controlla Iscrizioni
                       </button>
+                      &nbsp;
+                      <button class="btn btn-primary mr-4" type="button" id="ReportDoc" (click)="EventSubscriptionReport(item)" aria-expanded="false">
+                        Report Iscrizioni
+                      </button>
+                      &nbsp;
+                      @if(UserIsMaster()) {
+                        <button class="btn btn-primary mr-4" type="button" id="subscribeStudent" (click)="BulkSubscribe(item)" aria-expanded="false">
+                        Iscrivi i tuoi atleti
+                        </button>
+                      }
                     </td>
                   </tr>
                 }
@@ -76,7 +59,7 @@
 
     @if (PastEvent.length > 0) {
       <div>
-        <h1 class="text-center mt-4">Eventi Passati</h1>
+        <h1 class="text-center mt-4 past-event-title">Eventi Passati</h1>
         <div class="container mt-3">
           <div class="row">
             <div class="col-12">

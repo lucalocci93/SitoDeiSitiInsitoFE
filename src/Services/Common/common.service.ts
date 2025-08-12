@@ -7,12 +7,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class CommonService {
 
   private jwtHelper: JwtHelperService;
-  private ClaimKey: [string, string, string, string, string, string]
+  private ClaimKey: [string, string, string, string, string, string, string, string]
 
   constructor() { 
     this.jwtHelper = new JwtHelperService();
     this.ClaimKey = ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname",
-       "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "http://schemas.microsoft.com/ws/2008/06/identity/claims/role","exp", "sub"];
+       "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "http://schemas.microsoft.com/ws/2008/06/identity/claims/role", 
+       "SportRole", "Org", "exp", "sub"];
   }
 
   //#region Storage  
@@ -82,7 +83,7 @@ removeSession(key: string): boolean {
 
   setCookieForToken(name: string, value: string): void {
     let decodedJWT = this.jwtHelper.decodeToken(value);
-    const date = new Date(decodedJWT[this.ClaimKey[4]] * 1000); // Convert timestamp to milliseconds
+    const date = new Date(decodedJWT[this.ClaimKey[5]] * 1000); // Convert timestamp to milliseconds
     const expires = "expires=" + date.toUTCString();
     document.cookie = `${name}=${value}; ${expires}; path=/`;
   }
@@ -107,18 +108,20 @@ removeSession(key: string): boolean {
   manageRoles(token: string) : string[] {
     
     let decodedJWT = this.jwtHelper.decodeToken(token);
-    this.setCookie("name", decodedJWT[this.ClaimKey[0]], decodedJWT[this.ClaimKey[4]])
-    this.setCookie("surname", decodedJWT[this.ClaimKey[1]], decodedJWT[this.ClaimKey[4]])
-    this.setCookie("emailaddress", decodedJWT[this.ClaimKey[2]], decodedJWT[this.ClaimKey[4]])
-    this.setCookie("role", decodedJWT[this.ClaimKey[3]], decodedJWT[this.ClaimKey[4]])
-    this.setCookie("sub", decodedJWT[this.ClaimKey[5]], decodedJWT[this.ClaimKey[4]])
+    this.setCookie("name", decodedJWT[this.ClaimKey[0]], decodedJWT[this.ClaimKey[6]])
+    this.setCookie("surname", decodedJWT[this.ClaimKey[1]], decodedJWT[this.ClaimKey[6]])
+    this.setCookie("emailaddress", decodedJWT[this.ClaimKey[2]], decodedJWT[this.ClaimKey[6]])
+    this.setCookie("role", decodedJWT[this.ClaimKey[3]], decodedJWT[this.ClaimKey[6]])
+    this.setCookie("SportRole", decodedJWT[this.ClaimKey[4]], decodedJWT[this.ClaimKey[6]])
+    this.setCookie("Org", decodedJWT[this.ClaimKey[5]], decodedJWT[this.ClaimKey[6]])
+    this.setCookie("sub", decodedJWT[this.ClaimKey[7]], decodedJWT[this.ClaimKey[6]])
 
-    return [decodedJWT[this.ClaimKey[0]], decodedJWT[this.ClaimKey[1]], decodedJWT[this.ClaimKey[2]], decodedJWT[this.ClaimKey[3]], decodedJWT[this.ClaimKey[4]],decodedJWT[this.ClaimKey[5]]];
+    return [decodedJWT[this.ClaimKey[0]], decodedJWT[this.ClaimKey[1]], decodedJWT[this.ClaimKey[2]], decodedJWT[this.ClaimKey[3]], decodedJWT[this.ClaimKey[4]],decodedJWT[this.ClaimKey[5]],decodedJWT[this.ClaimKey[6]]];
   }
 
   DecodeToken(token: string) : string[]{
     let decodedJWT = this.jwtHelper.decodeToken(token);
-    return [decodedJWT[this.ClaimKey[0]], decodedJWT[this.ClaimKey[1]], decodedJWT[this.ClaimKey[2]], decodedJWT[this.ClaimKey[3]], decodedJWT[this.ClaimKey[4]], decodedJWT[this.ClaimKey[5]]];
+    return [decodedJWT[this.ClaimKey[0]], decodedJWT[this.ClaimKey[1]], decodedJWT[this.ClaimKey[2]], decodedJWT[this.ClaimKey[3]], decodedJWT[this.ClaimKey[4]], decodedJWT[this.ClaimKey[5]], decodedJWT[this.ClaimKey[6]]];
   }
 
   //#endregion

@@ -38,5 +38,10 @@ export interface eventData{
     //Copertina : Copertina;
 }
 
+export interface subscribeData {
+  idEvento: string | null | undefined;
+  idUtente: string | null;
+}
+
 
   

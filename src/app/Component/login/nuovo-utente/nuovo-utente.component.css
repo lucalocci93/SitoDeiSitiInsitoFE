@@ -125,6 +125,16 @@
     transform: translateX(5px);
   }
   
+  h3 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: #830505;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
   .form-group label {
     display: block;
     font-weight: bold;

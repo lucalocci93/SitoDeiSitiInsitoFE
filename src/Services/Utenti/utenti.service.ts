@@ -6,6 +6,8 @@ import { User } from 'src/app/Model/User/User';
 import { HTTPResponseError, Response } from 'src/app/Model/Base/response';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Operation } from 'src/app/Model/Base/enum';
+import { Cinture } from 'src/app/Interface/User/Cinture';
+import { Organizzazioni } from 'src/app/Interface/User/Organizzazioni';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +51,33 @@ export class UtentiService {
     );
   }
 
+  GetCinture() : Observable<Response<Cinture[]>> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetCinture");
+
+    return this.http.get<Cinture[]>(endpoint, {headers}).pipe(
+      map(response => new Response<Cinture[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Cinture[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+    GetOrganizzazioni() : Observable<Response<Organizzazioni[]>> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetOrganizzazioni");
+
+    return this.http.get<Organizzazioni[]>(endpoint, {headers}).pipe(
+      map(response => new Response<Organizzazioni[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Organizzazioni[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  GetAtletiOrganizzazione(organizzazione: string): Observable<Response<User[]>> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetAtletiOrganizzazione?Org=" + organizzazione);
+
+    return this.http.get<User[]>(endpoint, {headers}).pipe(
+      map(response => new Response<User[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<User[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
 }

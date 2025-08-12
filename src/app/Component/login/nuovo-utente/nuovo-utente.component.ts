@@ -6,6 +6,9 @@ import { User } from 'src/app/Model/User/User'
 import { Response } from 'src/app/Model/Base/response'
 import { LoginService } from 'src/Services/Login/login.service';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Cinture } from 'src/app/Interface/User/Cinture';
+import { Organizzazioni } from 'src/app/Interface/User/Organizzazioni';
+import { UtentiService } from 'src/Services/Utenti/utenti.service';
 
 @Component({
   selector: 'app-nuovo-utente',
@@ -17,8 +20,27 @@ export class NuovoUtenteComponent {
 
     userForm: FormGroup;
     response: Response<User> | undefined;
+    Cinture: Cinture[] = [];
+    Organizzazioni: Organizzazioni[] = [];
   
-    constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { 
+    constructor(private formBuilder: FormBuilder, private loginService: LoginService, private utentiService: UtentiService,
+       private router: Router) { 
+
+      this.utentiService.GetCinture().subscribe(response => {
+        if (response.Data != null) {
+          this.Cinture = response.Data;
+        } else {
+          alert(response.Error.Message);
+        }
+      });
+
+      this.utentiService.GetOrganizzazioni().subscribe(response => {
+        if (response.Data != null) {
+          this.Organizzazioni = response.Data;
+        } else {
+          alert(response.Error.Message);
+        }
+      });
 
       this.userForm = this.formBuilder.group({
         firstName: ['', Validators.required],
@@ -32,6 +54,8 @@ export class NuovoUtenteComponent {
         nation: ['', Validators.required],
         userEmail: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],//, Validators.minLength(6)]],
+        cintura: ['scegli un opzione'],
+        organizzazione: ['scegli un opzione'],
         consensoInvioEmail: [true]
       });
     }
@@ -39,9 +63,9 @@ export class NuovoUtenteComponent {
     async onSubmit(): Promise<void> {
       if (this.userForm.valid) {
         const formValues = this.userForm.value;
-        let user = new User(formValues.firstName, formValues.lastName, formValues.userEmail, formValues.fiscalCode, formValues.password, false, null,
+        let user = new User(formValues.firstName, formValues.lastName, formValues.userEmail, formValues.fiscalCode, formValues.password, false, false, null,
           formValues.birthDate, formValues.street, formValues.number, formValues.city, formValues.region, formValues.nation,
-          formValues.consensoInvioEmail, [])
+          formValues.consensoInvioEmail, [], formValues.cintura, formValues.organizzazione);
 
           this.loginService.NewUser(user).subscribe(response => {
             //this.response = response;

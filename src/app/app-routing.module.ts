@@ -16,6 +16,7 @@ import { GestioneSitoComponent } from './Component/Admin/gestione-sito/gestione-
 import { GestioneRedirezioniComponent } from './Component/Admin/gestione-sito/gestione-redirezioni/gestione-redirezioni.component';
 import { GestioneVideoComponent } from './Component/Admin/gestione-sito/gestione-video/gestione-video.component';
 import { VideoComponent } from './Component/User/video/video.component';
+import { MaestriSubscribeEventiComponent } from './Component/User/eventi/Maestri/maestri-subscribe-eventi.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'documenti', component: DocumentiComponent, pathMatch: 'full' },
   { path: 'abbonamenti', component: AbbonamentiComponent, pathMatch: 'full' },
   { path: 'eventi', component: EventiComponent, pathMatch: 'full' },
+  { path: 'eventi/bulksub', component: MaestriSubscribeEventiComponent, pathMatch: 'full' },
   { path: 'video', component: VideoComponent, pathMatch: 'full' },
   { path: 'gestioneutenti', component: GestioneutentiComponent, pathMatch: 'full' },
   { path: 'gestioneeventi', component: GestioneEventiComponent, pathMatch: 'full' },

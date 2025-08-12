@@ -10,6 +10,7 @@ import { User } from 'src/app/Model/User/User';
 import { HTTPResponseError, Response } from 'src/app/Model/Base/response';
 import { Jwt } from 'src/app/Interface/Jwt';
 import { sha256 } from 'js-sha256';
+import { use } from 'marked';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,7 @@ export class LoginService {
   NewUser(userForm: User) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let endpoint = this.ApiEndpoint.concat("CreateUser");
+    userForm.password = sha256(userForm.password); // Encrypt password before sending
     let body = JSON.stringify(userForm);
 
     return this.http.post<User>(endpoint, body, { headers }).pipe(

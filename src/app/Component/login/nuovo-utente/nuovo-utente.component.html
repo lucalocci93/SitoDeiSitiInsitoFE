@@ -34,7 +34,7 @@
       <br/>
       <div class="form-group">
         <label for="birthDate">Data Nascita</label>
-        <input type="date" id="birthDate" formControlName="birthDate" class="form-control calendar" />
+        <input type="date" id="birthDate" formControlName="birthDate" class="form-control" />
         @if (userForm.get('birthDate')?.invalid && userForm.get('birthDate')?.touched) {
           <div class="text-danger">
             Data Nascita obbligatoria.
@@ -120,6 +120,26 @@
           }
         </div>
         <br/>
+        <h3>Dicci qualcosa su di te</h3>
+        <br>
+          <div class="form-group">
+          <label for="cintura">Hai una cintura?</label>
+          <select id="cintura" type="select" formControlName="cintura" class="form-control">
+            @for (option of Cinture; track option) {
+              <option value= {{option.id}}>{{option.type}}</option>
+            }
+          </select>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="organizzazione">Fai parte di qualche organizzazione?</label>
+          <select id="organizzazione" type="select" formControlName="organizzazione" class="form-control">
+                        @for (option of Organizzazioni; track option) {
+              <option value={{option.rowGuid}}>{{option.name}}</option>
+            }
+          </select>
+        </div>
+        <br>
         <div class="form-group">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="consensoInvioEmail" name="consensoInvioEmail" value="true" checked>

@@ -9,6 +9,7 @@ import { Categoria } from 'src/app/Model/Evento/Categoria';
 import { Iscrizione, SingolaIscrizione } from 'src/app/Model/Evento/Iscrizione';
 import { Competitors } from 'src/app/Interface/Competitors';
 import { DocumentoExt } from 'src/app/Model/Documento/Documento';
+import { Competition } from 'src/app/Model/Evento/Competition';
 
 @Injectable({
   providedIn: 'root'
@@ -93,11 +94,12 @@ export class EventiService {
     );
   }
 
-  DeleteSubscription(EventId: string | null | undefined, UserId: string | null, Category: number){
+  DeleteSubscription(Subscription: Iscrizione){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
-    let endpoint = this.ApiEndpoint.concat("DeleteSubscription?EventId=" + EventId + "&UserId=" + UserId + "&Category=" + Category);
+    let endpoint = this.ApiEndpoint.concat("DeleteSubscription");
+    let body = JSON.stringify(Subscription);
 
-    return this.http.delete<SingolaIscrizione>(endpoint, {headers}).pipe(
+    return this.http.post<SingolaIscrizione>(endpoint, body, {headers}).pipe(
       map(response => new Response<SingolaIscrizione>(response, new HTTPResponseError(200, "OK"))),
       catchError(response => of(new Response<SingolaIscrizione>(null, new HTTPResponseError(response.status, response.error))))
     );
@@ -114,6 +116,68 @@ export class EventiService {
     );
 
   }
+
+  GetCompetitionsByEvent(EventId : string | null){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetCompetitions?EventId=" + EventId);
+
+    return this.http.get<Competition[]>(endpoint, {headers}).pipe(
+      map(response => new Response<Competition[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Competition[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  GetCompetitionsByEventAndUser(EventId : string | null | undefined, UserId: string | null){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetCompetitionsByEventAndUser?EventId=" + EventId + "&UserId=" + UserId);
+
+    return this.http.get<Competition[]>(endpoint, {headers}).pipe(
+      map(response => new Response<Competition[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Competition[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  AddCompetition(competition : Competition){
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("AddCompetition");
+    let body = JSON.stringify(competition);
+
+    return this.http.post<Competition>(endpoint, body, {headers}).pipe(
+      map(response => new Response<Competition>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Competition>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  DeleteCompetition(competitionId: string | null, EventId: string | null){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("DeleteCompetition?CompetitionId=" + competitionId + "&EventId=" + EventId);
+
+    return this.http.delete<Competition>(endpoint, {headers}).pipe(
+      map(response => new Response<Competition>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Competition>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  GetReportIscrizioni(EventId : string | null | undefined, UserId: string | null){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetCompetitionSubscriptionReportByUser?EventId=" + EventId + "&UserId=" + UserId);
+
+    return this.http.get<DocumentoExt>(endpoint, {headers}).pipe(
+      map(response => new Response<DocumentoExt>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<DocumentoExt>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  GetReportIscrizioniByMaster(EventId : string | null | undefined, Org: string | null){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetCompetitionSubscriptionReportByMaster?EventId=" + EventId + "&Org=" + Org);
+
+    return this.http.get<DocumentoExt>(endpoint, {headers}).pipe(
+      map(response => new Response<DocumentoExt>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<DocumentoExt>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
 
   GetCompetitorExcel(EventId : string | null){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});

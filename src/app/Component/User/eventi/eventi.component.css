@@ -17,3 +17,34 @@
   h2 {
     color: #343a40;
   }
+
+  .custom-notification{
+    margin: 24px auto 16px auto;
+     max-width: 1000px;
+      background-color: #e8f4ff; 
+      border-left: 6px solid #007bff; 
+      padding: 16px 24px; 
+      border-radius: 6px;
+       font-family: Arial, sans-serif;
+        color: #004085; 
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .event-title{
+    text-align: center;
+     font-size: 56px; 
+     font-weight: 700;
+      margin-bottom: 12px;
+       font-family: 'Segoe UI', sans-serif;
+        color: #212529;
+  }
+
+  .past-event-title{
+    text-align: center;
+     font-size: 56px; 
+     font-weight: 700;
+      margin-bottom: 12px;
+       font-family: 'Segoe UI', sans-serif;
+        color: #212529;
+  }
+

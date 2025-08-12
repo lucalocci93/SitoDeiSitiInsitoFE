@@ -21,6 +21,7 @@ export interface Utente {
     userId: string;
     categoria: number;
     note: string;
+    gara: string;
   }
   
   export interface Evento {

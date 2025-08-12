@@ -41,6 +41,17 @@
 </head>
 <body>
 
+  @if(HomeNotification && HomeNotification.length > 0)
+  {
+    @for (item of HomeNotification; track item; let i = $index) 
+    {
+      <div id="custom-notification" class="custom-notification">
+        <span>{{item.text}}</span>
+        <button onclick="document.getElementById('custom-notification').style.display='none'" class="custom-notification-closebutton">&times;</button>
+      </div>
+    }
+  }
+
   <div class="buttons" id="buttons">
     <button class="whowearebutton" (click)="GoToSection('whoweare')">CHI SIAMO</button>
     <button class="featuresbutton" (click)="GoToSection('features')">COSA OFFRIAMO</button>
@@ -76,7 +87,9 @@
 <section id="whoweare">
   <h2 class="section-title">Chi siamo?</h2>
   <div class="whowearedescr">
-    <p>{{whowheare.description}}</p>
+    @for (slide of whowheare; track slide; let i = $index) {
+    <p>{{ slide.description }}</p>
+    }
     <!--<p>la vispa teresa avea tra l'erbetta a volo sorpresa gentil farfalletta e tutta giuliva fìgridava distesa l'ho presa l'ho presa <br>
   l'hai presa cretina e bene ti sta gridò farfallina la radioattivita</p>-->
 </div>
