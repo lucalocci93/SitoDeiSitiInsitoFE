@@ -12,7 +12,7 @@ import { Documento, DocumentoExt } from 'src/app/Model/Documento/Documento';
 })
 export class DocumentiService {
 
-  ApiEndpoint: string = environment.apiEndpoint;
+  ApiEndpoint: string = environment.apiEndpoint.concat("Documento/");
 
   constructor(private http: HttpClient, private common: CommonService) { }
 

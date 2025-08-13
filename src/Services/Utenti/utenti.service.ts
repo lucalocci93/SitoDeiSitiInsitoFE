@@ -14,7 +14,7 @@ import { Organizzazioni } from 'src/app/Interface/User/Organizzazioni';
 })
 export class UtentiService {
 
-  ApiEndpoint: string = environment.apiEndpoint;
+  ApiEndpoint: string = environment.apiEndpoint.concat("User/");
 
   constructor(private http: HttpClient, private common : CommonService) {
     

@@ -1,5 +1,5 @@
 export interface Notification{
-    id : string;
+    id : string | null;
     page: number;
     text: string;
     active: boolean;

@@ -437,6 +437,32 @@
       </div>
     }
 
+    @if (data.type == 'AddNotification') {
+      <div>
+        <h2 mat-dialog-title>Inserisci Notifica</h2>
+        <mat-dialog-content>
+          <!--FORM ADD EVENT-->
+          <form (ngSubmit)="AddNotification(paginaInput, notificaInput, attivaInput)" enctype="multipart/form-data">
+            <label for="Pagina">Pagina</label><br>
+            <select id="options" name="options" #paginaInput>
+              @for (Page of Pages; track Page) {
+                <option [value]="Page.id">{{ Page.page }}</option>
+              }
+            </select>
+            <br><br>
+            <label for="notifica">Notifica</label><br>
+            <input type="text" id="notifica" name="notifica" #notificaInput>
+            <br><br>
+            <label for="attiva">Attiva</label><br>
+            <input type="checkbox" id="attiva" name="attiva" #attivaInput>
+            <br><br>
+            <button type="submit">Aggiungi Notifica</button>
+            <br><br>
+          </form>
+        </mat-dialog-content>
+      </div>
+    }
+
     @if (data.type == 'AddRedirezione') {
       <div>
         <h2 mat-dialog-title>Inserisci Redirezione</h2>

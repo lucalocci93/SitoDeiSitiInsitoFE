@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { LoaderService } from 'src/Services/Common/loader.service';
 
 @Component({
@@ -9,8 +9,13 @@ import { LoaderService } from 'src/Services/Common/loader.service';
   standalone: false
 })
 export class SpinnerComponent {
+
   isLoading: boolean = false;
+
   constructor(public loader: LoaderService) {
-    this.isLoading = this.loader.getLoading();
-   }
+    this.loader.loading$.subscribe((loading: boolean) => {
+      this.isLoading = loading;
+   });
+  }
+
 }

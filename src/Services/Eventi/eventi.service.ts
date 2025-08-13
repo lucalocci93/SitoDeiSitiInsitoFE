@@ -16,7 +16,7 @@ import { Competition } from 'src/app/Model/Evento/Competition';
 })
 export class EventiService {
 
-  ApiEndpoint: string = environment.apiEndpoint;
+  ApiEndpoint: string = environment.apiEndpoint.concat("Eventi/");
 
   constructor(private http: HttpClient, private common: CommonService) { }
 

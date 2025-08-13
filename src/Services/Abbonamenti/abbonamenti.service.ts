@@ -13,7 +13,7 @@ import { SubscriptionOperation } from 'src/app/Model/Base/enum';
 })
 export class AbbonamentiService {
 
-  ApiEndpoint: string = environment.apiEndpoint;
+  ApiEndpoint: string = environment.apiEndpoint.concat("Abbonamento/");
 
   constructor(private http: HttpClient, private common: CommonService) { }
 

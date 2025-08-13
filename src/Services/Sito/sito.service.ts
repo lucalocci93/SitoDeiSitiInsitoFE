@@ -10,12 +10,14 @@ import { Graphics } from 'src/app/Model/Sito/Grafica';
 import { Redirection } from 'src/app/Model/Sito/Redirezioni';
 import { Video } from 'src/app/Model/Sito/Video';
 import { Notification } from 'src/app/Interface/Notification';
+import { Notifica } from 'src/app/Model/Sito/Notifica';
+import { ITemplate } from 'src/app/Interface/ITemplate';
 @Injectable({
   providedIn: 'root'
 })
 export class SitoService {
 
-  ApiEndpoint: string = environment.apiEndpoint;
+  ApiEndpoint: string = environment.apiEndpoint.concat('Sito/');
   Token: string = "";
   constructor(private http: HttpClient, private common: CommonService) { }
 
@@ -178,7 +180,69 @@ export class SitoService {
       map(response => new Response<Notification[]>(response, new HTTPResponseError(200, "OK"))),
       catchError(response => of(new Response<Notification[]>(null, new HTTPResponseError(response.status, response.error))))
     );
-
   }
 
+  GetNotification(){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetNotifiche");
+
+    return this.http.get<Notification[]>(endpoint, {headers}).pipe(
+      map(response => new Response<Notification[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Notification[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  UpdateNotifica(notifica: Notification){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("UpdateNotification");
+    let body = JSON.stringify(notifica);
+  
+    return this.http.put<Notification>(endpoint, body, {headers}).pipe(
+      map(response => new Response<Notification>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Notification>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  AddNotifica(notifica : Notifica){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("CreateNotification");
+    let body = JSON.stringify(notifica);
+  
+    return this.http.post<Notification>(endpoint, body, {headers}).pipe(
+      map(response => new Response<Notification>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<Notification>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  GetTemplates(){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("GetTemplates");
+
+    return this.http.get<ITemplate[]>(endpoint, {headers}).pipe(
+      map(response => new Response<ITemplate[]>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<ITemplate[]>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  UpdateTemplate(template: ITemplate){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("UpdateTemplate");
+    let body = JSON.stringify(template);
+  
+    return this.http.put<ITemplate>(endpoint, body, {headers}).pipe(
+      map(response => new Response<ITemplate>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<ITemplate>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
+
+  AddTemplate(template: ITemplate){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', "Authorization" : "Bearer " +  this.common.getCookie("Token")});
+    let endpoint = this.ApiEndpoint.concat("CreateTemplate");
+    let body = JSON.stringify(template);
+  
+    return this.http.post<ITemplate>(endpoint, body, {headers}).pipe(
+      map(response => new Response<ITemplate>(response, new HTTPResponseError(200, "OK"))),
+      catchError(response => of(new Response<ITemplate>(null, new HTTPResponseError(response.status, response.error))))
+    );
+  }
 }

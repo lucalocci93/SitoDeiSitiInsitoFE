@@ -32,6 +32,7 @@ import { Competition } from 'src/app/Model/Evento/Competition';
 import { Organizzazioni } from 'src/app/Interface/User/Organizzazioni';
 import { Cinture } from 'src/app/Interface/User/Cinture';
 import { C } from 'node_modules/@angular/cdk/portal-directives.d-DbeNrI5D';
+import { Notifica } from 'src/app/Model/Sito/Notifica';
 
 @Component({
   selector: 'app-modale',
@@ -595,6 +596,25 @@ export class ModaleComponent implements OnInit {
       });
     }
 
+    if(this.data.type == 'AddNotification'){
+      this.selected = [];
+      this.Pages = [];
+
+      this.sitoService.GetPagine().subscribe(pages => {
+        if(pages != null && pages.Data != null){
+          this.Pages = pages.Data;
+        }
+        else if(pages.Error != null && pages.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+        }
+        else{
+          alert("Errore recupero Pagine");
+          this.dialogRef.close();
+        }
+      });
+    }
+
     if(this.data.type == 'createCompetition'){
 
       let eventData = this.data.object as eventData;
@@ -1027,6 +1047,33 @@ AddSection(urlInput: HTMLInputElement, paginaInput: HTMLSelectElement, sezioneIn
         }
         else{
           alert("Errore inserimento grafica");
+          this.dialogRef.close();
+        }
+      }
+    });
+
+  }
+
+  AddNotification(paginaInput: HTMLSelectElement, notificaInput: HTMLInputElement, attivaInput: HTMLInputElement,)
+  {
+    let notifica = new Notifica(null, parseInt(paginaInput.value, 10), notificaInput.value, attivaInput.checked);
+  
+    this.sitoService.AddNotifica(notifica).subscribe(data => {
+      if(data != null && data.Data != null){
+        alert("Notifica inserita");
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate([currentUrl]);
+        });
+        this.dialogRef.close();
+      }
+      else{
+        if(data.Error != null && data.Error.Code == HttpStatusCode.Unauthorized){
+          alert("La tua sessione è scaduta, rieffettua il login");
+          this.router.navigate(['/login']);
+        }
+        else{
+          alert("Errore inserimento notifica");
           this.dialogRef.close();
         }
       }

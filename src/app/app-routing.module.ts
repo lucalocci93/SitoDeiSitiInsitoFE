@@ -17,6 +17,8 @@ import { GestioneRedirezioniComponent } from './Component/Admin/gestione-sito/ge
 import { GestioneVideoComponent } from './Component/Admin/gestione-sito/gestione-video/gestione-video.component';
 import { VideoComponent } from './Component/User/video/video.component';
 import { MaestriSubscribeEventiComponent } from './Component/User/eventi/Maestri/maestri-subscribe-eventi.component';
+import { GestioneNotificheComponent } from './Component/Admin/gestione-sito/gestione-notifiche/gestione-notifiche.component';
+import { GestioneTemplateComponent } from './Component/Admin/gestione-sito/gestione-template/gestione-template.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -34,7 +36,9 @@ const routes: Routes = [
   { path: 'gestionesito', component: GestioneSitoComponent, pathMatch: 'full' },
   { path: 'gestionesito/gestionegrafica', component: GestioneGraficaComponent, pathMatch: 'full' },
   { path: 'gestionesito/gestioneredirezioni', component: GestioneRedirezioniComponent, pathMatch: 'full' },
-  { path: 'gestionesito/gestionevideo', component: GestioneVideoComponent, pathMatch: 'full' }
+  { path: 'gestionesito/gestionevideo', component: GestioneVideoComponent, pathMatch: 'full' },
+  { path: 'gestionesito/gestionenotifiche', component: GestioneNotificheComponent, pathMatch: 'full' },
+  { path: 'gestionesito/gestionetemplate', component: GestioneTemplateComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

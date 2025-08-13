@@ -51,6 +51,8 @@ import { VideoComponent } from './Component/User/video/video.component';
 import { SitoService } from 'src/Services/Sito/sito.service';
 import { SafeUrlPipe } from 'src/pipe/safe-url.pipe';
 import { SSEService } from 'src/Services/Sito/SSE.service';
+import { GestioneNotificheComponent } from './Component/Admin/gestione-sito/gestione-notifiche/gestione-notifiche.component';
+import { GestioneTemplateComponent } from './Component/Admin/gestione-sito/gestione-template/gestione-template.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -71,6 +73,8 @@ import { SSEService } from 'src/Services/Sito/SSE.service';
         GestioneGraficaComponent,
         GestioneRedirezioniComponent,
         GestioneVideoComponent,
+        GestioneNotificheComponent,
+        GestioneTemplateComponent,
         ModaleComponent,
         SpinnerComponent,
         SafeUrlPipe
