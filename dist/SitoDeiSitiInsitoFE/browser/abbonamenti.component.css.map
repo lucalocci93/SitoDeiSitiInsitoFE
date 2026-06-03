@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/Component/User/abbonamenti/abbonamenti.component.css"],
+  "sourcesContent": [".container {\r\n    background-color: #f8f9fa;\r\n    padding: 20px;\r\n    border-radius: 10px;\r\n  }\r\n  .table {\r\n    margin-top: 20px;\r\n  }\r\n  .btn-success {\r\n    background-color: #28a745;\r\n    border-color: #28a745;\r\n  }\r\n  .thead-dark th {\r\n    background-color: #cb1717;\r\n    color: white;\r\n  }\r\n  h1 {\r\n    color: #343a40;\r\n  }"],
+  "mappings": ";AAAA,CAAC;AACG,oBAAkB;AAClB,WAAS;AACT,iBAAe;AACjB;AACA,CAAC;AACC,cAAY;AACd;AACA,CAAC;AACC,oBAAkB;AAClB,gBAAc;AAChB;AACA,CAAC,WAAW;AACV,oBAAkB;AAClB,SAAO;AACT;AACA;AACE,SAAO;AACT;",
+  "names": []
+}

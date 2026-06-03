@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/Component/Admin/gestione-sito/gestione-sito.component.css"],
+  "sourcesContent": [".card {\r\n  margin-left: 2%;\r\n  margin-top: 2%;\r\n  margin-right: 2%;\r\n  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\r\n  transition: 0.3s;\r\n  border-radius: 5px; /* 5px rounded corners */\r\n}\r\n  "],
+  "mappings": ";AAAA,CAAC;AACC,eAAa;AACb,cAAY;AACZ,gBAAc;AACd,cAAY,EAAE,IAAI,IAAI,EAAE,KAAK,CAAC,EAAC,CAAC,EAAC,CAAC,EAAC;AACnC,cAAY;AACZ,iBAAe;AACjB;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/Component/cookie-consent/cookie-consent.component.css"],
+  "sourcesContent": [".cookie-consent-banner {\r\n    position: fixed;\r\n    bottom: 0;\r\n    width: 100%;\r\n    background-color: #f1f1f1;\r\n    padding: 10px;\r\n    text-align: center;\r\n    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);\r\n  }\r\n  \r\n  .cookie-consent-banner p {\r\n    margin: 0;\r\n    padding: 0 10px;\r\n  }\r\n  \r\n  .cookie-consent-banner button {\r\n    margin: 0 5px;\r\n  }\r\n  "],
+  "mappings": ";AAAA,CAAC;AACG,YAAU;AACV,UAAQ;AACR,SAAO;AACP,oBAAkB;AAClB,WAAS;AACT,cAAY;AACZ,cAAY,EAAE,KAAK,IAAI,KAAK,CAAC,EAAC,CAAC,EAAC,CAAC,EAAC;AACpC;AAEA,CAVD,sBAUwB;AACrB,UAAQ;AACR,WAAS,EAAE;AACb;AAEA,CAfD,sBAewB;AACrB,UAAQ,EAAE;AACZ;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/Component/news/news.component.css"],
+  "sourcesContent": ["body {\r\n    font-family: 'Arial', sans-serif;\r\n    background-color: #f4f4f4;\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n\r\nh1 {\r\n    text-align: center;\r\n    color: #333;\r\n    margin-top: 20px;\r\n}\r\n\r\n.card {\r\n    background-color: #fff;\r\n    border-radius: 10px;\r\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\r\n    margin: 20px auto;\r\n    max-width: 90%;\r\n    overflow: hidden;\r\n    transition: transform 0.2s;\r\n}\r\n\r\n.card:hover {\r\n    transform: scale(1.05);\r\n}\r\n\r\n.card-body {\r\n    padding: 20px;\r\n}\r\n\r\n.card-title {\r\n    font-size: 1.5em;\r\n    color: #007BFF;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.card-text {\r\n    font-size: 1em;\r\n    color: #555;\r\n}\r\n\r\n.markdown, .nomarkdown {\r\n    margin-top: 20px;\r\n}\r\n\r\n.markdown p, .nomarkdown p {\r\n    line-height: 1.6;\r\n}\r\n\r\n\r\n"],
+  "mappings": ";AAAA;AACI,eAAa,OAAO,EAAE;AACtB,oBAAkB;AAClB,UAAQ;AACR,WAAS;AACb;AAEA;AACI,cAAY;AACZ,SAAO;AACP,cAAY;AAChB;AAEA,CAAC;AACG,oBAAkB;AAClB,iBAAe;AACf,cAAY,EAAE,IAAI,IAAI,KAAK,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE;AACpC,UAAQ,KAAK;AACb,aAAW;AACX,YAAU;AACV,cAAY,UAAU;AAC1B;AAEA,CAVC,IAUI;AACD,aAAW,MAAM;AACrB;AAEA,CAAC;AACG,WAAS;AACb;AAEA,CAAC;AACG,aAAW;AACX,SAAO;AACP,iBAAe;AACnB;AAEA,CAAC;AACG,aAAW;AACX,SAAO;AACX;AAEA,CAAC;AAAU,CAAC;AACR,cAAY;AAChB;AAEA,CAJC,SAIS;AAAG,CAJD,WAIa;AACrB,eAAa;AACjB;",
+  "names": []
+}

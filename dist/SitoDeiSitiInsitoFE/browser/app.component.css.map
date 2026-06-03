@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.css"],
+  "sourcesContent": ["footer {\r\n    background: #ef8b8b;\r\n    color: #fff;\r\n    text-align: center;\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n}\r\n\r\nhtml{\r\n  width: 100vw;\r\n  height: 100vh;\r\n}\r\n\r\n/* Styles for mobile */\r\n@media (max-width: 768px) {\r\n  footer {\r\n    font-size: 0.95em;\r\n    padding: 8px 0;\r\n  }\r\n}\r\n"],
+  "mappings": ";AAAA;AACI,cAAY;AACZ,SAAO;AACP,cAAY;AACZ,aAAW;AACX,cAAY;AAChB;AAEA;AACE,SAAO;AACP,UAAQ;AACV;AAGA,OAAO,CAAC,SAAS,EAAE;AACjB;AACE,eAAW;AACX,aAAS,IAAI;AACf;AACF;",
+  "names": []
+}

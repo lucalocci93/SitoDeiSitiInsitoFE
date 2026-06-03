@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/Component/User/eventi/Maestri/maestri-subscribe-eventi.component.css"],
+  "sourcesContent": [".event-title{\r\n    text-align: center;\r\n     font-size: 56px; \r\n     font-weight: 700;\r\n      margin-bottom: 12px;\r\n       font-family: 'Segoe UI', sans-serif;\r\n        color: #212529;\r\n  }"],
+  "mappings": ";AAAA,CAAC;AACG,cAAY;AACX,aAAW;AACX,eAAa;AACZ,iBAAe;AACd,eAAa,UAAU,EAAE;AACxB,SAAO;AACb;",
+  "names": []
+}
