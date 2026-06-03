@@ -53,7 +53,7 @@ export class DocumentiComponent {
           window.location.href = '/login';
         }
         else{
-          alert("Errore recupero Utenti");
+          alert("Errore recupero Documenti");
         }
       }
     });
@@ -94,7 +94,7 @@ async openDoc(DocId: string | null) {
         window.location.href = '/login';
       }
       else{
-        alert("Errore recupero Utenti");
+        alert("Errore recupero Documenti");
       }
     }
   });

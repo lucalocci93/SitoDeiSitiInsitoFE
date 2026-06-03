@@ -17,7 +17,7 @@ import { use } from 'marked';
 })
 export class LoginService {
 
-  ApiEndpoint: string = environment.apiEndpoint.concat("User/");
+  ApiEndpoint: string = environment.apiEndpoint.concat("Authentication/");
   Token: string = "";
   constructor(private http: HttpClient) { }
 
